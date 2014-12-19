@@ -9,7 +9,7 @@
 		<session-timeout>480</session-timeout>
 	</session-config>
 
-	<display-name>Proactive</display-name>
+	<display-name>Epoint</display-name>
 
 	<welcome-file-list>
 		<welcome-file></welcome-file>
