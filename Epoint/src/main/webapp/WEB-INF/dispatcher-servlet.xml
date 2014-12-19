@@ -25,4 +25,5 @@ xsi:schemaLocation="
 	    <property name="maxUploadSize" value="268435456"/> <!-- 256 megs -->
 	</bean>
 	<mvc:annotation-driven/>
+	<mvc:resources mapping="/js/**" location="/js/" />
 </beans>
