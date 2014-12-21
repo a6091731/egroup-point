@@ -26,4 +26,5 @@ xsi:schemaLocation="
 	</bean>
 	<mvc:annotation-driven/>
 	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/resources/word/**" location="/resources/word/" />
 </beans>
