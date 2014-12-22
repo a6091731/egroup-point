@@ -78,6 +78,6 @@
         
 	</dependencies>
 	<build>
-		<finalName>Proactive</finalName>
+		<finalName>Epoint</finalName>
 	</build>
 </project>
