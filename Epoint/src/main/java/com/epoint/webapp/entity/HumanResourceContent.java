@@ -1,10 +1,10 @@
 package com.epoint.webapp.entity;
 
 public class HumanResourceContent {
-	int periodID;
-	int itemID;
-	String account;
-	int content;
+	private int periodID;
+	private int itemID;
+	private String account;
+	private int content;
 	
 	public int getPeriodID(){
 		return periodID;

@@ -1,12 +1,12 @@
 package com.epoint.webapp.entity;
 
 public class FinancialPlan {
-	String account;
-	int needs;
-	String payItem;
-	int pay;
-	String incomeItem;
-	int income;
+	private String account;
+	private int needs;
+	private String payItem;
+	private int pay;
+	private String incomeItem;
+	private int income;
 	
 	public String getAccount(){
 		return account;

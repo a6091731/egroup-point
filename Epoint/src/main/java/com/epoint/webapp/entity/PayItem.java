@@ -1,17 +1,10 @@
 package com.epoint.webapp.entity;
 
-public class MapSubclass {
-	private int classID;
+public class PayItem {
 	private int subclassID;
+	private int itemID;
 	private String name;
-	
-	public int getClassID(){
-		return classID;
-	}
-	
-	public void setClassID(int classID){
-		this.classID = classID;
-	}
+	private int status;
 	
 	public int getSubclassID(){
 		return subclassID;
@@ -21,11 +14,27 @@ public class MapSubclass {
 		this.subclassID = subclassID;
 	}
 	
+	public int getItemID(){
+		return itemID;
+	}
+	
+	public void setItemID(int itemID){
+		this.itemID = itemID;
+	}
+	
 	public String getName(){
 		return name;
 	}
 	
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	public int getStatus(){
+		return status;
+	}
+	
+	public void setStatus(int status){
+		this.status = status;
 	}
 }
