@@ -3,7 +3,7 @@ package com.epoint.webapp.entity;
 public class MapClass {
 	private int id;
 	private int classID;
-	String name;
+	private String name;
 	
 	public int getID(){
 		return id;

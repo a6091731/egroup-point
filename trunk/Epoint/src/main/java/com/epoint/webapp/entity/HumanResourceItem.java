@@ -1,8 +1,8 @@
 package com.epoint.webapp.entity;
 
 public class HumanResourceItem {
-	int item;
-	String name;
+	private int item;
+	private String name;
 	
 	public int getItem(){
 		return item;
