@@ -4,43 +4,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	
-	<bean id="financialPlanDAO" class="com.epoint.webapp.dao.impl.FinancialPlanDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="humanResourceContentDAO" class="com.epoint.webapp.dao.impl.HumanResourceContentDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="humanResourceItemDAO" class="com.epoint.webapp.dao.impl.HumanResourceItemDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="humanResourcePeriodDAOImpl" class="com.epoint.webapp.dao.impl.HumanResourcePeriodDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="mapClassDAOImpl" class="com.epoint.webapp.dao.impl.MapClassDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="mapDAO" class="com.epoint.webapp.dao.impl.MapDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="mapSubclassDAO" class="com.epoint.webapp.dao.impl.MapSubclassDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>	
-	<bean id="memberDAO" class="com.epoint.webapp.dao.impl.MemberDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="payItemDAO" class="com.epoint.webapp.dao.impl.PayItemDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="payMoneyDAO" class="com.epoint.webapp.dao.impl.payMoneyDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>	
-	<bean id="productDAO" class="com.epoint.webapp.dao.impl.ProductDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="productSalesDAO" class="com.epoint.webapp.dao.impl.ProductSalesDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="ventureChecklistDAO" class="com.epoint.webapp.dao.impl.VentureChecklistDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>	
+	
 </beans>
