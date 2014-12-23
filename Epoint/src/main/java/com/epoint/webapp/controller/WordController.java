@@ -35,10 +35,10 @@ private Configuration configuration = new Configuration();
 	
 	@RequestMapping(value = "/exportWord", method = RequestMethod.GET)
 	public @ResponseBody void exportWord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String xml = "EstablishmentTest.xml";
+		String xml = "ventureChecklist.xml";
 		String filePath = request.getServletContext().getRealPath("resources/word");
 		File xmlFile = new File(filePath);
-		String docFileName = filePath+"/test.doc";
+		String docFileName = "創業E點通.doc";
 		Template template = null;
 		configuration.setDefaultEncoding("UTF-8");
 		Map<String, Object> dataMap = new HashMap<String, Object>();
@@ -52,7 +52,7 @@ private Configuration configuration = new Configuration();
 		try {
 			configuration.setDirectoryForTemplateLoading(xmlFile);
 			template = configuration.getTemplate(xml);
-			File outFile = new File(filePath+"/test.doc");
+			File outFile = new File(docFileName);
 			Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile),"UTF-8"));
 			template.setEncoding("UTF-8");
 			template.process(dataMap, out);
@@ -63,7 +63,7 @@ private Configuration configuration = new Configuration();
 			String mimetype = context.getMimeType(docFileName);
 			response.setContentType((mimetype != null) ? mimetype : "application/octet-stream");
 			response.setContentLength((int) outFile.length());
-			response.setHeader("Content-Disposition", "attachment; filename=\"" + new String("test.doc") + "\"");
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + new String(docFileName.getBytes("UTF-8"), "ISO-8859-1"));
 			byte[] bbuf = new byte[200];
 			InputStream in = new BufferedInputStream(new FileInputStream(outFile));
 
