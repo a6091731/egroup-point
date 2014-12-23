@@ -1,8 +1,11 @@
 package com.epoint.webapp.entity;
 
+import java.sql.Date;
+
 public class Product {
 	private String account;
 	private String id;
+	private Date time;
 	private String name;
 	private String specification;
 	private String pack;
@@ -21,6 +24,13 @@ public class Product {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
 	}
 	public String getName() {
 		return name;
