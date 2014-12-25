@@ -29,7 +29,7 @@ public class ChartController {
 			}
 			item.put("color", color);
 //			item.put("highlight", "#FF5A5E");
-			item.put("label", String.valueOf(i));
+			item.put("label", "label"+String.valueOf(i));
 			listData.add(item);
 		}
 		model.addObject("dataList", listData);
