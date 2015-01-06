@@ -6,8 +6,12 @@ public class Member {
 	private String password;
 	private String name;
 	private String phone;
-	private boolean status;
+	private int status;
 	private Date date;
+	private boolean login;
+	private String memberNO;
+	private String registerNO;
+	private String resetNO;
 	
 	public String getAccount() {
 		return account;
@@ -33,10 +37,10 @@ public class Member {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public boolean isStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public Date getDate() {
@@ -44,5 +48,29 @@ public class Member {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}			
+	}
+	public boolean isLogin() {
+		return login;
+	}
+	public void setLogin(boolean login) {
+		this.login = login;
+	}
+	public String getMemberNO() {
+		return memberNO;
+	}
+	public void setMemberNO(String memberNO) {
+		this.memberNO = memberNO;
+	}
+	public String getRegisterNO() {
+		return registerNO;
+	}
+	public void setRegisterNO(String registerNO) {
+		this.registerNO = registerNO;
+	}
+	public String getResetNO() {
+		return resetNO;
+	}
+	public void setResetNO(String resetNO) {
+		this.resetNO = resetNO;
+	}
 }
