@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
-
 import com.epoint.webapp.dao.MemberDAO;
 import com.epoint.webapp.entity.Member;
 
@@ -18,7 +17,7 @@ public class MemberDAOImpl implements MemberDAO{
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-	
+		
 	public Member checkLogin(Member member) {
 		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM member WHERE memberAccount=? AND memberPassword=? "
@@ -55,8 +54,8 @@ public class MemberDAOImpl implements MemberDAO{
 
 	public void addMember(Member member) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO member(memberAccount,memberPassword,memberName"
-				+ "memberStatus,,registerNO,registerDate) SELECT ?,?,?,?,MAX(memberNO)+1,"
+		String sql = "INSERT INTO member(memberAccount,memberPassword,memberName,"
+				+ "memberStatus,memberNO,registerDate) SELECT ?,?,?,?,MAX(memberNO)+1,"
 				+ "NOW() FROM member";
 		try {
 			conn = dataSource.getConnection();
@@ -110,7 +109,36 @@ public class MemberDAOImpl implements MemberDAO{
 
 	public Member checkMember(String account) {
 		// TODO Auto-generated method stub
-		return null;
+		Member member = new Member();
+		String sql = "SELECT * FROM member WHERE memberAccount=?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			rs = smt.executeQuery();
+			if(rs.next()){
+				member.setAccount(account);
+				member.setName(rs.getString("memberName"));
+				member.setDate(rs.getDate("registerDate"));
+				member.setPhone(rs.getString("memberPhone"));
+				member.setRegisterNO(rs.getString("registerNO"));
+				member.setMemberNO(rs.getString("memberNO"));
+				member.setResetNO(rs.getString("resetNO"));
+				member.setStatus(rs.getInt("memberStatus"));
+			}
+			rs.close();
+			smt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally{
+			if(conn != null){
+				try{
+					conn.close();
+				}catch(SQLException e){}
+			}
+		
+		} 
+		return member;
 	}
 
 	public void updateResetNO(Member member) {

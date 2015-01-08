@@ -25,8 +25,9 @@ import com.epoint.webapp.util.Mail;
 public class MemberController {
 ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("spring-module.xml");
 
+	//會員登入呈現
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.GET)
-	public ModelAndView getLogin(HttpServletRequest request, HttpSession session) {
+	public ModelAndView memberLogin(HttpServletRequest request, HttpSession session) {
 		ModelAndView model = new ModelAndView();
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		if(loginMember == null){
@@ -34,11 +35,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 				String errorMsg = session.getAttribute("errorMsg").toString();
 				session.removeAttribute("errorMsg");
 				model.addObject("errorMsg", errorMsg);
-			}
-			
-			//List<Menu> menuList = MenuUtil.getList(((MenuDAO)context.getBean("menuDAO")).getList(), 0);
-
-			//model.addObject("menuList", menuList);
+			}			
 			model.setViewName("memberLogin");
 		}
 		else
@@ -52,12 +49,12 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		ModelAndView model = new ModelAndView();
 		SecurityMD5 securityMD5 = new SecurityMD5();
 		MemberDAO memberDAO = (MemberDAO)context.getBean("memberDAO");
-		/*try {
+		try {
 			member.setPassword(securityMD5.encryptWords(member.getPassword()));
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		member = memberDAO.checkLogin(member);
 		System.out.println("member.isLogin() : "+member.isLogin());
 		if(member.isLogin()){
@@ -66,7 +63,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		}
 		else{
 			session.setAttribute("errorMsg", "無效的帳號密碼或未驗證");
-			model.setViewName("redirect:/memberLogin");
+			model.setViewName("redirect:/");
 		}
 		return model;
 	}
@@ -97,7 +94,9 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("****0");
 		memberDAO.addMember(member);
+		System.out.println("****4");
 		session.setAttribute("loginMember", member);
 		model.setViewName("redirect:/aboutme?id"+member.getMemberNO());
 		/*HtmlUtil htmlUtil = new HtmlUtil();
@@ -116,13 +115,25 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		return model;
 	}
 	
-	//會員註冊判斷是否已有此帳號
+	//會員註冊判斷是否已有此帳號 SendForm
 	@RequestMapping(value = "/checkAccount", method = RequestMethod.POST)
 	public @ResponseBody boolean checkAccount(String account){
 		MemberDAO memberDAO = (MemberDAO)context.getBean("memberDAO");
 		boolean flag = memberDAO.checkAccount(account);
 		return flag;
 	}
+	
+	@RequestMapping(value = "/forgotPassword1", method = RequestMethod.GET)
+	public ModelAndView forgotPassword1(HttpServletRequest request, HttpSession session) {
+		ModelAndView model = new ModelAndView();
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		if(loginMember == null){						
+			model.setViewName("forgotPassword1");
+		}
+		else
+			model.setViewName("redirect:/");
+		return model;
+	}		
 	
 	//會員忘記密碼
 	@RequestMapping(value = "/sendPasswordConfirm", method = RequestMethod.POST)
@@ -131,8 +142,11 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
 		Member member = new Member();
 		member = memberDAO.checkMember(account);
+		System.out.println("member.getAccount="+member.getAccount()+",member.getStatus="+member.getStatus());
 		if(member.getAccount()!=null && member.getStatus()==1){
-			model.setViewName("redirect:/forgetPassword2");
+			System.out.println("****1");
+			//model.setViewName("redirect:/forgetPassword2");
+			model.setViewName("redirect:/memberLogin");
 			member.setResetNO(UUIDGenerator.getUUID());
 			memberDAO.updateResetNO(member);
 			HtmlUtil htmlUtil = new HtmlUtil();
@@ -145,6 +159,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 				e.printStackTrace();
 			}
 			Mail mail = new Mail();
+			System.out.println("****2");
 			message = message.replaceAll("link_url", "http://www.proactive.tw/resetPassword?aid="+member.getResetNO());
 			message = message.replaceAll("user_name", member.getName());
 			mail.sendMail(subject, member.getAccount(), message);			

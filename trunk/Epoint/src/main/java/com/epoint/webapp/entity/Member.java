@@ -12,6 +12,7 @@ public class Member {
 	private String memberNO;
 	private String registerNO;
 	private String resetNO;
+	private int checkListNow;
 	
 	public String getAccount() {
 		return account;
@@ -72,5 +73,11 @@ public class Member {
 	}
 	public void setResetNO(String resetNO) {
 		this.resetNO = resetNO;
+	}
+	public int getCheckListNow() {
+		return checkListNow;
+	}
+	public void setCheckListNow(int checkListNow) {
+		this.checkListNow = checkListNow;
 	}
 }
