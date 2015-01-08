@@ -19,13 +19,13 @@ public class Mail {
 	private String Senduser = "epoint.egroup@gmail.com";
 	private String Senduserpwd = "egroup23622508";
 	private String HostName = "smtp.gmail.com";
-	private int SSLSmtpPort = 465;
+	private String SSLSmtpPort = "587";
 	public void sendMail(String subject,String recipient,String message){
-
+		System.out.println("*****email0");
 		try {
 			HtmlEmail email = new HtmlEmail();
 			email.setHostName(HostName);
-			email.setSmtpPort(SSLSmtpPort);
+			email.setSmtpPort(587);
 			email.setAuthenticator(new DefaultAuthenticator(Senduser, Senduserpwd));
 			//email.setDebug(true);
 			email.setSSLOnConnect(true);
