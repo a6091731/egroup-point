@@ -1,5 +1,4 @@
 package com.epoint.webapp.dao;
 
-public class MapSubclassDAO {
-
+public interface MapSubclassDAO {
 }

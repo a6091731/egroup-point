@@ -5,7 +5,11 @@ public class VentureChecklist {
 	private String account;
 	private int id;
 	private int classID;
-	private String content;		
+	
+
+	//程式變數
+	private String content;	
+	private int now;
 	
 	public String getAccount() {
 		return account;
@@ -30,5 +34,11 @@ public class VentureChecklist {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getNow() {
+		return now;
+	}
+	public void setNow(int now) {
+		this.now = now;
 	}
 }
