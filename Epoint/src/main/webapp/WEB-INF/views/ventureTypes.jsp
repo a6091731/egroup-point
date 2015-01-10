@@ -71,7 +71,7 @@
 			<div class="grid_3">
 				<aside>
 					<ul class="sideNav hideBlock">
-						<c:forEach items="${ventureCheckMenuList}" var="menu">
+						<c:forEach items="${getVentureCheckMenuList}" var="menu">
 							<c:choose>
 								<c:when test="${menu.classID <= ventureCheckListNow }">
 									<li><a href="${menu.url}"><i class="fa fa-child"></i>${menu.name }</a></li>
@@ -81,27 +81,20 @@
 								</c:otherwise>
 							</c:choose>							
 						</c:forEach>
-						
-							<li><div class="mask"></div> <a href="javascript:;"><i
-									class="fa fa-lock"></i>產品描述</a></li>
-							<li><div class="mask"></div> <a href="javascript:;"><i
-									class="fa fa-lock"></i>業務</a></li>
-							<li><div class="mask"></div> <a href="javascript:;"><i
-									class="fa fa-lock"></i>行銷</a></li>
-							<li><div class="mask"></div> <a href="javascript:;"><i
-									class="fa fa-lock"></i>產品定位</a></li>
-							<li><div class="mask"></div> <a href="javascript:;"><i
-									class="fa fa-lock"></i>人力資源規劃</a></li>
 					</ul>
 					<div class="memberRwdnav clearfix">
 						<nav class="primary">
 							<ul class="rightnav">
-								<li><a href="javascript:;">創業業種</a></li>
-								<li><a href="javascript:;">(鎖) 目標市場描述</a></li>
-								<li><a href="javascript:;">(鎖) 產品描述</a></li>
-								<li><a href="javascript:;">(鎖) 行銷</a></li>
-								<li><a href="javascript:;">(鎖) 產品定位</a></li>
-								<li><a href="javascript:;">(鎖) 人力資源規劃</a></li>
+								<c:forEach items="${ventureCheckMenuList}" var="menu">
+									<c:choose>
+										<c:when test="${menu.classID <= ventureCheckListNow}">
+											<li><a href="${menu.url}">${menu.name}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${menu.url}">(鎖) ${menu.name}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</ul>
 						</nav>
 					</div>
@@ -116,15 +109,23 @@
 				<form id="sendForm" action="addVentureTypeCont" method="post">
 					<div class="ventureTypesInput clearfix">
 						<ul>
-						<c:forEach items="${ventureCheckMenuList}" var="menu">
+						<c:forEach items="${getVentureCheckListByMember}" var="ventureCehckList">
 							<li>
-								<h4>${menu.name}</h4> 
-								<a href="javascript:;" data-reveal-id="${menu.classID}"><span>
+								<input type="hidden" name="mapClassID" id="${ventureCehckList.classID}">
+								<input type="hidden" name="mapSubClassID" id="${ventureCehckList.subclassID}">
+								<h4>${ventureCehckList.name}</h4> 
+								<a href="javascript:;" data-reveal-id="${ventureCehckList.subclassID}"><span>
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
-								<textarea rows="8" name="content1" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+								<c:choose>
+									<c:when test="${!empty ventureCehckList.content}">
+										<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+									</c:when>
+									<c:otherwise>
+										<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+									</c:otherwise>
+							</c:choose>	
 							</li>	
-						</c:forEach>	
-							
+						</c:forEach>							
 						</ul>
 						<button type="submit" class="nextStepButton">
 							<span class="next">下一步，填寫目標市場描述<i class="fa fa-arrow-right"></i></span>

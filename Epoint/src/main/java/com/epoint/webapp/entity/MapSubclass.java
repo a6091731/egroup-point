@@ -1,9 +1,13 @@
 package com.epoint.webapp.entity;
 
+
 public class MapSubclass {
 	private int classID;
 	private int subclassID;
 	private String name;
+	
+	//程式變數
+	private String content;
 	
 	public int getClassID(){
 		return classID;
@@ -27,5 +31,12 @@ public class MapSubclass {
 	
 	public void setName(String name){
 		this.name = name;
+	}
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

@@ -11,5 +11,9 @@
 	<bean id="ventureChecklistDAO" class="com.epoint.webapp.dao.impl.VentureChecklistDAOImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="mapSubclassDAO" class="com.epoint.webapp.dao.impl.MapSubclassDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 </beans>

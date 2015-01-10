@@ -12,7 +12,10 @@ public class Member {
 	private String memberNO;
 	private String registerNO;
 	private String resetNO;
-	private int checkListNow;
+	
+	//程式變數
+	private int classID;
+	
 	
 	public String getAccount() {
 		return account;
@@ -74,10 +77,10 @@ public class Member {
 	public void setResetNO(String resetNO) {
 		this.resetNO = resetNO;
 	}
-	public int getCheckListNow() {
-		return checkListNow;
+	public int getClassID() {
+		return classID;
 	}
-	public void setCheckListNow(int checkListNow) {
-		this.checkListNow = checkListNow;
-	}
+	public void setClassID(int classID) {
+		this.classID = classID;
+	}			
 }

@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import com.epoint.webapp.dao.VentureChecklistDAO;
 import com.epoint.webapp.entity.MapClass;
+import com.epoint.webapp.entity.MapSubclass;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.VentureChecklist;
 
@@ -18,6 +19,7 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	private DataSource dataSource;
 	private Connection conn = null ;
 	private ResultSet rs = null ;
+	private ResultSet rs2 = null ;
 	private PreparedStatement smt = null ;
 	
 	public void setDataSource(DataSource dataSource) {
@@ -33,7 +35,7 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 			smt.setString(1, ventureChecklist.getAccount());
 			smt.setInt(2, ventureChecklist.getId());
 			smt.setInt(3, ventureChecklist.getClassID());
-			smt.setString(3, ventureChecklist.getContent());
+			smt.setString(4, ventureChecklist.getContent());
 			smt.executeUpdate();			
 			smt.close();
 		} catch (SQLException e) {			
@@ -84,7 +86,8 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 			smt = conn.prepareStatement(sql);
 			smt.setString(1, ventureChecklist.getContent());
 			smt.setString(2, ventureChecklist.getAccount());
-			smt.setInt(3, ventureChecklist.getId());
+			System.out.println("ventureChecklist.getClassID()="+ventureChecklist.getClassID());
+			smt.setInt(3, ventureChecklist.getClassID());
 			smt.executeUpdate();	
 			rs.close();
 			smt.close(); 
@@ -136,21 +139,38 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 		return mapClassList;
 	}
 	
-	public int getVentrueCheckListByMember(Member member1){
-		int checkListNow = 0;
-		String sql = "SELECT MAX(mapClassID) AS Now FROM venture_checklist WHERE memberAccount = ?";
+	public List<MapSubclass> getVentureCheckListByMember(Member member){
+		List<MapSubclass> mapSubclassesList = new ArrayList<MapSubclass>();
+		String sql1 = "SELECT * FROM map_subclass WHERE mapClassID = ?";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
-			smt.setString(1, member1.getAccount());
-			rs = smt.executeQuery();			
-			if(rs.next()){
-				checkListNow = rs.getInt("Now");
+			smt = conn.prepareStatement(sql1);
+			System.out.println("member.getClassID()="+member.getClassID());
+			smt.setInt(1, member.getClassID());
+			rs = smt.executeQuery();
+			while(rs.next()){				
+				MapSubclass mapSubclass = new MapSubclass();				
+				mapSubclass.setClassID(rs.getInt("mapClassID"));
+				mapSubclass.setSubclassID(rs.getInt("mapSubClassID"));
+				mapSubclass.setName(rs.getString("mapSubClassName"));
+				System.out.println("mapClassID="+mapSubclass.getClassID()+",mapSubClassID="+mapSubclass.getSubclassID()+",mapSubClassName="+mapSubclass.getName());
+				String sql2 = "SELECT ventureChecklistContent FROM venture_checklist "
+						+ "WHERE memberAccount = ? AND mapSubClassID = ?";
+				smt = conn.prepareStatement(sql2);
+				smt.setString(1, member.getAccount());
+				smt.setInt(2, mapSubclass.getSubclassID());
+				System.out.println("mapSubclass.getSubclassID="+mapSubclass.getSubclassID());
+				rs2 = smt.executeQuery();
+				while (rs2.next()) {
+					mapSubclass.setContent(rs2.getString("ventureChecklistContent"));
+					System.out.println("ventureChecklistContent="+mapSubclass.getContent());
+				}				
+				mapSubclassesList.add(mapSubclass);
 			}
 			smt.executeQuery();	
 			rs.close();
 			smt.close();
-			return checkListNow;
+			return mapSubclassesList;
  
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

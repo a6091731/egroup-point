@@ -1,5 +1,6 @@
 package com.epoint.webapp.dao.impl;
 
-public class MapSubclassDAOImpl {
+import com.epoint.webapp.dao.MapSubclassDAO;
 
+public class MapSubclassDAOImpl implements MapSubclassDAO {
 }
