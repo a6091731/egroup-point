@@ -111,7 +111,7 @@
 				</section>
 
 
-				<form class="formset clearfix">
+				<form class="formset clearfix" method="post" action="modiExpenditure">
 				  	<fieldset class="fieldset">
 				  		<legend>1.1 固定成本[設立費用]：</legend>
 					  	<div class="field">
@@ -121,7 +121,7 @@
 					  	</div>
 					  	<div class="field">
 					  		<label><span>金額：</span>
-					  			<input type="text" class="form-control" name="fixcost" >
+					  			<input type="text" class="form-control" name="money" >
 					  		</label>
 					  	</div>
 					</fieldset>
@@ -134,14 +134,14 @@
 					  	</div>
 					  	<div class="field">
 					  		<label>金額：
-					  			<input type="text" class="form-control" name="fixcostLogo">
+					  			<input type="text" class="form-control" name="money">
 					  		</label>
 					  	</div>
 					</fieldset>
-					<fieldset  class="fieldset">
+					<fieldset id="BusinessCard" class="fieldset">
 					  	<legend>2 印製名片</legend>
-					  	<button class="addbutton"><i class="fa fa-plus"></i> 新增一筆費用</button>
-					  	<div>
+					  	<button type="button" class="addbutton" data-id="card"><i class="fa fa-plus"></i> 新增一筆費用</button>
+					  	<div id="card1">
 						  	<div class="field">
 						  		<label>日期：
 						  			<input type="month" class="form-control" name="cardDate">
@@ -153,14 +153,14 @@
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delCardBtn" data-id="1"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
 					</fieldset>					
-					<fieldset  class="fieldset">
+					<fieldset id="Lawyer" class="fieldset">
 					  	<legend>3 律師費用</legend>
-					  	<button class="addbutton" ><i class="fa fa-plus"></i> 新增一筆費用</button>
-					  	<div>
+					  	<button type="button" class="addbutton" data-id="lawyer"><i class="fa fa-plus"></i> 新增一筆費用</button>
+					  	<div id="lawyer1">
 						  	<div class="field">
 						  		<label>日期：
 						  			<input type="month" class="form-control" name="date3">
@@ -172,29 +172,14 @@
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
-						  	</div>					  		
-					  	</div>
-					  	<div>
-						  	<div class="field">
-						  		<label>日期：
-						  			<input type="month" class="form-control" name="date3">
-						  		</label>
-						  	</div>
-						  	<div class="field">
-						  		<label>金額：
-						  			<input type="text" class="form-control" name="money3">
-						  		</label>
-						  	</div>
-						  	<div class="field">
-						  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delLawyerBtn" data-id="1"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
 					</fieldset>	
-					<fieldset  class="fieldset">
+					<fieldset id="Accountants" class="fieldset">
 					  	<legend>4 會計師費用</legend>
-					  	<button class="addbutton" ><i class="fa fa-plus"></i> 新增一筆費用</button>
-					  	<div>
+					  	<button type="button" class="addbutton" data-id="accountant"><i class="fa fa-plus"></i> 新增一筆費用</button>
+					  	<div id="accountant1">
 						  	<div class="field">
 						  		<label>日期：
 						  			<input type="month" class="form-control" name="date3">
@@ -206,12 +191,13 @@
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delAccountBtn" data-id="1"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
 					</fieldset>		
 					<div class="mt50px">
-						<a href="javascript:;" class="nextStepButton"><span class="next">下一步，填寫營業場所完工<i class="fa fa-arrow-right"></i></span></a>
+						<button type="submit" class="nextStepButton"><span class="next">下一步，填寫營業場所完工<i class="fa fa-arrow-right"></i></span></button>
+						<!-- <a href="javascript:;" class="nextStepButton"><span class="next">下一步，填寫營業場所完工<i class="fa fa-arrow-right"></i></span></a> -->
 					</div>
 				  </form>
 			</div>
@@ -241,9 +227,84 @@
 	<!-- jquery.mobilemenu.js -->
 		<script src="js/jquery.mobilemenu.js"></script>
 		<script type="text/javascript">
+		var cardCount = 1;
+		var lawyerCount = 1;
+		var accountCount = 1;
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
-
+	            
+	            
+	            
+	            $('.addbutton').click(function(){
+	            	var type = $(this).data('id');
+	            	if(type == 'card'){
+	            		cardCount++;
+	            		var cardText = 
+	            		'<div id="card'+cardCount+'">'+
+	            			'<div class="field">'+
+						  		'<label>日期：'+
+						  			'<input type="month" class="form-control" name="cardDate">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<label>金額：'+
+						  			'<input type="text" class="form-control" name="cardCost">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<button type="button" class="deletebutton delCardBtn" data-id="'+cardCount+'"><i class="fa fa-times"></i> 刪除</button>'+
+						  	'</div></div>';
+	            		$('#BusinessCard').append(cardText);
+	            	}else if(type == 'lawyer'){
+	            		lawyerCount++;
+	            		var lawyerText = 
+	            		'<div id="lawyer'+lawyerCount+'">'+
+	            			'<div class="field">'+
+						  		'<label>日期：'+
+						  			'<input type="month" class="form-control" name="date3">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<label>金額：'+
+						  			'<input type="text" class="form-control" name="money3">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<button type="button" class="deletebutton delLawyerBtn" data-id="'+lawyerCount+'"><i class="fa fa-times"></i> 刪除</button>'+
+						  	'</div></div>';
+	            		$('#Lawyer').append(lawyerText);
+	            	}else if(type == 'accountant'){
+	            		accountCount++;
+	            		var accountText = 
+	            			'<div id="accountant'+accountCount+'">'+
+						  	'<div class="field">'+
+						  		'<label>日期：'+
+						  			'<input type="month" class="form-control" name="date3">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<label>金額：'+
+						  			'<input type="text" class="form-control" name="money3">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<button type="button" class="deletebutton delAccountBtn" data-id="'+accountCount+'"><i class="fa fa-times"></i> 刪除</button>'+
+						  	'</div></div>';
+	            		$('#Accountants').append(accountText);
+	            	}
+	            	$('.delCardBtn').click(function(){
+		            	var id = $(this).data('id');
+		            	$('#card'+id).remove();
+		            });
+	            	$('.delLawyerBtn').click(function(){
+		            	var id = $(this).data('id');
+		            	$('#lawyer'+id).remove();
+		            });
+	            	$('.delAccountBtn').click(function(){
+		            	var id = $(this).data('id');
+		            	$('#accountant'+id).remove();
+		            });
+	            });
 	        });
 	    </script>
 </body>
