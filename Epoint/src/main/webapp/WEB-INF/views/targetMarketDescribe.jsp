@@ -71,29 +71,30 @@
 			<div class="grid_3">
 				<aside>
 					<ul class="sideNav hideBlock">
-						<li><a href="javascript:;"><i class="fa fa-child"></i>創業業種</a></li>
-						<li><div class="mask"></div> <a href="javascript:;"><i
-								class="fa fa-lock"></i>目標市場描述</a></li>
-						<li><div class="mask"></div> <a href="javascript:;"><i
-								class="fa fa-lock"></i>產品描述</a></li>
-						<li><div class="mask"></div> <a href="javascript:;"><i
-								class="fa fa-lock"></i>業務</a></li>
-						<li><div class="mask"></div> <a href="javascript:;"><i
-								class="fa fa-lock"></i>行銷</a></li>
-						<li><div class="mask"></div> <a href="javascript:;"><i
-								class="fa fa-lock"></i>產品定位</a></li>
-						<li><div class="mask"></div> <a href="javascript:;"><i
-								class="fa fa-lock"></i>人力資源規劃</a></li>
+						<c:forEach items="${getVentureCheckMenuList}" var="menu">
+							<c:choose>
+								<c:when test="${menu.classID <= getVentureCheckMenuListNow}">
+									<li><a href="${menu.url}"><i class="fa fa-child"></i>${menu.name }</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><div class="mask"></div> <a href="${menu.url}"><i class="fa fa-lock"></i>${menu.name }</a></li>
+								</c:otherwise>
+							</c:choose>							
+						</c:forEach>						
 					</ul>
 					<div class="memberRwdnav clearfix">
 						<nav class="primary">
 							<ul class="rightnav">
-								<li><a href="javascript:;">創業業種</a></li>
-								<li><a href="javascript:;">(鎖) 目標市場描述</a></li>
-								<li><a href="javascript:;">(鎖) 產品描述</a></li>
-								<li><a href="javascript:;">(鎖) 行銷</a></li>
-								<li><a href="javascript:;">(鎖) 產品定位</a></li>
-								<li><a href="javascript:;">(鎖) 人力資源規劃</a></li>
+								<c:forEach items="${getVentureCheckMenuList}" var="menu">
+									<c:choose>
+										<c:when test="${menu.classID <= getVentureCheckMenuListNow}">
+											<li><a href="${menu.url}">${menu.name}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${menu.url}">(鎖) ${menu.name}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</ul>
 						</nav>
 					</div>
@@ -102,30 +103,29 @@
 			<div class="grid_9">
 				<section class="ventureTypesTitle hideBlock">
 					<h2>
-						<img alt="創業業種圖示" src="images/type.png">創業業種
+						<img alt="創業業種圖示" src="images/type.png">目標市場描述
 					</h2>
 				</section>
-				<form id="sendForm" action="addVentureTypeCont" method="post">
+				<form id="sendForm" action="addTargetMarketDescribeCont" method="post">
 					<div class="ventureTypesInput clearfix">
 						<ul>
+						<c:forEach items="${getVentureCheckListByMember}" var="ventureCehckList">
 							<li>
-								<h4>1.創業業種(內容)：</h4> 
-								<a href="javascript:;" data-reveal-id=helpVentureType><span>
+								<input type="hidden" name="mapClassID" id="${ventureCehckList.classID}">
+								<input type="hidden" name="mapSubClassID" id="${ventureCehckList.subclassID}">
+								<h4>${ventureCehckList.name}</h4> 
+								<a href="javascript:;" data-reveal-id="help${ventureCehckList.subclassID}"><span>
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
-								<textarea rows="8" name="content1" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
-							</li>
-							<li>
-								<h4>2.商業模式(生意賺錢的方法)：</h4> 
-								<a href="javascript:;" data-reveal-id="helpBusinessModel"><span>
-								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
-								<textarea rows="8" name="content2" placeholder="商業模式(生意賺錢的方法)：範例"></textarea>
-							</li>
-							<li>
-								<h4>3.自己在此行業的一技之長：</h4> 
-								<a href="javascript:;" data-reveal-id="helpLink"><span>
-								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
-								<textarea rows="8" name="content3" placeholder="自己在此行業的一技之長：範例"></textarea>
-							</li>
+							<c:choose>
+								<c:when test="${!empty ventureCehckList.content}">
+									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+								</c:when>
+								<c:otherwise>
+									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+								</c:otherwise>
+							</c:choose>	
+							</li>	
+						</c:forEach>								
 						</ul>
 						<button type="submit" class="nextStepButton">
 							<span class="next">下一步，填寫目標市場描述<i class="fa fa-arrow-right"></i></span>
@@ -157,18 +157,25 @@
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
-	<!-- helpVentureType -->
-	<div id="helpVentureType" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 創業業種(內容)</header>
+	<!-- targetCustomers -->
+	<div id="help121" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 目標客戶是誰 ?</header>
 		<div class="cont clearfix">
-			<p>近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...</p>
+			<p>目標客戶是誰 ?</p>
 		</div>
 	</div>	
-	<!-- helpBusinessModel -->
-	<div id="helpBusinessModel" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 商業模式(生意賺錢的方法)</header>
+	<!-- valueProvided -->
+	<div id="help122" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 能提供給顧客什麼價值?</header>
 		<div class="cont clearfix">
-			<p></p>
+			<p>能提供給顧客什麼價值?</p>
+		</div>
+	</div>	
+	<!-- customersBenefits -->
+	<div id="help123" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 顧客能從中得到什麼好處?</header>
+		<div class="cont clearfix">
+			<p>顧客能從中得到什麼好處?</p>
 		</div>
 	</div>	
 </body>
