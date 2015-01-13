@@ -73,7 +73,7 @@
 					<ul class="sideNav hideBlock">
 						<c:forEach items="${getVentureCheckMenuList}" var="menu">
 							<c:choose>
-								<c:when test="${menu.classID <= ventureCheckListNow }">
+								<c:when test="${menu.classID <= getVentureCheckMenuListNow }">
 									<li><a href="${menu.url}"><i class="fa fa-child"></i>${menu.name }</a></li>
 								</c:when>
 								<c:otherwise>
@@ -85,9 +85,9 @@
 					<div class="memberRwdnav clearfix">
 						<nav class="primary">
 							<ul class="rightnav">
-								<c:forEach items="${ventureCheckMenuList}" var="menu">
+								<c:forEach items="${getVentureCheckMenuList}" var="menu">
 									<c:choose>
-										<c:when test="${menu.classID <= ventureCheckListNow}">
+										<c:when test="${menu.classID <= getVentureCheckMenuListNow}">
 											<li><a href="${menu.url}">${menu.name}</a></li>
 										</c:when>
 										<c:otherwise>
@@ -114,15 +114,15 @@
 								<input type="hidden" name="mapClassID" id="${ventureCehckList.classID}">
 								<input type="hidden" name="mapSubClassID" id="${ventureCehckList.subclassID}">
 								<h4>${ventureCehckList.name}</h4> 
-								<a href="javascript:;" data-reveal-id="${ventureCehckList.subclassID}"><span>
+								<a href="javascript:;" data-reveal-id="help${ventureCehckList.subclassID}"><span>
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
-								<c:choose>
-									<c:when test="${!empty ventureCehckList.content}">
-										<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
-									</c:when>
-									<c:otherwise>
-										<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
-									</c:otherwise>
+							<c:choose>
+								<c:when test="${!empty ventureCehckList.content}">
+									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+								</c:when>
+								<c:otherwise>
+									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+								</c:otherwise>
 							</c:choose>	
 							</li>	
 						</c:forEach>							
@@ -153,23 +153,29 @@
 	<script type="text/javascript">
 		$(function() {
 			$('nav.primary .rightnav').mobileMenu();
-
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
 	<!-- helpVentureType -->
-	<div id="helpVentureType" class="reveal-modal">
+	<div id="help111" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 創業業種(內容)</header>
 		<div class="cont clearfix">
 			<p>近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...</p>
 		</div>
 	</div>	
 	<!-- helpBusinessModel -->
-	<div id="helpBusinessModel" class="reveal-modal">
+	<div id="help112" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 商業模式(生意賺錢的方法)</header>
 		<div class="cont clearfix">
-			<p></p>
+			<p>商業模式(生意賺錢的方法)</p>
 		</div>
-	</div>	
+	</div>
+	<!-- helpBusinessModel -->
+	<div id="help113" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 自己在此行業的一技之長</header>
+		<div class="cont clearfix">
+			<p>自己在此行業的一技之長</p>
+		</div>
+	</div>		
 </body>
 </html>

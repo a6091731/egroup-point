@@ -9,6 +9,7 @@ public class MapClass {
 	
 	//程式變數
 	private String account;
+	private int now;
 	
 	public int getId(){
 		return id;
@@ -48,6 +49,14 @@ public class MapClass {
 
 	public void setAccount(String account) {
 		this.account = account;
+	}
+
+	public int getNow() {
+		return now;
+	}
+
+	public void setNow(int now) {
+		this.now = now;
 	}
 	
 	

@@ -21,13 +21,19 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	private ResultSet rs = null ;
 	private ResultSet rs2 = null ;
 	private PreparedStatement smt = null ;
+	//如果method裡面有一句以上的sql，請使用sql1,sql2分開
+	private String sql;
+	private String sql1;
+	private String sql2;
+	//flag用來判斷回傳的true or false
+	private boolean flag;
 	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	
 	public void insertVentureCheckList(VentureChecklist ventureChecklist){
-		String sql = "INSERT INTO venture_checklist (memberAccount, mapClassID, mapSubClassID, ventureChecklistContent) "
+		sql = "INSERT INTO venture_checklist (memberAccount, mapClassID, mapSubClassID, ventureChecklistContent) "
 				+ "VALUES (?, ?, ?, ?)";
 		try {
 			conn = dataSource.getConnection();
@@ -50,16 +56,16 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	}
 	
 	public boolean checkVentureCheckList(VentureChecklist ventureChecklist){
-		boolean flag = true;
-		String sql = "SELECT * FROM venture_checklist WHERE memberAccount = ? AND mapSubClassID = ?";
+		flag = false;
+		sql = "SELECT * FROM venture_checklist WHERE memberAccount = ? AND mapSubClassID = ?";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
 			smt.setString(1, ventureChecklist.getAccount());
-			smt.setInt(2, ventureChecklist.getId());
+			smt.setInt(2, ventureChecklist.getClassID());
 			rs = smt.executeQuery();
 			if(rs.next()){
-				flag = false;
+				flag = true;
 			}
 			smt.executeQuery();	
 			rs.close();
@@ -80,13 +86,12 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 
 	public void updateVentureCheckList(VentureChecklist ventureChecklist) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE venture_checklist SET ventureChecklistContent = ? WHERE memberAccount= ? AND mapSubClassID = ?";
+		sql = "UPDATE venture_checklist SET ventureChecklistContent = ? WHERE memberAccount= ? AND mapSubClassID = ?";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
 			smt.setString(1, ventureChecklist.getContent());
 			smt.setString(2, ventureChecklist.getAccount());
-			System.out.println("ventureChecklist.getClassID()="+ventureChecklist.getClassID());
 			smt.setInt(3, ventureChecklist.getClassID());
 			smt.executeUpdate();	
 			rs.close();
@@ -107,22 +112,35 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 		// TODO Auto-generated method stub
 		List<MapClass> mapClassList = new ArrayList<MapClass>();
 		//String sql = "SELECT * FROM map_class LEFT JOIN venture_checklist ON map_class.mapClassID = venture_checklist.mapClassID WHERE mapID = ?";
-		String sql = "SELECT * FROM map_class WHERE mapID = ?";
+		sql1 = "SELECT * FROM map_class WHERE mapID = ?";
+		sql2 = "SELECT MAX(mapClassID) AS now FROM venture_checklist WHERE memberAccount = ? "
+				+ "GROUP BY memberAccount";
+		boolean now = false;
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(sql1);
 			smt.setInt(1, mapClass.getId());
 			rs = smt.executeQuery();
 			while(rs.next()){
-				MapClass mapclass = new MapClass();
-				mapclass.setId(rs.getInt("mapID"));
-				mapclass.setClassID(rs.getInt("mapClassID"));
-				mapclass.setName(rs.getString("mapClassName"));
-				mapClass.setUrl(rs.getString("mapClassUrl"));
-				mapClassList.add(mapclass);
-				System.out.println("url="+mapClass.getUrl());
+				MapClass mapClass2 = new MapClass();
+				mapClass2.setId(rs.getInt("mapID"));
+				mapClass2.setClassID(rs.getInt("mapClassID"));
+				mapClass2.setName(rs.getString("mapClassName"));
+				mapClass2.setUrl(rs.getString("mapClassUrl"));					
+				if(now == false){
+					now = true;
+					smt = conn.prepareStatement(sql2);
+					smt.setString(1, mapClass.getAccount());
+					rs2 = smt.executeQuery();
+					while(rs2.next()){
+						mapClass2.setNow(rs2.getInt("now"));						
+					}					
+				}
+				System.out.println("getNow()"+mapClass2.getNow());
+				mapClassList.add(mapClass2);
 			}
-			smt.executeQuery();	
+
+			
 			rs.close();
 			smt.close();
  
@@ -141,29 +159,26 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	
 	public List<MapSubclass> getVentureCheckListByMember(Member member){
 		List<MapSubclass> mapSubclassesList = new ArrayList<MapSubclass>();
-		String sql1 = "SELECT * FROM map_subclass WHERE mapClassID = ?";
+		sql1 = "SELECT * FROM map_subclass WHERE mapClassID = ?";
+		sql2 = "SELECT MAX(mapClassID) AS now ,ventureChecklistContent FROM venture_checklist "
+				+ "WHERE memberAccount = ? AND mapSubClassID = ? GROUP BY mapClassID";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql1);
-			System.out.println("member.getClassID()="+member.getClassID());
 			smt.setInt(1, member.getClassID());
 			rs = smt.executeQuery();
 			while(rs.next()){				
 				MapSubclass mapSubclass = new MapSubclass();				
 				mapSubclass.setClassID(rs.getInt("mapClassID"));
 				mapSubclass.setSubclassID(rs.getInt("mapSubClassID"));
-				mapSubclass.setName(rs.getString("mapSubClassName"));
-				System.out.println("mapClassID="+mapSubclass.getClassID()+",mapSubClassID="+mapSubclass.getSubclassID()+",mapSubClassName="+mapSubclass.getName());
-				String sql2 = "SELECT ventureChecklistContent FROM venture_checklist "
-						+ "WHERE memberAccount = ? AND mapSubClassID = ?";
+				mapSubclass.setName(rs.getString("mapSubClassName"));				
 				smt = conn.prepareStatement(sql2);
 				smt.setString(1, member.getAccount());
 				smt.setInt(2, mapSubclass.getSubclassID());
-				System.out.println("mapSubclass.getSubclassID="+mapSubclass.getSubclassID());
 				rs2 = smt.executeQuery();
 				while (rs2.next()) {
+					mapSubclass.setNow(rs2.getInt("now"));
 					mapSubclass.setContent(rs2.getString("ventureChecklistContent"));
-					System.out.println("ventureChecklistContent="+mapSubclass.getContent());
 				}				
 				mapSubclassesList.add(mapSubclass);
 			}

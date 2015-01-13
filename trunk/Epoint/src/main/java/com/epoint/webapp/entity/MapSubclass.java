@@ -8,6 +8,7 @@ public class MapSubclass {
 	
 	//程式變數
 	private String content;
+	private int now;
 	
 	public int getClassID(){
 		return classID;
@@ -38,5 +39,13 @@ public class MapSubclass {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public int getNow() {
+		return now;
+	}
+
+	public void setNow(int now) {
+		this.now = now;
 	}
 }
