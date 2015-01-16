@@ -6,6 +6,7 @@ public class PayMoney {
 	private String account;
 	private int id;
 	private Date date;
+	private String date_string;
 	private int money;
 	private int record;
 	
@@ -47,5 +48,13 @@ public class PayMoney {
 	
 	public void setRecord(int record){
 		this.record = record;
+	}
+
+	public String getDate_string() {
+		return date_string;
+	}
+
+	public void setDate_string(String date_string) {
+		this.date_string = date_string;
 	}
 }

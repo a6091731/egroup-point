@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="zh-tw">
 <head>
 	<meta charset="UTF-8">
@@ -111,89 +112,118 @@
 				</section>
 
 
-				<form class="formset clearfix" method="post" action="modiExpenditure">
+				<form class="formset clearfix" id="sendForm" method="POST" action="addExpenditure">
+					<input type="hidden" name="dynamicTypeCount" id="cardCount" value="${dynamicTypeCount[0] }">
+					<input type="hidden" name="dynamicTypeCount" id="lawyerCount" value="${dynamicTypeCount[1] }">
+					<input type="hidden" name="dynamicTypeCount" id="accountCount" value="${dynamicTypeCount[2] }">
 				  	<fieldset class="fieldset">
+				  	<input type="hidden" name="fixedPayMoney[0].ID" value="2111">
+				  	<input type="hidden" name="fixedPayMoney[0].record" value="${foundedPayMoney.record}">
 				  		<legend>1.1 固定成本[設立費用]：</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control" name="fixcostdate">
+					  			<input type="month" class="form-control required" name="fixedPayMoney[0].date_string" value="${fn:substring(foundedPayMoney.date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
 					  		<label><span>金額：</span>
-					  			<input type="text" class="form-control" name="money" >
+					  			<input type="text" class="form-control required digits" name="fixedPayMoney[0].money" value="${foundedPayMoney.money}">
 					  		</label>
 					  	</div>
 					</fieldset>
 					<fieldset  class="fieldset">
+					<input type="hidden" name="fixedPayMoney[1].ID" value="2112">
+					<input type="hidden" name="fixedPayMoney[1].record" value="${designPayMoney.record}">
 					  	<legend>1.2 固定成本[設計及申請商標]</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control" name="fixcostdateLogo">
+					  			<input type="month" class="form-control required" name="fixedPayMoney[1].date_string" value="${fn:substring(designPayMoney.date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
 					  		<label>金額：
-					  			<input type="text" class="form-control" name="money">
+					  			<input type="text" class="form-control required digits" name="fixedPayMoney[1].money" value="${designPayMoney.money}">
 					  		</label>
 					  	</div>
 					</fieldset>
 					<fieldset id="BusinessCard" class="fieldset">
 					  	<legend>2 印製名片</legend>
 					  	<button type="button" class="addbutton" data-id="card"><i class="fa fa-plus"></i> 新增一筆費用</button>
-					  	<div id="card1">
+					  	<c:set value="0" var="index"/>
+					  	<c:if test="${dynamicTypeCount[0] > 0}">
+					  	<c:forEach items="${dynamicPayMoney}" begin="${index}" end="${index + dynamicTypeCount[0] -1}" var="card">
+					  	<div id="paymoney_${index}">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2113">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${card.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control" name="cardDate">
+						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(card.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
 						  		<label>金額：
-						  			<input type="text" class="form-control" name="cardCost">
+						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${card.money }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button type="button" class="deletebutton delCardBtn" data-id="1"><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delCardBtn" data-id="${index}" data-record="${card.record }" data-item="2113"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
+					  	<c:set var="index" value="${index+1}" />
+					  	</c:forEach>
+					  	</c:if>
 					</fieldset>					
 					<fieldset id="Lawyer" class="fieldset">
 					  	<legend>3 律師費用</legend>
 					  	<button type="button" class="addbutton" data-id="lawyer"><i class="fa fa-plus"></i> 新增一筆費用</button>
-					  	<div id="lawyer1">
+					  	<c:if test="${dynamicTypeCount[1] > 0}">
+					  	<c:forEach items="${dynamicPayMoney}" begin="${index}" end="${index + dynamicTypeCount[1] -1}" var="lawyer">
+					  	<div id="paymoney_${index}">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2114">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${lawyer.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control" name="date3">
+						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(lawyer.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
 						  		<label>金額：
-						  			<input type="text" class="form-control" name="money3">
+						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${lawyer.money }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button type="button" class="deletebutton delLawyerBtn" data-id="1"><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delLawyerBtn" data-id="${index}" data-record="${lawyer.record }" data-item="2114"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
+					  	<c:set var="index" value="${index+1}" />
+					  	</c:forEach>
+					  	</c:if>
 					</fieldset>	
 					<fieldset id="Accountants" class="fieldset">
 					  	<legend>4 會計師費用</legend>
 					  	<button type="button" class="addbutton" data-id="accountant"><i class="fa fa-plus"></i> 新增一筆費用</button>
-					  	<div id="accountant1">
+					  	<c:if test="${dynamicTypeCount[2] > 0}">
+					  	<c:forEach items="${dynamicPayMoney}" begin="${index}" end="${index + dynamicTypeCount[2] -1}" var="account">
+					  	<div id="paymoney_${index}">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2115">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${account.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control" name="date3">
+						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
 						  		<label>金額：
-						  			<input type="text" class="form-control" name="money3">
+						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${account.money }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button type="button" class="deletebutton delAccountBtn" data-id="1"><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delAccountBtn" data-id="${index}" data-record="${account.record }" data-item="2115"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
+					  	<c:set var="index" value="${index+1}" />
+					  	</c:forEach>
+					  	</c:if>
 					</fieldset>		
 					<div class="mt50px">
 						<button type="submit" class="nextStepButton"><span class="next">下一步，填寫營業場所完工<i class="fa fa-arrow-right"></i></span></button>
@@ -226,86 +256,165 @@
 		<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
 		<script src="js/jquery.mobilemenu.js"></script>
+		
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/messages_zh_TW.js"></script>
+	<script src="js/additional-methods.js"></script>
 		<script type="text/javascript">
 		var cardCount = 1;
 		var lawyerCount = 1;
 		var accountCount = 1;
+		var index = 0;
+		var deletedIndex = 0;
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
+	            cardCount = $('#cardCount').val();
+	            lawyerCount = $('#lawyerCount').val();
+	            accountCount = $('#accountCount').val();
+	            index = parseInt(cardCount) + parseInt(lawyerCount) + parseInt(accountCount);
 	            
-	            
+	            $("#sendForm").validate();
 	            
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
 	            	if(type == 'card'){
 	            		cardCount++;
-	            		var cardText = 
-	            		'<div id="card'+cardCount+'">'+
+	            		$('#cardCount').val(cardCount);
+	            		var cardText = '<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2113">'+
+	            		'<div id="paymoney_'+index+'">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control" name="cardDate">'+
+						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
 						  		'<label>金額：'+
-						  			'<input type="text" class="form-control" name="cardCost">'+
+						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
-						  		'<button type="button" class="deletebutton delCardBtn" data-id="'+cardCount+'"><i class="fa fa-times"></i> 刪除</button>'+
+						  		'<button type="button" class="deletebutton delCardBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';
 	            		$('#BusinessCard').append(cardText);
 	            	}else if(type == 'lawyer'){
 	            		lawyerCount++;
-	            		var lawyerText = 
-	            		'<div id="lawyer'+lawyerCount+'">'+
+	            		$('#lawyerCount').val(lawyerCount);
+	            		var lawyerText = '<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2114">'+
+	            		'<div id="paymoney_'+index+'">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control" name="date3">'+
+						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
 						  		'<label>金額：'+
-						  			'<input type="text" class="form-control" name="money3">'+
+						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
-						  		'<button type="button" class="deletebutton delLawyerBtn" data-id="'+lawyerCount+'"><i class="fa fa-times"></i> 刪除</button>'+
+						  		'<button type="button" class="deletebutton delLawyerBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';
 	            		$('#Lawyer').append(lawyerText);
 	            	}else if(type == 'accountant'){
 	            		accountCount++;
-	            		var accountText = 
-	            			'<div id="accountant'+accountCount+'">'+
+	            		$('#accountCount').val(accountCount);
+	            		var accountText = '<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2115">'+
+	            			'<div id="paymoney_'+index+'">'+
 						  	'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control" name="date3">'+
+						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
 						  		'<label>金額：'+
-						  			'<input type="text" class="form-control" name="money3">'+
+						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
-						  		'<button type="button" class="deletebutton delAccountBtn" data-id="'+accountCount+'"><i class="fa fa-times"></i> 刪除</button>'+
+						  		'<button type="button" class="deletebutton delAccountBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';
 	            		$('#Accountants').append(accountText);
 	            	}
+	            	index++;
 	            	$('.delCardBtn').click(function(){
-		            	var id = $(this).data('id');
-		            	$('#card'+id).remove();
+		            	removeValidate(id);
+		            	$('#paymoney_'+id).remove();
+		            	if(cardCount > 1){
+			            	cardCount--;
+			            	$('#cardCount').val(cardCount);
+		            	}
 		            });
 	            	$('.delLawyerBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	$('#lawyer'+id).remove();
+		            	removeValidate(id);
+		            	$('#paymoney_'+id).remove();
+		            	if(lawyerCount > 1){
+		            	lawyerCount--;
+		            	$('#lawyerCount').val(lawyerCount);
+		            	}
 		            });
 	            	$('.delAccountBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	$('#accountant'+id).remove();
+		            	removeValidate(id);
+		            	$('#paymoney_'+id).remove();
+		            	if(accountCount > 1){
+			            	accountCount--;
+			            	$('#accountCount').val(accountCount);
+		            	}
 		            });
 	            });
+	            initialDelBtn();
 	        });
+	        
+	    	function removeValidate(id){
+	    		$('#paymoney_'+id+' input[name="dynamicPayMoney['+id+'].date_string"]').rules("remove");
+	    		$('#paymoney_'+id+' input[name="dynamicPayMoney['+id+'].money"]').rules("remove");
+	    	}
+	    	
+	    	function initialDelBtn(){
+            	$('.delCardBtn').click(function(){
+	            	var id = $(this).data('id');
+	            	var record = $(this).data('record');
+	            	var itemID = $(this).data('item');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+	            	removeValidate(id);
+	            	$('#paymoney_'+id).remove();
+	            	deletedIndex++;
+	            	if(cardCount > 1){
+		            	cardCount--;
+		            	$('#cardCount').val(cardCount);
+	            	}
+	            });
+            	$('.delLawyerBtn').click(function(){
+	            	var id = $(this).data('id');
+	            	var record = $(this).data('record');
+	            	var itemID = $(this).data('item');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+	            	removeValidate(id);
+	            	$('#paymoney_'+id).remove();
+	            	deletedIndex++;
+	            	if(lawyerCount > 1){
+	            	lawyerCount--;
+	            	$('#lawyerCount').val(lawyerCount);
+	            	}
+	            });
+            	$('.delAccountBtn').click(function(){
+	            	var id = $(this).data('id');
+	            	var record = $(this).data('record');
+	            	var itemID = $(this).data('item');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+	            	removeValidate(id);
+	            	$('#paymoney_'+id).remove();
+	            	deletedIndex++;
+	            	if(accountCount > 1){
+		            	accountCount--;
+		            	$('#accountCount').val(accountCount);
+	            	}
+	            });
+	    	}
 	    </script>
 </body>
 </html>
