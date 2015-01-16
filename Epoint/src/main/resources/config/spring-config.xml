@@ -12,7 +12,11 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<bean id="mapSubclassDAO" class="com.epoint.webapp.dao.impl.MapSubclassDAOImpl">
+	<!-- <bean id="mapSubclassDAO" class="com.epoint.webapp.dao.impl.MapSubclassDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean> -->
+	
+	<bean id="payMoneyDAO" class="com.epoint.webapp.dao.impl.PayMoneyDAOImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
