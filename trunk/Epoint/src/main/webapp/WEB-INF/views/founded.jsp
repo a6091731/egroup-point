@@ -111,7 +111,6 @@
 					<h2><img alt="創業業種圖示" src="images/type.png">公司成立</h2>
 				</section>
 
-
 				<form class="formset clearfix" id="sendForm" method="POST" action="addExpenditure">
 					<input type="hidden" name="dynamicTypeCount" id="cardCount" value="${dynamicTypeCount[0] }">
 					<input type="hidden" name="dynamicTypeCount" id="lawyerCount" value="${dynamicTypeCount[1] }">
