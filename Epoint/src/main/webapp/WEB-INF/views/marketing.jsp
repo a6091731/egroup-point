@@ -64,12 +64,12 @@
 						<li><a href="javascript:;"><i class="fa fa-child"></i>公司成立</a></li>
 						<li><a href="javascript:;"><i class="fa fa-child"></i>營業場所完工</a></li>
 						<li><a href="javascript:;"><i class="fa fa-child"></i>人員到位</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>生產設備建置</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>試產</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>原料採購</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>試營運</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>通路開發</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>行銷推廣</a></li>
+						<li><a href="javascript:;"><i class="fa fa-child"></i>生產設備建置</a></li>
+						<li><a href="javascript:;"><i class="fa fa-child"></i>試產</a></li>
+						<li><a href="javascript:;"><i class="fa fa-child"></i>原料採購</a></li>
+						<li><a href="javascript:;"><i class="fa fa-child"></i>試營運</a></li>
+						<li><a href="javascript:;"><i class="fa fa-child"></i>通路開發</a></li>
+						<li><a href="javascript:;"><i class="fa fa-child"></i>行銷推廣</a></li>
 					</ul>	
 	                <div class="memberRwdnav clearfix">
 	                    <nav class="primary">
@@ -84,22 +84,22 @@
 	                                <a href="javascript:;">人員到位</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 生產設備建置</a>
+	                                <a href="javascript:;">生產設備建置</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 試產</a>
+	                                <a href="javascript:;">試產</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 原料採購</a>
+	                                <a href="javascript:;">原料採購</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 試營運</a>
+	                                <a href="javascript:;">試營運</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 通路開發</a>
+	                                <a href="javascript:;">通路開發</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 行銷推廣</a>
+	                                <a href="javascript:;">行銷推廣</a>
 	                            </li>	                              
 	                        </ul>
 	                    </nav>
@@ -108,51 +108,22 @@
 	        </div>
 	        <div class="grid_9">
 				<section class="ventureTypesTitle hideBlock">
-					<h2><img alt="創業業種圖示" src="images/type.png">人員到位</h2>
+					<h2><img alt="創業業種圖示" src="images/type.png">行銷推廣</h2>
 				</section>
 
 				<form class="formset clearfix" id="sendForm" method="POST" action="addExpenditure">
-					<input type="hidden" name="subClass" value="213">
+					<input type="hidden" name="subClass" value="219">
 					<input type="hidden" name="dynamicTypeCount" id="cardCount" value="${dynamicTypeCount[0] }">
 					<input type="hidden" name="dynamicTypeCount" id="lawyerCount" value="${dynamicTypeCount[1] }">
-				  	<fieldset class="fieldset">
-				  	<input type="hidden" name="fixedPayMoney[0].ID" value="2131">
-				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record}">
-				  		<legend>1.1 固定成本[薪資(含勞/健保費及退休金提撥)]：</legend>
-					  	<div class="field">
-					  		<label>日期：
-					  			<input type="month" class="form-control required" name="fixedPayMoney[0].date_string" value="${fn:substring(fixedPayMoney[0].date,0,7)}">
-					  		</label>
-					  	</div>
-					  	<div class="field">
-					  		<label><span>金額：</span>
-					  			<input type="text" class="form-control required digits" name="fixedPayMoney[0].money" value="${fixedPayMoney[0].money}">
-					  		</label>
-					  	</div>
-					</fieldset>
-					<fieldset class="fieldset">
-				  	<input type="hidden" name="fixedPayMoney[1].ID" value="2132">
-				  	<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record}">
-				  		<legend>1.1.2 固定成本[薪資增減]：</legend>
-					  	<div class="field">
-					  		<label>日期：
-					  			<input type="month" class="form-control required" name="fixedPayMoney[1].date_string" value="${fn:substring(fixedPayMoney[1].date,0,7)}">
-					  		</label>
-					  	</div>
-					  	<div class="field">
-					  		<label><span>金額：</span>
-					  			<input type="text" class="form-control required digits" name="fixedPayMoney[1].money" value="${fixedPayMoney[1].money}">
-					  		</label>
-					  	</div>
-					</fieldset>
+					<input type="hidden" name="dynamicTypeCount" id="accountCount" value="${dynamicTypeCount[2] }">
 					<fieldset id="BusinessCard" class="fieldset">
-					  	<legend>2 辦公用品及文具書報費</legend>
+					  	<legend>1 文宣設計印製</legend>
 					  	<button type="button" class="addbutton" data-id="card"><i class="fa fa-plus"></i> 新增一筆費用</button>
 					  	<c:set value="0" var="index"/>
 					  	<c:if test="${dynamicTypeCount[0] > 0}">
 					  	<c:forEach items="${dynamicPayMoney}" begin="${index}" end="${index + dynamicTypeCount[0] -1}" var="card">
 					  	<div id="paymoney_${index}">
-					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2133">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2191">
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${card.record}">
 						  	<div class="field">
 						  		<label>日期：
@@ -165,7 +136,7 @@
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button type="button" class="deletebutton delCardBtn" data-id="${index}" data-record="${card.record }" data-item="2133"><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delCardBtn" data-id="${index}" data-record="${card.record }" data-item="2191"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
 					  	<c:set var="index" value="${index+1}" />
@@ -173,12 +144,12 @@
 					  	</c:if>
 					</fieldset>					
 					<fieldset id="Lawyer" class="fieldset">
-					  	<legend>3 訓練費用</legend>
+					  	<legend>2 電子廣告</legend>
 					  	<button type="button" class="addbutton" data-id="lawyer"><i class="fa fa-plus"></i> 新增一筆費用</button>
 					  	<c:if test="${dynamicTypeCount[1] > 0}">
 					  	<c:forEach items="${dynamicPayMoney}" begin="${index}" end="${index + dynamicTypeCount[1] -1}" var="lawyer">
 					  	<div id="paymoney_${index}">
-					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2134">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2192">
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${lawyer.record}">
 						  	<div class="field">
 						  		<label>日期：
@@ -191,15 +162,41 @@
 						  		</label>
 						  	</div>
 						  	<div class="field">
-						  		<button type="button" class="deletebutton delLawyerBtn" data-id="${index}" data-record="${lawyer.record }" data-item="2134"><i class="fa fa-times"></i> 刪除</button>
+						  		<button type="button" class="deletebutton delLawyerBtn" data-id="${index}" data-record="${lawyer.record }" data-item="2192"><i class="fa fa-times"></i> 刪除</button>
 						  	</div>					  		
 					  	</div>
 					  	<c:set var="index" value="${index+1}" />
 					  	</c:forEach>
 					  	</c:if>
-					</fieldset>	
+					</fieldset>
+					<fieldset id="Accountants" class="fieldset">
+					  	<legend>3 實體廣告</legend>
+					  	<button type="button" class="addbutton" data-id="accountant"><i class="fa fa-plus"></i> 新增一筆費用</button>
+					  	<c:if test="${dynamicTypeCount[2] > 0}">
+					  	<c:forEach items="${dynamicPayMoney}" begin="${index}" end="${index + dynamicTypeCount[2] -1}" var="account">
+					  	<div id="paymoney_${index}">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2193">
+					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${account.record}">
+						  	<div class="field">
+						  		<label>日期：
+						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
+						  		</label>
+						  	</div>
+						  	<div class="field">
+						  		<label>金額：
+						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${account.money }">
+						  		</label>
+						  	</div>
+						  	<div class="field">
+						  		<button type="button" class="deletebutton delAccountBtn" data-id="${index}" data-record="${account.record }" data-item="2193"><i class="fa fa-times"></i> 刪除</button>
+						  	</div>					  		
+					  	</div>
+					  	<c:set var="index" value="${index+1}" />
+					  	</c:forEach>
+					  	</c:if>
+					</fieldset>
 					<div class="mt50px">
-						<button type="submit" class="nextStepButton"><span class="next">下一步，填寫生產設備建置<i class="fa fa-arrow-right"></i></span></button>
+						<button type="submit" class="nextStepButton"><span class="next">完成<i class="fa fa-arrow-right"></i></span></button>
 					</div>
 				  </form>
 			</div>
@@ -235,13 +232,15 @@
 		<script type="text/javascript">
 		var cardCount = 1;
 		var lawyerCount = 1;
+		var accountCount = 1;
 		var index = 0;
 		var deletedIndex = 0;
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
 	            cardCount = $('#cardCount').val();
 	            lawyerCount = $('#lawyerCount').val();
-	            index = parseInt(cardCount) + parseInt(lawyerCount);
+	            accountCount = $('#accountCount').val();
+	            index = parseInt(cardCount) + parseInt(lawyerCount) + parseInt(accountCount);
 	            
 	            $("#sendForm").validate();
 	            
@@ -252,7 +251,7 @@
 	            		$('#cardCount').val(cardCount);
 	            		var cardText = 
 	            		'<div id="paymoney_'+index+'">'+
-	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2133">'+
+	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2191">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
@@ -272,7 +271,7 @@
 	            		$('#lawyerCount').val(lawyerCount);
 	            		var lawyerText = 
 	            		'<div id="paymoney_'+index+'">'+
-	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2134">'+
+	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2192">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
@@ -287,6 +286,26 @@
 						  		'<button type="button" class="deletebutton delLawyerBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';
 	            		$('#Lawyer').append(lawyerText);
+	            	}else if(type == 'accountant'){
+	            		accountCount++;
+	            		$('#accountCount').val(accountCount);
+	            		var accountText = 
+	            			'<div id="paymoney_'+index+'">'+
+	            			'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2193">'+
+						  	'<div class="field">'+
+						  		'<label>日期：'+
+						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<label>金額：'+
+						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
+						  		'</label>'+
+						  	'</div>'+
+						  	'<div class="field">'+
+						  		'<button type="button" class="deletebutton delAccountBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
+						  	'</div></div>';
+	            		$('#Accountants').append(accountText);
 	            	}
 	            	index++;
 	            	$('.delCardBtn').click(function(){
@@ -305,6 +324,15 @@
 		            	if(lawyerCount > 1){
 		            	lawyerCount--;
 		            	$('#lawyerCount').val(lawyerCount);
+		            	}
+		            });
+	            	$('.delAccountBtn').click(function(){
+		            	var id = $(this).data('id');
+		            	removeValidate(id);
+		            	$('#paymoney_'+id).remove();
+		            	if(accountCount > 1){
+			            	accountCount--;
+			            	$('#accountCount').val(accountCount);
 		            	}
 		            });
 	            });
@@ -343,6 +371,20 @@
 	            	if(lawyerCount > 1){
 	            	lawyerCount--;
 	            	$('#lawyerCount').val(lawyerCount);
+	            	}
+	            });
+            	$('.delAccountBtn').click(function(){
+	            	var id = $(this).data('id');
+	            	var record = $(this).data('record');
+	            	var itemID = $(this).data('item');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+	            	removeValidate(id);
+	            	$('#paymoney_'+id).remove();
+	            	deletedIndex++;
+	            	if(accountCount > 1){
+		            	accountCount--;
+		            	$('#accountCount').val(accountCount);
 	            	}
 	            });
 	    	}

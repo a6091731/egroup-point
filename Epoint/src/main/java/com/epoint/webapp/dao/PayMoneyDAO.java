@@ -10,5 +10,6 @@ public interface PayMoneyDAO {
 	public void delPayMoney(PayMoney paymoney);
 	public int getPayRecord(String account, int itemID);
 	public List<PayMoney> getPayMoneyByItemID(String account, int itemID);
+	public List<PayMoney> getPayMoneyBySubClassStatus(String account, int subClass, int status);
 	public PayMoney getSinglePayMoneyByItemID(String account, int itemID);
 }

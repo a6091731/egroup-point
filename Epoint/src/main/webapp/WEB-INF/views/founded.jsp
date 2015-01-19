@@ -112,36 +112,37 @@
 				</section>
 
 				<form class="formset clearfix" id="sendForm" method="POST" action="addExpenditure">
+					<input type="hidden" name="subClass" value="211">
 					<input type="hidden" name="dynamicTypeCount" id="cardCount" value="${dynamicTypeCount[0] }">
 					<input type="hidden" name="dynamicTypeCount" id="lawyerCount" value="${dynamicTypeCount[1] }">
 					<input type="hidden" name="dynamicTypeCount" id="accountCount" value="${dynamicTypeCount[2] }">
 				  	<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[0].ID" value="2111">
-				  	<input type="hidden" name="fixedPayMoney[0].record" value="${foundedPayMoney.record}">
+				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record }">
 				  		<legend>1.1 固定成本[設立費用]：</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control required" name="fixedPayMoney[0].date_string" value="${fn:substring(foundedPayMoney.date,0,7)}">
+					  			<input type="month" class="form-control required" name="fixedPayMoney[0].date_string" value="${fn:substring(fixedPayMoney[0].date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
 					  		<label><span>金額：</span>
-					  			<input type="text" class="form-control required digits" name="fixedPayMoney[0].money" value="${foundedPayMoney.money}">
+					  			<input type="text" class="form-control required digits" name="fixedPayMoney[0].money" value="${fixedPayMoney[0].money}">
 					  		</label>
 					  	</div>
 					</fieldset>
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[1].ID" value="2112">
-					<input type="hidden" name="fixedPayMoney[1].record" value="${designPayMoney.record}">
+					<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record}">
 					  	<legend>1.2 固定成本[設計及申請商標]</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control required" name="fixedPayMoney[1].date_string" value="${fn:substring(designPayMoney.date,0,7)}">
+					  			<input type="month" class="form-control required" name="fixedPayMoney[1].date_string" value="${fn:substring(fixedPayMoney[1].date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
 					  		<label>金額：
-					  			<input type="text" class="form-control required digits" name="fixedPayMoney[1].money" value="${designPayMoney.money}">
+					  			<input type="text" class="form-control required digits" name="fixedPayMoney[1].money" value="${fixedPayMoney[1].money}">
 					  		</label>
 					  	</div>
 					</fieldset>
@@ -279,8 +280,9 @@
 	            	if(type == 'card'){
 	            		cardCount++;
 	            		$('#cardCount').val(cardCount);
-	            		var cardText = '<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2113">'+
+	            		var cardText = 
 	            		'<div id="paymoney_'+index+'">'+
+	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2113">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
@@ -298,8 +300,9 @@
 	            	}else if(type == 'lawyer'){
 	            		lawyerCount++;
 	            		$('#lawyerCount').val(lawyerCount);
-	            		var lawyerText = '<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2114">'+
+	            		var lawyerText = 
 	            		'<div id="paymoney_'+index+'">'+
+	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2114">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
@@ -317,8 +320,9 @@
 	            	}else if(type == 'accountant'){
 	            		accountCount++;
 	            		$('#accountCount').val(accountCount);
-	            		var accountText = '<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2115">'+
+	            		var accountText = 
 	            			'<div id="paymoney_'+index+'">'+
+	            			'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2115">'+
 						  	'<div class="field">'+
 						  		'<label>日期：'+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
@@ -336,6 +340,7 @@
 	            	}
 	            	index++;
 	            	$('.delCardBtn').click(function(){
+	            		var id = $(this).data('id');
 		            	removeValidate(id);
 		            	$('#paymoney_'+id).remove();
 		            	if(cardCount > 1){

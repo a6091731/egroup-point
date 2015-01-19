@@ -19,5 +19,9 @@
 	<bean id="payMoneyDAO" class="com.epoint.webapp.dao.impl.PayMoneyDAOImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="payItemDAO" class="com.epoint.webapp.dao.impl.PayItemDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 </beans>
