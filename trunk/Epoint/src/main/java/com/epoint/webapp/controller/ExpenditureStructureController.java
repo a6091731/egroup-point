@@ -25,8 +25,8 @@ import com.epoint.webapp.form.ExpenditureForm;
 public class ExpenditureStructureController {
 	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-module.xml");
 
-	@RequestMapping(value = "/showExpenditure", method = RequestMethod.GET)
-	public ModelAndView showExpenditure(HttpSession session) throws IOException {
+	@RequestMapping(value = "/founded", method = RequestMethod.GET)
+	public ModelAndView founded(HttpSession session) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -54,8 +54,8 @@ public class ExpenditureStructureController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/prepareStore", method = RequestMethod.GET)
-	public ModelAndView prepareStore(HttpSession session) throws IOException {
+	@RequestMapping(value = "/placeComplete", method = RequestMethod.GET)
+	public ModelAndView placeComplete(HttpSession session) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -85,8 +85,8 @@ public class ExpenditureStructureController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/setEmployment", method = RequestMethod.GET)
-	public ModelAndView setEmployment(HttpSession session) throws IOException {
+	@RequestMapping(value = "/personPlace", method = RequestMethod.GET)
+	public ModelAndView personPlace(HttpSession session) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -112,8 +112,8 @@ public class ExpenditureStructureController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/setEquipment", method = RequestMethod.GET)
-	public ModelAndView setEquipment(HttpSession session) throws IOException {
+	@RequestMapping(value = "/equipmentBuild", method = RequestMethod.GET)
+	public ModelAndView equipmentBuild(HttpSession session) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -158,8 +158,8 @@ public class ExpenditureStructureController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/buyMaterial", method = RequestMethod.GET)
-	public ModelAndView buyMaterial(HttpSession session) throws IOException {
+	@RequestMapping(value = "/procureMaterial", method = RequestMethod.GET)
+	public ModelAndView procureMaterial(HttpSession session) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -204,8 +204,8 @@ public class ExpenditureStructureController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/findMarketing", method = RequestMethod.GET)
-	public ModelAndView findMarketing(HttpSession session) throws IOException {
+	@RequestMapping(value = "/developmentMarket", method = RequestMethod.GET)
+	public ModelAndView developmentMarket(HttpSession session) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -348,23 +348,23 @@ public class ExpenditureStructureController {
 			}
 			
 			if(subClassID == 211){
-				model.setViewName("redirect:/prepareStore");
+				model.setViewName("redirect:/placeComplete");
 			}else if(subClassID == 212){
-				model.setViewName("redirect:/setEmployment");
+				model.setViewName("redirect:/personPlace");
 			}else if(subClassID == 213){
-				model.setViewName("redirect:/setEquipment");
+				model.setViewName("redirect:/equipmentBuild");
 			}else if(subClassID == 214){
 				model.setViewName("redirect:/trialProduction");
 			}else if(subClassID == 215){
-				model.setViewName("redirect:/buyMaterial");
+				model.setViewName("redirect:/procureMaterial");
 			}else if(subClassID == 216){
 				model.setViewName("redirect:/trialOperation");
 			}else if(subClassID == 217){
-				model.setViewName("redirect:/findMarketing");
+				model.setViewName("redirect:/developmentMarket");
 			}else if(subClassID == 218){
 				model.setViewName("redirect:/marketing");
 			}else if(subClassID == 219){
-				model.setViewName("redirect:/showExpenditure");
+				model.setViewName("redirect:/founded");
 			}
 //		}else{
 //		model.setViewName("redirect:/");
