@@ -171,4 +171,35 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 		}
 		return payMoney;
 	}
+	
+	public List<PayMoney> getPayMoneyBySubClassStatus(String account, int subClass, int status){
+		String sql = "SELECT * FROM pay_money m INNER JOIN pay_item i ON i.payItemID = m.payItemID AND i.payItemStatus = ? AND i.mapSubClassID = ? WHERE m.memberAccount = ? ORDER BY m.payItemID ASC";
+		List<PayMoney> allPayMoney = new ArrayList<PayMoney>();
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, status);
+			smt.setInt(2, subClass);
+			smt.setString(3, account);
+			rs = smt.executeQuery();
+			while(rs.next()){
+				PayMoney payMoney = new PayMoney();
+				payMoney.setDate(rs.getDate("payDate"));
+				payMoney.setMoney(rs.getInt("payMoney"));
+				payMoney.setRecord(rs.getInt("payRecord"));
+				payMoney.setID(rs.getInt("payItemID"));
+				allPayMoney.add(payMoney);
+			}
+			smt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return allPayMoney;
+	}
 }
