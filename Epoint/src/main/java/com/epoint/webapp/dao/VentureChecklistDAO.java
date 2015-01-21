@@ -2,6 +2,7 @@ package com.epoint.webapp.dao;
 
 import java.util.List;
 
+import com.epoint.webapp.entity.HumanResourceContent;
 import com.epoint.webapp.entity.MapClass;
 import com.epoint.webapp.entity.MapSubclass;
 import com.epoint.webapp.entity.Member;
@@ -13,5 +14,6 @@ public interface VentureChecklistDAO {
 	public boolean checkVentureCheckList(VentureChecklist ventureChecklist);
 	public List<MapClass> getMapClassList(MapClass mapClass);
 	public List<MapSubclass> getVentureCheckListByMember(Member member);
-	
+	public void insertHumanResourceContent(HumanResourceContent humanResourceContent);
+	public HumanResourceContent getHumanResourceContentByMember(Member member);
 }
