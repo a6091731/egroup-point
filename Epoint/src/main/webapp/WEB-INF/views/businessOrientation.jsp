@@ -61,35 +61,30 @@
 			<div class="grid_3">
 				<aside>
 					<ul class="sideNav hideBlock">
-						<li><a href="javascript:;"><i class="fa fa-child"></i>創業業種</a></li>
-						<li><a href="javascript:;"><i class="fa"></i>目標市場描述</a></li>
-						<li><a href="javascript:;"><i class="fa"></i>產品描述</a></li>
-						<li><a href="javascript:;"><i class="fa"></i>業務</a></li>
-						<li><a href="javascript:;"><i class="fa"></i>行銷</a></li>
-						<li><a href="javascript:;"><i class="fa"></i>產業定位</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>人力資源規劃</a></li>
+						<c:forEach items="${getVentureCheckMenuList}" var="menu">
+							<c:choose>
+								<c:when test="${menu.classID <= getVentureCheckMenuListNow }">
+									<li><a href="${menu.url}"><i class="fa fa-child"></i>${menu.name }</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><div class="mask"></div> <a href="${menu.url}"><i class="fa fa-lock"></i>${menu.name }</a></li>
+								</c:otherwise>
+							</c:choose>							
+						</c:forEach>
 					</ul>
 	                <div class="memberRwdnav clearfix">
 	                    <nav class="primary">
 	                        <ul class="rightnav">
-	                            <li>
-	                                <a href="javascript:;">創業業種</a>
-	                            </li>	                        
-	                            <li>
-	                                <a href="javascript:;">(鎖) 目標市場描述</a>
-	                            </li>
-	                            <li>
-	                                <a href="javascript:;">(鎖) 產品描述</a>
-	                            </li>
-	                            <li>
-	                                <a href="javascript:;">(鎖) 行銷</a>
-	                            </li>
-	                            <li>
-	                                <a href="javascript:;">(鎖) 產品定位</a>
-	                            </li>
-	                            <li>
-	                                <a href="javascript:;">(鎖) 人力資源規劃</a>
-	                            </li>                      
+	                            <c:forEach items="${getVentureCheckMenuList}" var="menu">
+									<c:choose>
+										<c:when test="${menu.classID <= getVentureCheckMenuListNow}">
+											<li><a href="${menu.url}">${menu.name}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${menu.url}">(鎖) ${menu.name}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>       
 	                        </ul>
 	                    </nav>
 	                </div>                	
@@ -99,70 +94,33 @@
 				<section class="ventureTypesTitle hideBlock">
 					<h2><i class="fa fa-paper-plane fa-color"></i>產業定位</h2>
 				</section>
+				<form id="sendForm" action="addBusinessOrientationCont" method="post">
 				<div class="ventureTypesInput clearfix">
 					<ul>
-						<li>
-							<h4>1.在產業供應鏈中的位置：</h4>
-							<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-							<textarea rows="8" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
-						</li>
-						<li>
-							<h4>2.誰是競爭對手：</h4>
-							<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-							<textarea rows="8" placeholder="商業模式(生意賺錢的方法)：範例"></textarea>
-						</li>
-						<li>
-							<h4>3.跟競爭者的對應關係為何：</h4>
-							<ul>
-								<li class="li_fontcolor">品質：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">價格：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">服務：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<h4>4.1同業如何發展策略聯盟：</h4>
-							<ul>
-								<li class="li_fontcolor">同業：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">生產：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">販售：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">行銷：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<h4>4.2異業如何發展策略聯盟：</h4>
-							<ul>
-								<li class="li_fontcolor">同業：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">生產：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">販售：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-								<li class="li_fontcolor">行銷：<a href="javascript:;" data-reveal-id ="helpLink"><span><i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a>
-									<textarea rows="8" placeholder="自己在此行業的一技之長：範例"></textarea>
-								</li>
-							</ul>
-						</li>
+						<c:forEach items="${getVentureCheckListByMember}" var="ventureCehckList">
+							<li>
+								<input type="hidden" name="mapClassID" id="${ventureCehckList.classID}">
+								<input type="hidden" name="mapSubClassID" id="${ventureCehckList.subclassID}">
+								<h4>${ventureCehckList.name}</h4> 
+								<a href="javascript:;" data-reveal-id="help${ventureCehckList.subclassID}"><span>
+								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
+							<c:choose>
+								<c:when test="${!empty ventureCehckList.content}">
+									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+								</c:when>
+								<c:otherwise>
+									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+								</c:otherwise>
+							</c:choose>	
+							</li>	
+						</c:forEach>				
 					</ul>
-					<a href="javascript:;" class="nextStepButton"><span class="next">下一步，填寫人力資源規劃<i class="fa fa-arrow-right"></i></span></a>
+						<button type="submit" class="nextStepButton">
+							<span class="next">下一步，填寫人力資源規劃<i class="fa fa-arrow-right"></i></span>
+						</button>
+					
 				</div>
-				
+				</form>
 			</div>
 		</div>			
 	</div>
