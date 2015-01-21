@@ -215,6 +215,30 @@ public class VentureChecklistController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/businessOrientation", method = RequestMethod.GET)
+	public ModelAndView businessOrientation (HttpServletRequest request, HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");
+		if(memberLogin==null)
+			model.setViewName("memberLogin");
+		else{
+			model.setViewName("businessOrientation");
+			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
+			MapClass mapClass = new MapClass();
+			mapClass.setId(1);
+			mapClass.setAccount(memberLogin.getAccount());
+			List<MapClass> getVentureCheckMenuList = ventureChecklistDAO.getMapClassList(mapClass);
+			memberLogin.setClassID(16);
+			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
+			
+			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
+			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
+			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			
+		}			
+		return model;
+	}
+	
 	@RequestMapping(value = "/addVentureTypeCont", method = RequestMethod.POST)
 	public ModelAndView addVentureTypeCont (String content111, String content112, String content113, HttpSession session){
 		ModelAndView model = new ModelAndView();
@@ -272,6 +296,31 @@ public class VentureChecklistController {
 		else
 			model.setViewName("memberLogin");
 		return model;
+	}
+	
+	@RequestMapping(value = "/addBusinessOrientationCont", method = RequestMethod.POST)
+	public ModelAndView addBusinessOrientationCont (String content161, String content162, String content163, String content164, String content165, String content166, String content167, String content168, String content169, String content1610, String content1611, String content1612, String content1613,HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){			
+			addVentureCheckList(memberLogin.getAccount(),16,161,content161);
+			addVentureCheckList(memberLogin.getAccount(),16,162,content162);
+			addVentureCheckList(memberLogin.getAccount(),16,163,content163);
+			addVentureCheckList(memberLogin.getAccount(),16,164,content164);
+			addVentureCheckList(memberLogin.getAccount(),16,165,content165);
+			addVentureCheckList(memberLogin.getAccount(),16,166,content166);
+			addVentureCheckList(memberLogin.getAccount(),16,167,content167);
+			addVentureCheckList(memberLogin.getAccount(),16,168,content168);
+			addVentureCheckList(memberLogin.getAccount(),16,169,content169);
+			addVentureCheckList(memberLogin.getAccount(),16,1610,content1610);
+			addVentureCheckList(memberLogin.getAccount(),16,1611,content1611);
+			addVentureCheckList(memberLogin.getAccount(),16,1612,content1612);
+			addVentureCheckList(memberLogin.getAccount(),16,1613,content1613);
+			model.setViewName("redirect:/humanResourcePlan");
+		}
+		else
+			model.setViewName("memberLogin");
+		return model;
 	}	
 	
 	@RequestMapping(value = "/addHumanResourcePlan", method = RequestMethod.POST)
@@ -296,7 +345,7 @@ public class VentureChecklistController {
 		else
 			model.setViewName("memberLogin");
 		return model;
-	}	
+	}
 	
 	public void addVentureCheckList(String account, int id, int classID, String content){
 		VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
