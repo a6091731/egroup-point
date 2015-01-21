@@ -12,6 +12,8 @@ public class Member {
 	private String memberNO;
 	private String registerNO;
 	private String resetNO;
+	private int need;
+	private int lack;
 	
 	//程式變數
 	private int classID;
@@ -82,5 +84,17 @@ public class Member {
 	}
 	public void setClassID(int classID) {
 		this.classID = classID;
+	}
+	public int getNeed() {
+		return need;
+	}
+	public void setNeed(int need) {
+		this.need = need;
+	}
+	public int getLack() {
+		return lack;
+	}
+	public void setLack(int lack) {
+		this.lack = lack;
 	}			
 }

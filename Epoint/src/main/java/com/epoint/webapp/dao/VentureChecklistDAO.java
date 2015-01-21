@@ -16,4 +16,6 @@ public interface VentureChecklistDAO {
 	public List<MapSubclass> getVentureCheckListByMember(Member member);
 	public void insertHumanResourceContent(HumanResourceContent humanResourceContent);
 	public HumanResourceContent getHumanResourceContentByMember(Member member);
+	public boolean checkHumanResourceContentByMember(Member member);
+	public void updateHumanResourceContentByMember(HumanResourceContent humanResourceContent);
 }

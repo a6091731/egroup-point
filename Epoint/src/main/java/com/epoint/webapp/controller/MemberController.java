@@ -159,7 +159,6 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 				e.printStackTrace();
 			}
 			Mail mail = new Mail();
-			System.out.println("****2");
 			message = message.replaceAll("link_url", "http://www.proactive.tw/resetPassword?aid="+member.getResetNO());
 			message = message.replaceAll("user_name", member.getName());
 			mail.sendMail(subject, member.getAccount(), message);			

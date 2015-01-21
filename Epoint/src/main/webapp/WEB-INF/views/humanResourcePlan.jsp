@@ -215,37 +215,59 @@
 		<script src="js/jquery.mobilemenu.js"></script>
 		<script type="text/javascript">
 	        $(function() {
-	            $('nav.primary .rightnav').mobileMenu();
+	            $('nav.primary .rightnav').mobileMenu();	            
+	            total1();
+	            total2();
+	            total3();
+	            total4();
+	            total5();
+	            
 	            $('.input-control0').keyup(function(){
-	            	//alert($('#MQ0').val());
-		            $('#setTotalQ0').text(Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val()));
-		            $('#totalQ0').val(parseInt($('#setTotalQ0').text()));
+	            	total1();
 	            });
 	            
 	            $('.input-control1').keyup(function(){
-	            	//alert($('#MQ0').val());
-	            	 $('#setTotalQ1').text(Number($('#MQ1').val())+Number($('#RQ1').val())+Number($('#SQ1').val())+Number($('#OQ1').val()));
-	            	 $('#totalQ1').val(parseInt($('#setTotalQ1').text()));
+	            	total2()
 		        });
 	            
 	            $('.input-control2').keyup(function(){
-	            	//alert($('#MQ0').val());
-	            	 $('#setTotalQ2').text(Number($('#MQ2').val())+Number($('#RQ2').val())+Number($('#SQ2').val())+Number($('#OQ2').val()));
-	            	 $('#totalQ2').val(parseInt($('#setTotalQ2').text()));
+	            	total3()
 		        });
 	            
 	            $('.input-control3').keyup(function(){
-	            	//alert($('#MQ0').val());
-	            	 $('#setTotalQ3').text(Number($('#MQ3').val())+Number($('#RQ3').val())+Number($('#SQ3').val())+Number($('#OQ3').val()));
-	            	 $('#totalQ3').val(parseInt($('#setTotalQ3').text()));
+	            	total4()
 		        });	
 	            
 	            $('.input-control4').keyup(function(){
-	            	//alert($('#MQ0').val());
-	            	 $('#setTotalQ4').text(Number($('#MQ4').val())+Number($('#RQ4').val())+Number($('#SQ4').val())+Number($('#OQ4').val()));
-	            	 $('#totalQ4').val(parseInt($('#setTotalQ4').text()));
+	            	total5()
 		        });
 	        });
+	        
+	        function total1(){
+	        	
+	        	$('#setTotalQ0').text(Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val()));
+	            $('#totalQ0').val(parseInt($('#setTotalQ0').text()));
+	        }
+	        
+	        function total2(){
+	        	$('#setTotalQ1').text(Number($('#MQ1').val())+Number($('#RQ1').val())+Number($('#SQ1').val())+Number($('#OQ1').val()));
+           	 	$('#totalQ1').val(parseInt($('#setTotalQ1').text()));
+	        }
+	        
+	        function total3(){
+	        	$('#setTotalQ2').text(Number($('#MQ2').val())+Number($('#RQ2').val())+Number($('#SQ2').val())+Number($('#OQ2').val()));
+            	$('#totalQ2').val(parseInt($('#setTotalQ2').text()));
+	        }
+	        
+	        function total4(){
+	        	$('#setTotalQ3').text(Number($('#MQ3').val())+Number($('#RQ3').val())+Number($('#SQ3').val())+Number($('#OQ3').val()));
+           	 	$('#totalQ3').val(parseInt($('#setTotalQ3').text()));
+	        }
+	        
+	        function total5(){
+	        	$('#setTotalQ4').text(Number($('#MQ4').val())+Number($('#RQ4').val())+Number($('#SQ4').val())+Number($('#OQ4').val()));
+           		$('#totalQ4').val(parseInt($('#setTotalQ4').text()));
+	        }
 	    </script>
 	 <!-- responsive-table -->  
 	    <script src="js/responsive-tables.js"></script>
