@@ -128,21 +128,28 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				mapClass2.setId(rs.getInt("mapID"));
 				mapClass2.setClassID(rs.getInt("mapClassID"));
 				mapClass2.setName(rs.getString("mapClassName"));
-				mapClass2.setUrl(rs.getString("mapClassUrl"));					
+				mapClass2.setUrl(rs.getString("mapClassUrl"));
+				mapClass2.setCss(rs.getString("mapClassCss"));
 				if(now == false){
 					now = true;
 					smt = conn.prepareStatement(sql2);
 					smt.setString(1, mapClass.getAccount());
 					rs2 = smt.executeQuery();
 					while(rs2.next()){
-						mapClass2.setNow(rs2.getInt("now"));						
+						mapClass2.setNow(rs2.getInt("now"));	
+						if(mapClass2.getNow()<13){
+							String sql3 = "SELECT * FROM product WHERE memberAccount = ?";
+							smt = conn.prepareStatement(sql3);
+							smt.setString(1, mapClass.getAccount());
+							ResultSet rs3 = smt.executeQuery();
+							if(rs3.next()){
+								mapClass2.setNow(13);
+							}
+						}
 					}					
 				}
-				System.out.println("getNow()"+mapClass2.getNow());
 				mapClassList.add(mapClass2);
-			}
-
-			
+			}			
 			rs.close();
 			smt.close();
  
