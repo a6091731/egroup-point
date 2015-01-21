@@ -73,8 +73,8 @@
 					<ul class="sideNav hideBlock">
 						<c:forEach items="${getVentureCheckMenuList}" var="menu">
 							<c:choose>
-								<c:when test="${menu.classID <= getVentureCheckMenuListNow}">
-									<li><a href="${menu.url}"><i class="fa fa-child"></i>${menu.name }</a></li>
+								<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
+									<li><a href="${menu.url}"><i class="${menu.css}"></i>${menu.name }</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><div class="mask"></div> <a href="${menu.url}"><i class="fa fa-lock"></i>${menu.name }</a></li>
@@ -87,7 +87,7 @@
 							<ul class="rightnav">
 								<c:forEach items="${getVentureCheckMenuList}" var="menu">
 									<c:choose>
-										<c:when test="${menu.classID <= getVentureCheckMenuListNow}">
+										<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
 											<li><a href="${menu.url}">${menu.name}</a></li>
 										</c:when>
 										<c:otherwise>

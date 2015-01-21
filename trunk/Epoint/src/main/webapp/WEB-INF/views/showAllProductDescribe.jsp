@@ -73,30 +73,30 @@
 			<div class="grid_3">
 				<aside>
 					<ul class="sideNav hideBlock">
-						<li><a href="javascript:;"><i class="fa fa-child"></i>創業業種</a></li>
-						<li><a href="javascript:;"><i class="fa fa-lock"></i>目標市場描述</a></li>
-						<li><a href="javascript:;"><i class="fa fa-file-text-o"></i>產品描述</a></li>
-						<li><div class="mask"></div>
-							<a href="javascript:;"><i class="fa fa-lock"></i>業務</a></li>
-						<li><div class="mask"></div>
-							<a href="javascript:;"><i class="fa fa-lock"></i>行銷</a></li>
-						<li><div class="mask"></div>
-							<a href="javascript:;"><i class="fa fa-lock"></i>產品定位</a></li>
-						<li><div class="mask"></div>
-							<a href="javascript:;"><i class="fa fa-lock"></i>人力資源規劃</a></li>
+						<c:forEach items="${getVentureCheckMenuList}" var="menu">
+							<c:choose>
+								<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
+									<li><a href="${menu.url}"><i class="${menu.css}"></i>${menu.name }</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><div class="mask"></div> <a href="${menu.url}"><i class="fa fa-lock"></i>${menu.name }</a></li>
+								</c:otherwise>
+							</c:choose>							
+						</c:forEach>						
 					</ul>
 					<div class="memberRwdnav clearfix">
 						<nav class="primary">
 							<ul class="rightnav">
-								<li><a href="javascript:;">公司成立</a></li>
-								<li><a href="javascript:;">(鎖) 營業場所完工</a></li>
-								<li><a href="javascript:;">(鎖) 人員到位</a></li>
-								<li><a href="javascript:;">(鎖) 生產設備建置</a></li>
-								<li><a href="javascript:;">(鎖) 試產</a></li>
-								<li><a href="javascript:;">(鎖) 原料採購</a></li>
-								<li><a href="javascript:;">(鎖) 試營運</a></li>
-								<li><a href="javascript:;">(鎖) 通路開發</a></li>
-								<li><a href="javascript:;">(鎖) 行銷推廣</a></li>
+								<c:forEach items="${getVentureCheckMenuList}" var="menu">
+									<c:choose>
+										<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
+											<li><a href="${menu.url}">${menu.name}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${menu.url}">(鎖) ${menu.name}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</ul>
 						</nav>
 					</div>
@@ -161,7 +161,7 @@
 								</c:forEach>			
 				            </ul>
 				        </div><!-- page -->
-						<a href="javascript:;" class="nextStepButton"><span
+						<a href="businessSales" class="nextStepButton"><span
 							class="next">下一步，填寫人力資源規劃<i class="fa fa-arrow-right"></i></span></a>
 					</div>
 				</form>

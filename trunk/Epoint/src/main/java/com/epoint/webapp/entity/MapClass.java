@@ -6,6 +6,7 @@ public class MapClass {
 	private int classID;
 	private String name;
 	private String url;
+	private String css;
 	
 	//程式變數
 	private String account;
@@ -58,6 +59,11 @@ public class MapClass {
 	public void setNow(int now) {
 		this.now = now;
 	}
-	
-	
+	public String getCss() {
+		return css;
+	}
+
+	public void setCss(String css) {
+		this.css = css;
+	}	
 }
