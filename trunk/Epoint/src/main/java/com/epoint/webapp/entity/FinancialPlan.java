@@ -2,58 +2,39 @@ package com.epoint.webapp.entity;
 
 public class FinancialPlan {
 	private String account;
-	private int needs;
-	private String payItem;
-	private int pay;
-	private String incomeItem;
-	private int income;
+	private int name;
+	private String money;
+	private String record;
+	private int property;
 	
-	public String getAccount(){
+	public String getAccount() {
 		return account;
 	}
-	
-	public void setAccount(String account){
+	public void setAccount(String account) {
 		this.account = account;
 	}
-	
-	public int getNeeds(){
-		return needs;
+	public int getName() {
+		return name;
 	}
-	
-	public void setNeeds(int needs){
-		this.needs = needs;
+	public void setName(int name) {
+		this.name = name;
 	}
-	
-	public String getPayItem(){
-		return payItem ;
+	public String getMoney() {
+		return money;
 	}
-	
-	public void setPayItem(String payItem){
-		this.payItem = payItem;
+	public void setMoney(String money) {
+		this.money = money;
 	}
-	
-	public int getPay(){
-		return pay;
+	public String getRecord() {
+		return record;
 	}
-	
-	public void setPay(int pay){
-		this.pay = pay;
+	public void setRecord(String record) {
+		this.record = record;
 	}
-	
-	public String getIncomeItem(){
-		return incomeItem;
+	public int getProperty() {
+		return property;
 	}
-	
-	public void setIncomeItem(String incomeItem){
-		this.incomeItem = incomeItem;
+	public void setProperty(int property) {
+		this.property = property;
 	}
-	
-	public int getIncome(){
-		return income;
-	}
-	
-	public void setIncome(int income){
-		this.income = income;
-	}
-	
 }

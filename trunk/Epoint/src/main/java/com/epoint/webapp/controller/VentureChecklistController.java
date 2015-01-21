@@ -3,6 +3,7 @@ package com.epoint.webapp.controller;
 import java.io.InputStream;
 import java.util.List;
 
+import javax.mail.Flags.Flag;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -151,32 +152,60 @@ public class VentureChecklistController {
 			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
 			
 			HumanResourceContent getHumanResourceContentByMember = ventureChecklistDAO.getHumanResourceContentByMember(memberLogin);			
-			getHumanResourceContentByMember.setMQ0(getHumanResourceContentByMember.getMQ0()==0?0:getHumanResourceContentByMember.getMQ0());
-			getHumanResourceContentByMember.setMQ1(getHumanResourceContentByMember.getMQ1()==0?0:getHumanResourceContentByMember.getMQ1());
-			getHumanResourceContentByMember.setMQ2(getHumanResourceContentByMember.getMQ2()==0?0:getHumanResourceContentByMember.getMQ2());
-			getHumanResourceContentByMember.setMQ3(getHumanResourceContentByMember.getMQ3()==0?0:getHumanResourceContentByMember.getMQ3());
-			getHumanResourceContentByMember.setMQ4(getHumanResourceContentByMember.getMQ4()==0?0:getHumanResourceContentByMember.getMQ4());
-			getHumanResourceContentByMember.setRQ0(getHumanResourceContentByMember.getRQ0()==0?0:getHumanResourceContentByMember.getRQ0());
-			getHumanResourceContentByMember.setRQ1(getHumanResourceContentByMember.getRQ1()==0?0:getHumanResourceContentByMember.getRQ1());
-			getHumanResourceContentByMember.setRQ2(getHumanResourceContentByMember.getRQ2()==0?0:getHumanResourceContentByMember.getRQ2());
-			getHumanResourceContentByMember.setRQ3(getHumanResourceContentByMember.getRQ3()==0?0:getHumanResourceContentByMember.getRQ3());
-			getHumanResourceContentByMember.setRQ4(getHumanResourceContentByMember.getRQ4()==0?0:getHumanResourceContentByMember.getRQ4());
-			getHumanResourceContentByMember.setSQ0(getHumanResourceContentByMember.getSQ0()==0?0:getHumanResourceContentByMember.getSQ0());
-			getHumanResourceContentByMember.setSQ1(getHumanResourceContentByMember.getSQ1()==0?0:getHumanResourceContentByMember.getSQ1());
-			getHumanResourceContentByMember.setSQ2(getHumanResourceContentByMember.getSQ2()==0?0:getHumanResourceContentByMember.getSQ2());
-			getHumanResourceContentByMember.setSQ3(getHumanResourceContentByMember.getSQ3()==0?0:getHumanResourceContentByMember.getSQ3());
-			getHumanResourceContentByMember.setSQ4(getHumanResourceContentByMember.getSQ4()==0?0:getHumanResourceContentByMember.getSQ4());
-			getHumanResourceContentByMember.setOQ0(getHumanResourceContentByMember.getOQ0()==0?0:getHumanResourceContentByMember.getOQ0());
-			getHumanResourceContentByMember.setOQ1(getHumanResourceContentByMember.getOQ1()==0?0:getHumanResourceContentByMember.getOQ1());
-			getHumanResourceContentByMember.setOQ2(getHumanResourceContentByMember.getOQ2()==0?0:getHumanResourceContentByMember.getOQ2());
-			getHumanResourceContentByMember.setOQ3(getHumanResourceContentByMember.getOQ3()==0?0:getHumanResourceContentByMember.getOQ3());
-			getHumanResourceContentByMember.setOQ4(getHumanResourceContentByMember.getOQ4()==0?0:getHumanResourceContentByMember.getOQ4());
-			getHumanResourceContentByMember.setTotalQ0(getHumanResourceContentByMember.getTotalQ0()==0?0:getHumanResourceContentByMember.getTotalQ0());
-			getHumanResourceContentByMember.setTotalQ1(getHumanResourceContentByMember.getTotalQ1()==0?0:getHumanResourceContentByMember.getTotalQ1());
-			getHumanResourceContentByMember.setTotalQ2(getHumanResourceContentByMember.getTotalQ2()==0?0:getHumanResourceContentByMember.getTotalQ2());
-			getHumanResourceContentByMember.setTotalQ3(getHumanResourceContentByMember.getTotalQ3()==0?0:getHumanResourceContentByMember.getTotalQ3());
-			getHumanResourceContentByMember.setTotalQ4(getHumanResourceContentByMember.getTotalQ4()==0?0:getHumanResourceContentByMember.getTotalQ4());
-			
+			if(getHumanResourceContentByMember!=null){
+				getHumanResourceContentByMember.setMQ0(getHumanResourceContentByMember.getMQ0()==0?0:getHumanResourceContentByMember.getMQ0());
+				getHumanResourceContentByMember.setMQ1(getHumanResourceContentByMember.getMQ1()==0?0:getHumanResourceContentByMember.getMQ1());
+				getHumanResourceContentByMember.setMQ2(getHumanResourceContentByMember.getMQ2()==0?0:getHumanResourceContentByMember.getMQ2());
+				getHumanResourceContentByMember.setMQ3(getHumanResourceContentByMember.getMQ3()==0?0:getHumanResourceContentByMember.getMQ3());
+				getHumanResourceContentByMember.setMQ4(getHumanResourceContentByMember.getMQ4()==0?0:getHumanResourceContentByMember.getMQ4());
+				getHumanResourceContentByMember.setRQ0(getHumanResourceContentByMember.getRQ0()==0?0:getHumanResourceContentByMember.getRQ0());
+				getHumanResourceContentByMember.setRQ1(getHumanResourceContentByMember.getRQ1()==0?0:getHumanResourceContentByMember.getRQ1());
+				getHumanResourceContentByMember.setRQ2(getHumanResourceContentByMember.getRQ2()==0?0:getHumanResourceContentByMember.getRQ2());
+				getHumanResourceContentByMember.setRQ3(getHumanResourceContentByMember.getRQ3()==0?0:getHumanResourceContentByMember.getRQ3());
+				getHumanResourceContentByMember.setRQ4(getHumanResourceContentByMember.getRQ4()==0?0:getHumanResourceContentByMember.getRQ4());
+				getHumanResourceContentByMember.setSQ0(getHumanResourceContentByMember.getSQ0()==0?0:getHumanResourceContentByMember.getSQ0());
+				getHumanResourceContentByMember.setSQ1(getHumanResourceContentByMember.getSQ1()==0?0:getHumanResourceContentByMember.getSQ1());
+				getHumanResourceContentByMember.setSQ2(getHumanResourceContentByMember.getSQ2()==0?0:getHumanResourceContentByMember.getSQ2());
+				getHumanResourceContentByMember.setSQ3(getHumanResourceContentByMember.getSQ3()==0?0:getHumanResourceContentByMember.getSQ3());
+				getHumanResourceContentByMember.setSQ4(getHumanResourceContentByMember.getSQ4()==0?0:getHumanResourceContentByMember.getSQ4());
+				getHumanResourceContentByMember.setOQ0(getHumanResourceContentByMember.getOQ0()==0?0:getHumanResourceContentByMember.getOQ0());
+				getHumanResourceContentByMember.setOQ1(getHumanResourceContentByMember.getOQ1()==0?0:getHumanResourceContentByMember.getOQ1());
+				getHumanResourceContentByMember.setOQ2(getHumanResourceContentByMember.getOQ2()==0?0:getHumanResourceContentByMember.getOQ2());
+				getHumanResourceContentByMember.setOQ3(getHumanResourceContentByMember.getOQ3()==0?0:getHumanResourceContentByMember.getOQ3());
+				getHumanResourceContentByMember.setOQ4(getHumanResourceContentByMember.getOQ4()==0?0:getHumanResourceContentByMember.getOQ4());
+				getHumanResourceContentByMember.setTotalQ0(getHumanResourceContentByMember.getTotalQ0()==0?0:getHumanResourceContentByMember.getTotalQ0());
+				getHumanResourceContentByMember.setTotalQ1(getHumanResourceContentByMember.getTotalQ1()==0?0:getHumanResourceContentByMember.getTotalQ1());
+				getHumanResourceContentByMember.setTotalQ2(getHumanResourceContentByMember.getTotalQ2()==0?0:getHumanResourceContentByMember.getTotalQ2());
+				getHumanResourceContentByMember.setTotalQ3(getHumanResourceContentByMember.getTotalQ3()==0?0:getHumanResourceContentByMember.getTotalQ3());
+				getHumanResourceContentByMember.setTotalQ4(getHumanResourceContentByMember.getTotalQ4()==0?0:getHumanResourceContentByMember.getTotalQ4());
+			}
+			else {
+				getHumanResourceContentByMember.setMQ0(0);
+				getHumanResourceContentByMember.setMQ1(0);
+				getHumanResourceContentByMember.setMQ2(0);
+				getHumanResourceContentByMember.setMQ3(0);
+				getHumanResourceContentByMember.setMQ4(0);
+				getHumanResourceContentByMember.setRQ0(0);
+				getHumanResourceContentByMember.setRQ1(0);
+				getHumanResourceContentByMember.setRQ2(0);
+				getHumanResourceContentByMember.setRQ3(0);
+				getHumanResourceContentByMember.setRQ4(0);
+				getHumanResourceContentByMember.setSQ0(0);
+				getHumanResourceContentByMember.setSQ1(0);
+				getHumanResourceContentByMember.setSQ2(0);
+				getHumanResourceContentByMember.setSQ3(0);
+				getHumanResourceContentByMember.setSQ4(0);
+				getHumanResourceContentByMember.setOQ0(0);
+				getHumanResourceContentByMember.setOQ1(0);
+				getHumanResourceContentByMember.setOQ2(0);
+				getHumanResourceContentByMember.setOQ3(0);
+				getHumanResourceContentByMember.setOQ4(0);
+				getHumanResourceContentByMember.setTotalQ0(0);
+				getHumanResourceContentByMember.setTotalQ1(0);
+				getHumanResourceContentByMember.setTotalQ2(0);
+				getHumanResourceContentByMember.setTotalQ3(0);
+				getHumanResourceContentByMember.setTotalQ4(0);
+			}
 			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
 			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
 			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
@@ -248,19 +277,21 @@ public class VentureChecklistController {
 	@RequestMapping(value = "/addHumanResourcePlan", method = RequestMethod.POST)
 	public ModelAndView addHumanResourcePlan (String content171, String content172, String content173, 
 			HumanResourceContent humanResourceContent, HttpSession session){
-		System.out.println("****************add1");
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){	
-			System.out.println("****************add2");
+			System.out.println("***addHumanResourcePlan1!!!");
 			model.setViewName("redirect:/humanResourcePlan");
 			addVentureCheckList(memberLogin.getAccount(),17,171,content171);
 			addVentureCheckList(memberLogin.getAccount(),17,172,content172);
 			addVentureCheckList(memberLogin.getAccount(),17,173,content173);
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
 			humanResourceContent.setAccount(memberLogin.getAccount());
-			ventureChecklistDAO.insertHumanResourceContent(humanResourceContent);
-			
+			boolean flag = ventureChecklistDAO.checkHumanResourceContentByMember(memberLogin);
+			if(flag==false)
+				ventureChecklistDAO.insertHumanResourceContent(humanResourceContent);
+			else
+				ventureChecklistDAO.updateHumanResourceContentByMember(humanResourceContent);
 		}
 		else
 			model.setViewName("memberLogin");
