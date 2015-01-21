@@ -13,6 +13,7 @@ public class Product {
 	private int salesPrice;
 	private int cost;	
 	
+	
 	public String getAccount() {
 		return account;
 	}
