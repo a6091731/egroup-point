@@ -27,4 +27,8 @@
 	<bean id="productDAO" class="com.epoint.webapp.dao.impl.ProductDAOImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="financialPlanDAO" class="com.epoint.webapp.dao.impl.FinancialPlanDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 </beans>

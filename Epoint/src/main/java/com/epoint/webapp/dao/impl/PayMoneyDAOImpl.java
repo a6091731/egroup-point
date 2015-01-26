@@ -202,4 +202,30 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 		}
 		return allPayMoney;
 	}
+	
+	public int getMonthlyCostByAccount(String account) {
+		String sql = "SELECT IFNULL(SUM(payMoney),0) AS Number FROM pay_money WHERE memberAccount = ?";
+		int Number = 0;
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			rs = smt.executeQuery();
+			if(rs.next()){
+				int result = rs.getInt("Number");
+				if(result % 12 != 0)
+					Number =  result / 12 +1;
+			}
+			smt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return Number;
+	}
 }
