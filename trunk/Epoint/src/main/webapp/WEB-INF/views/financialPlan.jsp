@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -79,19 +80,19 @@
 				</section>				
 			</div>
 			<div class="grid_3 prefix_3">
-				<div class="financialBox">您的月平均費用:<br/> 10 元<br/>(參考創業第一年營運排程中的收支報表)</div>
+				<div class="financialBox">您的月平均費用:<br/> ${avgCost}元<br/>(參考創業第一年營運排程中的收支報表)</div>
 			</div>
+			<form id="addForm" method="POST" action="addFinancialPlan">
 			<div class="grid_3 suffix_3">
-				<div class="financialBox">目前您累積的資金缺口<br/> <input type="text" class="input-control" name="input1">元<br/>(填寫您不足的資金)</div>
+				<div class="financialBox">目前您累積的資金缺口<br/>
+				<input type="text" class="input-control required digits" id="lackMoney" name="lackMoney" value="${fundLack}" style="ime-mode:disabled" onkeyup="return ValidateNumber($(this),value)">元<br/>(填寫您不足的資金)</div>
 			</div>
 			<div class="grid_6 prefix_3 suffix_3">
-				<div class="financialBox">月平均費用*3 + 資金缺口 = 第一年創業資金需求<br/>10*3+7=37<br/><h3>您的第一年創業資金需求=37元</h3></div><!-- 
-				<section class="ventureTypesTitle">
-					<h2><i class="fa fa-usd fa-color"></i>計算第一年創業資金</h2>
-
-				<h4>第一年創業資金需求 = 每月平均費用*3 + 目前您累積的資金缺口(不足的資金)</h4>
-				<div class="financialBox">目前您累積的資金缺口<br/> <input type="text" class="input-control" name="input1">元<br/>(不足的資金)</div>
-				</section> -->
+				<div class="financialBox" id="requestMoney">
+				月平均費用*3 + 資金缺口 = 第一年創業資金需求<br/>
+				10*3+7=37<br/>
+				<h3>您的第一年創業資金需求=37元</h3>
+				</div>
 			</div>
 			<div class="grid_6 prefix_3 suffix_3">
 				<section class="ventureTypesTitle">
@@ -99,89 +100,94 @@
 				</section>
 			</div>
 			<div class="grid_6 prefix_3 suffix_3">
-				<form>
-					<div class="ventureTypesInput clearfix">
-						<ul>
-							<li>
-								<h4 class="productTitle">
-								資金用途總額 = 資金需求 37</h4>
-									
-								
-									<table class="productTable ">
-									<thead>
-										<tr>
-											<th>資金用途</th>
-											<th colspan="2">金額</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td colspan="3"><button class="addbutton"><i class="fa fa-plus"></i> 新增一筆用途</button> </td>
-										</tr>
-										<tr>
-											<td><input type="text" class="input-control" name="input1"></td>
-											<td><input type="text" class="input-control" name="input1"> 元</td>
-											<td><button class="deletebutton"><i class="fa fa-times"></i></button></td>
-										</tr>
-
-										<tr>
-											<td>用途總額</td>
-											<td colspan="2">20元</td>
-										</tr>
-										<tr class="redText">
-											<td>驗證不合</td>
-											<td colspan="2">差17元</td>
-										</tr>
-									</tbody>
-								</table>
-							</li>
-						</ul>
-					</div>
-				</form>
+				<div class="ventureTypesInput clearfix">
+					<ul>
+						<li>
+							<h4 class="productTitle" id="title1">資金用途總額 = 資金需求 37</h4>
+								<table class="productTable ">
+								<thead>
+									<tr>
+										<th>資金用途</th>
+										<th colspan="2">金額</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="3"><button type="button" class="addbutton" id="addUseBtn"><i class="fa fa-plus"></i> 新增一筆用途</button> </td>
+									</tr>
+								<c:set value="0" var="index"/>
+								<c:if test="${fn:length(usesPlans) gt 0}">
+								<c:forEach items="${usesPlans}" var="use" varStatus="loop">
+									<tr id="usesPlans_${index}">
+										<td>
+											<input type="hidden" name="usesPlans[${loop.index }].record" value="${use.record }">
+											<input type="text" class="input-control required" name="usesPlans[${loop.index }].name" value="${use.name }">
+										</td>
+										<td><input type="text" class="input-control required digits useMoney" name="usesPlans[${loop.index }].money" value="${use.money }"> 元<p></p></td>
+										<td><button type="button" class="deletebutton" onClick="delDetail(${index},${use.record},1)"><i class="fa fa-times"></i></button></td>
+									</tr>
+					  			<c:set var="index" value="${index+1}" />
+								</c:forEach>
+								</c:if>
+									<tr id="useTotal">
+										<td>用途總額</td>
+										<td colspan="2" id="useMoney"></td>
+									</tr>
+									<tr class="redText">
+										<td id="useMsg">驗證不合</td>
+										<td colspan="2" id="useGap">差17元</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="grid_6 prefix_3 suffix_3">
-				<form>
-					<div class="ventureTypesInput clearfix">
-						<ul>
-							<li>
-								<h4 class="productTitle">
-								資金來源總額 = 資金需求 37</h4>
-									
-								
-									<table class="productTable ">
-									<thead>
+				<div class="ventureTypesInput clearfix">
+					<ul>
+						<li>
+							<h4 class="productTitle" id="title2">資金來源總額 = 資金需求 37</h4>
+								<table class="productTable ">
+								<thead>
+									<tr>
+										<th>資金來源</th>
+										<th colspan="2">金額</th>
+									</tr>
+								</thead>
+								<tbody>
 										<tr>
-											<th>資金來源</th>
-											<th colspan="2">金額</th>
-										</tr>
-									</thead>
-									<tbody>
-
-										<tr>
-											<td colspan="3"><button class="addbutton"><i class="fa fa-plus"></i> 新增一筆用途</button> </td>
-										</tr>
-										<tr>
-											<td><input type="text" class="input-control" name="input1"></td>
-											<td><input type="text" class="input-control" name="input1"> 元</td>
-											<td><button class="deletebutton"><i class="fa fa-times"></i></button></td>
-										</tr>
-										<tr>
-											<td>來源總額</td>
-											<td colspan="2">46789 元</td>
-										</tr>
-
-										<tr class="greenText">
-											<td>驗證通過</td>
-											<td colspan="2">差0元</td>
-										</tr>
-									</tbody>
-								</table>
-							</li>
-						</ul>
-						<a href="javascript:;" class="nextStepButton"><span class="next">完成資金規劃 <i class="fa fa-arrow-right"></i></span></a>
-					</div>
-				</form>
-			</div>			
+										<td colspan="3"><button type="button" class="addbutton" id="addSrcBtn"><i class="fa fa-plus"></i> 新增一筆用途</button> </td>
+									</tr>
+								<c:if test="${fn:length(sourcePlans) gt 0}">
+								<c:forEach items="${sourcePlans}" var="src" varStatus="loop">
+									<tr id="sourcePlans_${index}">
+										<td>
+											<input type="hidden" name="sourcePlans[${loop.index }].record" value="${src.record }">
+											<input type="text" class="input-control required" name="sourcePlans[${loop.index }].name" value="${src.name }">
+										</td>
+										<td><input type="text" class="input-control required digits srcMoney" name="sourcePlans[${loop.index }].money" value="${src.money }"> 元<p></p></td>
+										<td><button type="button" class="deletebutton" onClick="delDetail(${index},${src.record},0)"><i class="fa fa-times"></i></button></td>
+									</tr>
+					  			<c:set var="index" value="${index+1}" />
+								</c:forEach>
+								</c:if>
+									<tr id="srcTotal">
+										<td>來源總額</td>
+										<td colspan="2" id="srcMoney"></td>
+									</tr>
+									<tr class="greenText">
+										<td id="srcMsg">驗證通過</td>
+										<td colspan="2" id="srcGap">差0元</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+					</ul>
+					<button type="submit" class="nextStepButton"><span class="next">完成資金規劃 <i class="fa fa-arrow-right"></i></span></button>
+				</div>
+			</div>	
+		</form>		
 		</div>			
 	</div>
 	<!-- import jquery -->
@@ -197,10 +203,134 @@
 		</script>
 	<!-- import progresscircle -->	
 		<script src="js/jquery.circliful.js"></script>
-		<script>
+		
+		<script src="js/jquery.validate.js"></script>
+		<script src="js/messages_zh_TW.js"></script>
+		<script src="js/additional-methods.js"></script>
+		<script type="text/javascript">
 		$( document ).ready(function() {
-		        $('.progress').circliful();
-		    });
+			$('.progress').circliful();
+		});
+		var avgCost = ${avgCost};
+		var result =  parseInt(avgCost) * 3;
+		var index = 0;
+		var count = ${fn:length(usesPlans)} + ${fn:length(sourcePlans)};
+		var delIndex = 0;
+		var total = 0;
+		$( document ).ready(function() {
+			calculateNeedMoney();
+			calculateMoney('useMoney');
+			calculateMoney('srcMoney');
+			$("#addForm").validate({
+				errorPlacement: function (error, element) {
+					element.next().append(error);
+	    	    }
+			});
+			$('#lackMoney').change(function(){
+				calculateNeedMoney();
+			});
+			$('.useMoney').change(function(){
+				calculateMoney('useMoney');
+			});
+			$('.srcMoney').change(function(){
+				calculateMoney('srcMoney');
+			});
+			$('#addUseBtn').click(function(){
+				var content = '<tr id="usesPlans_'+count+'">'+
+					'<td>'+
+					'<input type="hidden" name="dynamicPlans['+index+'].property" value="1">'+
+					'<input type="text" class="input-control required" name="dynamicPlans['+index+'].name"></td>'+
+					'<td><input type="text" class="input-control required digits useMoney" name="dynamicPlans['+index+'].money"> 元<p></p></td>'+
+					'<td><button type="button" class="deletebutton" onClick="del(1,'+count+')"><i class="fa fa-times"></i></button></td>'+
+				'</tr>';
+           		$('#useTotal').before(content);
+           		index++;
+           		count++;
+    			$('.useMoney').change(function(){
+    				calculateMoney('useMoney');
+    			});
+            });
+			$('#addSrcBtn').click(function(){
+				var content = '<tr id="sourcePlans_'+count+'">'+
+					'<td>'+
+					'<input type="hidden" name="dynamicPlans['+index+'].property" value="0">'+
+					'<input type="text" class="input-control required" name="dynamicPlans['+index+'].name"></td>'+
+					'<td><input type="text" class="input-control required digits srcMoney" name="dynamicPlans['+index+'].money"> 元<p></p></td>'+
+					'<td><button type="button" class="deletebutton" onClick="del(0,'+count+')"><i class="fa fa-times"></i></button></td>'+
+				'</tr>';
+	       		$('#srcTotal').before(content);
+	       		index++;
+	       		count++;
+    			$('.srcMoney').change(function(){
+    				calculateMoney('srcMoney');
+    			});
+	        });
+		});
+		
+		function del(property,id){
+			var trName = property == 1 ? 'usesPlans' : 'sourcePlans';
+			$('#'+trName+'_'+id).remove();
+			var className = property == 1 ? 'useMoney' : 'srcMoney';
+			calculateMoney(className);
+		}
+		
+		function delDetail(id,record,property){
+			$('#addForm').append('<input type="hidden" name="deletedPlans['+delIndex+'].record" value="'+record+'">');
+			$('#addForm').append('<input type="hidden" name="deletedPlans['+delIndex+'].property" value="'+property+'">');
+			del(property,id);
+			delIndex++;
+		}
+		
+	    function ValidateNumber(e, pnumber){
+		    if (!/^\d+$/.test(pnumber)){
+		    	$(e).val(/^\d+/.exec($(e).val()));
+		    }
+	    	return false;
+	    }
+	    
+	    function calculateNeedMoney(){
+	    	var lackMoney = $(this).val() != '' ? parseInt($(this).val()) : 0;
+			result = parseInt(avgCost) * 3 + parseInt(lackMoney);
+			$('#requestMoney').empty();
+			$('#requestMoney').append('月平均費用*3 + 資金缺口 = 第一年創業資金需求<br/>'+
+					avgCost+'*3+'+lackMoney+'='+result+'<br/><h3>您的第一年創業資金需求='+
+					result+'元</h3>');
+			$('#title1').empty();
+			$('#title1').append('資金用途總額 = 資金需求 = '+result);
+			$('#title2').empty();
+			$('#title2').append('資金用途總額 = 資金需求 = '+result);
+	    }
+	    
+	    function calculateMoney(type){
+	    	total = 0;
+			$('.'+type).each(function(index) {
+				var useMoney = $(this).val() != '' ? parseInt($(this).val()) : 0;
+				total += parseInt(useMoney);
+				$('#'+type).empty();
+				$('#'+type).append(total+'元');
+			});
+			if(type == 'useMoney'){
+				$('#useMsg').empty();
+				$('#useGap').empty();
+				if(result >= total){
+					$('#useMsg').append('驗證通過');
+					$('#useGap').append('差0元');
+				}else{
+					$('#useMsg').append('驗證不合');
+					$('#useGap').append('差'+(total-result)+'元');
+				}
+			}else{
+				$('#srcMsg').empty();
+				$('#srcGap').empty();
+				if(result >= total){
+					$('#srcMsg').append('驗證通過');
+					$('#srcGap').append('差0元');
+				}else{
+					$('#srcMsg').append('驗證不合');
+					$('#srcGap').append('差'+(total-result)+'元');
+				}
+			}
+	    }
 		</script>
 
 	<!-- responsive-table -->  

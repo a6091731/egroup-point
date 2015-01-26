@@ -12,4 +12,5 @@ public interface PayMoneyDAO {
 	public List<PayMoney> getPayMoneyByItemID(String account, int itemID);
 	public List<PayMoney> getPayMoneyBySubClassStatus(String account, int subClass, int status);
 	public PayMoney getSinglePayMoneyByItemID(String account, int itemID);
+	public int getMonthlyCostByAccount(String account);
 }

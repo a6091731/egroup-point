@@ -215,4 +215,51 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return member;
 	}
+	
+	public void modiFundLackBy(String account,int lack) {
+		String sql = "UPDATE member SET fundLack = ? WHERE memberAccount = ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1,lack);
+			smt.setString(2,account);
+			smt.executeUpdate();			
+			smt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	public int getFundLackByAccount(String account) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT fundLack FROM member WHERE memberAccount = ?";
+		int lack = 0;
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			rs = smt.executeQuery();
+			if(rs.next()){
+				lack = rs.getInt("fundLack");
+			}
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return lack;
+	}
 }

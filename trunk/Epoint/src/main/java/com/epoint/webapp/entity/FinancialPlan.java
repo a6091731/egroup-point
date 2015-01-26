@@ -2,9 +2,9 @@ package com.epoint.webapp.entity;
 
 public class FinancialPlan {
 	private String account;
-	private int name;
-	private String money;
-	private String record;
+	private String name;
+	private int money;
+	private int record;
 	private int property;
 	
 	public String getAccount() {
@@ -13,22 +13,22 @@ public class FinancialPlan {
 	public void setAccount(String account) {
 		this.account = account;
 	}
-	public int getName() {
+	public String getName() {
 		return name;
 	}
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMoney() {
+	public int getMoney() {
 		return money;
 	}
-	public void setMoney(String money) {
+	public void setMoney(int money) {
 		this.money = money;
 	}
-	public String getRecord() {
+	public int getRecord() {
 		return record;
 	}
-	public void setRecord(String record) {
+	public void setRecord(int record) {
 		this.record = record;
 	}
 	public int getProperty() {

@@ -10,4 +10,6 @@ public interface MemberDAO {
 	public void updateResetNO(Member member);
 	public void updatePassword(Member member);
 	public Member getByResetNO(Member member);
+	public void modiFundLackBy(String account,int lack);
+	public int getFundLackByAccount(String account);
 }
