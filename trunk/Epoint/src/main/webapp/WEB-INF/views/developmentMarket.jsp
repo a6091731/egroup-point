@@ -261,20 +261,20 @@
 	            	index++;
 	            	$('.delCardBtn').click(function(){
 	            		var id = $(this).data('id');
-		            	removeValidate(id);
-		            	$('#paymoney_'+id).remove();
 		            	if(cardCount > 1){
+			            	removeValidate(id);
+			            	$('#paymoney_'+id).remove();
 			            	cardCount--;
 			            	$('#cardCount').val(cardCount);
 		            	}
 		            });
 	            	$('.delLawyerBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	removeValidate(id);
-		            	$('#paymoney_'+id).remove();
 		            	if(lawyerCount > 1){
-		            	lawyerCount--;
-		            	$('#lawyerCount').val(lawyerCount);
+			            	removeValidate(id);
+			            	$('#paymoney_'+id).remove();
+			            	lawyerCount--;
+			            	$('#lawyerCount').val(lawyerCount);
 		            	}
 		            });
 	            });
@@ -289,30 +289,30 @@
 	    	function initialDelBtn(){
             	$('.delCardBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	var record = $(this).data('record');
-	            	var itemID = $(this).data('item');
-            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-	            	removeValidate(id);
-	            	$('#paymoney_'+id).remove();
-	            	deletedIndex++;
 	            	if(cardCount > 1){
+		            	var record = $(this).data('record');
+		            	var itemID = $(this).data('item');
+	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            	removeValidate(id);
+		            	$('#paymoney_'+id).remove();
+		            	deletedIndex++;
 		            	cardCount--;
 		            	$('#cardCount').val(cardCount);
 	            	}
 	            });
             	$('.delLawyerBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	var record = $(this).data('record');
-	            	var itemID = $(this).data('item');
-            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-	            	removeValidate(id);
-	            	$('#paymoney_'+id).remove();
-	            	deletedIndex++;
 	            	if(lawyerCount > 1){
-	            	lawyerCount--;
-	            	$('#lawyerCount').val(lawyerCount);
+		            	var record = $(this).data('record');
+		            	var itemID = $(this).data('item');
+	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            	removeValidate(id);
+		            	$('#paymoney_'+id).remove();
+		            	deletedIndex++;
+		            	lawyerCount--;
+		            	$('#lawyerCount').val(lawyerCount);
 	            	}
 	            });
 	    	}
