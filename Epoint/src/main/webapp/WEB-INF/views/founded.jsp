@@ -205,21 +205,21 @@
 					  	<c:if test="${dynamicTypeCount[2] > 0}">
 					  	<c:forEach items="${dynamicPayMoney}" begin="${index}" end="${index + dynamicTypeCount[2] -1}" var="account">
 					  	<div id="paymoney_${index}">
-					  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2115">
-					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${account.record}">
-						  	<div class="field">
-						  		<label>日期：
-						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
-						  		</label>
-						  	</div>
-						  	<div class="field">
-						  		<label>金額：
-						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${account.money }">
-						  		</label>
-						  	</div>
-						  	<div class="field">
-						  		<button type="button" class="deletebutton delAccountBtn" data-id="${index}" data-record="${account.record }" data-item="2115"><i class="fa fa-times"></i> 刪除</button>
-						  	</div>					  		
+						  	<input type="hidden" name="dynamicPayMoney[${index}].ID" value="2115">
+						  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${account.record}">
+							  	<div class="field">
+							  		<label>日期：
+							  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
+							  		</label>
+							  	</div>
+							  	<div class="field">
+							  		<label>金額：
+							  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${account.money }">
+							  		</label>
+							  	</div>
+							  	<div class="field">
+							  		<button type="button" class="deletebutton delAccountBtn" data-id="${index}" data-record="${account.record }" data-item="2115"><i class="fa fa-times"></i> 刪除</button>
+							  	</div>					  		
 					  	</div>
 					  	<c:set var="index" value="${index+1}" />
 					  	</c:forEach>
@@ -260,7 +260,7 @@
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/messages_zh_TW.js"></script>
 	<script src="js/additional-methods.js"></script>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		var cardCount = 1;
 		var lawyerCount = 1;
 		var accountCount = 1;
@@ -284,15 +284,17 @@
 	            		'<div id="paymoney_'+index+'">'+
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2113">'+
 	            			'<div class="field">'+
-						  		'<label>日期：'+
+						  		'<label>日期： '+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
+						  	'     '+
 						  	'<div class="field">'+
-						  		'<label>金額：'+
+						  		'<label> 金額： '+
 						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
+						  	'    '+
 						  	'<div class="field">'+
 						  		'<button type="button" class="deletebutton delCardBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';
@@ -304,15 +306,17 @@
 	            		'<div id="paymoney_'+index+'">'+
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2114">'+
 	            			'<div class="field">'+
-						  		'<label>日期：'+
+						  		'<label>日期： '+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
+						  	'      '+
 						  	'<div class="field">'+
-						  		'<label>金額：'+
+						  		'<label> 金額： '+
 						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
+						  	'    '+
 						  	'<div class="field">'+
 						  		'<button type="button" class="deletebutton delLawyerBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';
@@ -324,15 +328,17 @@
 	            			'<div id="paymoney_'+index+'">'+
 	            			'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2115">'+
 						  	'<div class="field">'+
-						  		'<label>日期：'+
+						  		'<label>日期： '+
 						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
+						  	'      '+
 						  	'<div class="field">'+
-						  		'<label>金額：'+
+						  		'<label> 金額： '+
 						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
+						  	'    '+
 						  	'<div class="field">'+
 						  		'<button type="button" class="deletebutton delAccountBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';

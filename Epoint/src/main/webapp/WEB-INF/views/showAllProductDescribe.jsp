@@ -134,11 +134,6 @@
 											<td>${product.salesPrice }</td>
 											<td>${product.cost }</td>											
 											<td>
-											 	<!-- <a onclick="setEditProduct('${product}','${product.name}','${product.specification}','${product.pack}','${product.endPrice}','${product.salesPrice}','${product.cost}');" 
-												class="fa-color" data-reveal-id="editProduct" data-closeonbackgroundclick="false">
-												<i class="fa fa-pencil-square-o fa-lg"></i></a>
-												 -->
-												
 												<a onclick="setEditProduct(${i.index});" 
 												class="fa-color" data-reveal-id="editProduct" data-closeonbackgroundclick="false">
 												<i class="fa fa-pencil-square-o fa-lg"></i></a>
