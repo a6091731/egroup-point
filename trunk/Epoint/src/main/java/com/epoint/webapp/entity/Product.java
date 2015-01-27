@@ -3,6 +3,7 @@ package com.epoint.webapp.entity;
 import java.sql.Date;
 
 public class Product {
+	//資料庫變數
 	private String account;
 	private String id;
 	private Date time;
@@ -11,7 +12,12 @@ public class Product {
 	private String pack;
 	private int endPrice;
 	private int salesPrice;
-	private int cost;	
+	private int cost;
+	
+	//程式控制變數
+	private int profit;
+	private int sum;
+	private int totalProfit;
 	
 	
 	public String getAccount() {
@@ -68,6 +74,23 @@ public class Product {
 	}
 	public void setCost(int cost) {
 		this.cost = cost;
-	}	
-	
+	}
+	public int getProfit() {
+		return profit;
+	}
+	public void setProfit(int profit) {
+		this.profit = profit;
+	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+	public int getTotalProfit() {
+		return totalProfit;
+	}
+	public void setTotalProfit(int totalProfit) {
+		this.totalProfit = totalProfit;
+	}
 }

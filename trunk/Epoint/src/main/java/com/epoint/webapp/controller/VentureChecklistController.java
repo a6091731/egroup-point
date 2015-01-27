@@ -291,7 +291,7 @@ public class VentureChecklistController {
 			addVentureCheckList(memberLogin.getAccount(),15,151,content151);
 			addVentureCheckList(memberLogin.getAccount(),15,152,content152);
 			addVentureCheckList(memberLogin.getAccount(),15,153,content153);
-			//model.setViewName("redirect:/memberLogin");
+			model.setViewName("redirect:/businessOrientation");
 		}
 		else
 			model.setViewName("memberLogin");

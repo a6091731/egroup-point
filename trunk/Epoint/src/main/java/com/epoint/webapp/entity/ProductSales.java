@@ -8,6 +8,9 @@ public class ProductSales {
 	private Date date;
 	private int quantity;
 	
+	//程式變數
+	private String dateString;
+	
 	public String getAccount() {
 		return account;
 	}
@@ -32,6 +35,10 @@ public class ProductSales {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
+	public String getDateString() {
+		return dateString;
+	}
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
+	}	
 }

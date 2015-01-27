@@ -122,6 +122,52 @@ public class ProductDAOImpl implements ProductDAO{
 		return productList;
 	}
 
+	public List<Product> getProductListSum(Member member, int start, int size) {
+		// TODO Auto-generated method stub
+		List<Product> productList = new ArrayList<Product>();
+		sql = "SELECT SUM(DISTINCT s.productSalesQuantity) AS sumQuantity, p.productID ,p.productNewTime , "
+				+ "p.productName, p.productSpecifications, p.productPack, p.productEndPrice, p.productSalesPrice, "
+				+ "p.productCost FROM product p LEFT JOIN product_sales s ON p.memberAccount = s.memberAccount "
+				+ "AND p.productID = s.productID WHERE p.memberAccount = ? GROUP BY "
+				+ "p.productID ORDER BY p.productNewTime ASC LIMIT ?,?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, member.getAccount());
+			smt.setInt(2, start);
+			smt.setInt(3, size);
+			rs = smt.executeQuery();
+			while(rs.next()){
+				Product product = new Product();
+				product.setAccount(member.getAccount());
+				product.setId(rs.getString("productID"));
+				product.setTime(rs.getDate("productNewTime"));
+				product.setName(rs.getString("productName"));
+				product.setSpecification(rs.getString("productSpecifications"));
+				product.setPack(rs.getString("productPack"));
+				product.setEndPrice(rs.getInt("productEndPrice"));
+				product.setSalesPrice(rs.getInt("productSalesPrice"));
+				product.setCost(rs.getInt("productCost"));
+				product.setProfit(product.getSalesPrice()-product.getCost());
+				product.setSum(rs.getInt("sumQuantity"));
+				productList.add(product);
+			}
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return productList;
+	}
+	
 	public void updateProduct(Product product) {
 		// TODO Auto-generated method stub
 		String sql = "UPDATE product SET productName = ?, productSpecifications = ?, productPack = ?, "
