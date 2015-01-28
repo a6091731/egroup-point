@@ -141,7 +141,7 @@ public class VentureChecklistController {
 		if(memberLogin==null)
 			model.setViewName("memberLogin");
 		else{
-			model.setViewName("humanResourcePlan");			
+			model.setViewName("humanResourcePlan");
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
 			MapClass mapClass = new MapClass();
 			mapClass.setId(1);
@@ -330,7 +330,8 @@ public class VentureChecklistController {
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){	
 			System.out.println("***addHumanResourcePlan1!!!");
-			model.setViewName("redirect:/humanResourcePlan");
+//			model.setViewName("redirect:/humanResourcePlan");
+			model.setViewName("redirect:/exportWord");
 			addVentureCheckList(memberLogin.getAccount(),17,171,content171);
 			addVentureCheckList(memberLogin.getAccount(),17,172,content172);
 			addVentureCheckList(memberLogin.getAccount(),17,173,content173);

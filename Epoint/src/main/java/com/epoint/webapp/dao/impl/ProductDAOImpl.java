@@ -225,7 +225,41 @@ public class ProductDAOImpl implements ProductDAO{
 		return 0;
 	}
 	
-	
-
-
+	public List<Product> getAllProductList(Member member) {
+		// TODO Auto-generated method stub
+		List<Product> productList = new ArrayList<Product>();
+		sql = "SELECT * FROM product WHERE memberAccount = ? ORDER BY productNewTime ASC";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, member.getAccount());
+			rs = smt.executeQuery();
+			while(rs.next()){
+				Product product = new Product();
+				product.setAccount(member.getAccount());
+				product.setId(rs.getString("productID"));
+				product.setTime(rs.getDate("productNewTime"));
+				product.setName(rs.getString("productName"));
+				product.setSpecification(rs.getString("productSpecifications"));
+				product.setPack(rs.getString("productPack"));
+				product.setEndPrice(rs.getInt("productEndPrice"));
+				product.setSalesPrice(rs.getInt("productSalesPrice"));
+				product.setCost(rs.getInt("productCost"));
+				productList.add(product);
+			}
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return productList;
+	}
 }

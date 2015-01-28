@@ -22,21 +22,21 @@
 <w:proofErr w:type="gramEnd"/><w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve">) </w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>創業標的</w:t></w:r>
 </w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67"><w:r w:rsidRPr="000A5988"><w:t>${content}</w:t></w:r></w:p>
+<w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67"><w:r w:rsidRPr="000A5988"><w:t>${allVentureContents[0].content}</w:t></w:r></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="5"/><w:ind w:left="480"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve">1-1 </w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>商業模式</w:t></w:r>
 </w:p>
-<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${content}</w:t></w:r></w:p>
+<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${allVentureContents[1].content}</w:t></w:r></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="5"/><w:ind w:left="480"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>1-2</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>自己在此行業的一技之長</w:t></w:r>
 </w:p>
-<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${content}</w:t></w:r></w:p>
+<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${allVentureContents[2].content}</w:t></w:r></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -52,7 +52,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>目標顧客是誰</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>?</w:t></w:r>
 </w:p>
-<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${content}</w:t></w:r></w:p>
+<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${allVentureContents[3].content}</w:t></w:r></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="5"/><w:ind w:left="480"/></w:pPr>
@@ -60,7 +60,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>能提供給顧客甚麼價值</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>?</w:t></w:r>
 </w:p>
-<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${content}</w:t></w:r></w:p>
+<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${allVentureContents[4].content}</w:t></w:r></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="5"/><w:ind w:left="480"/></w:pPr>
@@ -68,7 +68,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>顧客能從中得到甚麼好處</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>?</w:t></w:r>
 </w:p>
-<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${content}</w:t></w:r></w:p>
+<w:p w:rsidR="000A5988" w:rsidRDefault="000A5988" w:rsidP="000A5988"><w:r w:rsidRPr="000A5988"><w:t>${allVentureContents[5].content}</w:t></w:r></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -78,110 +78,63 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve">) </w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品描述</w:t></w:r>
 </w:p>
+
+<#list allProducts as product>
+<#assign index = product_index+1>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="5"/><w:ind w:left="480"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>1</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${index}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>1</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${index}</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>規格</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product1}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product.specification}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>1</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${index}</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>包裝賣相</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product1}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product.pack}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>1</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${index}</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>終端消費者定價</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
-<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number1}</w:t></w:r>
+<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product.endPrice}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>1</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${index}</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>實質銷售價格</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
-<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number1}</w:t></w:r>
+<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product.salesPrice}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>1</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${index}</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>成本</w:t></w:r>
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
-<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number1}</w:t></w:r>
+<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product.cost}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="5"/><w:ind w:left="480"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>2</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>2</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>規格</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product2}</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>2</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>包裝賣相</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${product2}</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>2</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>終端消費者定價</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
-<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number2}</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:lastRenderedPageBreak/><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>2</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>實質銷售價格</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
-<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number2}</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
-<w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>產品</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>2</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>成本</w:t></w:r>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
-<w:r w:rsidR="000A5988"><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number2}</w:t></w:r>
-</w:p>
-<w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
+</#list>
+
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="3"/></w:pPr>
@@ -203,7 +156,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[6].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -214,7 +167,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[7].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -225,7 +178,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[8].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -235,7 +188,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[9].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -245,7 +198,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[10].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
@@ -263,7 +216,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[11].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -273,7 +226,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[12].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -288,7 +241,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[13].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -298,7 +251,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[14].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -308,7 +261,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[15].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -324,7 +277,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[16].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -334,7 +287,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[17].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -344,7 +297,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[18].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -354,7 +307,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[19].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -364,7 +317,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[20].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -374,7 +327,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[21].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -384,7 +337,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[22].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -394,7 +347,7 @@
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[23].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="2"/><w:ind w:firstLine="240"/></w:pPr></w:p>
@@ -412,7 +365,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[24].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -422,7 +375,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[25].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -432,7 +385,7 @@
 <w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t xml:space="preserve"> : </w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${content}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${allVentureContents[26].content}</w:t></w:r>
 </w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67"><w:pPr><w:pStyle w:val="a5"/><w:ind w:firstLine="240"/></w:pPr></w:p>
 <w:p w:rsidR="002C1A67" w:rsidRDefault="002C1A67" w:rsidP="002C1A67">
@@ -489,31 +442,31 @@
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="000A5988">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.MQ0}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.MQ1}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.MQ2}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.MQ3}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.MQ4}</w:t></w:r>
 </w:p>
 </w:tc>
 </w:tr>
@@ -528,31 +481,31 @@
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.RQ0}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.RQ1}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.RQ2}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.RQ3}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.RQ4}</w:t></w:r>
 </w:p>
 </w:tc>
 </w:tr>
@@ -567,31 +520,31 @@
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.SQ0}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.SQ1}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.SQ2}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.SQ3}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.SQ4}</w:t></w:r>
 </w:p>
 </w:tc>
 </w:tr>
@@ -606,31 +559,31 @@
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.OQ0}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.OQ1}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.OQ2}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.OQ3}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${number}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.OQ4}</w:t></w:r>
 </w:p>
 </w:tc>
 </w:tr>
@@ -645,31 +598,31 @@
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="000A5988">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${total}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.totalQ0}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${total}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.totalQ1}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${total}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.totalQ2}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${total}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.totalQ3}</w:t></w:r>
 </w:p>
 </w:tc>
 <w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="auto"/></w:tcPr>
 <w:p w:rsidR="002C1A67" w:rsidRPr="002C1A67" w:rsidRDefault="000A5988" w:rsidP="002C1A67">
 <w:pPr><w:rPr><w:rFonts w:ascii="微軟正黑體" w:eastAsia="微軟正黑體"/><w:sz w:val="20"/></w:rPr></w:pPr>
-<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${total}</w:t></w:r>
+<w:r><w:rPr><w:rFonts w:hint="eastAsia"/></w:rPr><w:t>${HumanResource.totalQ4}</w:t></w:r>
 <w:bookmarkStart w:id="0" w:name="_GoBack"/><w:bookmarkEnd w:id="0"/>
 </w:p>
 </w:tc>
