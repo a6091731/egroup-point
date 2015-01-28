@@ -28,10 +28,15 @@ public class DateConversion {
 		return DateString ;
 	}
 
-	public String ConversionYDM(Date date){
+	public String ConversionYMD(Date date){
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 		String DateString = formatter.format(date);
 		return DateString ;
 	}
-
+	
+	public String ConversionYM(Date date) throws ParseException{
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
+		String DateString = formatter.format(date);
+		return DateString ;
+	}
 }

@@ -129,7 +129,7 @@
 											<td>${product.profit }</td>
 											<td>${product.sum }</td>
 											<td><a onclick="newProductSales(${i.index});"
-												class="addProduct gray" data-reveal-id ="addProduct2" data-closeonbackgroundclick="false">
+												class="addProduct gray" data-reveal-id ="addProductSales" data-closeonbackgroundclick="false">
 												<i class="fa fa-plus"></i> 新增數量</a>
 											</td>								
 											<td>${product.totalProfit }</td>
@@ -163,7 +163,7 @@
 	</div>
 
 	<!-- BEGIN MODAL WINDOWS -->
-        <div id="addProduct" class="reveal-modal">
+        <div id="editProduct" class="reveal-modal">
              <div class="cont clearfix">
                      <form class="formset clearfix">
                              <fieldset class="fieldset2">
@@ -225,26 +225,26 @@
 
 
 	<!-- BEGIN MODAL WINDOWS -->
-        <div id="addProduct2" class="reveal-modal">
+        <div id="addProductSales" class="reveal-modal">
                 <div class="cont clearfix">
                         <form class="formset clearfix" id="sendForm" action="addProductSalse" method="post">
-                        		<input type="hidden" id="productID">
+                        		<input type="hidden" id="productID" name="productID">
 	                            <fieldset class="fieldset2">
 	                                    <p id="productName"></p>
 	                            </fieldset>
-                                <fieldset id="addSalesQuantity" class="fieldset2">
+                                <fieldset id="addSalesQuantity1" class="fieldset2">
 								  	<legend>產品銷售數量 : </legend>								  			  	
 								  	<button type="button" class="addbutton" onclick="addbutton();"><i class="fa fa-plus"></i> 新增數量</button>
 									<div id="newMoney0" >
 									  	<div class="deleteblock">
 										  	<div class="field">
 										  		<label>日期：
-										  			<input type="month" class="form-control" name="salsDate">
+										  			<input type="month" class="form-control" id="salsDate0" name="salsDate">
 										  		</label>
 										  	</div>
 										  	<div class="field">
 										  		<label>數量：
-										  			<input type="text" class="form-control" name="salsQuantity">
+										  			<input type="text" class="form-control" id="salsQuantity0" name="salsQuantity">
 										  		</label>
 										  	</div>
 										  	<div class="field">
@@ -252,6 +252,8 @@
 										  	</div>					  		
 									  	</div>
 									</div>								  	
+								</fieldset>
+								<fieldset id="addSalesQuantity2" class="fieldset2">
 								</fieldset>
                                 <button type="submit" class="finishButton">
 								<span class="next">新增產品</span>
@@ -282,12 +284,6 @@
 			var count = 1;
 			var deletedIndex = 0;
 	        $(function(){
-	        	/*$('#addProduct2').click(function(){
-	           		$('#productID').val(list[i].id);
-					$('#productName').val(list[i].name);
-					alert(list[i].id);
-					alert(list[i].name);/*
-	           	});*/
 	            $(".cancelButton").click(function(){
 					$(".close-reveal-modal").trigger("click");
 				});	
@@ -311,7 +307,7 @@
 					'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
 					'</div>'+  				  		
 				  	'</div>';	            		
-	            	$('#addSalesQuantity').append(addSalesQuantityText);
+	            	$('#addSalesQuantity2').append(addSalesQuantityText);
 	            	index++;
 	            	count++;
 	        }
@@ -324,21 +320,55 @@
            	}
 	        
 	        function newProductSales(i){
-	        	alert(123);
-	        	alert(i);
 				var list = $.parseJSON('${getProductList2}');
 				$('#productID').val(list[i].id);
 				$('#productName').text(list[i].name);
-
-	        	alert(list[i].id);
-				alert(list[i].name);
-				
-				/*$('#editSpecification').val(list[i].specification);
-				$('#editPack').val(list[i].pack);
-				$('#editEndPrice').val(list[i].endPrice);
-				$('#editSalesPrice').val(list[i].salesPrice);
-				$('#editCost').val(list[i].cost);*/
+				alert("here");
+				$.ajax({
+					url:"getProductSalesListByMemberID",
+					data:{
+						//memberLogin : list[i].account ,
+						productID : list[i].id
+					},
+					dataType:"json",
+					success:function(result){
+						$('#addSalesQuantity2').html("");
+						$("#salsDate0").val("");
+						$("#salsQuantity0").val("");
+						if(result.length>0){
+							//$("#salsDate0").val(result[0].date);
+							alert(result[0].date_string);
+							$("#salsDate0").val(result[0].date_string);
+							$("#salsDate0").val(result[0].date_string);
+							$("#salsQuantity0").val(result[0].quantity);							
+							for(var i=1; i<result.length; i++){
+								var addSalesQuantityText =
+								  	'<div class="deleteblock" id="newMoney'+index+'">'+
+									'<div class="field">'+  	
+									'<label>日期：'+		
+									'<input type="month" class="form-control" name="salsDate" value="'+result[i].date_string+'">'+  			
+									'</label>'+  		
+									'</div>'+  	
+									'<div class="field">'+  	
+									'<label>數量：'+ 		
+									'<input type="text" class="form-control" name="salsQuantity" value="'+result[i].quantity+'">'+ 			
+									'</label>'+  		
+									'</div>'+  	
+									'<div class="field">'+  	
+									'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
+									'</div>'+  				  		
+								  	'</div>';	            		
+								$('#addSalesQuantity2').append(addSalesQuantityText);
+								index++;
+				            	count++;
+							}
+						}
+						
+					}
+				});
 			}
+	        
+	        
 	    </script>
 	<!-- responsive-table -->  
 	<script src="js/responsive-tables.js"></script>

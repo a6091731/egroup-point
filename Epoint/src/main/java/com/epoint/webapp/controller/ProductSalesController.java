@@ -1,27 +1,25 @@
 package com.epoint.webapp.controller;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epoint.webapp.dao.ProductDAO;
 import com.epoint.webapp.dao.ProductSalesDAO;
-import com.epoint.webapp.dao.VentureChecklistDAO;
-import com.epoint.webapp.entity.MapClass;
-import com.epoint.webapp.entity.MapSubclass;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.Product;
 import com.epoint.webapp.entity.ProductSales;
-import com.epoint.webapp.util.DateConversion;
 import com.epoint.webapp.util.PageCount;
 import com.google.gson.Gson;
 
@@ -60,9 +58,6 @@ public class ProductSalesController {
 			
 			//getProduct			
 			List<Product> getProductList = productDAO.getProductListSum(memberLogin,pageCount.getStart(), pageSize);
-			/*ProductSalesDAO productSalesDAO = (ProductSalesDAO)context.getBean("productSalesDAO");
-			productSalesDAO.productSalseCountByMember()*/
-			
 			model.addObject("page", pageCount);
 			model.addObject("getProductList1",getProductList);
 			model.addObject("getProductList2", new Gson().toJson(getProductList));
@@ -72,21 +67,25 @@ public class ProductSalesController {
 	}	
 	
 	@RequestMapping(value = "/addProductSalse", method = RequestMethod.POST)
-	public ModelAndView addProductSalse (HttpServletRequest request, HttpSession session){
+	public ModelAndView addProductSalse (HttpServletRequest request, HttpSession session) throws ParseException{
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){			
 			model.setViewName("redirect:/revenueStructure");
 			ProductSalesDAO productSalesDAO = (ProductSalesDAO)context.getBean("productSalesDAO");
-			String id[] = request.getParameterValues("salsDate");
 			String[] dateList = request.getParameterValues("salsDate");
 			String[] quantityList = request.getParameterValues("salsQuantity");
 			ProductSales productSales = new ProductSales();
 			productSales.setAccount(memberLogin.getAccount());
-			for(int i = 0 ; i<dateList.length ; i++){
-				productSalesDAO.insertProductSales(productSales);
-				productSales.setDateString(dateList[i]);
+			productSales.setId(request.getParameter("productID"));
+			for(int i = 0 ; i<dateList.length ; i++){	
+				productSales.setDate_string(dateList[i]+"-01");
 				productSales.setQuantity(Integer.parseInt(quantityList[i]));
+				boolean flag = productSalesDAO.checkProductSalesByMember(productSales);
+				if(flag==true)
+					productSalesDAO.updateProductSales(productSales);
+				else
+					productSalesDAO.insertProductSales(productSales);
 			}
 		}
 		else
@@ -94,4 +93,20 @@ public class ProductSalesController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/getProductSalesListByMemberID", method = RequestMethod.GET)
+	public @ResponseBody List<ProductSales> getProductSalesListByMemberID (String  productID, HttpSession session) throws ParseException{
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){			
+			model.setViewName("redirect:/revenueStructure");
+			ProductSalesDAO productSalesDAO = (ProductSalesDAO)context.getBean("productSalesDAO");
+			ProductSales productSales = new ProductSales();
+			productSales.setAccount(memberLogin.getAccount());
+			productSales.setId(productID);
+			List<ProductSales> getProductSalesListByMemberID = productSalesDAO.getProductSalesListByMemberID(productSales);
+			
+			return getProductSalesListByMemberID;				
+		}
+		return null;	
+	}	
 }
