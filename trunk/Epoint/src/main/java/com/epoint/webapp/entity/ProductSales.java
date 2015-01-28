@@ -1,6 +1,7 @@
 package com.epoint.webapp.entity;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class ProductSales {
 	private String account;
@@ -8,9 +9,9 @@ public class ProductSales {
 	private Date date;
 	private int quantity;
 	
-	//程式變數
-	private String dateString;
-	
+	//程式控制
+	private String date_string;
+		
 	public String getAccount() {
 		return account;
 	}
@@ -35,10 +36,11 @@ public class ProductSales {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getDateString() {
-		return dateString;
+	public String getDate_string() {
+		return date_string;
 	}
-	public void setDateString(String dateString) {
-		this.dateString = dateString;
-	}	
+	public void setDate_string(String date_string) {
+		this.date_string = date_string;
+	}
+	
 }
