@@ -12,4 +12,5 @@ public interface ProductDAO {
 	public void updateProduct(Product product);
 	public int countProductByMember(Member member);
 	public List<Product> getAllProductList(Member member);
+	public void delProduct(Product product);
 }

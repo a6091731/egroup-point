@@ -127,7 +127,7 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 			smt = conn.prepareStatement(sql);			
 			smt.setString(1, productSales.getAccount());
 			smt.setString(2, productSales.getId());
-			smt.setString(2, productSales.getDate_string());
+			smt.setString(3, productSales.getDate_string()+" 00:00:00");
 			rs = smt.executeQuery();
 			while(rs.next()){
 				return true;
@@ -146,5 +146,27 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 			}
 		}
 		return false;
+	}
+
+	public void delProductSalesByMember(ProductSales productSales) {
+		// TODO Auto-generated method stub
+		sql = "DELETE FROM product_sales WHERE memberAccount = ? AND productID = ? ";
+		try {			
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1,productSales.getAccount());
+			smt.setString(2,productSales.getId());
+			smt.executeUpdate();			
+			smt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
 	}
 }
