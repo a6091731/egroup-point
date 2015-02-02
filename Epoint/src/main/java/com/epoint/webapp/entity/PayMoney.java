@@ -9,6 +9,9 @@ public class PayMoney {
 	private String date_string;
 	private int money;
 	private int record;
+	private int monthTotal;
+	private String subClassName;
+	private int subClassID;
 	
 	public String getAccount(){
 		return account;
@@ -56,5 +59,29 @@ public class PayMoney {
 
 	public void setDate_string(String date_string) {
 		this.date_string = date_string;
+	}
+
+	public int getMonthTotal() {
+		return monthTotal;
+	}
+
+	public void setMonthTotal(int monthTotal) {
+		this.monthTotal = monthTotal;
+	}
+
+	public String getSubClassName() {
+		return subClassName;
+	}
+
+	public void setSubClassName(String subClassName) {
+		this.subClassName = subClassName;
+	}
+
+	public int getSubClassID() {
+		return subClassID;
+	}
+
+	public void setSubClassID(int subClassID) {
+		this.subClassID = subClassID;
 	}
 }
