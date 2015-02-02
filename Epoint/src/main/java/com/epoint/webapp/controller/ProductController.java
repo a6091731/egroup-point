@@ -78,7 +78,7 @@ public class ProductController {
 			productDAO.insetProduct(product);		
 		}
 		else
-			model.setViewName("showAllProductDescribe");
+			model.setViewName("redirect:/");
 		return model;
 	}
 	
@@ -93,7 +93,7 @@ public class ProductController {
 			productDAO.updateProduct(product);		
 		}
 		else
-			model.setViewName("showAllProductDescribe");
+			model.setViewName("redirect:/");
 		return model;
 	}
 }

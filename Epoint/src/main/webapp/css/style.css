@@ -623,6 +623,8 @@ display: inline;
 }
 #addProduct textarea{width:96%;}
 #addProduct span.notice{color: #ff849b;}
+#editProduct textarea{width:96%;}
+#editProduct span.notice{color: #ff849b;}
 /* //showAllProductDescribe.html */
 
 /* businessOrientation.html */

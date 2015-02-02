@@ -9,4 +9,5 @@ public interface ProductSalesDAO {
 	public List<ProductSales> getProductSalesListByMemberID(ProductSales productSales);
 	public boolean checkProductSalesByMember(ProductSales productSales);
 	public void updateProductSales(ProductSales productSales);
+	public void delProductSalesByMember(ProductSales productSales);
 }

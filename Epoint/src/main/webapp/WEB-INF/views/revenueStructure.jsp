@@ -105,7 +105,7 @@
 					<h2><i class="fa fa-money fa-color"></i>收入結構</h2>
 				</section>
 
-				<form class="formset2">
+				<form class="formset2" >
 				<a class="addProduct" data-reveal-id ="addProduct" data-closeonbackgroundclick="false"><i class="fa fa-plus"></i> 新增產品</a>
 					<div class="ventureTypesInput clearfix">
 						<ul>
@@ -134,11 +134,12 @@
 											</td>								
 											<td>${product.totalProfit }</td>
 											<td>
-												<a class="fa-color" data-reveal-id="editProduct" data-closeonbackgroundclick="false">
+												<a onclick="setEditProduct(${i.index});" 
+												class="fa-color" data-reveal-id="editProduct" data-closeonbackgroundclick="false">
 												<i class="fa fa-pencil-square-o fa-lg"></i></a>
 											</td>
 											<td>
-												<a href="javascript:;" class="fa-color">
+												<a onclick="" class="fa-color">
 												<i class="fa fa-times-circle fa-lg"></i></a>
 											</td>
 										</tr>						
@@ -162,89 +163,148 @@
 		</div>			
 	</div>
 
+	<!-- addProduct BEGIN MODAL WINDOWS -->
+	<div id="addProduct" class="reveal-modal">
+		<div class="cont clearfix">
+			<form id="sendForm" action="addProductRevenueStructure" method="post" class="formset clearfix">
+				<fieldset class="fieldset2">
+					<legend>1 產品名稱</legend>
+					<div class="field">
+						<label><span>產品名稱：</span> 
+						<input type="text" class="form-control" name="name"> </label>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>2產品規格</legend>
+					<textarea rows="8" name="specification"
+						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>3包裝說明</legend>
+					<textarea rows="8" name="pack"
+						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>4終端消費者定價</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" name="endPrice" class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>5實質銷售價格</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" name="salesPrice"	class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>6直接成本</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" name="cost" class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<button type="submit" class="finishButton">
+					<span class="next">新增產品</span>
+				</button>
+				<button type="button" class="cancelButton">
+					<span class="next">取消</span>
+				</button>
+			</form>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
 	<!-- BEGIN MODAL WINDOWS -->
         <div id="editProduct" class="reveal-modal">
-             <div class="cont clearfix">
-                     <form class="formset clearfix">
-                             <fieldset class="fieldset2">
-                                     <legend>1.產品名稱</legend>
-                                     <div class="field">
-                                             <label><span>產品名稱：</span>
-                                                     <input type="text" class="form-control" name="fixcost" >
-                                             </label>
-                                     </div>
-                             </fieldset>
-                             <fieldset  class="fieldset2">
-                                     <legend>2.產品規格</legend>
-                                     <textarea rows="8" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
-                             </fieldset>
-                             <fieldset  class="fieldset2">
-                                     <legend>3.包裝說明</legend>
-                                     <textarea rows="8" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
-                             </fieldset>                                     
-                             <fieldset  class="fieldset2">
-                                     <legend>4.終端消費者定價</legend>
-                                     <div>
-                                             <div class="field">
-                                                     <label>金額：
-                                                             <input type="text" class="form-control" name="money3">
-                                                     </label>
-                                             </div>                                          
-                                     </div>
-                             </fieldset>     
-                             <fieldset  class="fieldset2">
-                                     <legend>5.實質銷售價格</legend>
-                                     <div>
-                                             <div class="field">
-                                                     <label>金額：
-                                                             <input type="text" class="form-control" name="money3">
-                                                     </label>
-                                             </div>                                          
-                                     </div>
-                             </fieldset>
-                             <fieldset  class="fieldset2">
-                                     <legend>6.直接成本</legend>
-                                     <div>
-                                             <div class="field">
-                                                     <label>金額：
-                                                             <input type="text" class="form-control" name="money3">
-                                                     </label>
-                                             </div>                                          
-                                     </div>
-                             </fieldset>
-                             <button type="submit" class="finishButton">
-								<span class="next">新增產品</span>
-							 </button>
-							 <button type="button" class="cancelButton">
-								<span class="next">取消</span>
-							 </button>
-                       </form>
-             </div>
-             <a class="close-reveal-modal">&#215;</a>
-        </div>
+		<div class="cont clearfix">
+			<form id="sendForm1" action="editProductRevenueStructure" method="post" class="formset clearfix">
+			<input type="hidden" id="editID" name="id">
+				<fieldset class="fieldset2">
+					<legend>1 產品名稱</legend>
+					<div class="field">
+						<label><span>產品名稱：</span> 
+						<input type="text" id= "editName" class="form-control" name="name"></label>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>2產品規格</legend>
+					<textarea rows="8" id="editSpecification" name="specification"
+						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>3包裝說明</legend>
+					<textarea rows="8" id="editPack" name="pack"
+						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>4終端消費者定價</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" id="editEndPrice" name="endPrice" class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>5實質銷售價格</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" id="editSalesPrice" name="salesPrice"	class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>6直接成本</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" id="editCost" name="cost" class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<button type="submit" class="finishButton">
+					<span class="next">修改產品</span>
+				</button>
+				<button type="button" class="cancelButton" >
+					<span class="next">取消</span>
+				</button>
+			</form>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
 
 
 	<!-- BEGIN MODAL WINDOWS -->
         <div id="addProductSales" class="reveal-modal">
                 <div class="cont clearfix">
-                        <form class="formset clearfix" id="sendForm" action="addProductSalse" method="post">
-                        		<input type="hidden" id="productID" name="productID">
+                        <form class="formset clearfix" id="sendForm2" action="addProductSalse" method="post">
+                        		<input type="hidden" id="productID" name="productID">                        		
 	                            <fieldset class="fieldset2">
 	                                    <p id="productName"></p>
 	                            </fieldset>
-                                <fieldset id="addSalesQuantity1" class="fieldset2">
+	                            <input type="hidden" id="delCount" value="1">
+                                <fieldset id="addSalesQuantity" class="fieldset2">                                  	
 								  	<legend>產品銷售數量 : </legend>								  			  	
 								  	<button type="button" class="addbutton" onclick="addbutton();"><i class="fa fa-plus"></i> 新增數量</button>
 									<div id="newMoney0" >
 									  	<div class="deleteblock">
 										  	<div class="field">
 										  		<label>日期：
-										  			<input type="month" class="form-control" id="salsDate0" name="salsDate">
+										  			<input type="month" class="form-control salsDate" id="salsDate0" name="salsDate" >
 										  		</label>
 										  	</div>
 										  	<div class="field">
 										  		<label>數量：
-										  			<input type="text" class="form-control" id="salsQuantity0" name="salsQuantity">
+										  			<input type="text" class="form-control salsQuantity" id="salsQuantity0" name="salsQuantity" >
 										  		</label>
 										  	</div>
 										  	<div class="field">
@@ -253,10 +313,8 @@
 									  	</div>
 									</div>								  	
 								</fieldset>
-								<fieldset id="addSalesQuantity2" class="fieldset2">
-								</fieldset>
-                                <button type="submit" class="finishButton">
-								<span class="next">新增產品</span>
+                                <button type="submit" class="finishButton" id="addProductSalesSubmit">
+								<span class="next">確認修改</span>
 								</button>
 								<button type="button" class="cancelButton" >
 									<span class="next">取消</span>
@@ -286,36 +344,151 @@
 	        $(function(){
 	            $(".cancelButton").click(function(){
 					$(".close-reveal-modal").trigger("click");
-				});	
-	           	// $('nav.primary .rightnav').mobileMenu();	           	
-	        });
+				});
+	            $("#sendForm2").validate({
+	            	rules:{},
+	            	messages:{},
+    	        	submitHandler:function(form){
+    					$(".salsDate").attr("name","salsDate");
+    					form.submit();
+    					$(".salsQuantity").attr("name","salsQuantity");
+    					form.submit();
+    				}
+	            });	 
+	           $("#addProductSalesSubmit").click(function(){
+	            	var salsClassCount = $('.salsDate').length
+	            	alert("salsClassCount="+salsClassCount);
+	            	if(salsClassCount>1){
+	            		//alert("123");
+	            		//alert("salsCount="+salsCount);
+	            		$("#salsDate0").rules("add",{
+	    	        		required:true,
+	    	            	messages:{
+	    	            		required:"請輸入日期",	            		
+	    	            	}
+	    	        	});	        	
+
+	    	        	$("#salsQuantity0").rules("add",{
+	    	        		required:true,
+	    	            	number: true,
+	    	            	min:1,
+	    	            	maxlength:12,
+	    	            	messages:{
+	    	            		required:"請輸入數量",
+	    	            		num:"請輸入數字",
+	    	            		min:"請輸入大於0的數量",
+	    	            		maxlength:"請輸入小於12位數的數量"
+	    	            	}
+	    	        	});
+	    	        	
+
+	    	        	
+	    	        	/*$("#sendForm2").validate({
+	    	            	rules:{
+	    	            		salsDate:"required",
+	    	            		salsQuantity:{
+	    	            			required:true,
+	    	            			number: true,
+	    	            			min:1,
+	    	            			maxlength:12
+	    	            		}
+	    	            	},
+	    	            	messages:{
+	    	            		salsDate:"請輸入日期",
+	    	            		salsQuantity:{
+	    	            			required:"請輸入數量",
+	    	            			num:"請輸入數字",
+	    	            			min:"請輸入大於0的數量",
+	    	            			maxlength:"請輸入小於12位數的數量"
+	    	            		}
+	    	            	}
+	    	        	});*/
+	            	}else{
+	            		alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
+	            		$(".close-reveal-modal").trigger("click");
+	            	}
+				}); 
+	     	});
+	        
+	        function deleteProduct(){
+	        	$.ajax({
+					url:"getProductSalesListByMemberID",
+					data:{
+						productID : list[i].id
+					},
+					dataType:"json",
+	        	})
+	        }
+	        
+	        function addValidate(getIndex){
+	        	/*alert(123321);
+	        	alert("index="+getIndex)*/
+	        	$("#salsDate"+getIndex).rules("add",{
+	        		required:true,
+	            	messages:{
+	            		required:"請輸入日期",	            		
+	            	}
+	        	});	        	
+
+	        	$("#salsQuantity"+getIndex).rules("add",{
+	        		required:true,
+	            	number: true,
+	            	min:1,
+	            	maxlength:12,
+	            	messages:{
+	            		required:"請輸入數量",
+	            		num:"請輸入數字",
+	            		min:"請輸入大於0的數量",
+	            		maxlength:"請輸入小於12位數的數量"
+	            	}
+	        	});
+	        }
+	        
+	        function setEditProduct(i){
+				var list = $.parseJSON('${getProductList2}');
+				$('#editID').val(list[i].id);
+				$('#editName').val(list[i].name);
+				$('#editSpecification').val(list[i].specification);
+				$('#editPack').val(list[i].pack);
+				$('#editEndPrice').val(list[i].endPrice);
+				$('#editSalesPrice').val(list[i].salesPrice);
+				$('#editCost').val(list[i].cost);
+			}
 	        
 	        function addbutton(){
 	        	var addSalesQuantityText =
 				  	'<div class="deleteblock" id="newMoney'+index+'">'+
 					'<div class="field">'+  	
 					'<label>日期：'+		
-					'<input type="month" class="form-control" name="salsDate">'+  			
+					'<input type="month" class="form-control salsDate" id="salsDate'+index+'" name="salsDate'+index+'">'+  			
 					'</label>'+  		
 					'</div>'+  	
 					'<div class="field">'+  	
 					'<label>數量：'+ 		
-					'<input type="text" class="form-control" name="salsQuantity">'+ 			
+					'<input type="text" class="form-control salsQuantity"  id="salsQuantity'+index+'" name="salsQuantity'+index+'">'+ 			
 					'</label>'+  		
 					'</div>'+  	
 					'<div class="field">'+  	
 					'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
 					'</div>'+  				  		
 				  	'</div>';	            		
-	            	$('#addSalesQuantity2').append(addSalesQuantityText);
+	            	$('#addSalesQuantity').append(addSalesQuantityText);
+	            	var delCount = $('#delCount').val();
+	            	delCount++;	            	
+	            	$('#delCount').val(delCount);
+	            	addValidate(index);
 	            	index++;
-	            	count++;
 	        }
 	        
 	        function deletebutton(index){
-	        	if(count>1){
+	        	var delCount = $('#delCount').val();
+	        	if(delCount>1){
             		$("#newMoney"+index).remove();  
-            		count--;
+            		delCount--;
+            		$('#delCount').val(delCount);
+	        	}else{
+	        		$("#salsDate"+index).val("");  
+	        		$("#salsQuantity"+index).val(""); 
 	        	}
            	}
 	        
@@ -323,54 +496,72 @@
 				var list = $.parseJSON('${getProductList2}');
 				$('#productID').val(list[i].id);
 				$('#productName').text(list[i].name);
-				alert("here");
+				$('#delCount').val(1);
+				var delCount = $('#delCount').val();
 				$.ajax({
 					url:"getProductSalesListByMemberID",
 					data:{
-						//memberLogin : list[i].account ,
 						productID : list[i].id
 					},
 					dataType:"json",
 					success:function(result){
-						$('#addSalesQuantity2').html("");
+						$('#addSalesQuantity').html("");
+						var addSalesQuantityText = 
+							'<legend>產品銷售數量 : </legend>'+							  			  	
+						  	'<button type="button" class="addbutton" onclick="addbutton();"><i class="fa fa-plus"></i> 新增數量</button>'+
+							'<div id="newMoney0" >'+
+							'<div class="deleteblock">'+
+							'<div class="field">'+
+							'<label>日期：'+
+							'<input type="month" class="form-control salsDate" id="salsDate0" name="salsDate">'+
+							'</label>'+
+							'</div>'+
+							'<div class="field">'+
+							'<label>數量：'+
+							'<input type="text" class="form-control salsQuantity" id="salsQuantity0" name="salsQuantity">'+
+							'</label>'+
+							'</div>'+
+							'<div class="field">'+
+							'<button type="button" class="deletebutton" onclick="deletebutton(0);"><i class="fa fa-times"></i> 刪除</button>'+
+							'</div>'+		  		
+							'</div>'+
+							'</div>';
+						$('#addSalesQuantity').append(addSalesQuantityText);
 						$("#salsDate0").val("");
 						$("#salsQuantity0").val("");
 						if(result.length>0){
-							//$("#salsDate0").val(result[0].date);
-							alert(result[0].date_string);
-							$("#salsDate0").val(result[0].date_string);
 							$("#salsDate0").val(result[0].date_string);
 							$("#salsQuantity0").val(result[0].quantity);							
 							for(var i=1; i<result.length; i++){
-								var addSalesQuantityText =
+				            	$('#delCount').val($('#delCount').val()+1)
+								addSalesQuantityText = 
 								  	'<div class="deleteblock" id="newMoney'+index+'">'+
 									'<div class="field">'+  	
 									'<label>日期：'+		
-									'<input type="month" class="form-control" name="salsDate" value="'+result[i].date_string+'">'+  			
+									'<input type="month" class="form-control salsDate" id="salsDate'+index+'" name="salsDate'+index+'" value="'+result[i].date_string+'">'+  			
 									'</label>'+  		
 									'</div>'+  	
 									'<div class="field">'+  	
 									'<label>數量：'+ 		
-									'<input type="text" class="form-control" name="salsQuantity" value="'+result[i].quantity+'">'+ 			
+									'<input type="text" class="form-control salsQuantity" id="salsQuantity'+index+'" name="salsQuantity'+index+'" value="'+result[i].quantity+'">'+ 			
 									'</label>'+  		
 									'</div>'+  	
 									'<div class="field">'+  	
 									'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
 									'</div>'+  				  		
-								  	'</div>';	            		
-								$('#addSalesQuantity2').append(addSalesQuantityText);
-								index++;
-				            	count++;
+								  	'</div>';
+				            	$('#addSalesQuantity').append(addSalesQuantityText);	
+				            	delCount++;
+				            	$('#delCount').val(delCount);
+				            	addValidate(index);
+				            	index++;
 							}
 						}
-						
 					}
 				});
 			}
-	        
+	       
 	        
 	    </script>
-	<!-- responsive-table -->  
-	<script src="js/responsive-tables.js"></script>
 </body>
 </html>

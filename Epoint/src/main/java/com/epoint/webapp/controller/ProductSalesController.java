@@ -68,6 +68,9 @@ public class ProductSalesController {
 	
 	@RequestMapping(value = "/addProductSalse", method = RequestMethod.POST)
 	public ModelAndView addProductSalse (HttpServletRequest request, HttpSession session) throws ParseException{
+		String  monthDate[] = new String[13];
+		int monthQuantity[] = new int[13];
+		int getMonth;
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){			
@@ -78,14 +81,31 @@ public class ProductSalesController {
 			ProductSales productSales = new ProductSales();
 			productSales.setAccount(memberLogin.getAccount());
 			productSales.setId(request.getParameter("productID"));
+			productSalesDAO.delProductSalesByMember(productSales);			
 			for(int i = 0 ; i<dateList.length ; i++){	
-				productSales.setDate_string(dateList[i]+"-01");
-				productSales.setQuantity(Integer.parseInt(quantityList[i]));
-				boolean flag = productSalesDAO.checkProductSalesByMember(productSales);
-				if(flag==true)
-					productSalesDAO.updateProductSales(productSales);
-				else
+				System.out.println("quantityList[i]"+quantityList[i]);
+				System.out.println("dateList[i]"+dateList[i]);
+				if(dateList[i]!="" && quantityList[i]!=""){
+					
+					System.out.println(dateList[i].substring(5,7));			
+					System.out.println(Integer.parseInt(dateList[i].substring(5,7)));
+					
+					getMonth = Integer.parseInt(dateList[i].substring(5,7));
+					monthDate[getMonth] = dateList[i];
+					monthQuantity[getMonth] = monthQuantity[getMonth]+Integer.parseInt(quantityList[i]);
+					
+					/*productSales.setDate_string(dateList[i]+"-01");
+					productSales.setQuantity(Integer.parseInt(quantityList[i]));			
+					productSalesDAO.insertProductSales(productSales);*/
+				}
+			}	
+			
+			for(int j = 0;j<monthDate.length;j++){
+				if(monthDate[j]!=null && monthQuantity[j]!=0){
+					productSales.setDate_string(monthDate[j]+"-01");
+					productSales.setQuantity(monthQuantity[j]);			
 					productSalesDAO.insertProductSales(productSales);
+				}
 			}
 		}
 		else
@@ -108,5 +128,50 @@ public class ProductSalesController {
 			return getProductSalesListByMemberID;				
 		}
 		return null;	
-	}	
+	}
+	
+	@RequestMapping(value = "/addProductRevenueStructure", method = RequestMethod.POST)
+	public ModelAndView addProductRevenueStructure (Product product, HttpServletRequest request, HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){				
+			model.setViewName("redirect:/revenueStructure");
+			product.setAccount(memberLogin.getAccount());
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
+			productDAO.insetProduct(product);		
+		}
+		else
+			model.setViewName("redirect:/");
+		return model;
+	}
+	
+	@RequestMapping(value = "/editProductRevenueStructure", method = RequestMethod.POST)
+	public ModelAndView editProductRevenueStructure (Product product, HttpServletRequest request, HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){				
+			model.setViewName("redirect:/revenueStructure");
+			product.setAccount(memberLogin.getAccount());
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
+			productDAO.updateProduct(product);		
+		}
+		else
+			model.setViewName("redirect:/");
+		return model;
+	}
+	
+	@RequestMapping(value = "/delProductRevenueStructure", method = RequestMethod.POST)
+	public ModelAndView delProductRevenueStructure (Product product, HttpServletRequest request, HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){				
+			model.setViewName("redirect:/revenueStructure");
+			product.setAccount(memberLogin.getAccount());
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
+			productDAO.updateProduct(product);		
+		}
+		else
+			model.setViewName("redirect:/");
+		return model;
+	}
 }

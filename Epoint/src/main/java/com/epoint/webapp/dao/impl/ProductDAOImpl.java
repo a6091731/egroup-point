@@ -150,6 +150,7 @@ public class ProductDAOImpl implements ProductDAO{
 				product.setCost(rs.getInt("productCost"));
 				product.setProfit(product.getSalesPrice()-product.getCost());
 				product.setSum(rs.getInt("sumQuantity"));
+				product.setTotalProfit(product.getProfit()*product.getSum());
 				productList.add(product);
 			}
 			rs.close();
@@ -261,5 +262,27 @@ public class ProductDAOImpl implements ProductDAO{
 			}
 		}
 		return productList;
+	}
+
+	public void delProduct(Product product) {
+		// TODO Auto-generated method stub
+		sql = "DELETE FROM product WHERE memberAccount = ? AND productID = ? ";
+		try {			
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1,product.getAccount());
+			smt.setString(2,product.getId());
+			smt.executeUpdate();			
+			smt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
 	}
 }
