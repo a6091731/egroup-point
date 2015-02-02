@@ -63,18 +63,18 @@
 			<div class="grid_3">
 				<aside>
 					<ul class="sideNav hideBlock">
-						<li class="current"><a href="javascript:;">1月</a></li>
-						<li><a href="javascript:;">2月</a></li>
-						<li><a href="javascript:;">3月</a></li>
-						<li><a href="javascript:;">4月</a></li>
-						<li><a href="javascript:;">5月</a></li>
-						<li><a href="javascript:;">6月</a></li>
-						<li><a href="javascript:;">7月</a></li>
-						<li><a href="javascript:;">8月</a></li>
-						<li><a href="javascript:;">9月</a></li>
-						<li><a href="javascript:;">10月</a></li>
-						<li><a href="javascript:;">11月</a></li>
-						<li><a href="javascript:;">12月</a></li>
+						<li ${selectedMonth eq 1 ? "class='current'": ""}><a href="cashFlow?mon=1">1月</a></li>
+						<li ${selectedMonth eq 2 ? "class='current'": ""}><a href="cashFlow?mon=2">2月</a></li>
+						<li ${selectedMonth eq 3 ? "class='current'": ""}><a href="cashFlow?mon=3">3月</a></li>
+						<li ${selectedMonth eq 4 ? "class='current'": ""}><a href="cashFlow?mon=4">4月</a></li>
+						<li ${selectedMonth eq 5 ? "class='current'": ""}><a href="cashFlow?mon=5">5月</a></li>
+						<li ${selectedMonth eq 6 ? "class='current'": ""}><a href="cashFlow?mon=6">6月</a></li>
+						<li ${selectedMonth eq 7 ? "class='current'": ""}><a href="cashFlow?mon=7">7月</a></li>
+						<li ${selectedMonth eq 8 ? "class='current'": ""}><a href="cashFlow?mon=8">8月</a></li>
+						<li ${selectedMonth eq 9 ? "class='current'": ""}><a href="cashFlow?mon=9">9月</a></li>
+						<li ${selectedMonth eq 10 ? "class='current'": ""}><a href="cashFlow?mon=10">10月</a></li>
+						<li ${selectedMonth eq 11 ? "class='current'": ""}><a href="cashFlow?mon=11">11月</a></li>
+						<li ${selectedMonth eq 12 ? "class='current'": ""}><a href="cashFlow?mon=12">12月</a></li>
 					</ul>	
 	                <div class="memberRwdnav clearfix">
 	                    <nav class="primary">
@@ -130,7 +130,7 @@
 					</div>
 				</div>
 				<section class="ventureTypesTitle pt20">
-					<h2><i class="fa fa-file-text-o fa-color"></i>1月收入明細</h2>
+					<h2><i class="fa fa-file-text-o fa-color"></i>${selectedMonth}月收入明細</h2>
 				</section>
 				<div class="ventureTypesInput clearfix">
 						<ul>
@@ -179,7 +179,7 @@
                         </div> -->
 					</div>
 					<section class="ventureTypesTitle pt20">
-						<h2><i class="fa fa-file-text-o fa-color"></i>1月支出明細</h2>
+						<h2><i class="fa fa-file-text-o fa-color"></i>${selectedMonth}月支出明細</h2>
 					</section>
 					<div class="ventureTypesInput clearfix">
 						<ul>
@@ -193,51 +193,13 @@
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach items="${totalMoneyBySubClass}" var="item">
 										<tr>
-											<td>公司成立</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
+											<td>${item.subClassName }</td>
+											<td>${item.monthTotal }</td>
+											<td><a href="javascript:;" class="fa-color" data-reveal-id="sub${item.subClassID }"><i class="fa fa-file-text-o fa-lg"></i></a></td>
 										</tr>
-										<tr>
-											<td>營業場所完工</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
-										<tr>
-											<td>人員到位</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
-										<tr>
-											<td>生產設備建置</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
-										<tr>
-											<td>試產</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
-										<tr>
-											<td>原料採購</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
-										<tr>
-											<td>試營運</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
-										<tr>
-											<td>通路開發</td>
-											<td>180</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
-										<tr>
-											<td>行銷推廣</td>
-											<td>200</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailRevenue"><i class="fa fa-file-text-o fa-lg"></i></a></td>
-										</tr>
+									</c:forEach>
 									</tbody>
 							</table>
 							</li>
@@ -296,9 +258,12 @@
         </div>
 
 	<!-- BEGIN MODAL WINDOWS -->
-        <div id="productDetailRevenue" class="reveal-modal">
+	<c:forEach items="${totalMoneyBySubClass}" var="subClass" varStatus="loop">
+        <div id="sub${subClass.subClassID}" class="reveal-modal">
                 <div class="cont clearfix">
                         <form class="formset clearfix">
+                        	<c:forEach items="${payItems}" var="item" varStatus="loop2">
+                        	<c:out value="${loop2.index}"></c:out>
 							  	<fieldset class="fieldset">
 							  		<legend>1.1 固定成本[設立費用]：</legend>
 								  	<div class="field">
@@ -312,6 +277,7 @@
 								  		</label>
 								  	</div>
 								</fieldset>
+							</c:forEach>
 								<fieldset  class="fieldset">
 								  	<legend>1.2 固定成本[設計及申請商標]</legend>
 								  	<div class="field">
@@ -403,7 +369,7 @@
                 </div>
                 <a class="close-reveal-modal">&#215;</a>
         </div>
-
+	</c:forEach>
 
 
 
@@ -418,16 +384,21 @@
 		<script type="text/javascript">
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
-
 	        });
 	    </script>
 	<!-- responsive-table -->  
 	    <script src="js/responsive-tables.js"></script>
 	<!-- Chart -->  
-	    <script src="js/Chart.min.js"></script>
+	    <script src="js/Chart.js"></script>
 
 		<script>
-			var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+			var randomScalingFactor = function(){
+				return Math.round(Math.random()*100);
+			};
+			var expendData = [0,0,0,0,0,0,0,0,0,0,0,0];
+			<c:forEach items='${monthTotalMoney}' var='total' varStatus='loop'>
+				expendData[${loop.index}] = ${total };
+			</c:forEach>
 			var lineChartData = {
 				labels : ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
 				datasets : [
@@ -449,17 +420,13 @@
 						pointStrokeColor : "#fff",
 						pointHighlightFill : "#fff",
 						pointHighlightStroke : "rgba(151,187,205,1)",
-						data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+						data : expendData
 					}
 				]
-
-			}
-
+			};
 			window.onload = function(){
 				var ctx = document.getElementById("canvas").getContext("2d");
-				window.myLine = new Chart(ctx).Line(lineChartData, {
-					responsive: true
-				});
+				var myLineChart = new Chart(ctx).Line(lineChartData,{reponsive:true});
 			}
 		</script> 
 </body>
