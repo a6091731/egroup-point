@@ -134,7 +134,7 @@
 					<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[1].ID" value="2122">
 				  	<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record}">
-				  		<legend>1.1.2 固定成本[營業場所每月租金]：</legend>
+				  		<legend>1.2 固定成本[營業場所每月租金]：</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control required" name="fixedPayMoney[1].date_string" value="${fn:substring(fixedPayMoney[1].date,0,7)}">
@@ -149,7 +149,7 @@
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[2].ID" value="2123">
 					<input type="hidden" name="fixedPayMoney[2].record" value="${fixedPayMoney[2].record}">
-					  	<legend>1.2 固定成本[水/電/瓦斯/網路/電信申租費用]</legend>
+					  	<legend>1.3 固定成本[水/電/瓦斯/網路/電信申租費用]</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control required" name="fixedPayMoney[2].date_string" value="${fn:substring(fixedPayMoney[2].date,0,7)}">
@@ -164,7 +164,7 @@
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[3].ID" value="2124">
 					<input type="hidden" name="fixedPayMoney[3].record" value="${fixedPayMoney[3].record}">
-					  	<legend>1.2.1 固定成本[水/電/瓦斯/網路/電信月租費]</legend>
+					  	<legend>1.4 固定成本[水/電/瓦斯/網路/電信月租費]</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control required" name="fixedPayMoney[3].date_string" value="${fn:substring(fixedPayMoney[3].date,0,7)}">

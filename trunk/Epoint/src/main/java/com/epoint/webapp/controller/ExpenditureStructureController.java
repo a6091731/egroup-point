@@ -266,7 +266,6 @@ public class ExpenditureStructureController {
                         payMoney.setAccount(account);
                        
                         int subClassID = Integer.parseInt(expenditureForm.getSubClass());
-//                      int subClassID = 211;
                         List<PayItem> allPayItem = payItemDAO.getAllPayItemBySubClassID(subClassID);
                         List<PayMoney> oldFixedPayMoney = new ArrayList<PayMoney>();
                         List<PayMoney> oldDynamicPayMoney = new ArrayList<PayMoney>();

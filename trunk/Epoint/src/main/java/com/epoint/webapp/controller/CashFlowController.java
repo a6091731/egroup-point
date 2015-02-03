@@ -66,17 +66,36 @@ public class CashFlowController {
 			String account = "admin";
 			model.setViewName("redirect:/cashFlow");
 			CashFlowForm cashFlowForm = new CashFlowForm();
-			List<PayMoney> fixedList = payMoneyDAO.getPayMoneyBySubClassStatus(account, subClassID, 1);
-			List<PayMoney> monthlyList = payMoneyDAO.getPayMoneyBySubClassStatus(account, subClassID, 3);
-			List<PayMoney> dynamicList = payMoneyDAO.getPayMoneyBySubClassStatus(account, subClassID, 2);
-			List<PayMoney> payMoneyList = new ArrayList<PayMoney>();
-			payMoneyList.addAll(fixedList);
-			payMoneyList.addAll(monthlyList);
-			payMoneyList.addAll(dynamicList);
-			int[] listCount = {fixedList.size(),monthlyList.size(),dynamicList.size()};
-			cashFlowForm.setPayItemList(payItemDAO.getAllPayItemBySubClassID(subClassID));
-			cashFlowForm.setPayMoneyList(payMoneyList);
-			cashFlowForm.setListCount(listCount);
+			List<PayItem> itemList = payItemDAO.getAllPayItemBySubClassID(subClassID);
+			List<PayMoney> tempList = new ArrayList<PayMoney>();
+			for(int i = 0;i < itemList.size();i++){
+				PayItem item = itemList.get(i);
+				tempList = payMoneyDAO.getPayMoneyByItemID(account, item.getItemID());
+				switch(i){
+					case 0:
+						cashFlowForm.setList1(tempList);
+						break;
+					case 1:
+						cashFlowForm.setList2(tempList);
+						break;
+					case 2:
+						cashFlowForm.setList3(tempList);
+						break;
+					case 3:
+						cashFlowForm.setList4(tempList);
+						break;
+					case 4:
+						cashFlowForm.setList5(tempList);
+						break;
+					case 5:
+						cashFlowForm.setList6(tempList);
+						break;
+					case 6:
+						cashFlowForm.setList7(tempList);
+						break;
+				}
+			}
+			cashFlowForm.setPayItemList(itemList);
 			return cashFlowForm;
 //		}
 //		return null;

@@ -261,41 +261,7 @@
         <div id="editExpenditure" class="reveal-modal">
                 <div class="cont clearfix">
                 	<form class="formset clearfix" id="sendForm" method="POST" action="addExpenditure">
-                		
-                		<fieldset class="fieldset">
-							<legend>1.1 固定成本[設立費用]：</legend>
-						 	<div class="field">
-								<label>日期：
-									<input type="month" class="form-control" name="fixcostdate">
-								</label>
-						  	</div>
-						  	<div class="field">
-						  		<label><span>金額：</span>
-						  			<input type="text" class="form-control" name="fixcost" >
-						  		</label>
-						  	</div>
-						</fieldset>
-						<fieldset  class="fieldset">
-								  	<legend>2 印製名片</legend>
-								  	<button class="addbutton"><i class="fa fa-plus"></i> 新增一筆費用</button>
-								  	<div>
-									  	<div class="field">
-									  		<label>日期：
-									  			<input type="month" class="form-control" name="cardDate">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<label>金額：
-									  			<input type="text" class="form-control" name="cardCost">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
-									  	</div>					  		
-								  	</div>
-								</fieldset>
-                    	<a href="javascript:;" class="finishButton"><span class="next">儲存變更</span></a>          
-                    	<a href="javascript:;" class="cancelButton"><span class="next">取消</span></a>
+                    	
                 	</form>
                 </div>
                 <a class="close-reveal-modal">&#215;</a>
@@ -361,6 +327,7 @@
 			
 			function editPayMoney(subClassID){
 				var fixedIndex = 0;
+				var dynamicNum = 2;
 				$.ajax({
 					url:"getPayMoneyDetailBySubClassID",
 					data:{
@@ -370,41 +337,115 @@
 					success:function(result){
 						$('#sendForm').empty();
 						$('#sendForm').append('<input type="hidden" value="'+subClassID+'" name="subClass">');
-						alert('原本:'+result.payMoneyList);
-						alert('parseJSON:'+$.parseJSON(result.payMoneyList));
 						$.each(result.payItemList, function(index, value){
 							var obj = result.payItemList[index];
-							
+							var tempList;
+							switch(index){
+								case 0:
+									tempList = result.list1;
+									break;
+								case 1:
+									tempList = result.list2;
+									break;
+								case 2:
+									tempList = result.list3;
+									break;
+								case 3:
+									tempList = result.list4;
+									break;
+								case 4:
+									tempList = result.list5;
+									break;
+								case 5:
+									tempList = result.list6;
+									break;
+								case 6:
+									tempList = result.list7;
+									break;
+							}
 							if(obj.status == 1){
-								if($.inArray(obj.itemID,result.payMoneyList) > -1){
-									alert(obj.itemID+' inArray');
-								}
-								var fixedCol = '<fieldset class="fieldset">'+
-												'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
-										  		'<legend>1.1 固定成本['+obj.name+']：</legend>'+
+								$('#sendForm').append('<fieldset class="fieldset">'+
+										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
+								  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+								  		'<div class="field">'+
+									  		'<label>日期：'+
+									  			'<input type="month" class="form-control" value="'+tempList[0].date+'" name="fixcostdate">'+
+									  		'</label>'+
+									  	'</div>'+
+									  	'<div class="field">'+
+									  		'<label><span>金額：</span>'+
+									  			'<input type="text" class="form-control" name="fixcost" value="'+tempList[0].money+'">'+
+									  		'</label>'+
+									  	'</div>'+
+									'</fieldset>');
+								fixedIndex++;
+							}else if(obj.status == 2){
+								$('#sendForm').append('<fieldset class="fieldset">'+
+										'<button class="addbutton"><i class="fa fa-plus"></i> 新增一筆費用</button>'+
+										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+								  		'<legend>'+dynamicNum+' '+obj.name+'：</legend>');
+								if(tempList.length > 0){
+									for(var i = 0;i < tempList.length;i++){
+										var data = tempList[i];
+										$('#sendForm').append(
+											'<div>'+
 											  	'<div class="field">'+
 											  		'<label>日期：'+
-											  			'<input type="month" class="form-control" name="fixcostdate">'+
+											  			'<input type="month" class="form-control" name="cardDate" value="'+data.date+'">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
-											  		'<label><span>金額：</span>'+
-											  			'<input type="text" class="form-control" name="fixcost" >'+
+											  		'<label>金額：'+
+											  			'<input type="text" class="form-control" name="cardCost" value="'+data.money+'">'+
 											  		'</label>'+
 											  	'</div>'+
-											'</fieldset>';
-							}else if(obj.status == 2){
-								if($.inArray(obj.itemID,result.payMoneyList) > -1){
-									alert(obj.itemID+' inArray');
+											  	'<div class="field">'+
+											  		'<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>'+
+											  	'</div>'+
+										  	'</div>');
+									}
+								}else{
+									$('#sendForm').append(
+											'<div>'+
+											  	'<div class="field">'+
+											  		'<label>日期：'+
+											  			'<input type="month" class="form-control" name="cardDate">'+
+											  		'</label>'+
+											  	'</div>'+
+											  	'<div class="field">'+
+											  		'<label>金額：'+
+											  			'<input type="text" class="form-control" name="cardCost">'+
+											  		'</label>'+
+											  	'</div>'+
+											  	'<div class="field">'+
+											  		'<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>'+
+											  	'</div>'+
+										  	'</div>');
 								}
+								dynamicNum++;
 							}else if(obj.status == 3){
-								if($.inArray(obj.itemID,result.payMoneyList) > -1){
-									alert(obj.itemID+' inArray');
-								}
+								$('#sendForm').append('<fieldset class="fieldset">'+
+										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
+								  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+									  	'<div class="field">'+
+									  		'<label>日期：'+
+									  			'<input type="month" class="form-control" value="'+tempList[0].date+'" name="fixcostdate">'+
+									  		'</label>'+
+									  	'</div>'+
+									  	'<div class="field">'+
+									  		'<label><span>金額：</span>'+
+									  			'<input type="text" class="form-control" name="fixcost" value="'+tempList[0].money+'">'+
+									  		'</label>'+
+									  	'</div>'+
+									'</fieldset>');
+								fixedIndex++;
 							}
-							
-							//$('#sendForm').append(fixedCol);
 						});
+						$('#sendForm').append(
+								'<a href="javascript:;" class="finishButton"><span class="next">儲存變更</span></a>'+
+		                    	'<a href="javascript:;" class="cancelButton"><span class="next">取消</span></a>');
 					}
 				});
 			}
