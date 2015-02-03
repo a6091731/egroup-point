@@ -197,7 +197,7 @@
 										<tr>
 											<td>${item.subClassName }</td>
 											<td>${item.monthTotal }</td>
-											<td><a href="javascript:;" class="fa-color" data-reveal-id="sub${item.subClassID }"><i class="fa fa-file-text-o fa-lg"></i></a></td>
+											<td><a onClick="editPayMoney(${item.subClassID })" class="fa-color" data-reveal-id="editExpenditure"><i class="fa fa-file-text-o fa-lg"></i></a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -258,40 +258,24 @@
         </div>
 
 	<!-- BEGIN MODAL WINDOWS -->
-	<c:forEach items="${totalMoneyBySubClass}" var="subClass" varStatus="loop">
-        <div id="sub${subClass.subClassID}" class="reveal-modal">
+        <div id="editExpenditure" class="reveal-modal">
                 <div class="cont clearfix">
-                        <form class="formset clearfix">
-                        	<c:forEach items="${payItems}" var="item" varStatus="loop2">
-                        	<c:out value="${loop2.index}"></c:out>
-							  	<fieldset class="fieldset">
-							  		<legend>1.1 固定成本[設立費用]：</legend>
-								  	<div class="field">
-								  		<label>日期：
-								  			<input type="month" class="form-control" name="fixcostdate">
-								  		</label>
-								  	</div>
-								  	<div class="field">
-								  		<label><span>金額：</span>
-								  			<input type="text" class="form-control" name="fixcost" >
-								  		</label>
-								  	</div>
-								</fieldset>
-							</c:forEach>
-								<fieldset  class="fieldset">
-								  	<legend>1.2 固定成本[設計及申請商標]</legend>
-								  	<div class="field">
-								  		<label>日期：
-								  			<input type="month" class="form-control" name="fixcostdateLogo">
-								  		</label>
-								  	</div>
-								  	<div class="field">
-								  		<label>金額：
-								  			<input type="text" class="form-control" name="fixcostLogo">
-								  		</label>
-								  	</div>
-								</fieldset>
-								<fieldset  class="fieldset">
+                	<form class="formset clearfix" id="sendForm" method="POST" action="addExpenditure">
+                		
+                		<fieldset class="fieldset">
+							<legend>1.1 固定成本[設立費用]：</legend>
+						 	<div class="field">
+								<label>日期：
+									<input type="month" class="form-control" name="fixcostdate">
+								</label>
+						  	</div>
+						  	<div class="field">
+						  		<label><span>金額：</span>
+						  			<input type="text" class="form-control" name="fixcost" >
+						  		</label>
+						  	</div>
+						</fieldset>
+						<fieldset  class="fieldset">
 								  	<legend>2 印製名片</legend>
 								  	<button class="addbutton"><i class="fa fa-plus"></i> 新增一筆費用</button>
 								  	<div>
@@ -309,67 +293,13 @@
 									  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
 									  	</div>					  		
 								  	</div>
-								</fieldset>					
-								<fieldset  class="fieldset">
-								  	<legend>3 律師費用</legend>
-								  	<button class="addbutton" ><i class="fa fa-plus"></i> 新增一筆費用</button>
-								  	<div>
-									  	<div class="field">
-									  		<label>日期：
-									  			<input type="month" class="form-control" name="date3">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<label>金額：
-									  			<input type="text" class="form-control" name="money3">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
-									  	</div>					  		
-								  	</div>
-								  	<div>
-									  	<div class="field">
-									  		<label>日期：
-									  			<input type="month" class="form-control" name="date3">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<label>金額：
-									  			<input type="text" class="form-control" name="money3">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
-									  	</div>					  		
-								  	</div>
-								</fieldset>	
-								<fieldset  class="fieldset">
-								  	<legend>4 會計師費用</legend>
-								  	<button class="addbutton" ><i class="fa fa-plus"></i> 新增一筆費用</button>
-								  	<div>
-									  	<div class="field">
-									  		<label>日期：
-									  			<input type="month" class="form-control" name="date3">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<label>金額：
-									  			<input type="text" class="form-control" name="money3">
-									  		</label>
-									  	</div>
-									  	<div class="field">
-									  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
-									  	</div>					  		
-								  	</div>
-								</fieldset>		
-                                <a href="javascript:;" class="finishButton"><span class="next">儲存變更</span></a>          
-                                <a href="javascript:;" class="cancelButton"><span class="next">取消</span></a>
-                          </form>
+								</fieldset>
+                    	<a href="javascript:;" class="finishButton"><span class="next">儲存變更</span></a>          
+                    	<a href="javascript:;" class="cancelButton"><span class="next">取消</span></a>
+                	</form>
                 </div>
                 <a class="close-reveal-modal">&#215;</a>
         </div>
-	</c:forEach>
 
 
 
@@ -396,8 +326,8 @@
 				return Math.round(Math.random()*100);
 			};
 			var expendData = [0,0,0,0,0,0,0,0,0,0,0,0];
-			<c:forEach items='${monthTotalMoney}' var='total' varStatus='loop'>
-				expendData[${loop.index}] = ${total };
+			<c:forEach items='${monthTotalMoney}' var='total' varStatus='i'>
+				expendData[${i.index}] = ${total};
 			</c:forEach>
 			var lineChartData = {
 				labels : ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
@@ -427,6 +357,56 @@
 			window.onload = function(){
 				var ctx = document.getElementById("canvas").getContext("2d");
 				var myLineChart = new Chart(ctx).Line(lineChartData,{reponsive:true});
+			}
+			
+			function editPayMoney(subClassID){
+				var fixedIndex = 0;
+				$.ajax({
+					url:"getPayMoneyDetailBySubClassID",
+					data:{
+						subClassID : subClassID
+					},
+					//dataType:"json",
+					success:function(result){
+						$('#sendForm').empty();
+						$('#sendForm').append('<input type="hidden" value="'+subClassID+'" name="subClass">');
+						alert('原本:'+result.payMoneyList);
+						alert('parseJSON:'+$.parseJSON(result.payMoneyList));
+						$.each(result.payItemList, function(index, value){
+							var obj = result.payItemList[index];
+							
+							if(obj.status == 1){
+								if($.inArray(obj.itemID,result.payMoneyList) > -1){
+									alert(obj.itemID+' inArray');
+								}
+								var fixedCol = '<fieldset class="fieldset">'+
+												'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+										  		'<legend>1.1 固定成本['+obj.name+']：</legend>'+
+											  	'<div class="field">'+
+											  		'<label>日期：'+
+											  			'<input type="month" class="form-control" name="fixcostdate">'+
+											  		'</label>'+
+											  	'</div>'+
+											  	'<div class="field">'+
+											  		'<label><span>金額：</span>'+
+											  			'<input type="text" class="form-control" name="fixcost" >'+
+											  		'</label>'+
+											  	'</div>'+
+											'</fieldset>';
+							}else if(obj.status == 2){
+								if($.inArray(obj.itemID,result.payMoneyList) > -1){
+									alert(obj.itemID+' inArray');
+								}
+							}else if(obj.status == 3){
+								if($.inArray(obj.itemID,result.payMoneyList) > -1){
+									alert(obj.itemID+' inArray');
+								}
+							}
+							
+							//$('#sendForm').append(fixedCol);
+						});
+					}
+				});
 			}
 		</script> 
 </body>

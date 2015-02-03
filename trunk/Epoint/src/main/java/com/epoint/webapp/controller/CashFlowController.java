@@ -1,6 +1,7 @@
 package com.epoint.webapp.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epoint.webapp.dao.PayItemDAO;
@@ -18,6 +20,8 @@ import com.epoint.webapp.dao.PayMoneyDAO;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.PayItem;
 import com.epoint.webapp.entity.PayMoney;
+import com.epoint.webapp.entity.ProductSales;
+import com.epoint.webapp.form.CashFlowForm;
 
 @Controller
 public class CashFlowController {
@@ -27,7 +31,6 @@ public class CashFlowController {
 	public ModelAndView cashFlow(HttpServletRequest request, HttpSession session) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
-		PayItemDAO payItemDAO = (PayItemDAO) context.getBean("payItemDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
 //      if(loginMember != null){
 //      	String account = loginMember.getAccount();
@@ -43,18 +46,6 @@ public class CashFlowController {
             int selectedMonth = request.getParameter("mon")==null?1:Integer.parseInt(request.getParameter("mon"));
             String[] date_strings = {"-01-","-02-","-03-","-04-","-05-","-06-","-07-","-08-","-09-","-10-","-11-","-12-"};
             totalMoneyBySubClass = payMoneyDAO.getMonthTotalMoneyBySubClassID(account,date_strings[selectedMonth-1]);
-            List<PayItem> allPayItem = new ArrayList<PayItem>();
-            for(PayMoney p : totalMoneyBySubClass){
-            	//編輯資料
-            	allPayItem = payItemDAO.getAllPayItemBySubClassID(p.getSubClassID());
-            	model.addObject("payItems", allPayItem);
-            	List<PayMoney> allPayMoney = payMoneyDAO.getPayMoneyBySubClassStatus(account, p.getSubClassID(), 1);
-            	model.addObject("sub_"+p.getSubClassID()+"_1", allPayMoney);
-            	allPayMoney = payMoneyDAO.getPayMoneyBySubClassStatus(account, p.getSubClassID(), 2);
-            	model.addObject("sub_"+p.getSubClassID()+"_2", allPayMoney);
-            	allPayMoney = payMoneyDAO.getPayMoneyBySubClassStatus(account, p.getSubClassID(), 3);
-            	model.addObject("sub_"+p.getSubClassID()+"_3", allPayMoney);
-            }
             model.addObject("selectedMonth", selectedMonth);
             model.addObject("monthTotalMoney", monthTotalMoney);
             model.addObject("totalMoneyBySubClass", totalMoneyBySubClass);
@@ -62,5 +53,32 @@ public class CashFlowController {
 //      	model.setViewName("redirect:/memberLogin");
 //      }
         return model;
+	}
+	
+	@RequestMapping(value = "/getPayMoneyDetailBySubClassID", method = RequestMethod.GET)
+	public @ResponseBody CashFlowForm getPayMoneyDetailBySubClassID(int subClassID, HttpSession session) throws ParseException{
+		ModelAndView model = new ModelAndView();
+		PayItemDAO payItemDAO = (PayItemDAO) context.getBean("payItemDAO");
+		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
+		Member memberLogin = (Member)session.getAttribute("loginMember");
+//		if(memberLogin!=null){
+//      	String account = loginMember.getAccount();
+			String account = "admin";
+			model.setViewName("redirect:/cashFlow");
+			CashFlowForm cashFlowForm = new CashFlowForm();
+			List<PayMoney> fixedList = payMoneyDAO.getPayMoneyBySubClassStatus(account, subClassID, 1);
+			List<PayMoney> monthlyList = payMoneyDAO.getPayMoneyBySubClassStatus(account, subClassID, 3);
+			List<PayMoney> dynamicList = payMoneyDAO.getPayMoneyBySubClassStatus(account, subClassID, 2);
+			List<PayMoney> payMoneyList = new ArrayList<PayMoney>();
+			payMoneyList.addAll(fixedList);
+			payMoneyList.addAll(monthlyList);
+			payMoneyList.addAll(dynamicList);
+			int[] listCount = {fixedList.size(),monthlyList.size(),dynamicList.size()};
+			cashFlowForm.setPayItemList(payItemDAO.getAllPayItemBySubClassID(subClassID));
+			cashFlowForm.setPayMoneyList(payMoneyList);
+			cashFlowForm.setListCount(listCount);
+			return cashFlowForm;
+//		}
+//		return null;
 	}
 }
