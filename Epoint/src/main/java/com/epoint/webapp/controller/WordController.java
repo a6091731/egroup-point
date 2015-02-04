@@ -133,7 +133,7 @@ public class WordController {
 				in.close();
 				op.flush();
 				op.close();
-				model.setViewName("redirect:/ventureTypes");
+				model.setViewName("redirect:/venturePlanMap");
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (TemplateException e) {
