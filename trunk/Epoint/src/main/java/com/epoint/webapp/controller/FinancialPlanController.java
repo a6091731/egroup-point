@@ -32,9 +32,8 @@ public class FinancialPlanController {
 		FinancialPlanDAO financialPlanDAO = (FinancialPlanDAO) context.getBean("financialPlanDAO");
 		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
-//		if(loginMember != null){
-//		String account = loginMember.getAccount();
-		String account = "admin";
+		if(loginMember != null){
+			String account = loginMember.getAccount();
 			int avgCost = payMoneyDAO.getMonthlyCostByAccount(account);
 			int fundLack = memberDAO.getFundLackByAccount(account);
 			List<FinancialPlan> usesPlans = financialPlanDAO.getFinancialPlansByItemID(account, 1);
@@ -44,9 +43,9 @@ public class FinancialPlanController {
 			model.addObject("usesPlans", usesPlans);
 			model.addObject("sourcePlans", sourcePlans);
 			model.setViewName("financialPlan");
-//		}else{
-//		 model.setViewName("redirect:/");
-//		}
+		}else{
+		 model.setViewName("redirect:/");
+		}
 		return model;
 	}
 	
@@ -59,9 +58,8 @@ public class FinancialPlanController {
 		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
 		FinancialPlan financialPlan = new FinancialPlan();
 		Member loginMember = (Member) session.getAttribute("loginMember");
-//		if(loginMember != null){
-//			String account = loginMember.getAccount();
-			String account = "admin";
+		if(loginMember != null){
+			String account = loginMember.getAccount();
 			memberDAO.modiFundLackBy(account, financialPlanForm.getLackMoney());
 			financialPlan.setAccount(account);
 			List<FinancialPlan> oldUsesPlans = financialPlanDAO.getFinancialPlansByItemID(account, 1);
@@ -124,9 +122,9 @@ public class FinancialPlanController {
 				}
 			}
 			model.setViewName("redirect:/financialPlan");
-//		}else{
-//		 model.setViewName("redirect:/");
-//		}
+		}else{
+		 model.setViewName("redirect:/");
+		}
 		return model;
 	}
 }

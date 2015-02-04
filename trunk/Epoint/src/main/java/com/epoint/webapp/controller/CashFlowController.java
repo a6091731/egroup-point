@@ -34,9 +34,8 @@ public class CashFlowController {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
-//      if(loginMember != null){
-//      	String account = loginMember.getAccount();
-			String account = "admin";
+		if(loginMember != null){
+			String account = loginMember.getAccount();
             model.setViewName("cashFlow");
             List<PayMoney> totalMoneyBySubClass = payMoneyDAO.getMonthTotalMoneyByAccount(account);
             int[] monthTotalMoney = new int[12];
@@ -52,9 +51,9 @@ public class CashFlowController {
             model.addObject("selectedMonth", selectedMonth);
             model.addObject("monthTotalMoney", monthTotalMoney);
             model.addObject("totalMoneyBySubClass", totalMoneyBySubClass);
-//		}else{
-//      	model.setViewName("redirect:/memberLogin");
-//      }
+		}else{
+			model.setViewName("redirect:/memberLogin");
+		}
         return model;
 	}
 	
@@ -64,9 +63,8 @@ public class CashFlowController {
 		PayItemDAO payItemDAO = (PayItemDAO) context.getBean("payItemDAO");
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		Member memberLogin = (Member)session.getAttribute("loginMember");
-//		if(memberLogin!=null){
-//      	String account = loginMember.getAccount();
-			String account = "admin";
+		if(memberLogin!=null){
+			String account = memberLogin.getAccount();
 			model.setViewName("redirect:/cashFlow");
 			CashFlowForm cashFlowForm = new CashFlowForm();
 			List<PayItem> itemList = payItemDAO.getAllPayItemBySubClassID(subClassID);
@@ -100,8 +98,8 @@ public class CashFlowController {
 			}
 			cashFlowForm.setPayItemList(itemList);
 			return cashFlowForm;
-//		}
-//		return null;
+		}
+		return null;
 	}
 	
 	@RequestMapping(value = "/addCashFlow", method = RequestMethod.POST)
@@ -111,9 +109,8 @@ public class CashFlowController {
 		PayItemDAO payItemDAO = (PayItemDAO) context.getBean("payItemDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		PayMoney payMoney = new PayMoney();
-//      if(loginMember != null){
-//          String account = loginMember.getAccount();
-            String account = "admin";
+		if(loginMember != null){
+			String account = loginMember.getAccount();
             payMoney.setAccount(account);
             int subClassID = Integer.parseInt(expenditureForm.getSubClass());
             List<PayItem> allPayItem = payItemDAO.getAllPayItemBySubClassID(subClassID);
@@ -195,9 +192,9 @@ public class CashFlowController {
             }
                    
             model.setViewName("redirect:/cashFlow");
-//		}else{
-//          model.setViewName("redirect:/");
-//      }
+		}else{
+			model.setViewName("redirect:/");
+		}
         return model;
     }
 }
