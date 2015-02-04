@@ -424,8 +424,6 @@
 	        }
 	        
 	        function addValidate(getIndex){
-	        	alert(123321);
-	        	alert("index="+getIndex);
 	        	$("#salsDate"+getIndex).rules("add",{
 	        		required:true,
 	            	messages:{

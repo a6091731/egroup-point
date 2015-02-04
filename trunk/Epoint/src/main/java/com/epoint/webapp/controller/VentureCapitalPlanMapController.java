@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epoint.webapp.dao.PayMoneyDAO;
+import com.epoint.webapp.dao.ProductDAO;
+import com.epoint.webapp.dao.ProductSalesDAO;
 import com.epoint.webapp.dao.VentureChecklistDAO;
 import com.epoint.webapp.entity.Member;
 
 @Controller
-public class ventureCapitalPlanMapController {
+public class VentureCapitalPlanMapController {
 	ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("spring-module.xml");
 	@RequestMapping(value = "/ventureCapitalPlanMap", method = RequestMethod.GET)
 	public ModelAndView ventureCapitalPlanMap (HttpServletRequest request, HttpSession session){
@@ -27,6 +29,7 @@ public class ventureCapitalPlanMapController {
 		else{
 			model.setViewName("ventureCapitalPlanMap");		
 			PayMoneyDAO payMoneyDAO = (PayMoneyDAO)context.getBean("payMoneyDAO");
+			ProductSalesDAO productSalesDAO = (ProductSalesDAO)context.getBean("productSalesDAO");
 			DecimalFormat df = new DecimalFormat("0.00");
 			memberLogin.setSetPercent("211");			
 			memberLogin.setPercent211(Double.parseDouble(df.format(payMoneyDAO.getVentureCapitalPercent(memberLogin)))*100);
@@ -49,7 +52,10 @@ public class ventureCapitalPlanMapController {
 			memberLogin.setGetPercent(Double.parseDouble(df.format((memberLogin.getPercent211()+memberLogin.getPercent212()+memberLogin.getPercent213()
 					+memberLogin.getPercent214()+memberLogin.getPercent215()+memberLogin.getPercent216()
 					+memberLogin.getPercent217()+memberLogin.getPercent218()+memberLogin.getPercent219())/9)));
-			model.addObject("getPercent",memberLogin);
+			memberLogin.setExpenditure(payMoneyDAO.getVentureCapitalYearExpenditure(memberLogin));
+			
+			memberLogin.setIncome(productSalesDAO.getVentureCapitalYearIncome(memberLogin));
+			model.addObject("getMember",memberLogin);
 		}			
 		return model;
 	}

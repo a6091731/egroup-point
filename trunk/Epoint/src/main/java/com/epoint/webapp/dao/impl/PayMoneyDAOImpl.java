@@ -346,4 +346,31 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 		}
 		return 0.0;
 	}
+
+	public int getVentureCapitalYearExpenditure(Member member) {
+		// TODO Auto-generated method stub
+		int yearExpenditure = 0;
+		sql = "SELECT SUM(payMoney) AS yearExpenditure FROM pay_money WHERE memberAccount = ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, member.getAccount());
+			rs = smt.executeQuery();
+			if(rs.next()){
+				yearExpenditure = rs.getInt("yearExpenditure");
+			}
+			rs.close();
+			smt.close();
+			return yearExpenditure;			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return yearExpenditure;
+	}
 }

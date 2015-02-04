@@ -11,6 +11,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.epoint.webapp.dao.ProductSalesDAO;
+import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.ProductSales;
 import com.epoint.webapp.util.DateConversion;
 
@@ -168,5 +169,35 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 				} catch (SQLException e) {}
 			}
 		}
+	}
+
+	public int getVentureCapitalYearIncome(Member member) {
+		// TODO Auto-generated method stub
+		int yearIncome = 0;
+		sql = "SELECT SUM((p.productSalesPrice-p.productCost)*IFNULL(s.productSalesQuantity,0)) AS yearIncome "
+				+ "FROM product p LEFT JOIN product_sales s ON p.productID=s.productID WHERE p.memberAccount = ?;";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);			
+			smt.setString(1, member.getAccount());
+			rs = smt.executeQuery();
+			while(rs.next()){
+				yearIncome = rs.getInt("yearIncome");
+				return yearIncome;
+			}			
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return 0;
 	}
 }

@@ -79,10 +79,10 @@
 				<ul>
 					<li>
 						<div class="ventureBox clearfix">
-							<div class="progress" data-dimension="80" data-text="${getPercent.getPercent}%" data-fontsize="16" data-percent="${getPercent.getPercent}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.getPercent}%" data-fontsize="16" data-percent="${getMember.getPercent}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>支出結構</h3>
-								<p>填寫創業業種、商業模式和在此行業的一技之長</p>
+								<p>第一年總支出 : ${getMember.expenditure}</p>
 							</div>
 							<i class="fa fa-angle-right fa-5x"></i>
 							<a href="founded" target="_self"></a>
@@ -90,13 +90,13 @@
  					</li>
 					<li>
 						<div class="ventureBox clearfix">
-							<div class="progress" data-dimension="80" data-text="0%" data-fontsize="16" data-percent="0" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
+							<div class="progressCircle" data-dimension="80" data-text="0%" data-fontsize="16" data-percent="0" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>收入結構</h3>
-								<p>填寫目標客戶、提供給顧客什麼價值、顧客從中能得到什麼好處</p>
+								<p>第一年總收入 : ${getMember.income}</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
-							<a href="javascript:;" target="_self"></a>
+							<i class="fa fa-angle-right fa-5x"></i>
+							<a href="revenueStructure" target="_self"></a>
 						</div>
  					</li> 
 					<!-- lock style
@@ -134,7 +134,7 @@
 		<script src="js/jquery.circliful.js"></script>
 		<script>
 		$(function() {
-		        $('.progress').circliful();
+		        $('.progressCircle').circliful();
 		    });
 		</script>
 </body>

@@ -17,4 +17,5 @@ public interface PayMoneyDAO {
 	public List<PayMoney> getMonthTotalMoneyByAccount(String account);
 	public List<PayMoney> getMonthTotalMoneyBySubClassID(String account,String date);
 	public double getVentureCapitalPercent(Member member); 
+	public int getVentureCapitalYearExpenditure(Member member);
 }

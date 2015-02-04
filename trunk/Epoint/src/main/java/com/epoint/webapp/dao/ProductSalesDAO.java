@@ -2,6 +2,7 @@ package com.epoint.webapp.dao;
 
 import java.util.List;
 
+import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.ProductSales;
 
 public interface ProductSalesDAO {
@@ -10,4 +11,5 @@ public interface ProductSalesDAO {
 	public boolean checkProductSalesByMember(ProductSales productSales);
 	public void updateProductSales(ProductSales productSales);
 	public void delProductSalesByMember(ProductSales productSales);
+	public int getVentureCapitalYearIncome(Member member);
 }
