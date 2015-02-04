@@ -54,6 +54,7 @@ public class WordController {
 		Member memberLogin = (Member)session.getAttribute("loginMember");
 		if(memberLogin==null){
 			model.setViewName("redirect:/memberLogin");
+			return model;
 		}else{
 			String xml = "ventureChecklist.xml";
 			String filePath = request.getServletContext().getRealPath("resources/word");
@@ -133,18 +134,12 @@ public class WordController {
 				in.close();
 				op.flush();
 				op.close();
-				model.setViewName("redirect:/venturePlanMap");
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (TemplateException e) {
 				e.printStackTrace();
 			}
-//			URL url = new URL("redirect:/ventureTypes");
-//			URLConnection con = url.openConnection();
-//			con.setUseCaches(false);
-//			con.setDoOutput(true);
-//			PrintWriter out = new PrintWriter(con.getOutputStream());
 		}
-		return model;
+		return null;
 	}
 }
