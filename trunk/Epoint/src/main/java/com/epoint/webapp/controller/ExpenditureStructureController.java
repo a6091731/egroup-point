@@ -370,5 +370,4 @@ public class ExpenditureStructureController {
 //              }
                 return model;
         }
-       
 }

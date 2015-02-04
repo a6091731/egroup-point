@@ -101,6 +101,7 @@ public class FinancialPlanDAOImpl implements FinancialPlanDAO {
 			if(rs.next()){
 				Number = rs.getInt("Number");
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,6 +132,7 @@ public class FinancialPlanDAOImpl implements FinancialPlanDAO {
 				financialPlan.setProperty(rs.getInt("itemProperty"));
 				allFinancialPlans.add(financialPlan);
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

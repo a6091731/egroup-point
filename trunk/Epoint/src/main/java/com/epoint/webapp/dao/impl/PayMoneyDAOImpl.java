@@ -101,6 +101,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 			if(rs.next()){
 				Number = rs.getInt("Number");
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,6 +132,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				payMoney.setID(rs.getInt("payItemID"));
 				allPayMoney.add(payMoney);
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -159,6 +161,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				payMoney.setRecord(rs.getInt("payRecord"));
 				payMoney.setID(rs.getInt("payItemID"));
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -190,6 +193,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				payMoney.setID(rs.getInt("payItemID"));
 				allPayMoney.add(payMoney);
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -216,6 +220,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				if(result % 12 != 0)
 					Number =  result / 12 +1;
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -243,6 +248,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				payMoney.setMonthTotal(rs.getInt("Total"));
 				allPayMoney.add(payMoney);
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -274,6 +280,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				payMoney.setSubClassID(rs.getInt("mapSubClassID"));
 				allPayMoney.add(payMoney);
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
