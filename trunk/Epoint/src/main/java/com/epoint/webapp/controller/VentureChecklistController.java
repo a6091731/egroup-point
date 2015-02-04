@@ -1,9 +1,9 @@
 package com.epoint.webapp.controller;
 
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.List;
 
-import javax.mail.Flags.Flag;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -27,6 +27,43 @@ public class VentureChecklistController {
 	PropertyConstants PC = new PropertyConstants();
 	String absolutePath;
 	InputStream is = null;
+	
+	@RequestMapping(value = "/ventureChecklistMap", method = RequestMethod.GET)
+	public ModelAndView ventureChecklistMap (HttpServletRequest request, HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");
+		if(memberLogin==null)
+			model.setViewName("memberLogin");
+		else{			
+			model.setViewName("ventureChecklistMap");	
+			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
+			DecimalFormat df = new DecimalFormat("0.00");
+			memberLogin.setSetPercent("11");			
+			memberLogin.setPercent11(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			memberLogin.setSetPercent("12");
+			memberLogin.setPercent12(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			memberLogin.setSetPercent("13");
+			memberLogin.setPercent13(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			memberLogin.setSetPercent("14");
+			memberLogin.setPercent14(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			memberLogin.setSetPercent("15");
+			memberLogin.setPercent15(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			memberLogin.setSetPercent("16");
+			memberLogin.setPercent16(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			memberLogin.setSetPercent("17");
+			memberLogin.setPercent17(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			
+			model.addObject("getPercent",memberLogin);
+			/*System.out.println("11="+memberLogin.getPercent11());
+			System.out.println("12="+memberLogin.getPercent12());
+			System.out.println("13="+memberLogin.getPercent13());
+			System.out.println("14="+memberLogin.getPercent14());
+			System.out.println("15="+memberLogin.getPercent15());
+			System.out.println("16="+memberLogin.getPercent16());
+			System.out.println("17="+memberLogin.getPercent17());*/
+		}			
+		return model;
+	}
 	
 	@RequestMapping(value = "/ventureTypes", method = RequestMethod.GET)
 	public ModelAndView ventureTypes (HttpServletRequest request, HttpSession session){

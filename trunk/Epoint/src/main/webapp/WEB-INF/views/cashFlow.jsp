@@ -126,7 +126,7 @@
 				</section>
 				<div>
 					<div>
-						<canvas id="canvas" height="150" width="600"></canvas>
+						<canvas id="canvas" height="400" width="1250"></canvas>
 					</div>
 				</div>
 				<section class="ventureTypesTitle pt20">
@@ -144,6 +144,23 @@
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach items="${getProductList1}" var="product" varStatus="i">		
+										<tr>
+											<td>${product.name }</td>
+											<td>${product.totalProfit }</td>
+																		
+											<td>${product.totalProfit }</td>
+											<td>
+												<a onclick="setEditProduct(${i.index});" 
+												class="fa-color" data-reveal-id="editProduct" data-closeonbackgroundclick="false">
+												<i class="fa fa-pencil-square-o fa-lg"></i></a>
+											</td>
+											<td>
+												<a onclick="" class="fa-color">
+												<i class="fa fa-times-circle fa-lg"></i></a>
+											</td>
+										</tr>						
+									</c:forEach>
 									<tr>
 										<td>好吃的旺旺仙貝</td>
 										<td>0</td>
@@ -297,7 +314,7 @@
 			};
 			var expendData = [0,0,0,0,0,0,0,0,0,0,0,0];
 			<c:forEach items='${monthTotalMoney}' var='total' varStatus='i'>
-				expendData[${i.index}] = ${total};
+				expendData['${i.index}'] = ${total};
 			</c:forEach>
 			var lineChartData = {
 				labels : ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
@@ -494,6 +511,7 @@
 					$('#paymoney_'+index).remove();
 				}
 			}
+		
 		</script> 
 </body>
 </html>

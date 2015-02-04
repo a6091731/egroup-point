@@ -2,6 +2,7 @@ package com.epoint.webapp.dao;
 
 import java.util.List;
 
+import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.PayMoney;
 
 public interface PayMoneyDAO {
@@ -15,4 +16,5 @@ public interface PayMoneyDAO {
 	public int getMonthlyCostByAccount(String account);
 	public List<PayMoney> getMonthTotalMoneyByAccount(String account);
 	public List<PayMoney> getMonthTotalMoneyBySubClassID(String account,String date);
+	public double getVentureCapitalPercent(Member member); 
 }

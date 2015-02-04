@@ -25,6 +25,8 @@
 	.memberRwdnav{display: block;}
 	
 	.form-control2{width:127px;font-size: 12px;}
+	
+	.step,.stepLocked{margin: 3em 0 0 0;}
 }
 
 /* mobile to Tablets */
@@ -39,14 +41,17 @@
 
 	.hideBlock{display: none;}	
 	.memberRwdnav{display: block;}
+	
+	.step,.stepLocked{height: 34em;margin: 3em 0 0 0;}
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 	
-
 	.hideBlock{display: none;}	
 	.memberRwdnav{display: block;}
+	.step,.stepLocked{height: 37em;margin: 3em 0 0 0;}
+	
 }
 
 /* Desktop */
@@ -69,8 +74,8 @@
 	.logo{margin-top: 1em;}
 	.logo img {
 		background-size: 100%;
-		width: 140px;
-		height: 38px;
+		width: 125px;
+		height: 29px;
 	}
 	.top-nav-left ul {
 		display: none;

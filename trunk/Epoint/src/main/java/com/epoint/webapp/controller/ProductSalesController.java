@@ -83,20 +83,10 @@ public class ProductSalesController {
 			productSales.setId(request.getParameter("productID"));
 			productSalesDAO.delProductSalesByMember(productSales);			
 			for(int i = 0 ; i<dateList.length ; i++){	
-				System.out.println("quantityList[i]"+quantityList[i]);
-				System.out.println("dateList[i]"+dateList[i]);
-				if(dateList[i]!="" && quantityList[i]!=""){
-					
-					System.out.println(dateList[i].substring(5,7));			
-					System.out.println(Integer.parseInt(dateList[i].substring(5,7)));
-					
+				if(dateList[i]!="" && quantityList[i]!=""){					
 					getMonth = Integer.parseInt(dateList[i].substring(5,7));
 					monthDate[getMonth] = dateList[i];
-					monthQuantity[getMonth] = monthQuantity[getMonth]+Integer.parseInt(quantityList[i]);
-					
-					/*productSales.setDate_string(dateList[i]+"-01");
-					productSales.setQuantity(Integer.parseInt(quantityList[i]));			
-					productSalesDAO.insertProductSales(productSales);*/
+					monthQuantity[getMonth] = monthQuantity[getMonth]+Integer.parseInt(quantityList[i]);					
 				}
 			}	
 			
@@ -135,10 +125,15 @@ public class ProductSalesController {
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){				
-			model.setViewName("redirect:/revenueStructure");
+			
 			product.setAccount(memberLogin.getAccount());
 			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
 			productDAO.insetProduct(product);		
+			int countProduct = productDAO.countProductByMember(memberLogin);
+			int endPage =  countProduct%10==0 ? countProduct/10 : countProduct/10+1;
+			System.out.println("countProduct"+countProduct);
+			System.out.println("endPage"+endPage);
+			model.setViewName("redirect:/revenueStructure?p="+endPage);
 		}
 		else
 			model.setViewName("redirect:/");
@@ -158,20 +153,23 @@ public class ProductSalesController {
 		else
 			model.setViewName("redirect:/");
 		return model;
-	}
+	}		
 	
-	@RequestMapping(value = "/delProductRevenueStructure", method = RequestMethod.POST)
-	public ModelAndView delProductRevenueStructure (Product product, HttpServletRequest request, HttpSession session){
+	@RequestMapping(value = "/delProductRevenueStructure", method = RequestMethod.GET)
+	public @ResponseBody void delProductRevenueStructure (String  productID, HttpSession session) throws ParseException{
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
-		if(memberLogin!=null){				
-			model.setViewName("redirect:/revenueStructure");
-			product.setAccount(memberLogin.getAccount());
+		if(memberLogin!=null){			
 			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
-			productDAO.updateProduct(product);		
+			Product product = new Product();
+			product.setAccount(memberLogin.getAccount());
+			product.setId(productID);
+			productDAO.delProduct(product);		
+			int countProduct = productDAO.countProductByMember(memberLogin);
+			int endPage =  countProduct%10==0 ? countProduct/10 : countProduct/10+1;
+			System.out.println("countProduct"+countProduct);
+			System.out.println("endPage"+endPage);
+			model.setViewName("redirect:/revenueStructure?p="+endPage);
 		}
-		else
-			model.setViewName("redirect:/");
-		return model;
 	}
 }

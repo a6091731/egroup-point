@@ -21,6 +21,7 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	private DataSource dataSource;
 	private Connection conn = null ;
 	private ResultSet rs = null ;
+	private ResultSet rs1 = null ;
 	private ResultSet rs2 = null ;
 	private PreparedStatement smt = null ;
 	//如果method裡面有一句以上的sql，請使用sql1,sql2分開
@@ -122,14 +123,14 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql1);
 			smt.setInt(1, mapClass.getId());
-			rs = smt.executeQuery();
-			while(rs.next()){
+			rs1 = smt.executeQuery();
+			while(rs1.next()){
 				MapClass mapClass2 = new MapClass();
-				mapClass2.setId(rs.getInt("mapID"));
-				mapClass2.setClassID(rs.getInt("mapClassID"));
-				mapClass2.setName(rs.getString("mapClassName"));
-				mapClass2.setUrl(rs.getString("mapClassUrl"));
-				mapClass2.setCss(rs.getString("mapClassCss"));
+				mapClass2.setId(rs1.getInt("mapID"));
+				mapClass2.setClassID(rs1.getInt("mapClassID"));
+				mapClass2.setName(rs1.getString("mapClassName"));
+				mapClass2.setUrl(rs1.getString("mapClassUrl"));
+				mapClass2.setCss(rs1.getString("mapClassCss"));
 				if(now == false){
 					now = true;
 					smt = conn.prepareStatement(sql2);
@@ -150,7 +151,8 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				}
 				mapClassList.add(mapClass2);
 			}			
-			rs.close();
+			rs1.close();
+			rs2.close();
 			smt.close();
  
 		} catch (SQLException e) {
@@ -175,12 +177,12 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql1);
 			smt.setInt(1, member.getClassID());
-			rs = smt.executeQuery();
-			while(rs.next()){				
+			rs1 = smt.executeQuery();
+			while(rs1.next()){				
 				MapSubclass mapSubclass = new MapSubclass();				
-				mapSubclass.setClassID(rs.getInt("mapClassID"));
-				mapSubclass.setSubclassID(rs.getInt("mapSubClassID"));
-				mapSubclass.setName(rs.getString("mapSubClassName"));				
+				mapSubclass.setClassID(rs1.getInt("mapClassID"));
+				mapSubclass.setSubclassID(rs1.getInt("mapSubClassID"));
+				mapSubclass.setName(rs1.getString("mapSubClassName"));				
 				smt = conn.prepareStatement(sql2);
 				smt.setString(1, member.getAccount());
 				smt.setInt(2, mapSubclass.getSubclassID());
@@ -192,7 +194,8 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				mapSubclassesList.add(mapSubclass);
 			}
 			smt.executeQuery();	
-			rs.close();
+			rs1.close();
+			rs2.close();
 			smt.close();
 			return mapSubclassesList;
  
@@ -312,7 +315,6 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 
 	public boolean checkHumanResourceContentByMember(Member member) {
 		// TODO Auto-generated method stub
-		System.out.println("***check!!!");
 		sql = "SELECT * FROM human_resource_content WHERE memberAccount=?";
 		try {
 			conn = dataSource.getConnection();
@@ -393,5 +395,51 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				} catch (SQLException e) {}
 			}
 		}
+	}
+
+	public double getVentureChecklistPercent(Member member1) {
+		// TODO Auto-generated method stub
+		double mapSubclassCount;
+		double mySubclassCount;
+		double percentCount;
+		sql1 = "SELECT COUNT(*) AS count FROM map_subclass WHERE mapClassID=?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql1);
+			smt.setString(1, member1.getSetPercent());
+			System.out.println("getSetPercent()="+member1.getSetPercent());
+			rs1 = smt.executeQuery();
+			if(rs1.next()){	
+				mapSubclassCount=rs1.getInt("count");
+				System.out.println("mapSubclassCount="+mapSubclassCount);				
+				sql2 = "SELECT COUNT(*) AS count FROM venture_checklist WHERE mapClassID=? AND memberAccount =? ";
+				smt = conn.prepareStatement(sql2);
+				smt.setString(1, member1.getSetPercent());
+				smt.setString(2, member1.getAccount());
+				rs2 = smt.executeQuery();
+				if(rs2.next()){	
+					mySubclassCount=rs2.getInt("count");
+					//System.out.println("mySubclassCount="+mySubclassCount);	
+					percentCount = mySubclassCount/mapSubclassCount;
+					//System.out.println("percentCount="+(mySubclassCount/mapSubclassCount));
+					return percentCount;
+				}
+			}
+			smt.executeQuery();
+			rs1.close();
+			rs2.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return 0;
 	}
 }

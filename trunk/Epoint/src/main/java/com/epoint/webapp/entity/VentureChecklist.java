@@ -7,9 +7,11 @@ public class VentureChecklist {
 	private int classID;
 	
 
-	//程式變數
+	//程式變數-----------
 	private String content;	
 	private int now;
+	
+	
 	
 	public String getAccount() {
 		return account;
