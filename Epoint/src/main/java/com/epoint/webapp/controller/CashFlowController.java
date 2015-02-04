@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,7 @@ import com.epoint.webapp.entity.PayItem;
 import com.epoint.webapp.entity.PayMoney;
 import com.epoint.webapp.entity.ProductSales;
 import com.epoint.webapp.form.CashFlowForm;
+import com.epoint.webapp.form.ExpenditureForm;
 
 @Controller
 public class CashFlowController {
@@ -100,4 +102,101 @@ public class CashFlowController {
 //		}
 //		return null;
 	}
+	
+	@RequestMapping(value = "/addCashFlow", method = RequestMethod.POST)
+    public ModelAndView addCashFlow(@ModelAttribute ExpenditureForm expenditureForm, HttpSession session, HttpServletRequest request) throws IOException {
+		ModelAndView model = new ModelAndView();
+		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
+		PayItemDAO payItemDAO = (PayItemDAO) context.getBean("payItemDAO");
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		PayMoney payMoney = new PayMoney();
+//      if(loginMember != null){
+//          String account = loginMember.getAccount();
+            String account = "admin";
+            payMoney.setAccount(account);
+            int subClassID = Integer.parseInt(expenditureForm.getSubClass());
+            List<PayItem> allPayItem = payItemDAO.getAllPayItemBySubClassID(subClassID);
+            List<PayMoney> oldFixedPayMoney = new ArrayList<PayMoney>();
+            List<PayMoney> oldDynamicPayMoney = new ArrayList<PayMoney>();
+            for(PayItem item : allPayItem){
+            	if(item.getStatus() == 2){
+            		List<PayMoney> tempPayMoney = payMoneyDAO.getPayMoneyByItemID(account,item.getItemID());
+                    oldDynamicPayMoney.addAll(tempPayMoney);
+                }else{
+                	List<PayMoney> tempPayMoney = payMoneyDAO.getPayMoneyByItemID(account,item.getItemID());
+                	oldFixedPayMoney.addAll(tempPayMoney);
+                }
+            }
+            List<PayMoney> fixedPayMoney = expenditureForm.getFixedPayMoney();
+            List<PayMoney> dynamicPayMoney = expenditureForm.getDynamicPayMoney();
+            List<PayMoney> deletedPayMoney = expenditureForm.getDeletedPayMoney();
+            //固定成本
+            if(fixedPayMoney != null){
+            	for (int i = 0; i < fixedPayMoney.size(); i++) {
+            		PayMoney newObject = fixedPayMoney.get(i);
+            		if(oldFixedPayMoney.size() == 0){
+                    	int recordID = payMoneyDAO.getPayRecord(account,newObject.getID());
+                        payMoney.setID(newObject.getID());
+                        payMoney.setRecord(recordID);
+                        payMoney.setDate_string(newObject.getDate_string() + "-01");
+                        payMoney.setMoney(newObject.getMoney());
+                        payMoneyDAO.addPayMoney(payMoney);
+                     }else{
+                        PayMoney oldObject = oldFixedPayMoney.get(i);
+                        if (oldObject.getDate() == null) {
+                        	int recordID = payMoneyDAO.getPayRecord(account,newObject.getID());
+                            payMoney.setID(newObject.getID());
+                            payMoney.setRecord(recordID);
+                            payMoney.setDate_string(newObject.getDate_string() + "-01");
+                            payMoney.setMoney(newObject.getMoney());
+                            payMoneyDAO.addPayMoney(payMoney);
+                        } else if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
+                        			|| oldObject.getMoney() != newObject.getMoney()) {
+                        	newObject.setAccount(account);
+                            newObject.setDate_string(newObject.getDate_string() + "-01");
+                            payMoneyDAO.modiPayMoney(newObject);
+                        }
+                    }
+            	}
+            }
+            //刪除
+            if (deletedPayMoney != null) {
+            	for (PayMoney p : deletedPayMoney) {
+                	p.setAccount(account);
+                    payMoneyDAO.delPayMoney(p);
+                }
+            }
+            //動態新增
+            if(dynamicPayMoney != null){
+            	for (int i = 0; i < dynamicPayMoney.size(); i++) {
+                	PayMoney newObject = dynamicPayMoney.get(i);
+                    if (newObject.getID() == 0){//被刪除
+                    	continue;
+                    }else{
+                    	if(oldDynamicPayMoney.size() > 0 && oldDynamicPayMoney.size() > i){//有舊資料
+                        	PayMoney oldObject = oldDynamicPayMoney.get(i);
+                        	if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
+                        			|| oldObject.getMoney() != newObject.getMoney()) {//有修改
+                            	newObject.setAccount(account);
+                                newObject.setDate_string(newObject.getDate_string() + "-01");
+                                payMoneyDAO.modiPayMoney(newObject);
+                            }
+                        }else{//沒有舊資料
+                        	payMoney.setID(newObject.getID());
+                            int recordID = payMoneyDAO.getPayRecord(account,newObject.getID());
+                            payMoney.setRecord(recordID);
+                            payMoney.setDate_string(newObject.getDate_string() + "-01");
+                            payMoney.setMoney(newObject.getMoney());
+                            payMoneyDAO.addPayMoney(payMoney);
+                        }
+                    }
+            	}
+            }
+                   
+            model.setViewName("redirect:/cashFlow");
+//		}else{
+//          model.setViewName("redirect:/");
+//      }
+        return model;
+    }
 }

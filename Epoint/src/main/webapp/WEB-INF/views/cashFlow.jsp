@@ -260,7 +260,7 @@
 	<!-- BEGIN MODAL WINDOWS -->
         <div id="editExpenditure" class="reveal-modal">
                 <div class="cont clearfix">
-                	<form class="formset clearfix" id="sendForm" method="POST" action="addExpenditure">
+                	<form class="formset clearfix" id="sendForm" method="POST" action="addCashFlow">
                     	
                 	</form>
                 </div>
@@ -286,6 +286,10 @@
 	    <script src="js/responsive-tables.js"></script>
 	<!-- Chart -->  
 	    <script src="js/Chart.js"></script>
+	    
+		<script src="js/jquery.validate.js"></script>
+		<script src="js/messages_zh_TW.js"></script>
+		<script src="js/additional-methods.js"></script>
 
 		<script>
 			var randomScalingFactor = function(){
@@ -323,11 +327,13 @@
 			window.onload = function(){
 				var ctx = document.getElementById("canvas").getContext("2d");
 				var myLineChart = new Chart(ctx).Line(lineChartData,{reponsive:true});
+				$('#sendForm').validate();
 			}
-			
+
+			var fixedIndex = 0;
+			var dynamicIndex = 0;
+			var dynamicNum = 2;
 			function editPayMoney(subClassID){
-				var fixedIndex = 0;
-				var dynamicNum = 2;
 				$.ajax({
 					url:"getPayMoneyDetailBySubClassID",
 					data:{
@@ -364,79 +370,83 @@
 									break;
 							}
 							if(obj.status == 1){
-								$('#sendForm').append('<fieldset class="fieldset">'+
+								$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
 										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
 										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
 								  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
 								  		'<div class="field">'+
 									  		'<label>日期：'+
-									  			'<input type="month" class="form-control" value="'+tempList[0].date+'" name="fixcostdate">'+
+									  			'<input type="month" class="form-control required" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
 									  		'</label>'+
 									  	'</div>'+
 									  	'<div class="field">'+
 									  		'<label><span>金額：</span>'+
-									  			'<input type="text" class="form-control" name="fixcost" value="'+tempList[0].money+'">'+
+									  			'<input type="text" class="form-control required digits" name="fixedPayMoney['+fixedIndex+'].money" value="'+tempList[0].money+'">'+
 									  		'</label>'+
 									  	'</div>'+
 									'</fieldset>');
 								fixedIndex++;
 							}else if(obj.status == 2){
-								$('#sendForm').append('<fieldset class="fieldset">'+
-										'<button class="addbutton"><i class="fa fa-plus"></i> 新增一筆費用</button>'+
-										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
-								  		'<legend>'+dynamicNum+' '+obj.name+'：</legend>');
+								var appendText = '<fieldset class="fieldset" id="field'+obj.itemID+'">'+
+								'<button type="button" class="addbutton" onClick="addPayMoney('+obj.itemID+')"><i class="fa fa-plus"></i> 新增一筆費用</button>'+
+						  		'<legend>'+dynamicNum+' '+obj.name+'：</legend>';
 								if(tempList.length > 0){
 									for(var i = 0;i < tempList.length;i++){
 										var data = tempList[i];
-										$('#sendForm').append(
-											'<div>'+
+										appendText += 
+											'<div id="paymoney_'+dynamicIndex+'">'+
+											'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].ID" value="'+obj.itemID+'">'+
+											'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].record" value="'+data.record+'">'+
 											  	'<div class="field">'+
 											  		'<label>日期：'+
-											  			'<input type="month" class="form-control" name="cardDate" value="'+data.date+'">'+
+											  			'<input type="month" class="form-control required" name="dynamicPayMoney['+dynamicIndex+'].date_string" value="'+data.date.substring(0,7)+'">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
 											  		'<label>金額：'+
-											  			'<input type="text" class="form-control" name="cardCost" value="'+data.money+'">'+
+											  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+dynamicIndex+'].money" value="'+data.money+'">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
-											  		'<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>'+
+											  		'<button type="button" class="deletebutton" onClick="delExistPayMoney('+obj.itemID+','+dynamicIndex+','+data.record+')"><i class="fa fa-times"></i> 刪除</button>'+
 											  	'</div>'+
-										  	'</div>');
+										  	'</div>';
+										dynamicIndex++;
 									}
+									appendText += '</fieldset>';
 								}else{
-									$('#sendForm').append(
-											'<div>'+
+									appendText += '<div id="paymoney_'+dynamicIndex+'">'+
 											  	'<div class="field">'+
 											  		'<label>日期：'+
-											  			'<input type="month" class="form-control" name="cardDate">'+
+											  			'<input type="month" class="form-control required" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
 											  		'<label>金額：'+
-											  			'<input type="text" class="form-control" name="cardCost">'+
+											  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+dynamicIndex+'].money">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
 											  		'<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>'+
 											  	'</div>'+
-										  	'</div>');
+										  	'</div></fieldset>';
+									dynamicIndex++;
 								}
+								$('#sendForm').append(appendText);
 								dynamicNum++;
 							}else if(obj.status == 3){
-								$('#sendForm').append('<fieldset class="fieldset">'+
+								$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
 										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
 										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
 								  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
 									  	'<div class="field">'+
 									  		'<label>日期：'+
-									  			'<input type="month" class="form-control" value="'+tempList[0].date+'" name="fixcostdate">'+
+									  			'<input type="month" class="form-control required" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
 									  		'</label>'+
 									  	'</div>'+
 									  	'<div class="field">'+
 									  		'<label><span>金額：</span>'+
-									  			'<input type="text" class="form-control" name="fixcost" value="'+tempList[0].money+'">'+
+									  			'<input type="text" class="form-control required digits" name="fixedPayMoney['+fixedIndex+'].money" value="'+tempList[0].money+'">'+
 									  		'</label>'+
 									  	'</div>'+
 									'</fieldset>');
@@ -444,10 +454,45 @@
 							}
 						});
 						$('#sendForm').append(
-								'<a href="javascript:;" class="finishButton"><span class="next">儲存變更</span></a>'+
+								'<button type="submit" class="finishButton"><span class="next">儲存變更</span></button>'+
 		                    	'<a href="javascript:;" class="cancelButton"><span class="next">取消</span></a>');
 					}
 				});
+			}
+			
+			function addPayMoney(itemID){
+				$('#field'+itemID).append(
+					'<div id="paymoney_'+dynamicIndex+'">'+
+					'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].ID" value="'+itemID+'">'+
+					  	'<div class="field">'+
+				  		'<label>日期：'+
+				  			'<input type="month" class="form-control required" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
+				  		'</label>'+
+				  	'</div>'+
+				  	'<div class="field">'+
+				  		'<label>金額：'+
+				  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+dynamicIndex+'].money">'+
+				  		'</label>'+
+				  	'</div>'+
+				  	'<div class="field">'+
+				  		'<button type="button" class="deletebutton" onClick="delPayMoney('+itemID+','+dynamicIndex+')"><i class="fa fa-times"></i> 刪除</button>'+
+				  	'</div>'+
+			  	'</div>');
+				dynamicIndex++;
+			}
+			
+			function delPayMoney(itemID,index){
+				if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
+					$('#paymoney_'+index).remove();
+				}
+			}
+			
+			function delExistPayMoney(itemID,index,record){
+				if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
+					$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].record" value="'+record+'">');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].ID" value="'+itemID+'">');
+					$('#paymoney_'+index).remove();
+				}
 			}
 		</script> 
 </body>

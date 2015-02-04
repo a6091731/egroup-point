@@ -38,6 +38,7 @@ public class PayItemDAOImpl implements PayItemDAO {
 				payItem.setStatus(rs.getInt("payItemStatus"));
 				allPayItem.add(payItem);
 			}
+			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
