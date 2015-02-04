@@ -13,6 +13,7 @@ public class Member {
 	private String registerNO;
 	private String resetNO;
 	private int lack;
+	private Date capitalDate;
 	
 	//程式變數
 	private int classID;
@@ -37,6 +38,10 @@ public class Member {
 	//取得哪個變數------------
 	private String setPercent;
 	private double getPercent;
+	
+	//一年總支出、總收入
+	private int expenditure;
+	private int income;
 	
 	public String getAccount() {
 		return account;
@@ -110,6 +115,12 @@ public class Member {
 	public void setLack(int lack) {
 		this.lack = lack;
 	}			
+	public Date getCapitalDate() {
+		return capitalDate;
+	}
+	public void setCapitalDate(Date capitalDate) {
+		this.capitalDate = capitalDate;
+	}
 	public double getPercent11() {
 		return percent11;
 	}
@@ -218,5 +229,16 @@ public class Member {
 	public void setGetPercent(double getPercent) {
 		this.getPercent = getPercent;
 	}
-	
+	public int getExpenditure() {
+		return expenditure;
+	}
+	public void setExpenditure(int expenditure) {
+		this.expenditure = expenditure;
+	}
+	public int getIncome() {
+		return income;
+	}
+	public void setIncome(int income) {
+		this.income = income;
+	}		
 }
