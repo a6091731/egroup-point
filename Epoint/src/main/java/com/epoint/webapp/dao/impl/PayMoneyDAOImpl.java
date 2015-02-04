@@ -9,21 +9,30 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
+
 import com.epoint.webapp.dao.PayMoneyDAO;
+import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.PayMoney;
 
 public class PayMoneyDAOImpl implements PayMoneyDAO {
 	private DataSource dataSource;
 	private Connection conn = null ;
 	private ResultSet rs = null ;
+	private ResultSet rs1 = null ;
+	private ResultSet rs2 = null ;
 	private PreparedStatement smt = null ;
+	//如果method裡面有一句以上的sql，請使用sql1,sql2分開
+	private String sql;
+	private String sql1;
+	private String sql2;
 	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	
 	public void addPayMoney(PayMoney paymoney){
-		String sql = "INSERT INTO pay_money (memberAccount,payItemID,payDate,payMoney,payRecord) VALUES (?,?,?,?,?)";
+		sql = "INSERT INTO pay_money (memberAccount,payItemID,payDate,payMoney,payRecord) VALUES (?,?,?,?,?)";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
@@ -46,7 +55,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 	}
 	
 	public void modiPayMoney(PayMoney paymoney){
-		String sql = "UPDATE pay_money SET payDate = ?,payMoney = ? WHERE memberAccount = ? AND payItemID = ? AND payRecord = ?";
+		sql = "UPDATE pay_money SET payDate = ?,payMoney = ? WHERE memberAccount = ? AND payItemID = ? AND payRecord = ?";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
@@ -69,7 +78,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 	}
 	
 	public void delPayMoney(PayMoney paymoney){
-		String sql = "DELETE FROM pay_money WHERE memberAccount = ? AND payItemID = ? AND payRecord = ?";
+		sql = "DELETE FROM pay_money WHERE memberAccount = ? AND payItemID = ? AND payRecord = ?";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
@@ -90,7 +99,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 	}
 
 	public int getPayRecord(String account, int itemID) {
-		String sql = "SELECT IFNULL(MAX(payRecord),0)+1 AS Number FROM pay_money WHERE memberAccount = ? AND payItemID = ?";
+		sql = "SELECT IFNULL(MAX(payRecord),0)+1 AS Number FROM pay_money WHERE memberAccount = ? AND payItemID = ?";
 		int Number = 0;
 		try {
 			conn = dataSource.getConnection();
@@ -116,7 +125,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 	}
 	
 	public List<PayMoney> getPayMoneyByItemID(String account, int itemID){
-		String sql = "SELECT * FROM pay_money WHERE memberAccount = ? AND payItemID = ? ORDER BY payRecord ASC";
+		sql = "SELECT * FROM pay_money WHERE memberAccount = ? AND payItemID = ? ORDER BY payRecord ASC";
 		List<PayMoney> allPayMoney = new ArrayList<PayMoney>();
 		try {
 			conn = dataSource.getConnection();
@@ -292,5 +301,49 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 			}
 		}
 		return allPayMoney;
+	}
+
+	public double getVentureCapitalPercent(Member member) {
+		// TODO Auto-generated method stub
+		double mapSubclassCount = 0;
+		double mySubclassCount = 0;
+		double percentCount;
+		sql1 = "SELECT payItemID FROM pay_item WHERE mapSubClassID=? GROUP BY payItemID";
+		sql2 = "SELECT * FROM pay_money WHERE payItemID=? AND memberAccount=? GROUP BY payItemID";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql1);
+			smt.setString(1, member.getSetPercent());
+			rs1 = smt.executeQuery();
+			while(rs1.next()){
+				mapSubclassCount = mapSubclassCount+1;	
+				/*System.out.println("payItemID="+rs1.getString("payItemID"));
+				System.out.println("mapSubclassCount="+mapSubclassCount);*/
+				
+				smt = conn.prepareStatement(sql2);
+				smt.setString(1, rs1.getString("payItemID"));
+				smt.setString(2,member.getAccount());
+				rs2 = smt.executeQuery();
+				if(rs2.next()){					
+					mySubclassCount = mySubclassCount+1;
+					//System.out.println("mySubclassCount"+mySubclassCount);
+				}
+			}
+			percentCount = mySubclassCount/mapSubclassCount;
+			System.out.println("percentCount="+percentCount);
+			rs1.close();
+			rs2.close();
+			smt.close();
+			return percentCount;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return 0.0;
 	}
 }

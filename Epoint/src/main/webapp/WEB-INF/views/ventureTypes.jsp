@@ -103,7 +103,7 @@
 			<div class="grid_9">
 				<section class="ventureTypesTitle hideBlock">
 					<h2>
-						<img alt="創業業種圖示" src="images/type.png">創業業種
+						<i class="fa fa-child fa-color"></i>創業業種
 					</h2>
 				</section>
 				<form id="sendForm" action="addVentureTypeCont" method="post">

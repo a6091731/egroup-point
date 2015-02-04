@@ -23,6 +23,9 @@
 	<link rel="stylesheet" href="css/layout.css">
 	<!-- responsive-table -->
 	<link rel="stylesheet" href="css/responsive-tables.css" media="screen">
+	<!-- alertify -->
+	<link rel="stylesheet" href="css/alertify.css" />
+	<link rel="stylesheet" href="css/alertify.default.css"/> 
 	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn’t work if you view the page via file:// -->
@@ -104,8 +107,7 @@
 				<section class="ventureTypesTitle hideBlock">
 					<h2><i class="fa fa-money fa-color"></i>收入結構</h2>
 				</section>
-
-				<form class="formset2" >
+				<form class="formset2">
 				<a class="addProduct" data-reveal-id ="addProduct" data-closeonbackgroundclick="false"><i class="fa fa-plus"></i> 新增產品</a>
 					<div class="ventureTypesInput clearfix">
 						<ul>
@@ -139,7 +141,7 @@
 												<i class="fa fa-pencil-square-o fa-lg"></i></a>
 											</td>
 											<td>
-												<a onclick="" class="fa-color">
+												<a onclick="confirm(${i.index});" class="fa-color">		
 												<i class="fa fa-times-circle fa-lg"></i></a>
 											</td>
 										</tr>						
@@ -326,7 +328,8 @@
 
 
 
-	<!-- import jquery -->
+	<!-- import jquery -->	
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<!-- import nav slideToggle RWD js -->	
 		<script src="js/nav.js"></script>
@@ -336,6 +339,7 @@
 		<script src="js/jquery.validate.js"></script>
 		<script src="js/messages_zh_TW.js"></script>
 		<script src="js/additional-methods.js"></script>
+		<script src="js/alertify.min.js"></script>
 		<script type="text/javascript">
 			var addSalesQuantityCount = 1;
 			var index = 1;
@@ -343,7 +347,9 @@
 			var deletedIndex = 0;
 	        $(function(){
 	            $(".cancelButton").click(function(){
+	            	alert("hehe");
 					$(".close-reveal-modal").trigger("click");
+					alert("321");
 				});
 	            $("#sendForm2").validate({
 	            	rules:{},
@@ -357,10 +363,7 @@
 	            });	 
 	           $("#addProductSalesSubmit").click(function(){
 	            	var salsClassCount = $('.salsDate').length
-	            	alert("salsClassCount="+salsClassCount);
 	            	if(salsClassCount>1){
-	            		//alert("123");
-	            		//alert("salsCount="+salsCount);
 	            		$("#salsDate0").rules("add",{
 	    	        		required:true,
 	    	            	messages:{
@@ -379,35 +382,35 @@
 	    	            		min:"請輸入大於0的數量",
 	    	            		maxlength:"請輸入小於12位數的數量"
 	    	            	}
-	    	        	});
-	    	        	
+	    	        	});        		    	        	
+	            	}else{	            		
+	            		if($('.salsDate').val()!="" || $('.salsQuantity').val()!=""){
+	            			$("#salsDate0").rules("add",{
+		    	        		required:true,
+		    	            	messages:{
+		    	            		required:"請輸入日期",	            		
+		    	            	}
+		    	        	});	        	
 
-	    	        	
-	    	        	/*$("#sendForm2").validate({
-	    	            	rules:{
-	    	            		salsDate:"required",
-	    	            		salsQuantity:{
-	    	            			required:true,
-	    	            			number: true,
-	    	            			min:1,
-	    	            			maxlength:12
-	    	            		}
-	    	            	},
-	    	            	messages:{
-	    	            		salsDate:"請輸入日期",
-	    	            		salsQuantity:{
-	    	            			required:"請輸入數量",
-	    	            			num:"請輸入數字",
-	    	            			min:"請輸入大於0的數量",
-	    	            			maxlength:"請輸入小於12位數的數量"
-	    	            		}
-	    	            	}
-	    	        	});*/
-	            	}else{
-	            		alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
-	            		$(".close-reveal-modal").trigger("click");
+		    	        	$("#salsQuantity0").rules("add",{
+		    	        		required:true,
+		    	            	number: true,
+		    	            	min:1,
+		    	            	maxlength:12,
+		    	            	messages:{
+		    	            		required:"請輸入數量",
+		    	            		num:"請輸入數字",
+		    	            		min:"請輸入大於0的數量",
+		    	            		maxlength:"請輸入小於12位數的數量"
+		    	            	}
+		    	        	});        	
+		    	        	
+	            		}else{
+	            			alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
+	            			$(".close-reveal-modal").trigger("click");
+	            		}        
 	            	}
-				}); 
+				});	   
 	     	});
 	        
 	        function deleteProduct(){
@@ -421,8 +424,8 @@
 	        }
 	        
 	        function addValidate(getIndex){
-	        	/*alert(123321);
-	        	alert("index="+getIndex)*/
+	        	alert(123321);
+	        	alert("index="+getIndex);
 	        	$("#salsDate"+getIndex).rules("add",{
 	        		required:true,
 	            	messages:{
@@ -560,7 +563,44 @@
 					}
 				});
 			}
-	       
+	        
+	        function reset() {
+				$("#toggleCSS").attr("href", "../themes/alertify.default.css");
+				alertify.set({
+					labels : {
+						ok     : "確認刪除",
+						cancel : "取消"
+					},
+					delay : 5000,
+					buttonReverse : false,
+					buttonFocus   : "ok"
+				});
+			}
+	        
+	        function confirm(i){
+	        	var list = $.parseJSON('${getProductList2}');
+				var productName =list[i].name;
+	        	reset();
+	   			alertify.confirm("請問您確定要刪除"+productName+"?", function (e) {
+	   				if (e) {
+	   					$.ajax({
+	   						url:"delProductRevenueStructure",
+	   						data:{
+	   							productID : list[i].id
+	   						},
+	   						dataType:"json",
+	   						success:function(result){
+	   						}
+	   					});	   					
+	   					location.reload();
+	   					alertify.success("刪除成功!");
+	   				} else {
+	   					alertify.error("取消刪除!");
+	   				}
+   				});
+   				return false;
+	        }
+	        
 	        
 	    </script>
 </body>

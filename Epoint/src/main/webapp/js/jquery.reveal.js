@@ -113,7 +113,7 @@
 							modal.css({'opacity' : 1, 'visibility' : 'hidden', 'top' : topMeasure});
 							unlockModal();
 						});					
-					}  
+					}  	
 					if(options.animation == "none") {
 						modal.css({'visibility' : 'hidden', 'top' : topMeasure});
 						modalBG.css({'display' : 'none'});	

@@ -18,4 +18,5 @@ public interface VentureChecklistDAO {
 	public HumanResourceContent getHumanResourceContentByMember(Member member);
 	public boolean checkHumanResourceContentByMember(Member member);
 	public void updateHumanResourceContentByMember(HumanResourceContent humanResourceContent);
+	public double getVentureChecklistPercent(Member Member);
 }
