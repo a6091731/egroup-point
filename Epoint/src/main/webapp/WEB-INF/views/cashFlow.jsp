@@ -148,7 +148,10 @@
 									<tr>
 										<td>${product.name }</td>
 										<td>${product.monthIncome }</td>
-										<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailExpenditure"><i class="fa  fa-file-text-o fa-lg"></i></a></td>
+										<td><a onclick="newProductSales(${i.index});" class="fa-color" 
+										    data-reveal-id ="addProductSales" data-closeonbackgroundclick="false">
+												<i class="fa fa-file-text-o fa-lg"></i></a>
+										</td>
 									</tr>			
 									</c:forEach>									
 								</tbody>
@@ -197,51 +200,44 @@
 	</div>
 
 	<!-- BEGIN MODAL WINDOWS -->
-        <div id="productDetailExpenditure" class="reveal-modal">
-             <div class="cont clearfix">
-                     <form class="formset clearfix">
-                         <fieldset class="fieldset2">
-                                    <legend>產品名稱 : 好吃的旺旺仙貝</legend>
-                            </fieldset>
-                            <fieldset  class="fieldset2">
-							  	<legend>產品銷售數量 : </legend>
-							  	<button class="addbutton"><i class="fa fa-plus"></i> 新增一筆費用</button>
-							  	<div class="deleteblock">
-								  	<div class="field">
-								  		<label>日期：
-								  			<input type="month" class="form-control" name="cardDate">
-								  		</label>
-								  	</div>
-								  	<div class="field">
-								  		<label>數量：
-								  			<input type="text" class="form-control" name="cardCost">
-								  		</label>
-								  	</div>
-								  	<div class="field">
-								  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
-								  	</div>					  		
-							  	</div>
-							  	<div class="deleteblock">
-								  	<div class="field">
-								  		<label>日期：
-								  			<input type="month" class="form-control" name="cardDate">
-								  		</label>
-								  	</div>
-								  	<div class="field">
-								  		<label>數量：
-								  			<input type="text" class="form-control" name="cardCost">
-								  		</label>
-								  	</div>
-								  	<div class="field">
-								  		<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>
-								  	</div>					  		
-							  	</div>
-							</fieldset>
-                             <a href="javascript:;" class="finishButton"><span class="next">儲存變更</span></a>          
-                             <a href="javascript:;" class="cancelButton"><span class="next">取消</span></a>
-                       </form>
-             </div>
-             <a class="close-reveal-modal">&#215;</a>
+        <div id="addProductSales" class="reveal-modal">
+                <div class="cont clearfix">
+                        <form class="formset clearfix" id="sendForm2" action="addProductSalse" method="post">
+                        		<input type="hidden" id="productID" name="productID">                        		
+	                            <fieldset class="fieldset2">
+	                                    <p id="productName"></p>
+	                            </fieldset>
+	                            <input type="hidden" id="delCount" value="1">
+                                <fieldset id="addSalesQuantity" class="fieldset2">                                  	
+								  	<legend>產品銷售數量 : </legend>								  			  	
+								  	<button type="button" class="addbutton" onclick="addbutton();"><i class="fa fa-plus"></i> 新增數量</button>
+									<div id="newMoney0" >
+									  	<div class="deleteblock">
+										  	<div class="field">
+										  		<label>日期：
+										  			<input type="month" class="form-control salsDate" id="salsDate0" name="salsDate" >
+										  		</label>
+										  	</div>
+										  	<div class="field">
+										  		<label>數量：
+										  			<input type="text" class="form-control salsQuantity" id="salsQuantity0" name="salsQuantity" >
+										  		</label>
+										  	</div>
+										  	<div class="field">
+										  		<button type="button" class="deletebutton" onclick="deletebutton(0);"><i class="fa fa-times"></i> 刪除</button>
+										  	</div>					  		
+									  	</div>
+									</div>								  	
+								</fieldset>
+                                <button type="submit" class="finishButton" id="addProductSalesSubmit">
+								<span class="next">確認修改</span>
+								</button>
+								<button type="button" class="cancelButton" >
+									<span class="next">取消</span>
+								</button>
+                          </form>
+                </div>
+                <a class="close-reveal-modal">&#215;</a>
         </div>
 
 	<!-- BEGIN MODAL WINDOWS -->
@@ -487,6 +483,75 @@
             		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].ID" value="'+itemID+'">');
 					$('#paymoney_'+index).remove();
 				}
+			}
+			
+			function newProductSales(i){
+				var list = $.parseJSON('${getProductList2}');
+				$('#productID').val(list[i].id);
+				$('#productName').text(list[i].name);
+				$('#delCount').val(1);
+				var delCount = $('#delCount').val();
+				$.ajax({
+					url:"getProductSalesListByMemberID",
+					data:{
+						productID : list[i].id
+					},
+					dataType:"json",
+					success:function(result){
+						$('#addSalesQuantity').html("");
+						var addSalesQuantityText = 
+							'<legend>產品銷售數量 : </legend>'+							  			  	
+						  	'<button type="button" class="addbutton" onclick="addbutton();"><i class="fa fa-plus"></i> 新增數量</button>'+
+							'<div id="newMoney0" >'+
+							'<div class="deleteblock">'+
+							'<div class="field">'+
+							'<label>日期：'+
+							'<input type="month" class="form-control salsDate" id="salsDate0" name="salsDate">'+
+							'</label>'+
+							'</div>'+
+							'<div class="field">'+
+							'<label>數量：'+
+							'<input type="text" class="form-control salsQuantity" id="salsQuantity0" name="salsQuantity">'+
+							'</label>'+
+							'</div>'+
+							'<div class="field">'+
+							'<button type="button" class="deletebutton" onclick="deletebutton(0);"><i class="fa fa-times"></i> 刪除</button>'+
+							'</div>'+		  		
+							'</div>'+
+							'</div>';
+						$('#addSalesQuantity').append(addSalesQuantityText);
+						$("#salsDate0").val("");
+						$("#salsQuantity0").val("");
+						if(result.length>0){
+							$("#salsDate0").val(result[0].date_string);
+							$("#salsQuantity0").val(result[0].quantity);							
+							for(var i=1; i<result.length; i++){
+				            	$('#delCount').val($('#delCount').val()+1)
+								addSalesQuantityText = 
+								  	'<div class="deleteblock" id="newMoney'+index+'">'+
+									'<div class="field">'+  	
+									'<label>日期：'+		
+									'<input type="month" class="form-control salsDate" id="salsDate'+index+'" name="salsDate'+index+'" value="'+result[i].date_string+'">'+  			
+									'</label>'+  		
+									'</div>'+  	
+									'<div class="field">'+  	
+									'<label>數量：'+ 		
+									'<input type="text" class="form-control salsQuantity" id="salsQuantity'+index+'" name="salsQuantity'+index+'" value="'+result[i].quantity+'">'+ 			
+									'</label>'+  		
+									'</div>'+  	
+									'<div class="field">'+  	
+									'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
+									'</div>'+  				  		
+								  	'</div>';
+				            	$('#addSalesQuantity').append(addSalesQuantityText);	
+				            	delCount++;
+				            	$('#delCount').val(delCount);
+				            	addValidate(index);
+				            	index++;
+							}
+						}
+					}
+				});
 			}
 		
 		</script> 
