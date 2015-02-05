@@ -180,7 +180,7 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${totalMoneyBySubClass}" var="item">
+									<c:forEach items="${totalExpenditureBySubClass}" var="item">
 										<tr>
 											<td>${item.subClassName }</td>
 											<td>${item.monthTotal }</td>
@@ -285,7 +285,7 @@
 			
 			//列出每月支出
 			var expendData = [0,0,0,0,0,0,0,0,0,0,0,0];
-			<c:forEach items='${monthTotalMoney}' var='total' varStatus='i'>
+			<c:forEach items='${monthTotalExpenditure}' var='total' varStatus='i'>
 				expendData['${i.index}'] = ${total};
 			</c:forEach>
 			//列出每月收入
@@ -324,10 +324,10 @@
 				$('#sendForm').validate();
 			}
 
-			var fixedIndex = 0;
-			var dynamicIndex = 0;
-			var dynamicNum = 2;
 			function editPayMoney(subClassID){
+				var fixedIndex = 0;
+				var dynamicIndex = 0;
+				var dynamicNum = 2;
 				$.ajax({
 					url:"getPayMoneyDetailBySubClassID",
 					data:{
@@ -449,7 +449,7 @@
 						});
 						$('#sendForm').append(
 								'<button type="submit" class="finishButton"><span class="next">儲存變更</span></button>'+
-		                    	'<a href="javascript:;" class="cancelButton"><span class="next">取消</span></a>');
+		                    	'<button type="button" class="cancelButton"><span class="next">取消</span></button>');
 					}
 				});
 			}
