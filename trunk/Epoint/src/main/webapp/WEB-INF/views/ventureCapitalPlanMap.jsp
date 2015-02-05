@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -21,6 +22,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<!-- layout -->
 	<link rel="stylesheet" href="css/layout.css">
+	<!-- alertify -->
+	<link rel="stylesheet" href="css/alertify.css" />
+	<link rel="stylesheet" href="css/alertify.default.css"/> 
 	
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -64,8 +68,8 @@
 						<ul>
 							<li>請填寫您的創業時間，我們將以您設定的時間為基準往後一年作為您的營運排程。</li>
 							<li>您創業第一年的時間：</li>
-							<li><input type="month" class="form-control2" name="cardDate">至
-								<input type="month" class="form-control2" name="cardDate"></li>
+							<li><input type="month" class="form-control2" id="startDate" value="${fn:substring(getMember.capitalDate,0,7) }">至
+								<input type="month" class="form-control2" id="endDate" disabled></li>
 							<li>設定好您的創業時間後，可以開始進行您的營運試算，營運試算分為下列兩個部分：1.支出結構 2.收入結構</li>
 						</ul>
 					</section>
@@ -132,10 +136,48 @@
 		</script>
 	<!-- import progresscircle -->	
 		<script src="js/jquery.circliful.js"></script>
+		<script src="js/alertify.min.js"></script>
 		<script>
 		$(function() {
-		        $('.progressCircle').circliful();
-		    });
+	        $('.progressCircle').circliful();
+			var endDate = calculateEndDate($('#startDate').val());
+			$('#endDate').val(endDate);
+			
+			$('#startDate').change(function(){
+				var startDate = $(this).val();
+				alertify.confirm("當您修改日期，將會刪除你設定日期範圍外的資料", function (e) {
+	   				if (e) {
+	   					$.ajax({
+	   						url:"modiVenturePlanStartDate",
+	   						data:{
+	   							startDate : startDate
+	   						},
+	   						success:function(){
+	   							var endDate = calculateEndDate(startDate);
+	   							$('#endDate').val(endDate);
+	   		   					alertify.success("更新成功!");
+	   						}
+	   					});
+	   				} else {
+	   					alertify.error("取消更新!");
+	   				}
+   				});
+			});
+		});
+		
+		function calculateEndDate(startDate){
+			var endDate;
+			var endYear = parseInt(startDate.substring(0,4));
+			var endMon = parseInt(startDate.substring(5,7))-1;
+			if(endMon == 0){
+				endDate = endYear+'-12';
+			}else{
+				endYear++;
+				endMon = '0'+endMon;
+				endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
+			}
+			return endDate;
+		}
 		</script>
 </body>
 </html>

@@ -43,12 +43,13 @@ public class ExpenditureStructureController {
             dynamicPayMoney.addAll(cardPayMoney);
             dynamicPayMoney.addAll(lawyerPayMoney);
             dynamicPayMoney.addAll(accountPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("fixedPayMoney", fixedPayMoney);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("founded");
 		}else{
-			model.setViewName("redirect:/");
+			model.setViewName("memberLogin");
 		}
             return model;
 	}
@@ -73,12 +74,13 @@ public class ExpenditureStructureController {
             dynamicPayMoney.addAll(decoratedPayMoney);
             dynamicPayMoney.addAll(equipmentPayMoney);
             dynamicPayMoney.addAll(deskPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("fixedPayMoney", fixedPayMoney);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("placeComplete");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}
@@ -99,12 +101,13 @@ public class ExpenditureStructureController {
             int[] dynamicTypeCount = { officialPayMoney.size(), trainingPayMoney.size()};
             dynamicPayMoney.addAll(officialPayMoney);
             dynamicPayMoney.addAll(trainingPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("fixedPayMoney", fixedPayMoney);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("personPlace");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}
@@ -122,11 +125,12 @@ public class ExpenditureStructureController {
             int[] dynamicTypeCount = { cleaningPayMoney.size(), buyingPayMoney.size()};
             dynamicPayMoney.addAll(cleaningPayMoney);
             dynamicPayMoney.addAll(buyingPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("equipmentBuild");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}
@@ -144,11 +148,12 @@ public class ExpenditureStructureController {
             int[] dynamicTypeCount = { materialPayMoney.size(), consultingPayMoney.size()};
             dynamicPayMoney.addAll(materialPayMoney);
             dynamicPayMoney.addAll(consultingPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("trialProduction");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}
@@ -166,11 +171,12 @@ public class ExpenditureStructureController {
             int[] dynamicTypeCount = { materialPayMoney.size(), decoratingPayMoney.size()};
             dynamicPayMoney.addAll(materialPayMoney);
             dynamicPayMoney.addAll(decoratingPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("procureMaterial");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}
@@ -188,11 +194,12 @@ public class ExpenditureStructureController {
             int[] dynamicTypeCount = { activityPayMoney.size(), part_timePayMoney.size()};
             dynamicPayMoney.addAll(activityPayMoney);
             dynamicPayMoney.addAll(part_timePayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("trialOperation");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}
@@ -210,11 +217,12 @@ public class ExpenditureStructureController {
             int[] dynamicTypeCount = { travelPayMoney.size(), socialPayMoney.size()};
             dynamicPayMoney.addAll(travelPayMoney);
             dynamicPayMoney.addAll(socialPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("developmentMarket");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}
@@ -234,11 +242,12 @@ public class ExpenditureStructureController {
             dynamicPayMoney.addAll(paperAdPayMoney);
             dynamicPayMoney.addAll(electricalAdPayMoney);
             dynamicPayMoney.addAll(physicalAdPayMoney);
+            model.addObject("getMember", loginMember);
             model.addObject("dynamicPayMoney", dynamicPayMoney);
             model.addObject("dynamicTypeCount", dynamicTypeCount);
             model.setViewName("marketing");
         }else{
-        	model.setViewName("redirect:/");
+        	model.setViewName("memberLogin");
         }
         return model;
 	}

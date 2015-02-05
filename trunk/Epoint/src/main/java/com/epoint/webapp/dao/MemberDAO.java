@@ -12,4 +12,5 @@ public interface MemberDAO {
 	public Member getByResetNO(Member member);
 	public void modiFundLackBy(String account,int lack);
 	public int getFundLackByAccount(String account);
+	public void modiVentureCapitalDateByAccount(String account,String startDate);
 }

@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epoint.webapp.dao.MemberDAO;
 import com.epoint.webapp.dao.PayMoneyDAO;
-import com.epoint.webapp.dao.ProductDAO;
 import com.epoint.webapp.dao.ProductSalesDAO;
-import com.epoint.webapp.dao.VentureChecklistDAO;
 import com.epoint.webapp.entity.Member;
 
 @Controller
@@ -58,5 +57,31 @@ public class VentureCapitalPlanMapController {
 			model.addObject("getMember",memberLogin);
 		}			
 		return model;
+	}
+	
+	@RequestMapping(value = "/modiVenturePlanStartDate", method = RequestMethod.GET)
+	public ModelAndView modiVenturePlanStartDate (String startDate, HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");
+		if(memberLogin==null)
+			model.setViewName("redirect:/memberLogin");
+		else{
+			MemberDAO memberDAO = (MemberDAO)context.getBean("memberDAO");
+			PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
+			String account = memberLogin.getAccount();
+			memberDAO.modiVentureCapitalDateByAccount(account, startDate+"-01");
+			int endYear = Integer.parseInt(startDate.substring(0, 4));
+			int endMon = Integer.parseInt(startDate.substring(5, 7))-1;
+			String endDate = "";
+			if(endMon == 0){
+				endDate = endYear+"-12-01";
+			}else{
+				endYear++;
+				String temp = "0"+endMon;
+				endDate = endYear+"-"+temp.substring(temp.length()-2, temp.length())+"-01";
+			}
+			payMoneyDAO.delPayMoneyByDate(account, startDate+"-01", endDate);
+		}			
+		return null;
 	}
 }

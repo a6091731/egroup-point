@@ -34,6 +34,7 @@ public class MemberDAOImpl implements MemberDAO{
 				member.setName(rs.getString("memberName"));
 				member.setPhone(rs.getString("memberPhone"));
 				member.setDate(rs.getDate("registerDate"));
+				member.setCapitalDate(rs.getDate("ventureCapitalDate"));
 				member.setLogin(true);
 			}
 			rs.close();
@@ -261,5 +262,25 @@ public class MemberDAOImpl implements MemberDAO{
 			}
 		}
 		return lack;
+	}
+	
+	public void modiVentureCapitalDateByAccount(String account,String startDate) {
+		String sql = "UPDATE member SET ventureCapitalDate = ? WHERE memberAccount = ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1,startDate);
+			smt.setString(2,account);
+			smt.executeUpdate();			
+			smt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
 	}
 }
