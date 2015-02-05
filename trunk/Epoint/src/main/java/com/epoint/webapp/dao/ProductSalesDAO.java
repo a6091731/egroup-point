@@ -14,5 +14,5 @@ public interface ProductSalesDAO {
 	public void delProductSalesByMember(ProductSales productSales);
 	public int getVentureCapitalYearIncome(Member member);
 	public List<ProductSales> getMonTotalIncomeByAccoun(String account);
-	public List<ProductSales> getMonthTotalIncomeBySubClassID(String account,String date);
+	public List<ProductSales> getMonthTotalIncomeByMemberDate(String account,String date);
 }

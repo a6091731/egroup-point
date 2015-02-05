@@ -235,7 +235,7 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 		return null;
 	}
 
-	public List<ProductSales> getMonthTotalIncomeBySubClassID(String account,
+	public List<ProductSales> getMonthTotalIncomeByMemberDate(String account,
 			String date) {
 		// TODO Auto-generated method stub
 		String sql = "SELECT SUM((p.productSalesPrice-p.productCost)*IFNULL(s.productSalesQuantity,0)) "

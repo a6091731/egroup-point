@@ -22,9 +22,11 @@ import com.epoint.webapp.dao.ProductSalesDAO;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.PayItem;
 import com.epoint.webapp.entity.PayMoney;
+import com.epoint.webapp.entity.Product;
 import com.epoint.webapp.entity.ProductSales;
 import com.epoint.webapp.form.CashFlowForm;
 import com.epoint.webapp.form.ExpenditureForm;
+import com.google.gson.Gson;
 
 @Controller
 public class CashFlowController {
@@ -68,13 +70,14 @@ public class CashFlowController {
             List<PayMoney> totalExpenditureBySubClass = payMoneyDAO.getMonthTotalMoneyBySubClassID(account,date_strings[selectedMonth-1]);
            
             //當月收入金額--------------
-            List<ProductSales> totalIncomeBySubClass = productSalesDAO.getMonthTotalIncomeBySubClassID(account,date_strings[selectedMonth-1]);
-                        
+            List<ProductSales> totalIncomeByMemberDate = productSalesDAO.getMonthTotalIncomeByMemberDate(account,date_strings[selectedMonth-1]);
+                       
             model.addObject("selectedMonth", selectedMonth);
             model.addObject("monthTotalExpenditure", monthTotalExpenditure);
             model.addObject("monthTotalIncome", monthTotalIncome);            
             model.addObject("totalExpenditureBySubClass", totalExpenditureBySubClass);
-            model.addObject("totalIncomeBySubClass", totalIncomeBySubClass);
+            model.addObject("totalIncomeByMemberDate1", totalIncomeByMemberDate);
+			model.addObject("totalIncomeByMemberDate2", new Gson().toJson(totalIncomeByMemberDate));
 		}else{
 			model.setViewName("memberLogin");
 		}
@@ -221,4 +224,41 @@ public class CashFlowController {
 		}
         return model;
     }
+	
+	@RequestMapping(value = "/addProductSalseCashFlow", method = RequestMethod.POST)
+	public ModelAndView addProductSalseRevenueStructure (HttpServletRequest request, HttpSession session) throws ParseException{
+		String  monthDate[] = new String[13];
+		int monthQuantity[] = new int[13];
+		int getMonth;
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){			
+			model.setViewName("redirect:/cashFlow");
+			ProductSalesDAO productSalesDAO = (ProductSalesDAO)context.getBean("productSalesDAO");
+			String[] dateList = request.getParameterValues("salsDate");
+			String[] quantityList = request.getParameterValues("salsQuantity");
+			ProductSales productSales = new ProductSales();
+			productSales.setAccount(memberLogin.getAccount());
+			productSales.setId(request.getParameter("productID"));
+			productSalesDAO.delProductSalesByMember(productSales);			
+			for(int i = 0 ; i<dateList.length ; i++){	
+				if(dateList[i]!="" && quantityList[i]!=""){					
+					getMonth = Integer.parseInt(dateList[i].substring(5,7));
+					monthDate[getMonth] = dateList[i];
+					monthQuantity[getMonth] = monthQuantity[getMonth]+Integer.parseInt(quantityList[i]);					
+				}
+			}	
+			
+			for(int j = 0;j<monthDate.length;j++){
+				if(monthDate[j]!=null && monthQuantity[j]!=0){
+					productSales.setDate_string(monthDate[j]+"-01");
+					productSales.setQuantity(monthQuantity[j]);			
+					productSalesDAO.insertProductSales(productSales);
+				}
+			}
+		}
+		else
+			model.setViewName("memberLogin");
+		return model;
+	}
 }

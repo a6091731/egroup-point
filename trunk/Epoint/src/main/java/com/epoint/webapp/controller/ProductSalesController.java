@@ -66,8 +66,8 @@ public class ProductSalesController {
 		return model;
 	}	
 	
-	@RequestMapping(value = "/addProductSalse", method = RequestMethod.POST)
-	public ModelAndView addProductSalse (HttpServletRequest request, HttpSession session) throws ParseException{
+	@RequestMapping(value = "/addProductSalseRevenueStructure", method = RequestMethod.POST)
+	public ModelAndView addProductSalseRevenueStructure (HttpServletRequest request, HttpSession session) throws ParseException{
 		String  monthDate[] = new String[13];
 		int monthQuantity[] = new int[13];
 		int getMonth;
