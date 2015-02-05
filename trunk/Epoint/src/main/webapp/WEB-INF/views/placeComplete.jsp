@@ -61,46 +61,46 @@
 			<div class="grid_3">
 				<aside>
 					<ul class="sideNav hideBlock">
-						<li><a href="javascript:;"><i class="fa fa-child"></i>公司成立</a></li>
-						<li><a href="javascript:;"><i class="fa fa-child"></i>營業場所完工</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>人員到位</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>生產設備建置</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>試產</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>原料採購</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>試營運</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>通路開發</a></li>
-						<li><div class="mask"></div><a href="javascript:;"><i class="fa fa-lock"></i>行銷推廣</a></li>
+						<li><a href="founded"><i class="fa fa-child"></i>公司成立</a></li>
+						<li><a href="placeComplete"><i class="fa fa-child"></i>營業場所完工</a></li>
+						<li><a href="personPlace"><i class="fa fa-child"></i>人員到位</a></li>
+						<li><a href="equipmentBuild"><i class="fa fa-child"></i>生產設備建置</a></li>
+						<li><a href="trialProduction"><i class="fa fa-child"></i>試產</a></li>
+						<li><a href="procureMaterial"><i class="fa fa-child"></i>原料採購</a></li>
+						<li><a href="trialOperation"><i class="fa fa-child"></i>試營運</a></li>
+						<li><a href="developmentMarket"><i class="fa fa-child"></i>通路開發</a></li>
+						<li><a href="marketing"><i class="fa fa-child"></i>行銷推廣</a></li>
 					</ul>	
 	                <div class="memberRwdnav clearfix">
 	                    <nav class="primary">
 	                        <ul class="rightnav">
 	                            <li>
-	                                <a href="javascript:;">公司成立</a>
+	                                <a href="founded">公司成立</a>
 	                            </li>	                        
 	                            <li>
-	                                <a href="javascript:;">營業場所完工</a>
+	                                <a href="placeComplete">營業場所完工</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 人員到位</a>
+	                                <a href="personPlace">人員到位</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 生產設備建置</a>
+	                                <a href="equipmentBuild">生產設備建置</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 試產</a>
+	                                <a href="trialProduction">試產</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 原料採購</a>
+	                                <a href="procureMaterial">原料採購</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 試營運</a>
+	                                <a href="trialOperation">試營運</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 通路開發</a>
+	                                <a href="developmentMarket">通路開發</a>
 	                            </li>
 	                            <li>
-	                                <a href="javascript:;">(鎖) 行銷推廣</a>
-	                            </li>	                              
+	                                <a href="marketing">行銷推廣</a>
+	                            </li>
 	                        </ul>
 	                    </nav>
 	                </div>          	
