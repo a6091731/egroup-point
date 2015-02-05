@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import com.epoint.webapp.dao.ProductSalesDAO;
 import com.epoint.webapp.entity.Member;
+import com.epoint.webapp.entity.PayMoney;
 import com.epoint.webapp.entity.ProductSales;
 import com.epoint.webapp.util.DateConversion;
 
@@ -199,5 +200,77 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 			}
 		}
 		return 0;
+	}
+
+	public List<ProductSales> getMonTotalIncomeByAccoun(String account) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT SUM((p.productSalesPrice-p.productCost)*IFNULL(s.productSalesQuantity,0)) "
+				+ "AS monthIncome,s.productSalesDate FROM  product_sales s LEFT JOIN product p ON "
+				+ "p.memberAccount = s.memberAccount AND p.productID = s.productID WHERE s.memberAccount = ? "
+				+ "GROUP BY productSalesDate";
+		List<ProductSales> productSalesList = new ArrayList<ProductSales>();
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			rs = smt.executeQuery();
+			while(rs.next()){
+				ProductSales productSales = new ProductSales();
+				productSales.setDate(rs.getDate("productSalesDate"));
+				productSales.setMonthIncome(rs.getInt("monthIncome"));
+				productSalesList.add(productSales);
+			}
+			rs.close();
+			smt.close();
+			return productSalesList;			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return null;
+	}
+
+	public List<ProductSales> getMonthTotalIncomeBySubClassID(String account,
+			String date) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT SUM((p.productSalesPrice-p.productCost)*IFNULL(s.productSalesQuantity,0)) "
+				+ "AS monthIncome,s.productSalesDate ,p.productID ,p.productName FROM product p LEFT JOIN "
+				+ "product_sales s ON p.memberAccount = s.memberAccount AND p.productID = s.productID "
+				+ "WHERE s.memberAccount = ? AND s.productSalesDate LIKE ? "
+				+ "GROUP BY s.productID";
+		List<ProductSales> productSalesList = new ArrayList<ProductSales>();
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			smt.setString(2, "%"+date+"%");
+			rs = smt.executeQuery();
+			while(rs.next()){
+				ProductSales productSales = new ProductSales();
+				productSales.setAccount(account);
+				productSales.setDate(rs.getDate("productSalesDate"));
+				productSales.setId(rs.getString("productID"));
+				productSales.setName(rs.getString("productName"));
+				productSales.setMonthIncome(rs.getInt("monthIncome"));
+				productSalesList.add(productSales);
+			}
+			rs.close();
+			smt.close();
+			return productSalesList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return null;
 	}
 }

@@ -60,6 +60,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		if(member.isLogin()){
 			session.setAttribute("loginMember", member);
 			model.setViewName("redirect:"+request.getHeader("referer"));
+			System.out.println("referer:"+request.getHeader("referer"));
 		}
 		else{
 			session.setAttribute("errorMsg", "無效的帳號密碼或未驗證");
@@ -94,9 +95,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("****0");
 		memberDAO.addMember(member);
-		System.out.println("****4");
 		session.setAttribute("loginMember", member);
 		model.setViewName("redirect:/aboutme?id"+member.getMemberNO());
 		/*HtmlUtil htmlUtil = new HtmlUtil();
