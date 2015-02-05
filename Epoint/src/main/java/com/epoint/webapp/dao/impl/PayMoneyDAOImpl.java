@@ -97,6 +97,27 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 			}
 		}
 	}
+	
+	public void delPayMoneyByDate(String account, String startDate, String endDate){
+		sql = "DELETE FROM pay_money WHERE memberAccount = ? AND payDate < ? OR payDate > ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			smt.setString(2, startDate);
+			smt.setString(3, endDate);
+			smt.executeUpdate();			
+			smt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
 
 	public int getPayRecord(String account, int itemID) {
 		sql = "SELECT IFNULL(MAX(payRecord),0)+1 AS Number FROM pay_money WHERE memberAccount = ? AND payItemID = ?";

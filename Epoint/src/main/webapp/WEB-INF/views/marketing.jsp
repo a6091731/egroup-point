@@ -127,12 +127,12 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${card.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(card.date,0,7) }">
+						  			<input type="month" class="form-control dateValidate" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(card.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
 						  		<label>金額：
-						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${card.money }">
+						  			<input type="text" class="form-control moneyValidate" name="dynamicPayMoney[${index}].money" value="${card.money }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -153,12 +153,12 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${lawyer.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(lawyer.date,0,7) }">
+						  			<input type="month" class="form-control dateValidate" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(lawyer.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
 						  		<label>金額：
-						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${lawyer.money }">
+						  			<input type="text" class="form-control moneyValidate" name="dynamicPayMoney[${index}].money" value="${lawyer.money }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -179,12 +179,12 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${account.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control required" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
+						  			<input type="month" class="form-control dateValidate" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
 						  		<label>金額：
-						  			<input type="text" class="form-control required digits" name="dynamicPayMoney[${index}].money" value="${account.money }">
+						  			<input type="text" class="form-control moneyValidate" name="dynamicPayMoney[${index}].money" value="${account.money }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -243,6 +243,18 @@
 	            index = parseInt(cardCount) + parseInt(lawyerCount) + parseInt(accountCount);
 	            
 	            $("#sendForm").validate();
+	            jQuery.validator.addClassRules({
+	            	dateValidate: {
+	            		required: true,
+	            		min: '${fn:substring(getMember.capitalDate,0,7)}',
+	            		max: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')
+	            	},
+	            	moneyValidate: {
+	            		required: true,
+	            		digits: true,
+	            		maxlength: 12
+	            	}
+	            });
 	            
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
@@ -254,12 +266,12 @@
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2191">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
 						  		'<label>金額：'+
-						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
+						  			'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -274,12 +286,12 @@
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2192">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
 						  		'<label>金額：'+
-						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
+						  			'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -294,12 +306,12 @@
 	            			'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2193">'+
 						  	'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control required" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
 						  		'<label>金額：'+
-						  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+index+'].money">'+
+						  			'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+index+'].money">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -311,7 +323,6 @@
 	            	$('.delCardBtn').click(function(){
 	            		var id = $(this).data('id');
 		            	if(cardCount > 1){
-			            	removeValidate(id);
 			            	$('#paymoney_'+id).remove();
 			            	cardCount--;
 			            	$('#cardCount').val(cardCount);
@@ -320,7 +331,6 @@
 	            	$('.delLawyerBtn').click(function(){
 		            	var id = $(this).data('id');
 		            	if(lawyerCount > 1){
-			            	removeValidate(id);
 			            	$('#paymoney_'+id).remove();
 			            	lawyerCount--;
 			            	$('#lawyerCount').val(lawyerCount);
@@ -329,7 +339,6 @@
 	            	$('.delAccountBtn').click(function(){
 		            	var id = $(this).data('id');
 		            	if(accountCount > 1){
-			            	removeValidate(id);
 			            	$('#paymoney_'+id).remove();
 			            	accountCount--;
 			            	$('#accountCount').val(accountCount);
@@ -339,11 +348,6 @@
 	            initialDelBtn();
 	        });
 	        
-	    	function removeValidate(id){
-	    		$('#paymoney_'+id+' input[name="dynamicPayMoney['+id+'].date_string"]').rules("remove");
-	    		$('#paymoney_'+id+' input[name="dynamicPayMoney['+id+'].money"]').rules("remove");
-	    	}
-	    	
 	    	function initialDelBtn(){
             	$('.delCardBtn').click(function(){
 	            	var id = $(this).data('id');
@@ -388,6 +392,20 @@
 	            	}
 	            });
 	    	}
+	    	
+	    	function calculateEndDate(startDate){
+				var endDate;
+				var endYear = parseInt(startDate.substring(0,4));
+				var endMon = parseInt(startDate.substring(5,7))-1;
+				if(endMon == 0){
+					endDate = endYear+'-12';
+				}else{
+					endYear++;
+					endMon = '0'+endMon;
+					endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
+				}
+				return endDate;
+			}
 	    </script>
 </body>
 </html>
