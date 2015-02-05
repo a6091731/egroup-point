@@ -39,20 +39,17 @@ public class CashFlowController {
 		if(loginMember != null){
 			String account = loginMember.getAccount();
 			model.setViewName("cashFlow");
-			//Yiru ->getMonthTotalMoneyByAccounte改成totalExpenditureByAccount
-			//Yiru ->totalMoneyBySubClass改成totalExpenditureBySubClass
-			//Yiru ->把totalExpenditureByAccount跟totalExpenditureBySubClass分開成不同的List，不要共用同個List，避免混淆
-            List<PayMoney> totalMoneyBySubClass = payMoneyDAO.getMonthTotalMoneyByAccount(account);
+            List<PayMoney> totalExpenditureByAccount = payMoneyDAO.getTotalExpenditureByAccount(account);
             List<ProductSales> totalIncomeByAccount = productSalesDAO.getMonTotalIncomeByAccoun(account);
             
             //宣告兩個陣列，至多12個月，儲存每月的花費
-            int[] monthTotalMoney = new int[12];
+            int[] monthTotalExpenditure = new int[12];
             int[] monthTotalIncome = new int[12];
             //每月支出金額--------------
-            for(PayMoney p : totalMoneyBySubClass){
+            for(PayMoney p : totalExpenditureByAccount){
             	//折線圖
             	int temp = Integer.parseInt(p.getDate().toString().substring(5, 7));
-            	monthTotalMoney[temp-1] = p.getMonthTotal();
+            	monthTotalExpenditure[temp-1] = p.getMonthTotal();
             }
             
             //每月收入金額--------------
@@ -68,17 +65,15 @@ public class CashFlowController {
             String[] date_strings = {"-01-","-02-","-03-","-04-","-05-","-06-","-07-","-08-","-09-","-10-","-11-","-12-"};
            
             //當月支出金額--------------   
-            totalMoneyBySubClass = payMoneyDAO.getMonthTotalMoneyBySubClassID(account,date_strings[selectedMonth-1]);
+            List<PayMoney> totalExpenditureBySubClass = payMoneyDAO.getMonthTotalMoneyBySubClassID(account,date_strings[selectedMonth-1]);
            
             //當月收入金額--------------
             List<ProductSales> totalIncomeBySubClass = productSalesDAO.getMonthTotalIncomeBySubClassID(account,date_strings[selectedMonth-1]);
                         
             model.addObject("selectedMonth", selectedMonth);
-            //Yiru ->把monthTotalMoney名子改成monthTotalExpenditure
-            model.addObject("monthTotalMoney", monthTotalMoney);
+            model.addObject("monthTotalExpenditure", monthTotalExpenditure);
             model.addObject("monthTotalIncome", monthTotalIncome);            
-            //Yiru ->把totalMoneyBySubClass名子改成totalExpenditureBySubClass
-            model.addObject("totalMoneyBySubClass", totalMoneyBySubClass);
+            model.addObject("totalExpenditureBySubClass", totalExpenditureBySubClass);
             model.addObject("totalIncomeBySubClass", totalIncomeBySubClass);
 		}else{
 			model.setViewName("memberLogin");

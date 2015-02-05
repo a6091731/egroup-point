@@ -9,8 +9,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
-
 import com.epoint.webapp.dao.PayMoneyDAO;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.PayMoney;
@@ -264,7 +262,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 		return Number;
 	}
 	
-	public List<PayMoney> getMonthTotalMoneyByAccount(String account){
+	public List<PayMoney> getTotalExpenditureByAccount(String account){
 		String sql = "SELECT SUM(payMoney) AS Total , payDate FROM pay_money WHERE memberAccount = ? GROUP BY payDate";
 		List<PayMoney> allPayMoney = new ArrayList<PayMoney>();
 		try {
