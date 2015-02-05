@@ -288,7 +288,7 @@
 	<!-- BEGIN MODAL WINDOWS -->
         <div id="addProductSales" class="reveal-modal">
                 <div class="cont clearfix">
-                        <form class="formset clearfix" id="sendForm2" action="addProductSalse" method="post">
+                        <form class="formset clearfix" id="sendForm2" action="addProductSalseRevenueStructure" method="post">
                         		<input type="hidden" id="productID" name="productID">                        		
 	                            <fieldset class="fieldset2">
 	                                    <p id="productName"></p>
@@ -375,12 +375,12 @@
 	    	        		required:true,
 	    	            	number: true,
 	    	            	min:1,
-	    	            	maxlength:12,
+	    	            	maxlength:9,
 	    	            	messages:{
 	    	            		required:"請輸入數量",
 	    	            		num:"請輸入數字",
 	    	            		min:"請輸入大於0的數量",
-	    	            		maxlength:"請輸入小於12位數的數量"
+	    	            		maxlength:"請輸入小於10位數的數量"
 	    	            	}
 	    	        	});        		    	        	
 	            	}else{	            		
@@ -396,12 +396,12 @@
 		    	        		required:true,
 		    	            	number: true,
 		    	            	min:1,
-		    	            	maxlength:12,
+		    	            	maxlength:9,
 		    	            	messages:{
 		    	            		required:"請輸入數量",
 		    	            		num:"請輸入數字",
 		    	            		min:"請輸入大於0的數量",
-		    	            		maxlength:"請輸入小於12位數的數量"
+		    	            		maxlength:"請輸入小於10位數的數量"
 		    	            	}
 		    	        	});        	
 		    	        	
@@ -435,12 +435,12 @@
 	        		required:true,
 	            	number: true,
 	            	min:1,
-	            	maxlength:12,
+	            	maxlength:9,
 	            	messages:{
 	            		required:"請輸入數量",
 	            		num:"請輸入數字",
 	            		min:"請輸入大於0的數量",
-	            		maxlength:"請輸入小於12位數的數量"
+	            		maxlength:"請輸入小於10位數的數量"
 	            	}
 	        	});
 	        }

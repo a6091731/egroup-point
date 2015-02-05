@@ -144,7 +144,7 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${totalIncomeBySubClass}" var="product" varStatus="i">		
+									<c:forEach items="${totalIncomeByMemberDate1}" var="product" varStatus="i">		
 									<tr>
 										<td>${product.name }</td>
 										<td>${product.monthIncome }</td>
@@ -202,7 +202,7 @@
 	<!-- BEGIN MODAL WINDOWS -->
         <div id="addProductSales" class="reveal-modal">
                 <div class="cont clearfix">
-                        <form class="formset clearfix" id="sendForm2" action="addProductSalse" method="post">
+                        <form class="formset clearfix" id="sendForm2" action="addProductSalseCashFlow" method="post">
                         		<input type="hidden" id="productID" name="productID">                        		
 	                            <fieldset class="fieldset2">
 	                                    <p id="productName"></p>
@@ -320,6 +320,7 @@
 				$('#sendForm').validate();
 			}
 
+			//支出結構-----------------------------
 			function editPayMoney(subClassID){
 				var fixedIndex = 0;
 				var dynamicIndex = 0;
@@ -485,8 +486,151 @@
 				}
 			}
 			
+			//收入結構-----------------------------
+			var addSalesQuantityCount = 1;
+			var index = 1;
+			var count = 1;
+			var deletedIndex = 0;
+			
+			 $(function(){
+		            $(".cancelButton").click(function(){
+		            	alert("hehe");
+						$(".close-reveal-modal").trigger("click");
+						alert("321");
+					});
+		            $("#sendForm2").validate({
+		            	rules:{},
+		            	messages:{},
+	    	        	submitHandler:function(form){
+	    					$(".salsDate").attr("name","salsDate");
+	    					form.submit();
+	    					$(".salsQuantity").attr("name","salsQuantity");
+	    					form.submit();
+	    				}
+		            });	 
+		           $("#addProductSalesSubmit").click(function(){
+		            	var salsClassCount = $('.salsDate').length
+		            	if(salsClassCount>1){
+		            		$("#salsDate0").rules("add",{
+		    	        		required:true,
+		    	            	messages:{
+		    	            		required:"請輸入日期",	            		
+		    	            	}
+		    	        	});	        	
+
+		    	        	$("#salsQuantity0").rules("add",{
+		    	        		required:true,
+		    	            	number: true,
+		    	            	min:1,
+		    	            	maxlength:9,
+		    	            	messages:{
+		    	            		required:"請輸入數量",
+		    	            		num:"請輸入數字",
+		    	            		min:"請輸入大於0的數量",
+		    	            		maxlength:"請輸入小於10位數的數量"
+		    	            	}
+		    	        	});        		    	        	
+		            	}else{	            		
+		            		if($('.salsDate').val()!="" || $('.salsQuantity').val()!=""){
+		            			$("#salsDate0").rules("add",{
+			    	        		required:true,
+			    	            	messages:{
+			    	            		required:"請輸入日期",	            		
+			    	            	}
+			    	        	});	        	
+
+			    	        	$("#salsQuantity0").rules("add",{
+			    	        		required:true,
+			    	            	number: true,
+			    	            	min:1,
+			    	            	maxlength:9,
+			    	            	messages:{
+			    	            		required:"請輸入數量",
+			    	            		num:"請輸入數字",
+			    	            		min:"請輸入大於0的數量",
+			    	            		maxlength:"請輸入小於10位數的數量"
+			    	            	}
+			    	        	});        	
+			    	        	
+		            		}else{
+		            			alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
+		            			$(".close-reveal-modal").trigger("click");
+		            		}        
+		            	}
+					});	   
+		     	});
+		        
+		        function deleteProduct(){
+		        	$.ajax({
+						url:"getProductSalesListByMemberID",
+						data:{
+							productID : list[i].id
+						},
+						dataType:"json",
+		        	})
+		        }
+		        
+		        function addValidate(getIndex){
+		        	$("#salsDate"+getIndex).rules("add",{
+		        		required:true,
+		            	messages:{
+		            		required:"請輸入日期",	            		
+		            	}
+		        	});	        	
+
+		        	$("#salsQuantity"+getIndex).rules("add",{
+		        		required:true,
+		            	number: true,
+		            	min:1,
+		            	maxlength:9,
+		            	messages:{
+		            		required:"請輸入數量",
+		            		num:"請輸入數字",
+		            		min:"請輸入大於0的數量",
+		            		maxlength:"請輸入小於10位數的數量"
+		            	}
+		        	});
+		        }		        		        
+		        
+		        function addbutton(){
+		        	var addSalesQuantityText =
+					  	'<div class="deleteblock" id="newMoney'+index+'">'+
+						'<div class="field">'+  	
+						'<label>日期：'+		
+						'<input type="month" class="form-control salsDate" id="salsDate'+index+'" name="salsDate'+index+'">'+  			
+						'</label>'+  		
+						'</div>'+  	
+						'<div class="field">'+  	
+						'<label>數量：'+ 		
+						'<input type="text" class="form-control salsQuantity"  id="salsQuantity'+index+'" name="salsQuantity'+index+'">'+ 			
+						'</label>'+  		
+						'</div>'+  	
+						'<div class="field">'+  	
+						'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
+						'</div>'+  				  		
+					  	'</div>';	            		
+		            	$('#addSalesQuantity').append(addSalesQuantityText);
+		            	var delCount = $('#delCount').val();
+		            	delCount++;	            	
+		            	$('#delCount').val(delCount);
+		            	addValidate(index);
+		            	index++;
+		        }
+		        
+		        function deletebutton(index){
+		        	var delCount = $('#delCount').val();
+		        	if(delCount>1){
+	            		$("#newMoney"+index).remove();  
+	            		delCount--;
+	            		$('#delCount').val(delCount);
+		        	}else{
+		        		$("#salsDate"+index).val("");  
+		        		$("#salsQuantity"+index).val(""); 
+		        	}
+	           	}
+		        
 			function newProductSales(i){
-				var list = $.parseJSON('${getProductList2}');
+				var list = $.parseJSON('${totalIncomeByMemberDate2}');
 				$('#productID').val(list[i].id);
 				$('#productName').text(list[i].name);
 				$('#delCount').val(1);
