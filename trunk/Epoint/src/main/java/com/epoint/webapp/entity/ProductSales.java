@@ -11,6 +11,8 @@ public class ProductSales {
 	
 	//程式控制
 	private String date_string;
+	private int monthIncome;
+	private String name;
 		
 	public String getAccount() {
 		return account;
@@ -42,5 +44,16 @@ public class ProductSales {
 	public void setDate_string(String date_string) {
 		this.date_string = date_string;
 	}
-	
+	public int getMonthIncome() {
+		return monthIncome;
+	}
+	public void setMonthIncome(int monthIncome) {
+		this.monthIncome = monthIncome;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }

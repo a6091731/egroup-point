@@ -293,7 +293,10 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 	}
 	
 	public List<PayMoney> getMonthTotalMoneyBySubClassID(String account,String date){
-		String sql = "SELECT SUM(m.payMoney) AS Total,m.*,i.mapSubClassID,s.mapSubClassName FROM pay_money m INNER JOIN pay_item i ON m.payItemID = i.payItemID LEFT JOIN map_subclass s ON i.mapSubClassID = s.mapSubClassID WHERE m.memberAccount = ? AND m.payDate LIKE ? GROUP BY i.mapSubClassID";
+		String sql = "SELECT SUM(m.payMoney) AS Total,m.*,i.mapSubClassID,s.mapSubClassName FROM pay_money m "
+				+ "INNER JOIN pay_item i ON m.payItemID = i.payItemID LEFT JOIN map_subclass s ON "
+				+ "i.mapSubClassID = s.mapSubClassID WHERE m.memberAccount = ? AND m.payDate LIKE ? "
+				+ "GROUP BY i.mapSubClassID";
 		List<PayMoney> allPayMoney = new ArrayList<PayMoney>();
 		try {
 			conn = dataSource.getConnection();

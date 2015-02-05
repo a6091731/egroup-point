@@ -140,47 +140,17 @@
 										<tr>
 											<th>產品名稱</th>
 											<th>產品總利潤</th>
-											<th>支出明細</th>
+											<th>收入明細</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${getProductList1}" var="product" varStatus="i">		
-										<tr>
-											<td>${product.name }</td>
-											<td>${product.totalProfit }</td>
-																		
-											<td>${product.totalProfit }</td>
-											<td>
-												<a onclick="setEditProduct(${i.index});" 
-												class="fa-color" data-reveal-id="editProduct" data-closeonbackgroundclick="false">
-												<i class="fa fa-pencil-square-o fa-lg"></i></a>
-											</td>
-											<td>
-												<a onclick="" class="fa-color">
-												<i class="fa fa-times-circle fa-lg"></i></a>
-											</td>
-										</tr>						
-									</c:forEach>
+									<c:forEach items="${totalIncomeBySubClass}" var="product" varStatus="i">		
 									<tr>
-										<td>好吃的旺旺仙貝</td>
-										<td>0</td>
+										<td>${product.name }</td>
+										<td>${product.monthIncome }</td>
 										<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailExpenditure"><i class="fa  fa-file-text-o fa-lg"></i></a></td>
-									</tr>
-									<tr>
-										<td>好吃的乖乖</td>
-										<td>0</td>
-										<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailExpenditure"><i class="fa  fa-file-text-o fa-lg"></i></a></td>
-									</tr>
-									<tr>
-										<td>好吃的洋芋片</td>
-										<td>10000</td>
-										<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailExpenditure"><i class="fa  fa-file-text-o fa-lg"></i></a></td>
-									</tr>
-									<tr>
-										<td>好吃的旺旺仙貝</td>
-										<td>10000</td>
-										<td><a href="javascript:;" class="fa-color" data-reveal-id ="productDetailExpenditure"><i class="fa  fa-file-text-o fa-lg"></i></a></td>
-									</tr>
+									</tr>			
+									</c:forEach>									
 								</tbody>
 							</table>
 							</li>
@@ -206,7 +176,7 @@
 										<tr>
 											<th>支出品項</th>
 											<th>支出總費用</th>
-											<th>收入明細</th>
+											<th>支出明細</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -312,9 +282,16 @@
 			var randomScalingFactor = function(){
 				return Math.round(Math.random()*100);
 			};
+			
+			//列出每月支出
 			var expendData = [0,0,0,0,0,0,0,0,0,0,0,0];
 			<c:forEach items='${monthTotalMoney}' var='total' varStatus='i'>
 				expendData['${i.index}'] = ${total};
+			</c:forEach>
+			//列出每月收入
+			var incomeData = [0,0,0,0,0,0,0,0,0,0,0,0];
+			<c:forEach items='${monthTotalIncome}' var='total' varStatus='i'>
+				incomeData['${i.index}'] = ${total};
 			</c:forEach>
 			var lineChartData = {
 				labels : ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
@@ -327,7 +304,7 @@
 						pointStrokeColor : "#fff",
 						pointHighlightFill : "#fff",
 						pointHighlightStroke : "rgba(220,220,220,1)",
-						data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+						data : incomeData
 					},
 					{
 						label: "My Second dataset",
