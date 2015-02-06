@@ -252,7 +252,8 @@
 	            	moneyValidate: {
 	            		required: true,
 	            		digits: true,
-	            		maxlength: 12
+	            		min: 1,
+	            		maxlength: 9
 	            	}
 	            });
 	            

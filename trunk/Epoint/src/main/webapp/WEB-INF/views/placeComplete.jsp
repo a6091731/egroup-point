@@ -118,7 +118,7 @@
 					<input type="hidden" name="dynamicTypeCount" id="accountCount" value="${dynamicTypeCount[2] }">
 				  	<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[0].ID" value="2121">
-				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record}">
+				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record == 0? 1:fixedPayMoney[0].record}">
 				  		<legend>1.1 固定成本[營業場所押金]：</legend>
 					  	<div class="field">
 					  		<label>日期：
@@ -133,7 +133,7 @@
 					</fieldset>
 					<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[1].ID" value="2122">
-				  	<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record}">
+				  	<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record == 0? 1:fixedPayMoney[1].record }">
 				  		<legend>1.2 固定成本[營業場所每月租金]：</legend>
 					  	<div class="field">
 					  		<label>日期：
@@ -148,7 +148,7 @@
 					</fieldset>
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[2].ID" value="2123">
-					<input type="hidden" name="fixedPayMoney[2].record" value="${fixedPayMoney[2].record}">
+					<input type="hidden" name="fixedPayMoney[2].record" value="${fixedPayMoney[2].record == 0? 1:fixedPayMoney[2].record }">
 					  	<legend>1.3 固定成本[水/電/瓦斯/網路/電信申租費用]</legend>
 					  	<div class="field">
 					  		<label>日期：
@@ -163,7 +163,7 @@
 					</fieldset>
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[3].ID" value="2124">
-					<input type="hidden" name="fixedPayMoney[3].record" value="${fixedPayMoney[3].record}">
+					<input type="hidden" name="fixedPayMoney[3].record" value="${fixedPayMoney[3].record == 0? 1:fixedPayMoney[3].record}">
 					  	<legend>1.4 固定成本[水/電/瓦斯/網路/電信月租費]</legend>
 					  	<div class="field">
 					  		<label>日期：
@@ -312,7 +312,8 @@
 	            	moneyValidate: {
 	            		required: true,
 	            		digits: true,
-	            		maxlength: 12
+	            		min: 1,
+	            		maxlength: 9
 	            	}
 	            });
 	            

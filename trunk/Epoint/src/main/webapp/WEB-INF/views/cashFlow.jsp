@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -263,6 +264,21 @@
 		<script type="text/javascript">
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
+	            
+	            $('#sendForm').validate();
+				jQuery.validator.addClassRules({
+	            	dateValidate: {
+	            		required: true,
+	            		min: '${fn:substring(getMember.capitalDate,0,7)}',
+	            		max: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')
+	            	},
+	            	moneyValidate: {
+	            		required: true,
+	            		digits: true,
+	            		min: 1,
+	            		maxlength: 9
+	            	}
+	            });
 	        });
 	    </script>
 	<!-- responsive-table -->  
@@ -317,9 +333,8 @@
 			window.onload = function(){
 				var ctx = document.getElementById("canvas").getContext("2d");
 				var myLineChart = new Chart(ctx).Line(lineChartData,{reponsive:true});
-				$('#sendForm').validate();
 			}
-
+			
 			//支出結構-----------------------------
 			function editPayMoney(subClassID){
 				var fixedIndex = 0;
@@ -330,9 +345,10 @@
 					data:{
 						subClassID : subClassID
 					},
-					//dataType:"json",
 					success:function(result){
 						$('#sendForm').empty();
+						var mon = '${selectedMonth}';
+						$('#sendForm').append('<input type="hidden" value="'+mon+'" name="mon">');
 						$('#sendForm').append('<input type="hidden" value="'+subClassID+'" name="subClass">');
 						$.each(result.payItemList, function(index, value){
 							var obj = result.payItemList[index];
@@ -360,22 +376,40 @@
 									tempList = result.list7;
 									break;
 							}
+							
 							if(obj.status == 1){
-								$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
-										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
-										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
-								  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
-								  		'<div class="field">'+
-									  		'<label>日期：'+
-									  			'<input type="month" class="form-control required" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
-									  		'</label>'+
-									  	'</div>'+
-									  	'<div class="field">'+
-									  		'<label><span>金額：</span>'+
-									  			'<input type="text" class="form-control required digits" name="fixedPayMoney['+fixedIndex+'].money" value="'+tempList[0].money+'">'+
-									  		'</label>'+
-									  	'</div>'+
-									'</fieldset>');
+								if(tempList.length > 0){
+									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
+											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
+									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+									  		'<div class="field">'+
+										  		'<label>日期：'+
+										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
+										  		'</label>'+
+										  	'</div>'+
+										  	'<div class="field">'+
+										  		'<label><span>金額：</span>'+
+										  			'<input type="text" class="form-control moneyValidate" name="fixedPayMoney['+fixedIndex+'].money" value="'+tempList[0].money+'">'+
+										  		'</label>'+
+										  	'</div>'+
+										'</fieldset>');
+								}else{
+									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
+											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+									  		'<div class="field">'+
+										  		'<label>日期：'+
+										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string">'+
+										  		'</label>'+
+										  	'</div>'+
+										  	'<div class="field">'+
+										  		'<label><span>金額：</span>'+
+										  			'<input type="text" class="form-control moneyValidate" name="fixedPayMoney['+fixedIndex+'].money">'+
+										  		'</label>'+
+										  	'</div>'+
+										'</fieldset>');
+								}
 								fixedIndex++;
 							}else if(obj.status == 2){
 								var appendText = '<fieldset class="fieldset" id="field'+obj.itemID+'">'+
@@ -390,12 +424,12 @@
 											'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].record" value="'+data.record+'">'+
 											  	'<div class="field">'+
 											  		'<label>日期：'+
-											  			'<input type="month" class="form-control required" name="dynamicPayMoney['+dynamicIndex+'].date_string" value="'+data.date.substring(0,7)+'">'+
+											  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+dynamicIndex+'].date_string" value="'+data.date.substring(0,7)+'">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
 											  		'<label>金額：'+
-											  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+dynamicIndex+'].money" value="'+data.money+'">'+
+											  			'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+dynamicIndex+'].money" value="'+data.money+'">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
@@ -409,12 +443,12 @@
 									appendText += '<div id="paymoney_'+dynamicIndex+'">'+
 											  	'<div class="field">'+
 											  		'<label>日期：'+
-											  			'<input type="month" class="form-control required" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
+											  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
 											  		'<label>金額：'+
-											  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+dynamicIndex+'].money">'+
+											  			'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+dynamicIndex+'].money">'+
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
@@ -426,27 +460,47 @@
 								$('#sendForm').append(appendText);
 								dynamicNum++;
 							}else if(obj.status == 3){
-								$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
-										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
-										'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
-								  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
-									  	'<div class="field">'+
-									  		'<label>日期：'+
-									  			'<input type="month" class="form-control required" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
-									  		'</label>'+
-									  	'</div>'+
-									  	'<div class="field">'+
-									  		'<label><span>金額：</span>'+
-									  			'<input type="text" class="form-control required digits" name="fixedPayMoney['+fixedIndex+'].money" value="'+tempList[0].money+'">'+
-									  		'</label>'+
-									  	'</div>'+
-									'</fieldset>');
+								if(tempList.length > 0){
+									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
+											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
+									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+										  	'<div class="field">'+
+										  		'<label>日期：'+
+										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
+										  		'</label>'+
+										  	'</div>'+
+										  	'<div class="field">'+
+										  		'<label><span>金額：</span>'+
+										  			'<input type="text" class="form-control moneyValidate" name="fixedPayMoney['+fixedIndex+'].money" value="'+tempList[0].money+'">'+
+										  		'</label>'+
+										  	'</div>'+
+										'</fieldset>');
+								}else{
+									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
+											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
+									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+										  	'<div class="field">'+
+										  		'<label>日期：'+
+										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string">'+
+										  		'</label>'+
+										  	'</div>'+
+										  	'<div class="field">'+
+										  		'<label><span>金額：</span>'+
+										  			'<input type="text" class="form-control moneyValidate" name="fixedPayMoney['+fixedIndex+'].money">'+
+										  		'</label>'+
+										  	'</div>'+
+										'</fieldset>');
+								}
 								fixedIndex++;
 							}
 						});
 						$('#sendForm').append(
 								'<button type="submit" class="finishButton"><span class="next">儲存變更</span></button>'+
 		                    	'<button type="button" class="cancelButton"><span class="next">取消</span></button>');
+						$(".cancelButton").click(function(){
+							$(".close-reveal-modal").trigger("click");
+						});
 					}
 				});
 			}
@@ -457,12 +511,12 @@
 					'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].ID" value="'+itemID+'">'+
 					  	'<div class="field">'+
 				  		'<label>日期：'+
-				  			'<input type="month" class="form-control required" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
+				  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
 				  		'</label>'+
 				  	'</div>'+
 				  	'<div class="field">'+
 				  		'<label>金額：'+
-				  			'<input type="text" class="form-control required digits" name="dynamicPayMoney['+dynamicIndex+'].money">'+
+				  			'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+dynamicIndex+'].money">'+
 				  		'</label>'+
 				  	'</div>'+
 				  	'<div class="field">'+
@@ -698,6 +752,19 @@
 				});
 			}
 		
+			function calculateEndDate(startDate){
+				var endDate;
+				var endYear = parseInt(startDate.substring(0,4));
+				var endMon = parseInt(startDate.substring(5,7))-1;
+				if(endMon == 0){
+					endDate = endYear+'-12';
+				}else{
+					endYear++;
+					endMon = '0'+endMon;
+					endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
+				}
+				return endDate;
+			}
 		</script> 
 </body>
 </html>

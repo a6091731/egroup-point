@@ -3,7 +3,9 @@ package com.epoint.webapp.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,7 +61,6 @@ public class CashFlowController {
             	//折線圖
             	int temp = Integer.parseInt(s.getDate().toString().substring(5, 7));
             	monthTotalIncome[temp-1] = s.getMonthIncome();
-            	System.out.println("monthTotalIncome[temp-1]="+monthTotalIncome[temp-1]);
             }
             
             //抓取選擇月份
@@ -72,6 +73,7 @@ public class CashFlowController {
             //當月收入金額--------------
             List<ProductSales> totalIncomeByMemberDate = productSalesDAO.getMonthTotalIncomeByMemberDate(account,date_strings[selectedMonth-1]);
                        
+            model.addObject("getMember", loginMember);
             model.addObject("selectedMonth", selectedMonth);
             model.addObject("monthTotalExpenditure", monthTotalExpenditure);
             model.addObject("monthTotalIncome", monthTotalIncome);            
@@ -130,7 +132,7 @@ public class CashFlowController {
 	}
 	
 	@RequestMapping(value = "/addCashFlow", method = RequestMethod.POST)
-    public ModelAndView addCashFlow(@ModelAttribute ExpenditureForm expenditureForm, HttpSession session, HttpServletRequest request) throws IOException {
+    public ModelAndView addCashFlow(@ModelAttribute ExpenditureForm expenditureForm, String mon, HttpSession session, HttpServletRequest request) throws IOException {
 		ModelAndView model = new ModelAndView();
 		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		PayItemDAO payItemDAO = (PayItemDAO) context.getBean("payItemDAO");
@@ -156,6 +158,10 @@ public class CashFlowController {
             List<PayMoney> dynamicPayMoney = expenditureForm.getDynamicPayMoney();
             List<PayMoney> deletedPayMoney = expenditureForm.getDeletedPayMoney();
             //固定成本
+            Map<Integer,Integer> tempFixedCostRecord = new HashMap<Integer,Integer>();
+            for(int i = 0;i < oldFixedPayMoney.size();i++){
+            	tempFixedCostRecord.put(oldFixedPayMoney.get(i).getID(),i);
+            }
             if(fixedPayMoney != null){
             	for (int i = 0; i < fixedPayMoney.size(); i++) {
             		PayMoney newObject = fixedPayMoney.get(i);
@@ -167,20 +173,32 @@ public class CashFlowController {
                         payMoney.setMoney(newObject.getMoney());
                         payMoneyDAO.addPayMoney(payMoney);
                      }else{
-                        PayMoney oldObject = oldFixedPayMoney.get(i);
-                        if (oldObject.getDate() == null) {
-                        	int recordID = payMoneyDAO.getPayRecord(account,newObject.getID());
-                            payMoney.setID(newObject.getID());
-                            payMoney.setRecord(recordID);
-                            payMoney.setDate_string(newObject.getDate_string() + "-01");
-                            payMoney.setMoney(newObject.getMoney());
-                            payMoneyDAO.addPayMoney(payMoney);
-                        } else if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
-                        			|| oldObject.getMoney() != newObject.getMoney()) {
-                        	newObject.setAccount(account);
-                            newObject.setDate_string(newObject.getDate_string() + "-01");
-                            payMoneyDAO.modiPayMoney(newObject);
-                        }
+                    	 if(fixedPayMoney.size() == oldFixedPayMoney.size()){//沒有缺資料，直接修改
+                     		PayMoney oldObject = oldFixedPayMoney.get(i);
+                             if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
+                             		|| oldObject.getMoney() != newObject.getMoney()) {
+                             	newObject.setAccount(account);
+                                 newObject.setDate_string(newObject.getDate_string() + "-01");
+                                 payMoneyDAO.modiPayMoney(newObject);
+                             }
+                     	}else{//有缺
+                     		if(tempFixedCostRecord.containsKey(newObject.getID())){
+                     			PayMoney oldObject = oldFixedPayMoney.get(tempFixedCostRecord.get(newObject.getID()));
+                                if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
+                                	|| oldObject.getMoney() != newObject.getMoney()) {
+                                	newObject.setAccount(account);
+                                    newObject.setDate_string(newObject.getDate_string() + "-01");
+                                    payMoneyDAO.modiPayMoney(newObject);
+                                }
+                     		}else{
+                         		int recordID = payMoneyDAO.getPayRecord(account,newObject.getID());
+                                 payMoney.setID(newObject.getID());
+                                 payMoney.setRecord(recordID);
+                                 payMoney.setDate_string(newObject.getDate_string() + "-01");
+                                 payMoney.setMoney(newObject.getMoney());
+                                 payMoneyDAO.addPayMoney(payMoney);
+                     		}
+                     	}
                     }
             	}
             }
@@ -218,7 +236,7 @@ public class CashFlowController {
             	}
             }
                    
-            model.setViewName("redirect:/cashFlow");
+            model.setViewName("redirect:/cashFlow?mon="+mon);
 		}else{
 			model.setViewName("redirect:/");
 		}

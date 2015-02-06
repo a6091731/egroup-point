@@ -85,7 +85,7 @@
 			<form id="addForm" method="POST" action="addFinancialPlan">
 			<div class="grid_3 suffix_3">
 				<div class="financialBox">目前您累積的資金缺口<br/>
-				<input type="text" class="input-control required digits" id="lackMoney" name="lackMoney" value="${fundLack}" style="ime-mode:disabled" onkeyup="return ValidateNumber($(this),value)">元<br/>(填寫您不足的資金)</div>
+				<input type="text" class="input-control moneyValidate" id="lackMoney" name="lackMoney" value="${fundLack}" style="ime-mode:disabled" onkeyup="return ValidateNumber($(this),value)">元<br/>(填寫您不足的資金)</div>
 			</div>
 			<div class="grid_6 prefix_3 suffix_3">
 				<div class="financialBox" id="requestMoney">
@@ -116,26 +116,39 @@
 										<td colspan="3"><button type="button" class="addbutton" id="addUseBtn"><i class="fa fa-plus"></i> 新增一筆用途</button> </td>
 									</tr>
 								<c:set value="0" var="index"/>
-								<c:if test="${fn:length(usesPlans) gt 0}">
-								<c:forEach items="${usesPlans}" var="use" varStatus="loop">
-									<tr id="usesPlans_${index}">
-										<td>
-											<input type="hidden" name="usesPlans[${loop.index }].record" value="${use.record }">
-											<input type="text" class="input-control required" name="usesPlans[${loop.index }].name" value="${use.name }">
-										</td>
-										<td><input type="text" class="input-control required digits useMoney" name="usesPlans[${loop.index }].money" value="${use.money }"> 元<p></p></td>
-										<td><button type="button" class="deletebutton" onClick="delDetail(${index},${use.record},1)"><i class="fa fa-times"></i></button></td>
-									</tr>
-					  			<c:set var="index" value="${index+1}" />
-								</c:forEach>
-								</c:if>
+								<c:choose>
+									<c:when test="${fn:length(usesPlans) gt 0}">
+									<c:forEach items="${usesPlans}" var="use" varStatus="i">
+										<tr id="usesPlans_${index}">
+											<td>
+												<input type="hidden" name="usesPlans[${i.index }].record" value="${use.record }">
+												<input type="text" class="input-control required" name="usesPlans[${i.index }].name" value="${use.name }">
+											</td>
+											<td><input type="text" class="input-control moneyValidate useMoney" name="usesPlans[${i.index }].money" value="${use.money }"> 元<p></p></td>
+											<td><button type="button" class="deletebutton" onClick="delDetail(${index},${use.record},1)"><i class="fa fa-times"></i></button></td>
+										</tr>
+						  			<c:set var="index" value="${index+1}" />
+									</c:forEach>
+									</c:when>
+									<c:when test="${fn:length(usesPlans) eq 0}">
+										<tr id="usesPlans_${index}">
+											<td>
+												<input type="hidden" name="dynamicPlans[${index}].property" value="1">
+												<input type="text" class="input-control required" name="dynamicPlans[${index }].name">
+											</td>
+											<td><input type="text" class="input-control moneyValidate useMoney" name="dynamicPlans[${index }].money"> 元<p></p></td>
+											<td><button type="button" class="deletebutton" onClick="del(1,${index})"><i class="fa fa-times"></i></button></td>
+										</tr>
+						  			<c:set var="index" value="${index+1}" />
+									</c:when>
+								</c:choose>
 									<tr id="useTotal">
 										<td>用途總額</td>
 										<td colspan="2" id="useMoney"></td>
 									</tr>
-									<tr class="redText">
-										<td id="useMsg">驗證不合</td>
-										<td colspan="2" id="useGap">差17元</td>
+									<tr>
+										<td id="useMsg"></td>
+										<td colspan="2" id="useGap"></td>
 									</tr>
 								</tbody>
 							</table>
@@ -159,32 +172,45 @@
 										<tr>
 										<td colspan="3"><button type="button" class="addbutton" id="addSrcBtn"><i class="fa fa-plus"></i> 新增一筆用途</button> </td>
 									</tr>
-								<c:if test="${fn:length(sourcePlans) gt 0}">
-								<c:forEach items="${sourcePlans}" var="src" varStatus="loop">
-									<tr id="sourcePlans_${index}">
-										<td>
-											<input type="hidden" name="sourcePlans[${loop.index }].record" value="${src.record }">
-											<input type="text" class="input-control required" name="sourcePlans[${loop.index }].name" value="${src.name }">
-										</td>
-										<td><input type="text" class="input-control required digits srcMoney" name="sourcePlans[${loop.index }].money" value="${src.money }"> 元<p></p></td>
-										<td><button type="button" class="deletebutton" onClick="delDetail(${index},${src.record},0)"><i class="fa fa-times"></i></button></td>
-									</tr>
-					  			<c:set var="index" value="${index+1}" />
-								</c:forEach>
-								</c:if>
+								<c:choose>
+									<c:when test="${fn:length(sourcePlans) gt 0}">
+									<c:forEach items="${sourcePlans}" var="src" varStatus="i">
+										<tr id="sourcePlans_${index}">
+											<td>
+												<input type="hidden" name="sourcePlans[${i.index }].record" value="${src.record }">
+												<input type="text" class="input-control requiredmoneyValidatesourcePlans[${i.index }].name" value="${src.name }">
+											</td>
+											<td><input type="text" class="input-control moneyValidate srcMoney" name="sourcePlans[${i.index }].money" value="${src.money }"> 元<p></p></td>
+											<td><button type="button" class="deletebutton" onClick="delDetail(${index},${src.record},0)"><i class="fa fa-times"></i></button></td>
+										</tr>
+							  		<c:set var="index" value="${index+1}" />
+									</c:forEach>
+									</c:when>
+									<c:when test="${fn:length(sourcePlans) eq 0}">
+										<tr id="sourcePlans_${index}">
+											<td>
+												<input type="hidden" name="dynamicPlans[${index }].property" value="0">
+												<input type="text" class="input-control required" name="dynamicPlans[${index }].name">
+											</td>
+											<td><input type="text" class="input-control moneyValidate srcMoney" name="dynamicPlans[${index }].money"> 元<p></p></td>
+											<td><button type="button" class="deletebutton" onClick="del(0,${index})"><i class="fa fa-times"></i></button></td>
+										</tr>
+							  		<c:set var="index" value="${index+1}" />
+									</c:when>
+								</c:choose>
 									<tr id="srcTotal">
 										<td>來源總額</td>
 										<td colspan="2" id="srcMoney"></td>
 									</tr>
-									<tr class="greenText">
-										<td id="srcMsg">驗證通過</td>
-										<td colspan="2" id="srcGap">差0元</td>
+									<tr>
+										<td id="srcMsg"></td>
+										<td colspan="2" id="srcGap"></td>
 									</tr>
 								</tbody>
 							</table>
 						</li>
 					</ul>
-					<button type="submit" class="nextStepButton"><span class="next">完成資金規劃 <i class="fa fa-arrow-right"></i></span></button>
+					<button type="button" id="submitBtn" class="nextStepButton"><span class="next">完成資金規劃 <i class="fa fa-arrow-right"></i></span></button>
 				</div>
 			</div>	
 		</form>		
@@ -213,19 +239,33 @@
 		});
 		var avgCost = ${avgCost};
 		var result =  parseInt(avgCost) * 3;
-		var index = 0;
+		var index = '${index}';
 		var count = '${fn:length(usesPlans)}' + '${fn:length(sourcePlans)}';
 		var delIndex = 0;
 		var total = 0;
+		var checkUse = true,checkSrc = true;
 		$( document ).ready(function() {
 			calculateNeedMoney();
 			calculateMoney('useMoney');
 			calculateMoney('srcMoney');
+			$('#submitBtn').click(function(){
+				if(checkUse && checkSrc){
+					$("#addForm").submit();
+				}
+			});
 			$("#addForm").validate({
 				errorPlacement: function (error, element) {
 					element.next().append(error);
 	    	    }
 			});
+			jQuery.validator.addClassRules({
+            	moneyValidate: {
+            		required: true,
+            		digits: true,
+            		min: 1,
+            		maxlength: 9
+            	}
+            });
 			$('#lackMoney').change(function(){
 				calculateNeedMoney();
 			});
@@ -240,7 +280,7 @@
 					'<td>'+
 					'<input type="hidden" name="dynamicPlans['+index+'].property" value="1">'+
 					'<input type="text" class="input-control required" name="dynamicPlans['+index+'].name"></td>'+
-					'<td><input type="text" class="input-control required digits useMoney" name="dynamicPlans['+index+'].money"> 元<p></p></td>'+
+					'<td><input type="text" class="input-control moneyValidate useMoney" name="dynamicPlans['+index+'].money"> 元<p></p></td>'+
 					'<td><button type="button" class="deletebutton" onClick="del(1,'+count+')"><i class="fa fa-times"></i></button></td>'+
 				'</tr>';
            		$('#useTotal').before(content);
@@ -255,7 +295,7 @@
 					'<td>'+
 					'<input type="hidden" name="dynamicPlans['+index+'].property" value="0">'+
 					'<input type="text" class="input-control required" name="dynamicPlans['+index+'].name"></td>'+
-					'<td><input type="text" class="input-control required digits srcMoney" name="dynamicPlans['+index+'].money"> 元<p></p></td>'+
+					'<td><input type="text" class="input-control moneyValidate srcMoney" name="dynamicPlans['+index+'].money"> 元<p></p></td>'+
 					'<td><button type="button" class="deletebutton" onClick="del(0,'+count+')"><i class="fa fa-times"></i></button></td>'+
 				'</tr>';
 	       		$('#srcTotal').before(content);
@@ -312,22 +352,38 @@
 			if(type == 'useMoney'){
 				$('#useMsg').empty();
 				$('#useGap').empty();
-				if(result >= total){
+				if(result == total){
+					checkUse = true;
 					$('#useMsg').append('驗證通過');
 					$('#useGap').append('差0元');
+					$('#useMsg').parent().attr('class', 'greenText');
 				}else{
+					checkUse = false;
 					$('#useMsg').append('驗證不合');
-					$('#useGap').append('差'+(total-result)+'元');
+					$('#useMsg').parent().attr('class', 'redText');
+					if(result > total){
+						$('#useGap').append('差'+(result-total)+'元');
+					}else{
+						$('#useGap').append('多'+(total-result)+'元');
+					}
 				}
 			}else{
 				$('#srcMsg').empty();
 				$('#srcGap').empty();
-				if(result >= total){
+				if(result == total){
+					checkSrc = true;
 					$('#srcMsg').append('驗證通過');
 					$('#srcGap').append('差0元');
+					$('#srcMsg').parent().attr('class', 'greenText');
 				}else{
+					checkSrc = false;
 					$('#srcMsg').append('驗證不合');
-					$('#srcGap').append('差'+(total-result)+'元');
+					$('#srcMsg').parent().attr('class', 'redText');
+					if(result > total){
+						$('#srcGap').append('差'+(result-total)+'元');
+					}else{
+						$('#srcGap').append('多'+(total-result)+'元');
+					}
 				}
 			}
 	    }
