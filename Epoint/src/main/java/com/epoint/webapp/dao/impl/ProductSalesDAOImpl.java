@@ -172,18 +172,18 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 		}
 	}
 
-	public int getVentureCapitalYearIncome(Member member) {
+	public long getVentureCapitalYearIncome(Member member) {
 		// TODO Auto-generated method stub
-		int yearIncome = 0;
+		long yearIncome = 0;
 		sql = "SELECT SUM((p.productSalesPrice-p.productCost)*IFNULL(s.productSalesQuantity,0)) AS yearIncome "
-				+ "FROM product p LEFT JOIN product_sales s ON p.productID=s.productID WHERE p.memberAccount = ?;";
+				+ "FROM product p LEFT JOIN product_sales s ON p.productID=s.productID WHERE p.memberAccount = ?";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);			
 			smt.setString(1, member.getAccount());
 			rs = smt.executeQuery();
 			while(rs.next()){
-				yearIncome = rs.getInt("yearIncome");
+				yearIncome = rs.getLong("yearIncome");
 				return yearIncome;
 			}			
 			rs.close();
