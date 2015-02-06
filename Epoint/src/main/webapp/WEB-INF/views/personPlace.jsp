@@ -117,7 +117,7 @@
 					<input type="hidden" name="dynamicTypeCount" id="lawyerCount" value="${dynamicTypeCount[1] }">
 				  	<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[0].ID" value="2131">
-				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record}">
+				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record == 0? 1:fixedPayMoney[0].record}">
 				  		<legend>1.1 固定成本[薪資(含勞/健保費及退休金提撥)]：</legend>
 					  	<div class="field">
 					  		<label>日期：
@@ -132,7 +132,7 @@
 					</fieldset>
 					<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[1].ID" value="2132">
-				  	<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record}">
+				  	<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record == 0? 1:fixedPayMoney[1].record}">
 				  		<legend>1.1.2 固定成本[薪資增減]：</legend>
 					  	<div class="field">
 					  		<label>日期：
@@ -253,7 +253,8 @@
 	            	moneyValidate: {
 	            		required: true,
 	            		digits: true,
-	            		maxlength: 12
+	            		min: 1,
+	            		maxlength: 9
 	            	}
 	            });
 	            

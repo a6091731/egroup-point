@@ -2,7 +2,9 @@ package com.epoint.webapp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -282,6 +284,10 @@ public class ExpenditureStructureController {
             List<PayMoney> dynamicPayMoney = expenditureForm.getDynamicPayMoney();
             List<PayMoney> deletedPayMoney = expenditureForm.getDeletedPayMoney();
             //固定成本
+            Map<Integer,Integer> tempFixedCostRecord = new HashMap<Integer,Integer>();
+            for(int i = 0;i < oldFixedPayMoney.size();i++){
+            	tempFixedCostRecord.put(oldFixedPayMoney.get(i).getID(),i);
+            }
             if(fixedPayMoney != null){
             	for (int i = 0; i < fixedPayMoney.size(); i++) {
             		PayMoney newObject = fixedPayMoney.get(i);
@@ -293,20 +299,32 @@ public class ExpenditureStructureController {
                         payMoney.setMoney(newObject.getMoney());
                         payMoneyDAO.addPayMoney(payMoney);
                     }else{
-                    	PayMoney oldObject = oldFixedPayMoney.get(i);
-                        if (oldObject.getDate() == null) {
-                        	int recordID = payMoneyDAO.getPayRecord(account,newObject.getID());
-                            payMoney.setID(newObject.getID());
-                            payMoney.setRecord(recordID);
-                            payMoney.setDate_string(newObject.getDate_string() + "-01");
-                            payMoney.setMoney(newObject.getMoney());
-                            payMoneyDAO.addPayMoney(payMoney);
-                        } else if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
-                        			|| oldObject.getMoney() != newObject.getMoney()) {
-                        	newObject.setAccount(account);
-                            newObject.setDate_string(newObject.getDate_string() + "-01");
-                            payMoneyDAO.modiPayMoney(newObject);
-                        }
+                    	if(fixedPayMoney.size() == oldFixedPayMoney.size()){//沒有缺資料，直接修改
+                    		PayMoney oldObject = oldFixedPayMoney.get(i);
+                            if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
+                            		|| oldObject.getMoney() != newObject.getMoney()) {
+                            	newObject.setAccount(account);
+                                newObject.setDate_string(newObject.getDate_string() + "-01");
+                                payMoneyDAO.modiPayMoney(newObject);
+                            }
+                    	}else{//有缺
+                    		if(tempFixedCostRecord.containsKey(newObject.getID())){
+                    			PayMoney oldObject = oldFixedPayMoney.get(tempFixedCostRecord.get(newObject.getID()));
+                                if (!oldObject.getDate().equals(newObject.getDate_string() + "-01")
+                                		|| oldObject.getMoney() != newObject.getMoney()) {
+                                	newObject.setAccount(account);
+                                    newObject.setDate_string(newObject.getDate_string() + "-01");
+                                    payMoneyDAO.modiPayMoney(newObject);
+                                }
+                    		}else{
+                        		int recordID = payMoneyDAO.getPayRecord(account,newObject.getID());
+                                payMoney.setID(newObject.getID());
+                                payMoney.setRecord(recordID);
+                                payMoney.setDate_string(newObject.getDate_string() + "-01");
+                                payMoney.setMoney(newObject.getMoney());
+                                payMoneyDAO.addPayMoney(payMoney);
+                    		}
+                    	}
                     }
             	}
             }
@@ -339,7 +357,7 @@ public class ExpenditureStructureController {
                             payMoney.setDate_string(newObject.getDate_string() + "-01");
                             payMoney.setMoney(newObject.getMoney());
                             payMoneyDAO.addPayMoney(payMoney);
-                            }
+                        }
             		}
             	}
             }
