@@ -44,7 +44,7 @@ public class FinancialPlanController {
 			model.addObject("sourcePlans", sourcePlans);
 			model.setViewName("financialPlan");
 		}else{
-		 model.setViewName("redirect:/");
+			model.setViewName("memberLogin");
 		}
 		return model;
 	}
@@ -53,7 +53,6 @@ public class FinancialPlanController {
 	public ModelAndView addFinancialPlan(@ModelAttribute FinancialPlanForm financialPlanForm,
             HttpSession session, HttpServletRequest request) throws IOException {
 		ModelAndView model = new ModelAndView();
-		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 		FinancialPlanDAO financialPlanDAO = (FinancialPlanDAO) context.getBean("financialPlanDAO");
 		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
 		FinancialPlan financialPlan = new FinancialPlan();
@@ -123,7 +122,7 @@ public class FinancialPlanController {
 			}
 			model.setViewName("redirect:/financialPlan");
 		}else{
-		 model.setViewName("redirect:/");
+		 model.setViewName("memberLogin");
 		}
 		return model;
 	}
