@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epoint.webapp.dao.ProductDAO;
 import com.epoint.webapp.dao.VentureChecklistDAO;
 import com.epoint.webapp.entity.HumanResourceContent;
 import com.epoint.webapp.entity.MapClass;
@@ -37,13 +38,18 @@ public class VentureChecklistController {
 		else{			
 			model.setViewName("ventureChecklistMap");	
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
 			DecimalFormat df = new DecimalFormat("0.00");
 			memberLogin.setSetPercent("11");			
 			memberLogin.setPercent11(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			memberLogin.setSetPercent("12");
 			memberLogin.setPercent12(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			//************************
+			//Product 紀錄比數，但不記錄完成度
 			memberLogin.setSetPercent("13");
 			memberLogin.setPercent13(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			memberLogin.setProductCount(productDAO.countProductByMember(memberLogin));
+			//************************
 			memberLogin.setSetPercent("14");
 			memberLogin.setPercent14(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			memberLogin.setSetPercent("15");
@@ -54,6 +60,7 @@ public class VentureChecklistController {
 			memberLogin.setPercent17(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			
 			model.addObject("getPercent",memberLogin);
+			
 			/*System.out.println("11="+memberLogin.getPercent11());
 			System.out.println("12="+memberLogin.getPercent12());
 			System.out.println("13="+memberLogin.getPercent13());

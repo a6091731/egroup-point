@@ -74,7 +74,7 @@
 			<div class="grid_6 prefix_3 suffix_3">
 				<ul>
 					<li>
-						<div class="${getPercent.percent11>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+						<div class="ventureBox clearfix">
 							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent11}%" data-fontsize="16" 
 							data-percent="${getPercent.percent11}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
@@ -83,11 +83,11 @@
 								<p>填寫創業業種、商業模式和在此行業的一技之長</p>
 							</div>
 							<i class="fa fa-angle-right fa-5x"></i>
-							<a href="${getPercent.percent11>0? 'ventureTypes':'javascript:;'}" target="_self"></a>
+							<a href="ventureTypes" target="_self"></a>
 						</div>
  					</li>
 					<li>
-						<div class="${getPercent.percent12>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+						<div class="${getPercent.percent11>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
 							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent12}%" data-fontsize="16" 
 							data-percent="${getPercent.percent12}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
@@ -95,18 +95,18 @@
 								<h3>目標市場描述</h3>
 								<p>填寫目標客戶、提供給顧客什麼價值、顧客從中能得到什麼好處</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
+							<i class="${getPercent.percent11>0? 'fa fa-angle-right fa-5x:'fa fa-lock fa-4x fa-top'}"></i>
 							<a href="${getPercent.percent12>0? 'targetMarketDescribe':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent13>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent13}%" data-fontsize="16" 
-							data-percent="${getPercent.percent13}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+						<div class="${getPercent.productCount>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+							<div class="progressCircle" data-dimension="80" data-text="${getPercent.productCount>0? 100:0}%" data-fontsize="16" 
+							data-percent="${getPercent.productCount>0? 100:0}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>產品描述</h3>
-								<p>填寫產品相關資訊</p>
+								<p>填寫產品相關資訊，目前有${getPercent.productCount }項產品資訊</p>
 							</div>
 							<i class="fa fa-lock fa-4x fa-top"></i>
 							<a href="${getPercent.percent13>0? 'showAllProductDescribe':'javascript:;'}" target="_self"></a>

@@ -33,6 +33,7 @@ public class FinancialPlanController {
 		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		if(loginMember != null){
+			model.setViewName("financialPlan");
 			String account = loginMember.getAccount();
 			int avgCost = payMoneyDAO.getMonthlyCostByAccount(account);
 			int fundLack = memberDAO.getFundLackByAccount(account);
@@ -42,7 +43,7 @@ public class FinancialPlanController {
 			model.addObject("fundLack", fundLack);
 			model.addObject("usesPlans", usesPlans);
 			model.addObject("sourcePlans", sourcePlans);
-			model.setViewName("financialPlan");
+			model.setViewName("financialPlan");		
 		}else{
 			model.setViewName("memberLogin");
 		}
@@ -122,7 +123,7 @@ public class FinancialPlanController {
 			}
 			model.setViewName("redirect:/financialPlan");
 		}else{
-		 model.setViewName("memberLogin");
+			 model.setViewName("memberLogin");
 		}
 		return model;
 	}

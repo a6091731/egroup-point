@@ -21,6 +21,8 @@ public class Member {
 	private double percent11;
 	private double percent12;
 	private double percent13;
+	//product 紀錄比數，但不記錄完成度
+	private int productCount;
 	private double percent14;
 	private double percent15;
 	private double percent16;
@@ -41,7 +43,7 @@ public class Member {
 	
 	//一年總支出、總收入
 	private int expenditure;
-	private int income;
+	private long income;
 	
 	public String getAccount() {
 		return account;
@@ -132,7 +134,7 @@ public class Member {
 	}
 	public void setPercent12(double percent12) {
 		this.percent12 = percent12;
-	}
+	}	
 	public double getPercent13() {
 		return percent13;
 	}
@@ -235,10 +237,16 @@ public class Member {
 	public void setExpenditure(int expenditure) {
 		this.expenditure = expenditure;
 	}
-	public int getIncome() {
+	public long getIncome() {
 		return income;
 	}
-	public void setIncome(int income) {
+	public void setIncome(long income) {
 		this.income = income;
-	}		
+	}
+	public int getProductCount() {
+		return productCount;
+	}
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
+	}
 }
