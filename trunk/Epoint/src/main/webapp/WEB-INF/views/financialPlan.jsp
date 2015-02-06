@@ -214,7 +214,7 @@
 		var avgCost = ${avgCost};
 		var result =  parseInt(avgCost) * 3;
 		var index = 0;
-		var count = ${fn:length(usesPlans)} + ${fn:length(sourcePlans)};
+		var count = '${fn:length(usesPlans)}' + '${fn:length(sourcePlans)}';
 		var delIndex = 0;
 		var total = 0;
 		$( document ).ready(function() {
@@ -289,7 +289,7 @@
 	    }
 	    
 	    function calculateNeedMoney(){
-	    	var lackMoney = $(this).val() != '' ? parseInt($(this).val()) : 0;
+	    	var lackMoney = $('#lackMoney').val() != '' ? parseInt($('#lackMoney').val()) : 0;
 			result = parseInt(avgCost) * 3 + parseInt(lackMoney);
 			$('#requestMoney').empty();
 			$('#requestMoney').append('月平均費用*3 + 資金缺口 = 第一年創業資金需求<br/>'+
