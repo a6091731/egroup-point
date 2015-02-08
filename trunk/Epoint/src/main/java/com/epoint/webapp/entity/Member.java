@@ -1,5 +1,6 @@
 package com.epoint.webapp.entity;
-import java.sql.Date;
+
+import java.util.Date;
 
 public class Member {
 	private String account;
