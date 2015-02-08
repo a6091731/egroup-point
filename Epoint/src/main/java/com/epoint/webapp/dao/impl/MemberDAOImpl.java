@@ -126,6 +126,7 @@ public class MemberDAOImpl implements MemberDAO{
 				member.setMemberNO(rs.getString("memberNO"));
 				member.setResetNO(rs.getString("resetNO"));
 				member.setStatus(rs.getInt("memberStatus"));
+				member.setCapitalDate(rs.getDate("ventureCapitalDate"));
 			}
 			rs.close();
 			smt.close();

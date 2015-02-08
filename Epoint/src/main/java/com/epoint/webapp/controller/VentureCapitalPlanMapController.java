@@ -19,6 +19,7 @@ import com.epoint.webapp.entity.Member;
 @Controller
 public class VentureCapitalPlanMapController {
 	ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("spring-module.xml");
+	
 	@RequestMapping(value = "/ventureCapitalPlanMap", method = RequestMethod.GET)
 	public ModelAndView ventureCapitalPlanMap (HttpServletRequest request, HttpSession session){
 		ModelAndView model = new ModelAndView();
@@ -70,6 +71,7 @@ public class VentureCapitalPlanMapController {
 			PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
 			String account = memberLogin.getAccount();
 			memberDAO.modiVentureCapitalDateByAccount(account, startDate+"-01");
+			memberLogin =  memberDAO.checkMember(account);
 			int endYear = Integer.parseInt(startDate.substring(0, 4));
 			int endMon = Integer.parseInt(startDate.substring(5, 7))-1;
 			String endDate = "";
@@ -80,8 +82,9 @@ public class VentureCapitalPlanMapController {
 				String temp = "0"+endMon;
 				endDate = endYear+"-"+temp.substring(temp.length()-2, temp.length())+"-01";
 			}
+			session.setAttribute("loginMember", memberLogin);
 			payMoneyDAO.delPayMoneyByDate(account, startDate+"-01", endDate);
-		}			
+		}
 		return null;
 	}
 }
