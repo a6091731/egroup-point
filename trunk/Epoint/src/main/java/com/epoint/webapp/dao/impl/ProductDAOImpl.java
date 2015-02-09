@@ -105,6 +105,16 @@ public class ProductDAOImpl implements ProductDAO{
 				product.setSalesPrice(rs.getInt("productSalesPrice"));
 				product.setCost(rs.getInt("productCost"));
 				productList.add(product);
+				/*System.out.println(member.getAccount());
+				System.out.println(rs.getString("productID"));
+				System.out.println(rs.getDate("productNewTime"));
+				System.out.println(rs.getString("productName"));
+				System.out.println(rs.getString("productSpecifications"));
+				System.out.println(rs.getString("productPack"));
+				System.out.println(rs.getInt("productEndPrice"));
+				System.out.println(rs.getInt("productSalesPrice"));
+				System.out.println(rs.getInt("productCost"));
+				System.out.println("************************");*/
 			}
 			rs.close();
 			smt.close();

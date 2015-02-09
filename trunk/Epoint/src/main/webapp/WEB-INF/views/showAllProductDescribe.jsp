@@ -303,6 +303,7 @@
 		
 		function setEditProduct(i){
 			var list = $.parseJSON('${getProductList2}');
+			alert(list[0].id);
 			$('#editID').val(list[i].id);
 			$('#editName').val(list[i].name);
 			$('#editSpecification').val(list[i].specification);

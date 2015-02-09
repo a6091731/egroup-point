@@ -12,6 +12,7 @@ public interface ProductSalesDAO {
 	public boolean checkProductSalesByMember(ProductSales productSales);
 	public void updateProductSales(ProductSales productSales);
 	public void delProductSalesByMember(ProductSales productSales);
+	public void delProductSalesByMemberDate(String account, String startDate, String endDate);
 	public long getVentureCapitalYearIncome(Member member);
 	public List<ProductSales> getMonTotalIncomeByAccoun(String account);
 	public List<ProductSales> getMonthTotalIncomeByMemberDate(String account,String date);

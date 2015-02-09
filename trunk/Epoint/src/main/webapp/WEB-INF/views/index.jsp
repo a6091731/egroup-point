@@ -55,8 +55,14 @@
 						</div> 
 						
 						<div class="top-nav-right">
-							<a href="login.html" id="loginButton"><span>登入</span></a>
-						</div> 
+						<c:choose>
+							<c:when test="${loginMember!=null}">
+								<p id="memberName">Hi~${loginMember.name }，歡迎您登入<p>
+							</c:when>
+							<c:otherwise>
+								<a href="memberLogin" id="loginButton"><span>登入</span></a>
+							</c:otherwise>
+						</c:choose>
 					</div><!-- top-nav -->
 				</nav>
 			</div><!-- grid_12 -->
@@ -72,12 +78,14 @@
 			<a href="venturePlanMap" class="indexButton"><span class="next">我想創業<i class="fa fa-paper-plane fa-lg fa-left"></i></span></a>
 		</div>
 	</div>
+	<!--  
 	<div>
 		我該如何創業
 	</div>
 	<div>
 		創業該注意什麼？
 	</div>
+	-->
 	<footer class="footerwrap">
 		<div class="container">
 			<div class="grid_12">
@@ -87,11 +95,10 @@
 	</footer>
 	
 	<!-- import jquery -->
-		<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery-1.9.1.min.js"></script>
 	<!-- import nav slideToggle RWD js -->	
-		<script src="js/nav.js"></script>
+	<script src="js/nav.js"></script>
 		
-		<script src="js/fixtop.js"></script>
-
+	<script src="js/fixtop.js"></script>
 </body>
 </html>

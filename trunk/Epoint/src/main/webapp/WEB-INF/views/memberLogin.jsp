@@ -58,7 +58,7 @@
 						<h2>會員登入</h2>
 					</li>
 					<li>
-						<label for="account">Email<span class="errorMsg">${errorMsg}</span></label>
+						<label for="account">帳號<span class="errorMsg">${errorMsg}</span></label>
 						<input type="text" name="account" id="account" placeholder="請輸入Email" class="textbox" maxlength="55">
 					</li>
 					<li>
@@ -74,8 +74,7 @@
 						<a href="mailResend.html" class="fgpwd">忘記密碼</a>
 						<span>/</span>
 						<!-- <a href="mailResend.html" class="fgpwd">我沒有收到帳號驗證信</a> -->
-						<span>/</span>
-						<a href="memberRegister.html" class="fgpwd">成為會員</a>
+						<a href="memberRegister.html" class="fgpwd">加入會員</a>
 					</li>
 				</ul>
 				<!-- <label class="law"><input type="checkbox" name="agree"><a href="javascript:;" title="閱讀條款內容">同意本網站條款</a></label> -->

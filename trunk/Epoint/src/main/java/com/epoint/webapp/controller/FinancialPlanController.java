@@ -57,6 +57,7 @@ public class FinancialPlanController {
 		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
 		FinancialPlan financialPlan = new FinancialPlan();
 		Member loginMember = (Member) session.getAttribute("loginMember");
+		System.out.println("123");
 		if(loginMember != null){
 			String account = loginMember.getAccount();
 			memberDAO.modiFundLackBy(account, financialPlanForm.getLackMoney());

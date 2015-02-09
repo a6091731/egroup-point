@@ -189,6 +189,7 @@
 					});
 					$('#step1Progress').attr('class','ui progress success');	
 					$('#step1Url').attr('class','downloadButton');
+					$('#step1Url').attr('href','exportWord');
 					$('#step1Name').text("下載創業前檢核表");
 					$('#step1Name').append("<i class='fa fa-download fa-lg fa-left'>");
 					$('#step11').append("<a href='ventureChecklistMap' class='modifyButton'><span class='next'>修改創業前檢核表<i class='fa fa-repeat fa-lg fa-left'></i></span></a>");
@@ -199,6 +200,7 @@
 					'<div class="stepDescribe">'+
 					'<img alt="創業第一年資金規劃圖示" src="images/ventureCapital.png">'+
 					'<h2>2.創業第一年資金規劃</h2>'+
+					'<p>完成創業前檢核表後，接下來請依順序完成您的創業第一年資金規劃</p>'+
 					'</div>'+
 					'<div id="step1Progress">'+
 				  	'<div class="bar">'+
@@ -211,19 +213,20 @@
 					
 					//若創業前檢核表填完，開啟資金規劃地圖圖示
 					$('#step31').remove();
-					var step3Content ='<div class="step" id="step21">'+
+					var step3Content ='<div class="step" id="step31">'+
 					'<div class="stepDescribe">'+
-					'<img alt="創業第一年資金規劃圖示" src="images/ventureCapital.png">'+
-					'<h2>2.創業第一年資金規劃</h2>'+
+					'<img alt="資金規劃地圖圖示" src="images/financialPlan.png">'+
+					'<h2>3.資金規劃地圖</h2>'+
+					'<p>恭喜您完成了創業檢核表與創業第一年營運排程，接下來做資金規劃</p>'+
 					'</div>'+
 					'<div id="step3Progress">'+
 				  	'<div class="bar">'+
 				    '<div class="progress"></div>'+
 				  	'</div>'+
 					'</div>'+				
-					'<a href="ventureCapitalPlanMap" class="startButton" id="step2Url"><span class="next" id="step2Name">開始填寫<i class="fa fa-play-circle fa-lg fa-left"></i></span></a>'+					
+					'<a href="financialPlan" class="startButton" id="step3Url"><span class="next" id="step3Name">開始填寫<i class="fa fa-play-circle fa-lg fa-left"></i></span></a>'+					
 					'</div>';
-					$('#step3').append(step2Content);
+					$('#step3').append(step3Content);
 					
 				}else{
 					$('#step1Progress').progress({

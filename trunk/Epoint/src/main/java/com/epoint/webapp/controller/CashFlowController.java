@@ -49,19 +49,20 @@ public class CashFlowController {
             //宣告兩個陣列，至多12個月，儲存每月的花費
             int[] monthTotalExpenditure = new int[12];
             int[] monthTotalIncome = new int[12];
-            //每月支出金額--------------
-            for(PayMoney p : totalExpenditureByAccount){
-            	//折線圖
-            	int temp = Integer.parseInt(p.getDate().toString().substring(5, 7));
-            	monthTotalExpenditure[temp-1] = p.getMonthTotal();
-            }
-            
+            //每月支出金額--------------            
+            if(totalExpenditureByAccount!=null)
+	            for(PayMoney p : totalExpenditureByAccount){
+	            	//折線圖
+	            	int temp = Integer.parseInt(p.getDate().toString().substring(5, 7));
+	            	monthTotalExpenditure[temp-1] = p.getMonthTotal();
+	            }            
             //每月收入金額--------------
-            for(ProductSales s : totalIncomeByAccount){
-            	//折線圖
-            	int temp = Integer.parseInt(s.getDate().toString().substring(5, 7));
-            	monthTotalIncome[temp-1] = s.getMonthIncome();
-            }
+            if(totalIncomeByAccount!=null)
+	            for(ProductSales s : totalIncomeByAccount){
+	            	//折線圖
+	            	int temp = Integer.parseInt(s.getDate().toString().substring(5, 7));
+	            	monthTotalIncome[temp-1] = s.getMonthIncome();
+	           	}
             
             //抓取選擇月份
             int selectedMonth = request.getParameter("mon")==null?1:Integer.parseInt(request.getParameter("mon"));

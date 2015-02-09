@@ -83,7 +83,9 @@
 				<ul>
 					<li>
 						<div class="ventureBox clearfix">
-							<div class="progressCircle" data-dimension="80" data-text="${getMember.getPercent}%" data-fontsize="16" data-percent="${getMember.getPercent}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
+							<!-- 
+								<div class="progressCircle" data-dimension="80" data-text="${getMember.getPercent}%" data-fontsize="16" data-percent="${getMember.getPercent}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
+							 -->
 							<div class="progressDescribe">
 								<h3>支出結構</h3>
 								<p>第一年總支出 : ${getMember.expenditure}</p>
@@ -94,7 +96,9 @@
  					</li>
 					<li>
 						<div class="ventureBox clearfix">
-							<div class="progressCircle" data-dimension="80" data-text="0%" data-fontsize="16" data-percent="0" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
+							<!-- 
+								<div class="progressCircle" data-dimension="80" data-text="0%" data-fontsize="16" data-percent="0" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
+							 -->
 							<div class="progressDescribe">
 								<h3>收入結構</h3>
 								<p>第一年總收入 : ${getMember.income}</p>
@@ -103,22 +107,21 @@
 							<a href="revenueStructure" target="_self"></a>
 						</div>
  					</li> 
-					<!-- lock style
 					<li>
-						<div class="ventureBoxLocked clearfix">
-							<div class="progress" data-dimension="80" data-text="0%" data-fontsize="16" data-percent="0" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
-							<div class="progressDescribe">
-								<h3>收入結構</h3>
-								<p>填寫目標客戶、提供給顧客什麼價值、顧客從中能得到什麼好處</p>
+						<div class="ventureBox clearfix">
+							<!-- 
+							<div class="ventureBoxLocked clearfix">
+								<div class="progressCircle" data-dimension="80" data-text="0%" data-fontsize="16" data-percent="0" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" data-bordersize="10" data-animationstep="2"></div>
+							 -->
+							 <div class="progressDescribe">
+								<h3>現金流</h3>
+								<p>現金流是由收入、支出所計算出來，讓自己更了解自己的財務規劃</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
-							<a href="javascript:;" target="_self"></a>
+							<i class="fa fa-angle-right fa-5x"></i>
+							<a href="cashFlow" target="_self"></a>
 						</div>
  					</li> 
- 					-->
-				</ul>		
-			
-			
+				</ul>	
 			</div>
 		</div>
 	</div>

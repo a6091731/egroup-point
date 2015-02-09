@@ -273,4 +273,27 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 		}
 		return null;
 	}
+
+	public void delProductSalesByMemberDate(String account, String startDate,
+			String endDate) {
+		// TODO Auto-generated method stub
+		sql = "DELETE FROM product_sales WHERE memberAccount = ? AND productSalesDate < ? OR productSalesDate > ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			smt.setString(2, startDate);
+			smt.setString(3, endDate);
+			smt.executeUpdate();			
+			smt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
 }

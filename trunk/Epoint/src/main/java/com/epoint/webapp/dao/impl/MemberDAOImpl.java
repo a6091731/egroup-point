@@ -55,8 +55,8 @@ public class MemberDAOImpl implements MemberDAO{
 
 	public void addMember(Member member) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO member(memberAccount,memberPassword,memberName,"
-				+ "memberStatus,memberNO,registerDate) SELECT ?,?,?,?,MAX(memberNO)+1,"
+		String sql = "INSERT INTO member(memberAccount,memberPassword,memberName,memberEmail,"
+				+ "memberStatus,memberNO,registerDate) SELECT ?,?,?,?,?,MAX(memberNO)+1,"
 				+ "NOW() FROM member";
 		try {
 			conn = dataSource.getConnection();
@@ -64,7 +64,8 @@ public class MemberDAOImpl implements MemberDAO{
 			smt.setString(1,member.getAccount());
 			smt.setString(2,member.getPassword());
 			smt.setString(3,member.getName());
-			smt.setString(4,"0");
+			smt.setString(4,member.getEmail());
+			smt.setString(5,"0");
 			smt.executeUpdate();			
 			smt.close();
 		} catch (SQLException e) {
