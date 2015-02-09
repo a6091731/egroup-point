@@ -95,7 +95,7 @@
 								<h3>目標市場描述</h3>
 								<p>填寫目標客戶、提供給顧客什麼價值、顧客從中能得到什麼好處</p>
 							</div>
-							<i class="${getPercent.percent11>0? 'fa fa-angle-right fa-5x:'fa fa-lock fa-4x fa-top'}"></i>
+							<i class="${getPercent.percent11>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
 							<a href="${getPercent.percent12>0? 'targetMarketDescribe':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>

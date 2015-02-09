@@ -58,6 +58,7 @@ public class ProductSalesController {
 			
 			//getProduct			
 			List<Product> getProductList = productDAO.getProductListSum(memberLogin,pageCount.getStart(), pageSize);
+			System.out.println("memberLogin"+memberLogin.getCapitalDate());
 			model.addObject("page", pageCount);
 			model.addObject("getProductList1",getProductList);
 			model.addObject("getProductList2", new Gson().toJson(getProductList));

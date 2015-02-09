@@ -59,7 +59,7 @@ public class WordController {
 			String xml = "ventureChecklist.xml";
 			String filePath = request.getServletContext().getRealPath("resources/word");
 			File xmlFile = new File(filePath);
-			String docFileName = "創業E點通.doc";
+			String docFileName = "創業前檢核表.doc";
 			Template template = null;
 			configuration.setDefaultEncoding("UTF-8");
 			Map<String, Object> dataMap = new HashMap<String, Object>();

@@ -58,8 +58,8 @@
 						<h2>會員註冊</h2>
 					</li>
 					<li>
-						<label for="account">Email</label>
-						<input type="text" name="account" id="account" placeholder="請輸入Email" class="textbox" maxlength="55">
+						<label for="account">帳號</label>
+						<input type="text" name="account" id="account" placeholder="請輸入帳號" class="textbox" >
 					</li>
 					<li>
 						<label for="password">密碼</label>
@@ -72,6 +72,10 @@
 					<li>
 						<label for="name">姓名</label>
 						<input type="text" name="name" id="name" placeholder="請輸入姓名" class="textbox" maxlength="10">
+					</li>
+					<li>
+						<label for="email">Email</label>
+						<input type="text" name="email" id="email" placeholder="請輸入Email" class="textbox" maxlength="55">
 					</li>
 					<li>
 						<div class="register_chg">
@@ -93,12 +97,13 @@
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/messages_zh_TW.js"></script>
 	<script src="js/additional-methods.js"></script>
-	<script>
+	<script type="text/javascript">
 		$(function(){
 			$("#sendForm").validate({				
 				rules:{
-	    			name:"required",
         			account:{
+        				minlength:6,
+        				maxlength:20,
         				required:true,
     					remote:{
     						url:"checkAccount",
@@ -111,34 +116,55 @@
     						}
     					}
         			},
+        			name:{
+        				required:true,
+        				maxlength:10
+        			},
         			password:{
         				required:true,
-        				minlength:6
+        				minlength:6,
+        				maxlength:30
         			},
         			password2:{
         				required:true,
         				minlength:6,
+        				maxlength:30,
         				equalTo:$("#password")
-        			}/*,
-        			agree:"required"*/
+        			},
+        			email:{
+        				required:true,
+        				maxlength:55,
+        			},
+        			//agree:"required"*/
 	    		},	        				
-	    		messages:{
-	    			name:"請輸入名稱",
+	    		messages:{	    			
 	    			account:{
+	    				minlength:"帳號長度不能小於{0}",
+	    				maxlength:"帳號長度不能大於{0}",
 	    				required:"請輸入帳號",
 	    				email:"信箱格式不正確",
 	    				remote:"帳號已被註冊"
 	    			},
+	    			name:{
+	    				require:"請輸入名字",
+	    				maxlength:"名字長度不能大於{0}"
+	    			},	    			
 	    			password:{
 	    				required:"請輸入密碼",
-	    				minlength:"長度不得小於{0}"
+	    				minlength:"長度不得小於{0}",
+	    				maxlength:"長度不得大於{0}"
 	    			},
 	        		password2:{
 	        			required:"請確認密碼",
 	        			minlength:"長度不得小於{0}",
+	        			maxlength:"長度不得大於{0}",
 	        			equalTo:"密碼輸入不同"
-	        		}/*,
-	    			agree:"請勾選同意"*/
+	        		},
+	    			email:{
+        				required:"請輸入Email",
+        				maxlength:"email長度不能大於{0}",
+        			}
+	    			//agree:"請勾選同意"*/
 	    		},
 	    		errorPlacement: function (error, element) {
 	    	    	if(element.attr('name') == "agree"){

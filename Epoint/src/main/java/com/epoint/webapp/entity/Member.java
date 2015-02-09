@@ -15,6 +15,7 @@ public class Member {
 	private String resetNO;
 	private int lack;
 	private Date capitalDate;
+	private String email;
 	
 	//程式變數
 	private int classID;
@@ -69,6 +70,12 @@ public class Member {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}		
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getStatus() {
 		return status;

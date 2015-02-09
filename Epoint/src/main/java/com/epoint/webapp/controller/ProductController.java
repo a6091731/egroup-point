@@ -1,5 +1,6 @@
 package com.epoint.webapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +55,10 @@ public class ProductController {
 			pageCount.calculate();
 			
 			//getProduct
-			List<Product> getProductList = productDAO.getProductList(memberLogin,pageCount.getStart(), pageSize);				
+			List<Product> getProductList = new ArrayList<Product>();
+			getProductList = productDAO.getProductList(memberLogin,pageCount.getStart(), pageSize);				
+			System.out.println("***********etProductList="+getProductList.get(0).getName());
+			System.out.println("***********getProductList="+getProductList.get(1).getName());
 			
 			model.addObject("page", pageCount);
 			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);

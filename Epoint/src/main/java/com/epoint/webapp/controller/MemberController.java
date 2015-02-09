@@ -34,12 +34,13 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 			if(session.getAttribute("errorMsg") != null){
 				String errorMsg = session.getAttribute("errorMsg").toString();
 				session.removeAttribute("errorMsg");
-				model.addObject("errorMsg", errorMsg);
+				System.out.println("errorMsg="+errorMsg);
+				//model.addObject("errorMsg", errorMsg);
 			}			
 			model.setViewName("memberLogin");
 		}
 		else
-			model.setViewName("redirect:/");
+			model.setViewName("redirect:/index");
 		return model;
 	}
 	
@@ -66,6 +67,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 			session.setAttribute("errorMsg", "無效的帳號密碼或未驗證");
 			model.setViewName("redirect:/");
 		}
+		System.out.println("model="+model.getViewName());
 		return model;
 	}
 	
@@ -97,7 +99,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		}
 		memberDAO.addMember(member);
 		session.setAttribute("loginMember", member);
-		model.setViewName("redirect:/aboutme?id"+member.getMemberNO());
+		model.setViewName("index");
 		/*HtmlUtil htmlUtil = new HtmlUtil();
 		String subject = "創業e點通：會員註冊驗證";
 		String message = "";
@@ -119,6 +121,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 	public @ResponseBody boolean checkAccount(String account){
 		MemberDAO memberDAO = (MemberDAO)context.getBean("memberDAO");
 		boolean flag = memberDAO.checkAccount(account);
+		//System.out.println("flag="+flag);
 		return flag;
 	}
 	

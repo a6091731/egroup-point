@@ -55,7 +55,8 @@
 					<div class="imgHolder"><img src="images/banner-office.jpg" alt="banner圖片-辦公室"></div>
 				</div>
 				<div class="breadcrumbs">
-            		<p><a href="index.html">首頁</a> &gt; <a href="#">創業地圖</a> &gt; <a href="#">創業第一年營運排程地圖</a> &gt; <span>支出結構</span></p>
+            		<p><a href="index">首頁</a> &gt; <a href="venturePlanMap">創業地圖</a> &gt; 
+            		<a href="ventureCapitalPlanMap">創業第一年營運排程地圖</a> &gt; <span>支出結構</span></p>
 	            </div>
 			</div>
 			<div class="grid_3">
