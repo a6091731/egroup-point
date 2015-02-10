@@ -58,6 +58,7 @@
 						<c:choose>
 							<c:when test="${loginMember!=null}">
 								<p id="memberName">Hi~${loginMember.name }，歡迎您登入<p>
+								<a href="logout" id="loginButton"><span>登出</span></a>
 							</c:when>
 							<c:otherwise>
 								<a href="memberLogin" id="loginButton"><span>登入</span></a>

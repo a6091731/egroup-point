@@ -138,35 +138,35 @@
 									<tbody>
 										<tr>
 											<td>管理人員</td>
-											<td><input type="text" class="input-control0" name="MQ0" id="MQ0" value="${getHumanResourceContentByMember.MQ0}" ></td>
-											<td><input type="text" class="input-control1" name="MQ1" id="MQ1" value="${getHumanResourceContentByMember.MQ1}" ></td>
-											<td><input type="text" class="input-control2" name="MQ2" id="MQ2" value="${getHumanResourceContentByMember.MQ2}" ></td>
-											<td><input type="text" class="input-control3" name="MQ3" id="MQ3" value="${getHumanResourceContentByMember.MQ3}" ></td>
-											<td><input type="text" class="input-control4" name="MQ4" id="MQ4" value="${getHumanResourceContentByMember.MQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="MQ0" id="MQ0" value="${getHumanResourceContentByMember.MQ0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="MQ1" id="MQ1" value="${getHumanResourceContentByMember.MQ1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="MQ2" id="MQ2" value="${getHumanResourceContentByMember.MQ2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="MQ3" id="MQ3" value="${getHumanResourceContentByMember.MQ3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="MQ4" id="MQ4" value="${getHumanResourceContentByMember.MQ4}" ></td>
 										</tr>
 										<tr>
 											<td>研發生產</td>
-											<td><input type="text" class="input-control0" name="RQ0" id="RQ0" value="${getHumanResourceContentByMember.RQ0}" ></td>
-											<td><input type="text" class="input-control1" name="RQ1" id="RQ1" value="${getHumanResourceContentByMember.RQ1}" ></td>
-											<td><input type="text" class="input-control2" name="RQ2" id="RQ2" value="${getHumanResourceContentByMember.RQ2}" ></td>
-											<td><input type="text" class="input-control3" name="RQ3" id="RQ3" value="${getHumanResourceContentByMember.RQ3}" ></td>
-											<td><input type="text" class="input-control4" name="RQ4" id="RQ4" value="${getHumanResourceContentByMember.RQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="RQ0" id="RQ0" value="${getHumanResourceContentByMember.RQ0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="RQ1" id="RQ1" value="${getHumanResourceContentByMember.RQ1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="RQ2" id="RQ2" value="${getHumanResourceContentByMember.RQ2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="RQ3" id="RQ3" value="${getHumanResourceContentByMember.RQ3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="RQ4" id="RQ4" value="${getHumanResourceContentByMember.RQ4}" ></td>
 										</tr>
 										<tr>
 											<td>行銷業務</td>
-											<td><input type="text" class="input-control0" name="SQ0" id="SQ0" value="${getHumanResourceContentByMember.SQ0}" ></td>
-											<td><input type="text" class="input-control1" name="SQ1" id="SQ1" value="${getHumanResourceContentByMember.SQ1}" ></td>
-											<td><input type="text" class="input-control2" name="SQ2" id="SQ2" value="${getHumanResourceContentByMember.SQ2}" ></td>
-											<td><input type="text" class="input-control3" name="SQ3" id="SQ3" value="${getHumanResourceContentByMember.SQ3}" ></td>
-											<td><input type="text" class="input-control4" name="SQ4" id="SQ4" value="${getHumanResourceContentByMember.SQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="SQ0" id="SQ0" value="${getHumanResourceContentByMember.SQ0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="SQ1" id="SQ1" value="${getHumanResourceContentByMember.SQ1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="SQ2" id="SQ2" value="${getHumanResourceContentByMember.SQ2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="SQ3" id="SQ3" value="${getHumanResourceContentByMember.SQ3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="SQ4" id="SQ4" value="${getHumanResourceContentByMember.SQ4}" ></td>
 										</tr>
 										<tr>
 											<td>其他</td>
-											<td><input type="text" class="input-control0" name="OQ0" id="OQ0" value="${getHumanResourceContentByMember.OQ0}" ></td>
-											<td><input type="text" class="input-control1" name="OQ1" id="OQ1" value="${getHumanResourceContentByMember.OQ1}" ></td>
-											<td><input type="text" class="input-control2" name="OQ2" id="OQ2" value="${getHumanResourceContentByMember.OQ2}" ></td>
-											<td><input type="text" class="input-control3" name="OQ3" id="OQ3" value="${getHumanResourceContentByMember.OQ3}" ></td>
-											<td><input type="text" class="input-control4" name="OQ4" id="OQ4" value="${getHumanResourceContentByMember.OQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="OQ0" id="OQ0" value="${getHumanResourceContentByMember.OQ0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="OQ1" id="OQ1" value="${getHumanResourceContentByMember.OQ1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="OQ2" id="OQ2" value="${getHumanResourceContentByMember.OQ2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="OQ3" id="OQ3" value="${getHumanResourceContentByMember.OQ3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="OQ4" id="OQ4" value="${getHumanResourceContentByMember.OQ4}" ></td>
 										</tr>
 										<tr>
 											<td>合計</td>
@@ -212,7 +212,8 @@
 	<!-- Reveal Modal -->
 		<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
-		<script src="js/jquery.mobilemenu.js"></script>
+		<script src="js/jquery.mobilemenu.js"></script>			
+		<script src="js/jquery.validate.js"></script>
 		<script type="text/javascript">
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();	            
@@ -241,31 +242,93 @@
 	            $('.input-control4').keyup(function(){
 	            	total5()
 		        });
+	            $("#sendForm").validate({
+	            	rules:{
+	            		content171:{
+	            			required:true,
+	            			maxlength:150
+	            		},			
+						content172:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content173:{
+			    			required:true,
+			    			maxlength:150
+			    		}   		
+	            	},
+	            	messages:{
+	            		content171:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content172:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content173:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		}
+	            	}
+	            });	 
+	            $(".input-control").each(function(){
+	            	$(this).rules("add",{
+		        		required:true,
+		            	number: true,
+		            	min:0,
+		            	maxlength:9,
+		            	messages:{
+		            		required:"請輸入數量",
+		            		number:"請輸入數字",
+		            		min:"請輸入大於0的數量",
+		            		maxlength:"請輸入小於10位數的數量"
+		            	}
+		            });
+	            });
+	            /*
+	            $(".input-control").rules("add",{
+	        		required:true,
+	            	number: true,
+	            	min:1,
+	            	maxlength:9,
+	            	messages:{
+	            		required:"請輸入數量",
+	            		number:"請輸入數字",
+	            		min:"請輸入大於0的數量",
+	            		maxlength:"請輸入小於10位數的數量"
+	            	}
+	            });
+	            */
 	        });
 	        
 	        function total1(){
-	        	
-	        	$('#setTotalQ0').text(Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val()));
-	            $('#totalQ0').val(parseInt($('#setTotalQ0').text()));
+	        	var setTotal = Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val());
+	        	$('#setTotalQ0').text(!isNaN(setTotal)?setTotal:0); 
+	        	$('#totalQ1').val(parseInt($('#setTotalQ1').text()));
 	        }
 	        
 	        function total2(){
-	        	$('#setTotalQ1').text(Number($('#MQ1').val())+Number($('#RQ1').val())+Number($('#SQ1').val())+Number($('#OQ1').val()));
+	        	var setTotal = Number($('#MQ1').val())+Number($('#RQ1').val())+Number($('#SQ1').val())+Number($('#OQ1').val());
+	        	$('#setTotalQ1').text(!isNaN(setTotal)?setTotal:0);
            	 	$('#totalQ1').val(parseInt($('#setTotalQ1').text()));
 	        }
 	        
 	        function total3(){
-	        	$('#setTotalQ2').text(Number($('#MQ2').val())+Number($('#RQ2').val())+Number($('#SQ2').val())+Number($('#OQ2').val()));
+	        	var setTotal = Number($('#MQ2').val())+Number($('#RQ2').val())+Number($('#SQ2').val())+Number($('#OQ2').val());
+	        	$('#setTotalQ2').text(!isNaN(setTotal)?setTotal:0);
             	$('#totalQ2').val(parseInt($('#setTotalQ2').text()));
 	        }
 	        
 	        function total4(){
-	        	$('#setTotalQ3').text(Number($('#MQ3').val())+Number($('#RQ3').val())+Number($('#SQ3').val())+Number($('#OQ3').val()));
+	        	var setTotal = Number($('#MQ3').val())+Number($('#RQ3').val())+Number($('#SQ3').val())+Number($('#OQ3').val());
+	        	$('#setTotalQ3').text(!isNaN(setTotal)?setTotal:0);
            	 	$('#totalQ3').val(parseInt($('#setTotalQ3').text()));
 	        }
 	        
 	        function total5(){
-	        	$('#setTotalQ4').text(Number($('#MQ4').val())+Number($('#RQ4').val())+Number($('#SQ4').val())+Number($('#OQ4').val()));
+	        	var setTotal = Number($('#MQ4').val())+Number($('#RQ4').val())+Number($('#SQ4').val())+Number($('#OQ4').val());
+	        	$('#setTotalQ4').text(!isNaN(setTotal)?setTotal:0);
            		$('#totalQ4').val(parseInt($('#setTotalQ4').text()));
 	        }
 	    </script>

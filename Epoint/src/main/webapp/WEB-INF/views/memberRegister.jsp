@@ -161,7 +161,7 @@
 	        			equalTo:"密碼輸入不同"
 	        		},
 	    			email:{
-        				required:"請輸入Email",
+        				required:"mail 格式不符。EX: name@gmail.com",
         				maxlength:"email長度不能大於{0}",
         			}
 	    			//agree:"請勾選同意"*/

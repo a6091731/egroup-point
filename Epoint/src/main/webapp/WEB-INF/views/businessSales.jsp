@@ -73,7 +73,7 @@
 					<ul class="sideNav hideBlock">
 						<c:forEach items="${getVentureCheckMenuList}" var="menu">
 							<c:choose>
-								<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
+								<c:when test="${menu.classID <= getVentureCheckMenuListNow+1 || productFlag==true}">
 									<li><a href="${menu.url}"><i class="${menu.css}"></i>${menu.name }</a></li>
 								</c:when>
 								<c:otherwise>
@@ -150,10 +150,33 @@
 	<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
 	<script src="js/jquery.mobilemenu.js"></script>
+	<script src="js/jquery.validate.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('nav.primary .rightnav').mobileMenu();
 
+			$("#sendForm").validate({
+            	rules:{
+            		content141:{
+            			required:true,
+            			maxlength:150
+            		},			
+					content142:{
+		    			required:true,
+		    			maxlength:150
+		    		}
+            	},
+            	messages:{
+            		content141:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		content142:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		}
+            	}
+            });	 
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
@@ -161,7 +184,10 @@
 	<div id="help141" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 業務銷售通路</header>
 		<div class="cont clearfix">
-			<p>業務銷售通路</p>
+			<p>夜市擺攤</p>
+			<p>臉書粉絲團</p>
+			<p>代購/待售</p>
+			<p>店鋪銷售</p>
 		</div>
 	</div>	
 	<!-- helpBusinessModel -->

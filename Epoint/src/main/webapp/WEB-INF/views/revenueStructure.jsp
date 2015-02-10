@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -365,9 +366,13 @@
 	            	if(salsClassCount>1){
 	            		$("#salsDate0").rules("add",{
 	    	        		required:true,
+	    	        		min: '${fn:substring(getMember.capitalDate,0,7)}開始',
+    		            	max: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}'),	
 	    	            	messages:{
-	    	            		required:"請輸入日期",	            		
-	    	            	}
+	    	            		required:"請輸入日期",	
+	    	            		min: '時間不得小於您的創業第一年時間 :${fn:substring(getMember.capitalDate,0,7)}開始',
+	    		            	max: '時間不得大於您的創業第一年時間 '+calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')+'結束'
+	    		            }	    	            	
 	    	        	});	        	
 
 	    	        	$("#salsQuantity0").rules("add",{
@@ -382,12 +387,16 @@
 	    	            		maxlength:"請輸入小於10位數的數量"
 	    	            	}
 	    	        	});        		    	        	
-	            	}else{	            		
+	            	}else{	
 	            		if($('.salsDate').val()!="" || $('.salsQuantity').val()!=""){
 	            			$("#salsDate0").rules("add",{
 		    	        		required:true,
+		    	        		min: '${fn:substring(getMember.capitalDate,0,7)}',
+	    		            	max: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}'),	
 		    	            	messages:{
-		    	            		required:"請輸入日期",	            		
+		    	            		required:"請輸入日期",	  
+		    	            		min: '時間不得小於您的創業第一年時間 :${fn:substring(getMember.capitalDate,0,7)}開始',
+		    		            	max: '時間不得大於您的創業第一年時間 '+calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')+'結束'
 		    	            	}
 		    	        	});	        	
 
@@ -400,9 +409,9 @@
 		    	            		required:"請輸入數量",
 		    	            		num:"請輸入數字",
 		    	            		min:"請輸入大於0的數量",
-		    	            		maxlength:"請輸入小於10位數的數量"
+		    	            		maxlength:"請輸入小於10位數的數量"	,
 		    	            	}
-		    	        	});        	
+		    	            });        	
 		    	        	
 	            		}else{
 	            			alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
@@ -425,9 +434,13 @@
 	        function addValidate(getIndex){
 	        	$("#salsDate"+getIndex).rules("add",{
 	        		required:true,
+	        		min: '${fn:substring(getMember.capitalDate,0,7)}',
+	        		max: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}'),
 	            	messages:{
-	            		required:"請輸入日期",	            		
-	            	}
+	            		required:"請輸入日期",	    
+	            		min: '時間不得小於您的創業第一年時間 :${fn:substring(getMember.capitalDate,0,7)}開始',
+		            	max: '時間不得大於您的創業第一年時間 '+calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')+'結束'
+	            	}		        	
 	        	});	        	
 
 	        	$("#salsQuantity"+getIndex).rules("add",{
@@ -437,9 +450,9 @@
 	            	maxlength:9,
 	            	messages:{
 	            		required:"請輸入數量",
-	            		num:"請輸入數字",
+	            		number:"請輸入數字",
 	            		min:"請輸入大於0的數量",
-	            		maxlength:"請輸入小於10位數的數量"
+	            		maxlength:"請輸入小於10位數的數量",
 	            	}
 	        	});
 	        }
@@ -562,7 +575,7 @@
 			}
 	        
 	        function reset() {
-				$("#toggleCSS").attr("href", "../themes/alertify.default.css");
+				$("#toggleCSS").attr("href", "css/alertify.default.css");
 				alertify.set({
 					labels : {
 						ok     : "確認刪除",
@@ -598,7 +611,19 @@
    				return false;
 	        }
 	        
-	        
+	        function calculateEndDate(startDate){
+				var endDate;
+				var endYear = parseInt(startDate.substring(0,4));
+				var endMon = parseInt(startDate.substring(5,7))-1;
+				if(endMon == 0){
+					endDate = endYear+'-12';
+				}else{
+					endYear++;
+					endMon = '0'+endMon;
+					endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
+				}
+				return endDate;
+			}
 	    </script>
 </body>
 </html>

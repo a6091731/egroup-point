@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="css/layout.css">
 <!-- responsive-table -->
 <link rel="stylesheet" href="css/responsive-tables.css" media="screen">
+<!-- alertify -->
+<link rel="stylesheet" href="css/alertify.css" />
+<link rel="stylesheet" href="css/alertify.default.css"/> 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn’t work if you view the page via file:// -->
@@ -139,7 +142,7 @@
 												<i class="fa fa-pencil-square-o fa-lg"></i></a>
 											</td>
 											<td>
-												<a href="javascript:;" class="fa-color">
+												<a onclick="confirm(${i.index});" class="fa-color">		
 												<i class="fa fa-times-circle fa-lg"></i></a>
 											</td>
 										</tr>						
@@ -157,7 +160,7 @@
 				            </ul>
 				        </div><!-- page -->
 						<a href="businessSales" class="nextStepButton"><span
-							class="next">下一步，填寫人力資源規劃<i class="fa fa-arrow-right"></i></span></a>
+							class="next">下一步，填寫業務<i class="fa fa-arrow-right"></i></span></a>
 					</div>
 				</form>
 			</div>
@@ -167,7 +170,7 @@
 	<!-- addProduct BEGIN MODAL WINDOWS -->
 	<div id="addProduct" class="reveal-modal">
 		<div class="cont clearfix">
-			<form id="sendForm" action="addProduct" method="post" class="formset clearfix">
+			<form id="sendForm1" action="addProduct" method="post" class="formset clearfix">
 				<fieldset class="fieldset2">
 					<legend>1 產品名稱</legend>
 					<div class="field">
@@ -225,7 +228,7 @@
 	<!-- editProduct BEGIN MODAL WINDOWS -->
 	<div id="editProduct" class="reveal-modal">
 		<div class="cont clearfix">
-			<form id="sendForm" action="editProduct" method="post" class="formset clearfix">
+			<form id="sendForm2" action="editProduct" method="post" class="formset clearfix">
 			<input type="hidden" id="editID" name="id">
 				<fieldset class="fieldset2">
 					<legend>1 產品名稱</legend>
@@ -285,25 +288,150 @@
 
 
 	<!-- import jquery -->
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<!-- import nav slideToggle RWD js -->
 	<script src="js/nav.js"></script>
 	<!-- Reveal Modal -->
 	<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
-	<script src="js/jquery.mobilemenu.js"></script>
+	<script src="js/jquery.mobilemenu.js"></script>		
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/alertify.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('nav.primary .rightnav').mobileMenu();
 			$(".cancelButton").click(function(){
 				$(".close-reveal-modal").trigger("click");
 			});
+			
+			$("#sendForm1").validate({
+            	rules:{
+            		name:{
+            			required:true,
+            			maxlength:10
+            		},			
+            		specification:{
+		    			required:true,
+		    			maxlength:150
+		    		},			
+		    		pack:{
+		    			required:true,
+		    			maxlength:150
+		    		},			
+		    		endPrice:{
+		    			required:true,
+		    			number: true,
+		    			maxlength:9
+		    			
+		    		},			
+		    		salesPrice:{
+		    			required:true,
+		    			number: true,
+		    			maxlength:9
+		    		},			
+		    		cost:{
+		    			required:true,
+		    			number: true,
+		    			maxlength:9
+		    		}
+            	},
+            	messages:{
+            		name:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		specification:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		pack:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		endPrice:{
+            			required:"此欄位不能空白",
+            			number: "請輸入數字",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		salesPrice:{
+            			required:"此欄位不能空白",
+            			number: "請輸入數字",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		cost:{
+            			required:"此欄位不能空白",
+            			number: "請輸入數字",
+            			maxlength:"長度不能超過{0}"
+            		}
+            	}
+            });	
+			
+			$("#sendForm2").validate({
+            	rules:{
+            		name:{
+            			required:true,
+            			maxlength:10
+            		},			
+            		specification:{
+		    			required:true,
+		    			maxlength:150
+		    		},			
+		    		pack:{
+		    			required:true,
+		    			maxlength:150
+		    		},			
+		    		endPrice:{
+		    			required:true,
+		    			number: true,
+		    			maxlength:9
+		    			
+		    		},			
+		    		salesPrice:{
+		    			required:true,
+		    			number: true,
+		    			maxlength:9
+		    		},			
+		    		cost:{
+		    			required:true,
+		    			number: true,
+		    			maxlength:9
+		    		}
+            	},
+            	messages:{
+            		name:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		specification:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		pack:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		endPrice:{
+            			required:"此欄位不能空白",
+            			number: "請輸入數字",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		salesPrice:{
+            			required:"此欄位不能空白",
+            			number: "請輸入數字",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		cost:{
+            			required:"此欄位不能空白",
+            			number: "請輸入數字",
+            			maxlength:"長度不能超過{0}"
+            		}
+            	}
+            });	
 		});
 		
 		function setEditProduct(i){
 			var list = $.parseJSON('${getProductList2}');
-			alert(list[0].id);
 			$('#editID').val(list[i].id);
 			$('#editName').val(list[i].name);
 			$('#editSpecification').val(list[i].specification);
@@ -312,6 +440,43 @@
 			$('#editSalesPrice').val(list[i].salesPrice);
 			$('#editCost').val(list[i].cost);
 		}
+		
+		function reset() {
+			$("#toggleCSS").attr("href", "css/alertify.default.css");
+			alertify.set({
+				labels : {
+					ok     : "確認刪除",
+					cancel : "取消"
+				},
+				delay : 5000,
+				buttonReverse : false,
+				buttonFocus   : "ok"
+			});
+		}
+        
+        function confirm(i){
+        	var list = $.parseJSON('${getProductList2}');
+			var productName =list[i].name;
+        	reset();
+   			alertify.confirm("請問您確定要刪除"+productName+"?", function (e) {
+   				if (e) {
+   					$.ajax({
+   						url:"delProductRevenueStructure",
+   						data:{
+   							productID : list[i].id
+   						},
+   						dataType:"json",
+   						success:function(result){
+   						}
+   					});	   					
+   					location.reload();
+   					alertify.success("刪除成功!");
+   				} else {
+   					alertify.error("取消刪除!");
+   				}
+				});
+				return false;
+        }
 	</script>
 	<!-- responsive-table -->
 	<script src="js/responsive-tables.js"></script>

@@ -96,11 +96,11 @@
 								<p>填寫目標客戶、提供給顧客什麼價值、顧客從中能得到什麼好處</p>
 							</div>
 							<i class="${getPercent.percent11>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
-							<a href="${getPercent.percent12>0? 'targetMarketDescribe':'javascript:;'}" target="_self"></a>
+							<a href="${getPercent.percent11>0? 'targetMarketDescribe':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.productCount>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+						<div class="${getPercent.percent12>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
 							<div class="progressCircle" data-dimension="80" data-text="${getPercent.productCount>0? 100:0}%" data-fontsize="16" 
 							data-percent="${getPercent.productCount>0? 100:0}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
@@ -108,12 +108,12 @@
 								<h3>產品描述</h3>
 								<p>填寫產品相關資訊，目前有${getPercent.productCount }項產品資訊</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
-							<a href="${getPercent.percent13>0? 'showAllProductDescribe':'javascript:;'}" target="_self"></a>
+							<i class="${getPercent.percent12>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getPercent.percent12>0? 'showAllProductDescribe':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent14>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+						<div class="${getPercent.productCount>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
 							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent14}%" data-fontsize="16" 
 							data-percent="${getPercent.percent14}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
@@ -121,12 +121,12 @@
 								<h3>業務</h3>
 								<p>填寫業務銷售通路、業務銷售末端消費者</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
-							<a href="${getPercent.percent14>0? 'businessSales':'javascript:;'}" target="_self"></a>
+							<i class="${getPercent.productCount>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getPercent.productCount>0? 'businessSales':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent15>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+						<div class="${getPercent.percent14>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
 							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent15}%" data-fontsize="16" 
 							data-percent="${getPercent.percent15}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
@@ -134,12 +134,12 @@
 								<h3>行銷</h3>
 								<p>填寫行銷策略、付費行銷、免費行銷</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
-							<a href="${getPercent.percent15>0? 'businessMarket':'javascript:;'}" target="_self"></a>
+							<i class="${getPercent.percent14>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getPercent.percent14>0? 'businessMarket':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent16>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+						<div class="${getPercent.percent15>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
 							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent16}%" data-fontsize="16" 
 							data-percent="${getPercent.percent16}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
@@ -147,12 +147,12 @@
 								<h3>產業定位</h3>
 								<p>填寫在產業供應練中的位置</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
-							<a href="${getPercent.percent16>0? 'businessOrientation':'javascript:;'}" target="_self"></a>
+							<i class="${getPercent.percent15>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getPercent.percent15>0? 'businessOrientation':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent17>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+						<div class="${getPercent.percent16>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
 							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent17}%" data-fontsize="16"
 							 data-percent="${getPercent.percent17}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							 data-bordersize="10" data-animationstep="2"></div>
@@ -160,8 +160,8 @@
 								<h3>人力資源規劃</h3>
 								<p>填寫人力規劃、組織規模及人力養成圖表</p>
 							</div>
-							<i class="fa fa-lock fa-4x fa-top"></i>
-							<a href="${getPercent.percent17>0? 'humanResourcePlan':'javascript:;'}" target="_self"></a>
+							<i class="${getPercent.percent16>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getPercent.percent16>0? 'humanResourcePlan':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					

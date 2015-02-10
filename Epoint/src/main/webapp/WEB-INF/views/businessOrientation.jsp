@@ -127,17 +127,87 @@
 
 
 	<!-- BEGIN MODAL WINDOWS -->
-	<div id="helpLink" class="reveal-modal">
-		<header class="reveal-modal-header">
-			我需要範例協助
-		</header>
+	<div id="help161" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 在產業供應鏈中的位置</header>
 		<div class="cont clearfix">
-			<p>
-				近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...
-			</p>
+			<p></p>			
 		</div>
-		<a class="close-reveal-modal">&#215;</a>
+	</div>	
+	<div id="help162" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 誰是競爭對手?(誰跟我賣一樣的東西)</header>
+		<div class="cont clearfix">
+			<p>7-11 V.S 全家</p>
+			<p>燒仙草   V.S 黑丸</p>	
+			<p>麥當勞   V.S 肯德基</p>	
+		</div>
 	</div>
+	<div id="help163" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 品質跟競爭者的對應關係為何?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help164" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 價格跟競爭者的對應關係為何?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help165" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 服務跟競爭者的對應關係為何?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help166" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 同業如何發展策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help167" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 生產與同業如何發展策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help168" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 販售如何與同業發產策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help169" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 行銷與同業如何發展策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help1610" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 異業如何發產策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help1611" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 生產與異業如何發產策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help1612" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 販售與異業如何發產策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	<div id="help1613" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 行銷與異業如何發產策略聯盟?</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
+	</div>
+	
 
 	<!-- import jquery -->
 	<!-- <script src="js/jquery-1.9.1.min.js"></script>此版本jquery 無法顯示彈窗，看要不要改成1.7.1 -->
@@ -148,11 +218,122 @@
 	<!-- Reveal Modal -->
 		<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
-		<script src="js/jquery.mobilemenu.js"></script>
+		<script src="js/jquery.mobilemenu.js"></script>		
+		<script src="js/jquery.validate.js"></script>
 		<script type="text/javascript">
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
 
+	            $("#sendForm").validate({
+	            	rules:{
+	            		content161:{
+	            			required:true,
+	            			maxlength:150
+	            		},			
+						content162:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content163:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content164:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content165:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content166:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content167:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content168:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content169:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content1610:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content1611:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content1612:{
+			    			required:true,
+			    			maxlength:150
+			    		},
+	            		content1613:{
+			    			required:true,
+			    			maxlength:150
+			    		}
+	            	},
+	            	messages:{
+	            		content161:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content162:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content163:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content164:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content165:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content166:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content167:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content168:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content169:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content1610:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content1611:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content1612:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		content1613:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		}
+	            	}
+	            });	 
 	        });
 	    </script>
 </body>

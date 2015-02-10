@@ -147,14 +147,13 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 								mapClass2.setNow(13);
 							}
 						}
-					}					
+					}	
 				}
 				mapClassList.add(mapClass2);
 			}			
 			rs1.close();
-			rs2.close();
 			smt.close();
- 
+			rs2.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
  
