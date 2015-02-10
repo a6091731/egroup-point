@@ -56,9 +56,7 @@ public class ProductController {
 			
 			//getProduct
 			List<Product> getProductList = new ArrayList<Product>();
-			getProductList = productDAO.getProductList(memberLogin,pageCount.getStart(), pageSize);				
-			System.out.println("***********etProductList="+getProductList.get(0).getName());
-			System.out.println("***********getProductList="+getProductList.get(1).getName());
+			getProductList = productDAO.getProductList(memberLogin,pageCount.getStart(), pageSize);	
 			
 			model.addObject("page", pageCount);
 			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);

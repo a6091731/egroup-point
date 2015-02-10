@@ -36,7 +36,7 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png"
+					<a href="index"><img src="./images/egroup.png"
 						alt="創業e點通品牌標誌"></a>
 				</div>
 				<!-- logo -->
@@ -73,14 +73,14 @@
 					<ul class="sideNav hideBlock">
 						<c:forEach items="${getVentureCheckMenuList}" var="menu">
 							<c:choose>
-								<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
+								<c:when test="${menu.classID <= getVentureCheckMenuListNow+1 || menu.classID eq 11}">
 									<li><a href="${menu.url}"><i class="${menu.css}"></i>${menu.name }</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><div class="mask"></div> <a href="${menu.url}"><i class="fa fa-lock"></i>${menu.name }</a></li>
 								</c:otherwise>
 							</c:choose>							
-						</c:forEach>
+						</c:forEach>	
 					</ul>
 					<div class="memberRwdnav clearfix">
 						<nav class="primary">
@@ -149,32 +149,78 @@
 	<!-- Reveal Modal -->
 	<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
+	<script src="js/jquery.validate.js"></script>
 	<script src="js/jquery.mobilemenu.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('nav.primary .rightnav').mobileMenu();
+			
+			$("#sendForm").validate({
+            	rules:{
+            		content111:{
+            			required:true,
+            			maxlength:150
+            		},			
+					content112:{
+		    			required:true,
+		    			maxlength:150
+		    		},
+            		content113:{
+		    			required:true,
+		    			maxlength:150
+		    		} 
+            	},
+            	messages:{
+            		content111:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		content112:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		content113:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		}
+            	}
+            });	 
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
 	<!-- helpVentureType -->
 	<div id="help111" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 創業業種(內容)</header>
+		<header class="reveal-modal-header">範例協助  : 創業業種(想/已經創業的行業)</header>
 		<div class="cont clearfix">
-			<p>近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...</p>
+			<p>服飾</p>
+			<p>餐飲</p>
+			<p>美容</p>
+			<p>製造</p>
+			<p>餐飲</p>
+			<p>藥品</p>
+			<p>出版</p>
+			<p>傢俱</p>
+			<p>鐘錶眼鏡</p>
+			<p>運動用品</p>
+			<p>交通工具</p>
 		</div>
 	</div>	
 	<!-- helpBusinessModel -->
 	<div id="help112" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 商業模式(生意賺錢的方法)</header>
+		<header class="reveal-modal-header">範例協助  : 經營模式(生意賺錢的方法)</header>
 		<div class="cont clearfix">
-			<p>商業模式(生意賺錢的方法)</p>
+			<p>商業模式(生意賺錢的方法、經營方式)</p>
+			<p>店面經營</p>
+			<p>小吃攤經營</p>
+			<p>網路經營</p>
 		</div>
 	</div>
 	<!-- helpBusinessModel -->
 	<div id="help113" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 自己在此行業的一技之長</header>
+		<header class="reveal-modal-header">範例協助  : 自己在此行業的一技之長或證照</header>
 		<div class="cont clearfix">
-			<p>自己在此行業的一技之長</p>
+			<p>美容美髮業:美容丙級證照</p>
+			<p>餐飲業:中、西餐證照類別</p>
 		</div>
 	</div>		
 </body>

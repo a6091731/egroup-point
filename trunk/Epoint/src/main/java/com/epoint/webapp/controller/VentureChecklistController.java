@@ -91,6 +91,7 @@ public class VentureChecklistController {
 			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
 			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
 			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			System.out.println("123="+getVentureCheckMenuList.get(0).getNow());
 			
 			/*absolutePath="test.properties";	
 			is =  VentureChecklistController.class.getResourceAsStream(absolutePath); 
@@ -145,6 +146,7 @@ public class VentureChecklistController {
 			memberLogin.setClassID(14);
 			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
 			
+			
 			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
 			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
 			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
@@ -162,6 +164,7 @@ public class VentureChecklistController {
 		else{
 			model.setViewName("businessMarket");
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
 			MapClass mapClass = new MapClass();
 			mapClass.setId(1);
 			mapClass.setAccount(memberLogin.getAccount());
@@ -169,7 +172,9 @@ public class VentureChecklistController {
 			
 			memberLogin.setClassID(15);
 			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
+			boolean productFlag = productDAO.checkProductByMember(memberLogin);
 			
+			model.addObject("productFlag",productFlag);
 			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
 			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
 			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
@@ -370,11 +375,11 @@ public class VentureChecklistController {
 	@RequestMapping(value = "/addHumanResourcePlan", method = RequestMethod.POST)
 	public ModelAndView addHumanResourcePlan (String content171, String content172, String content173, 
 			HumanResourceContent humanResourceContent, HttpSession session){
+		System.out.println("123456***");
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){	
-			System.out.println("***addHumanResourcePlan1!!!");
-			model.setViewName("redirect:/venturePlanMap");
+			model.setViewName("venturePlanMap");
 			addVentureCheckList(memberLogin.getAccount(),17,171,content171);
 			addVentureCheckList(memberLogin.getAccount(),17,172,content172);
 			addVentureCheckList(memberLogin.getAccount(),17,173,content173);
@@ -388,6 +393,8 @@ public class VentureChecklistController {
 		}
 		else
 			model.setViewName("memberLogin");
+		
+		System.out.println("model="+model);
 		return model;
 	}
 	

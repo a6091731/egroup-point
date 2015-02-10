@@ -20,8 +20,9 @@ public class MemberDAOImpl implements MemberDAO{
 		
 	public Member checkLogin(Member member) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM member WHERE memberAccount=? AND memberPassword=? "
-				+ "AND memberStatus=1";
+		/*String sql = "SELECT * FROM member WHERE memberAccount=? AND memberPassword=? "
+				+ "AND memberStatus=1";*/
+		String sql = "SELECT * FROM member WHERE memberAccount=? AND memberPassword=? ";
 		member.setLogin(false);
 		try {
 			conn = dataSource.getConnection();

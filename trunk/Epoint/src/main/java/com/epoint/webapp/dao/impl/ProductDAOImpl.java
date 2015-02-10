@@ -295,4 +295,31 @@ public class ProductDAOImpl implements ProductDAO{
 			}
 		}
 	}
+
+	public boolean checkProductByMember(Member member) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		sql = "SELECT * FROM product WHERE memberAccount = ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, member.getAccount());
+			rs = smt.executeQuery();
+			if(rs.next()){
+				flag = true;
+			}
+			rs.close();
+			smt.close();			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return flag;
+	}
 }

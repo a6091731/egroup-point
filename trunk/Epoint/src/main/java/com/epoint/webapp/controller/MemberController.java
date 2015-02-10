@@ -57,17 +57,16 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 			e.printStackTrace();
 		}
 		member = memberDAO.checkLogin(member);
-		System.out.println("member.isLogin() : "+member.isLogin());
+		//System.out.println("member.isLogin() : "+member.isLogin());
 		if(member.isLogin()){
 			session.setAttribute("loginMember", member);
 			model.setViewName("redirect:"+request.getHeader("referer"));
-			System.out.println("referer:"+request.getHeader("referer"));
 		}
 		else{
 			session.setAttribute("errorMsg", "無效的帳號密碼或未驗證");
-			model.setViewName("redirect:/");
+			model.setViewName("redirect:/memberLogin");
 		}
-		System.out.println("model="+model.getViewName());
+		//System.out.println("model="+model.getViewName());
 		return model;
 	}
 	
@@ -192,6 +191,13 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		}
 		else
 			model.setViewName("redirect:/forgetPasswordFail");
+		return model;
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request, HttpSession session) {
+		ModelAndView model = new ModelAndView("redirect:"+request.getHeader("referer"));
+		request.getSession().invalidate();
 		return model;
 	}
 }

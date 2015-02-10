@@ -149,30 +149,67 @@
 	<!-- Reveal Modal -->
 	<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
-	<script src="js/jquery.mobilemenu.js"></script>
+	<script src="js/jquery.mobilemenu.js"></script>	
+	<script src="js/jquery.validate.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('nav.primary .rightnav').mobileMenu();
-
+			$("#sendForm").validate({
+            	rules:{
+            		content151:{
+            			required:true,
+            			maxlength:150
+            		},			
+					content152:{
+		    			required:true,
+		    			maxlength:150
+		    		},
+            		content153:{
+		    			required:true,
+		    			maxlength:150
+		    		}
+            	},
+            	messages:{
+            		content151:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		content152:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		},
+            		content153:{
+            			required:"此欄位不能空白",
+            			maxlength:"長度不能超過{0}"
+            		}
+            	}
+            });	 
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
 	<div id="help151" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 行銷策略</header>
 		<div class="cont clearfix">
-			<p>行銷策略</p>
+			<p>行銷策略</p>			
 		</div>
 	</div>	
 	<div id="help152" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 付費行銷</header>
 		<div class="cont clearfix">
-			<p>付費行銷</p>
+			<p>1.臉書粉絲團買廣告</p>
+			<p>2.發廣告單</p>
+			<p>3.加入愛評網團購</p>
+			<p>4.請新聞媒體來報導</p>
+			<p>5.請部落客來撰寫推薦文章</p>
 		</div>
 	</div>		
 	<div id="help153" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 免費行銷</header>
 		<div class="cont clearfix">
-			<p>免費行銷</p>
+			<p>1.口耳相傳</p>
+			<p>2.找朋友介紹推廣</p>
+			<p>3.參加擺攤市集</p>
+			<p>4.在社群網路上分享自己的產品</p>
 		</div>
 	</div>
 </body>
