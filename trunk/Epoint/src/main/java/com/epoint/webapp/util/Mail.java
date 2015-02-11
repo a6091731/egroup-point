@@ -19,7 +19,7 @@ public class Mail {
 	private String Senduser = "epoint.egroup@gmail.com";
 	private String Senduserpwd = "egroup23622508";
 	private String HostName = "smtp.gmail.com";
-	private String SSLSmtpPort = "587";
+	//private String SSLSmtpPort = "465";
 	public void sendMail(String subject,String recipient,String message){
 		System.out.println("*****email0");
 		try {

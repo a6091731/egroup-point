@@ -106,10 +106,10 @@
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
 							<c:choose>
 								<c:when test="${!empty ventureCehckList.content}">
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}">${ventureCehckList.content }</textarea>
 								</c:when>
 								<c:otherwise>
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+									<textarea rows="8"id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}"></textarea>
 								</c:otherwise>
 							</c:choose>	
 							</li>	
@@ -224,6 +224,20 @@
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
 
+	        	$("#content161").attr("placeholder","");
+				$("#content162").attr("placeholder","7-11 V.S 全家 ； 燒仙草   V.S 黑丸 ； 麥當勞   V.S 肯德基");
+				$("#content163").attr("placeholder","");
+				$("#content164").attr("placeholder","");
+				$("#content165").attr("placeholder","");
+				$("#content166").attr("placeholder","");
+				$("#content167").attr("placeholder","");
+				$("#content168").attr("placeholder","");
+				$("#content169").attr("placeholder","");
+				$("#content1610").attr("placeholder","");
+				$("#content1611").attr("placeholder","");
+				$("#content1612").attr("placeholder","");
+				$("#content1612").attr("placeholder","");
+	            
 	            $("#sendForm").validate({
 	            	rules:{
 	            		content161:{

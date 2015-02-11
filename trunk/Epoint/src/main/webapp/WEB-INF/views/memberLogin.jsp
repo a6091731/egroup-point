@@ -32,20 +32,21 @@
     <![endif]-->
 
 </head>
-<body>
+<body class="bg-login">
 	<header class="topheader clearfix">
 		<div class="container">
-			<div class="grid_12">
+			<div class="prefix_4  grid_4 suffix_4 center">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
+					<a href="index.html"><img src="./images/egroup-white.png" alt="創業e點通品牌標誌"></a>
+					<p><a href="index.html"><i class="fa fa-home"></i> 回首頁</a></p>
 				</div><!-- logo -->
-				<nav class="clearfix">
+<!-- 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>登入</span></a>
+							<a href="memberLogin.html" id="loginButton"><span>登入</span></a>
 						</div>
-					</div><!-- top-nav -->
-				</nav>
+					</div>
+				</nav> -->
 			</div><!-- grid_12 -->
 		</div><!-- container -->
 	</header>
@@ -58,7 +59,7 @@
 						<h2>會員登入</h2>
 					</li>
 					<li>
-						<label for="account">帳號<span class="errorMsg">${errorMsg}</span></label>
+						<label for="account">帳號<span class="errorMsg">${errorMsg }</span></label>
 						<input type="text" name="account" id="account" placeholder="請輸入Email" class="textbox" maxlength="55">
 					</li>
 					<li>
@@ -71,10 +72,10 @@
 						</div>
 					</li>
 					<li>
-						<a href="mailResend.html" class="fgpwd">忘記密碼</a>
+						<a href="forgotPassword1" class="fgpwd">忘記密碼</a>
 						<span>/</span>
 						<!-- <a href="mailResend.html" class="fgpwd">我沒有收到帳號驗證信</a> -->
-						<a href="memberRegister.html" class="fgpwd">加入會員</a>
+						<a href="memberRegister" class="fgpwd">加入會員</a>
 					</li>
 				</ul>
 				<!-- <label class="law"><input type="checkbox" name="agree"><a href="javascript:;" title="閱讀條款內容">同意本網站條款</a></label> -->

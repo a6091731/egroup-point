@@ -2,8 +2,9 @@
 
 body{
         font-family: "微軟正黑體","Central Gothic","Arial";
-        background:#fff;
+        /*background:#fff;*/
         margin: 0 auto;
+        background-image: url("../images/bg-gridme.png");
 }
 body a{
         transition: 0.5s all;
@@ -64,7 +65,7 @@ select{
 .nextStepButton span.next{
         display:block;
         color:#fff;
-        background:#ffbf01;
+        background:#E8A92E;
         border-radius:3px;
         -webkit-border-radius:3px;
         -ms-border-radius:3px;
@@ -73,22 +74,22 @@ select{
         padding: 15px 30px;
         font-size: 16px;
         -webkit-box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
-    -moz-box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
-    box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
+        -moz-box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
+        box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
 }
 .nextStepButton span.next:hover{
         background: #ee9800;
         -webkit-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
-    -moz-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
-    box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
+        -moz-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
+        box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
         text-decoration: none;
 }
 .nextStepButton span.next:active{
         -webkit-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
-    -moz-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
-    box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
-    position: relative;
-    top: 6px;
+        -moz-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
+        box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
+        position: relative;
+        top: 6px;
 }
 .finishButton {
         display: inline-block;
@@ -141,7 +142,7 @@ select{
 
 
 /*breadcrumbs*/
-.breadcrumbs                            {display: block;margin-bottom: 15px;}
+.breadcrumbs                            {display: block;margin: 15px 0;}
 .breadcrumbs p                          {color:#999;}
 .breadcrumbs p a:link,
 .breadcrumbs p a:visited        {color:#80AB00; margin:0 5px; border-bottom: 1px solid #9CC523; white-space: nowrap;}
@@ -170,8 +171,13 @@ ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
 	margin-top: 0;
 	background: #ffffff;
 }
-.logo{float: left;margin-top: 1em;}
-.logo img{width:220px;}
+.logo{float: left;margin: 1em;}
+.logo img{max-width:220px;}
+
+.center {text-align: center;}
+.center .logo{float: none; margin: 1.5em 1.5em 0 1.5em;}
+.center .logo p{padding-top: 20px;}
+.center .logo a{color: #fff;text-decoration: underline;}
 .top-nav{float:right;}
 .top-nav-left{
         float:left;
@@ -184,6 +190,9 @@ ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
 .top-nav-left li{
         display: inline-block;
         padding: 15px;
+}
+.top-nav-left li.showBlock{
+    display: none;
 }
 .top-nav-left li a{
         color:#515151;
@@ -204,6 +213,7 @@ ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
 .top-nav-right {
         float:right;
         margin: 1.2em 0px;
+        position: relative;
 }
 #loginButton {
         display: inline-block;
@@ -214,7 +224,7 @@ ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
 #loginButton span{
         display:block;
         color:#fff;
-        background:#a3cf06;
+        background:#E8A92E;
         border-radius:3px;
         -webkit-border-radius:3px;
         -ms-border-radius:3px;
@@ -224,15 +234,25 @@ ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
         font-size: 16px;
 }
 #loginButton span:hover{
-        background:#7DA008;
+        background:#CD8C0E;
 }
 /*//_navbar */  
 
+/*loginDropdown*/
+.loginDropdown            {display: none; position: absolute; top:51px; right: 0; z-index: 999999; border-radius: 0 0 3px 3px; }
+.top-nav-right a:hover + .loginDropdown,ul.loginDropdown:hover   {display: block;}
+.loginDropdown li         {display: block;}
+ul.loginDropdown > li > a {display: inline-block; height: auto; width: 120px; text-align: left; color: #ffffff; font-size: 14px; border-top: 1px solid #FFFFFF; padding: 6px 0 6px 15px; background: #E8A92E; }
+ul.loginDropdown li:last-child a {border-radius:0 0 3px 3px;}
+ul.loginDropdown:hover + a.loginImg {background:rgba(63, 63, 63, 1); }
+.loginDropdown li > a:hover         {background: #CD8C0E; }
+/*//_loginDropdown*/
+
 /*banner*/
 .banner          	{margin-bottom: 15px; overflow: hidden; border-radius:3px; -webkit-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -moz-border-radius:3px;}
-.banner .imgHolder  {overflow: hidden; width: 100%; height: 150px;}
+.banner .imgHolder  {position:relative; overflow: hidden; width: 100%; height: 150px;margin-top: 15px;}
 .banner .imgHolder img  {max-width: 100%;}
-/*//banner */
+.bannerTopic {position: absolute; padding: 20px; background-color: rgba(0, 0, 0, 0.5); top: 15px; color: #FFF; font-size: 30px; width: 295px;} /*//banner */
 
 /* footer */
 .footerwrap{
@@ -250,7 +270,7 @@ ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
 /* //footer */
 
 /* index.html */
-.indexbanner{background: url(../images/bg-header-1.jpg) no-repeat 0px 0px;background-size: cover;min-height: 650px;}
+.indexbanner{background: url(../images/bg-header-1.jpg) no-repeat 0px 0px;background-size: cover;min-height: 900px;}
 .banner-info{padding-top: 10em;}
 .banner-info h1{color:#ffffff;line-height: 2em;}
 .indexButton    {
@@ -354,7 +374,7 @@ ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
 .reveal-modal {
         background: #f7f7f7;
         left: 50%;
-        margin-left: -285px;
+        margin-left: -320px;
         position: absolute;
         top: 170px;
         visibility: hidden;
@@ -540,40 +560,6 @@ font-size: 16px;
 }
 /*// formset*/
 
-/*register*/
-.register_form{
-        background: #e3eeba;
-        color: #666666;
-        margin: 30px 0 0 0;
-}
-.register_form li{
-        padding: 10px 30px;
-}
-.register_chg{
-    padding-left: 3px;
-}
-.register_form label{
-        display: block;
-}
-.register_title{
-        border-bottom: 1px solid #D9E3B6;
-}
-.register_form .textbox{
-        width: 90%;
-        padding: 10px 5%;
-        border: 1px solid #D9E3B6;
-}
-.register_form .textbox:hover{
-        border: 1px solid #ffbf01;
-}
-.register_btn{
-        width: 100%;
-        text-align: center;
-        margin-bottom: 20px;
-        border-radius: 4px;
-        border: 1px solid #ffbf01;
-}
-/* //register*/
 
 /*memberLogin.html*/
 a.fgpwd:link,a.fgpwd:visited{
@@ -585,9 +571,13 @@ a.fgpwd:hover{
 
 /*register*/
 .register_form{
-        background: #e3eeba;
+        background-color: rgba(255,255,255,.7);
         color: #666666;
         margin: 30px 0 0 0;
+        padding: 30px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;        
 }
 .register_form li{
         padding: 10px 30px;
@@ -595,6 +585,7 @@ a.fgpwd:hover{
 .register_chg{
     padding-left: 3px;
 }
+.linkR{float: right;text-decoration: underline;}
 .register_form label{
         display: block;
 }
@@ -633,11 +624,13 @@ a.fgpwd:hover{
 
 /*memberLogin.html*/
 a.fgpwd:link,a.fgpwd:visited{
-        color: #ffbf01;
+        color: #666;text-decoration: underline;
 }
 a.fgpwd:hover{
-        color: #ee9800;
+        color: #C67F00;
 }
+.bg-login{background-image: url("../images/bg-login.jpg"); background-size: cover;}
+.bg-login .topheader{background-color: transparent; }
 /* //memberLogin.html*/
 
 /* showAllProductDescribe.html */
@@ -935,4 +928,5 @@ i.fa-left{margin-left: 10px;}
 .tab a:hover { text-decoration: underline; }
 .tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #666; }
 .tab a.active { font-weight: bold; }
-.tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }>>>>>>> .r56
+.tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }
+

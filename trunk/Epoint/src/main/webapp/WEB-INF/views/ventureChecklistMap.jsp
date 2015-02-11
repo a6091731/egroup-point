@@ -53,7 +53,8 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="breadcrumbs">
-            		<p><a href="index.html">首頁</a> &gt; <a href="#">創業地圖</a> &gt; <span>創業前檢核表地圖</span></p>
+            		<p><a href="index">首頁</a> &gt; 
+            		<a href="venturePlanMap">創業地圖</a> &gt; <span>創業前檢核表地圖</span></p>
 	            </div>
 			</div>
 	        <div class="grid_6 prefix_3 suffix_3">

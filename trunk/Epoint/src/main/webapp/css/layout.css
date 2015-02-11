@@ -27,6 +27,9 @@
 	.form-control2{width:127px;font-size: 12px;}
 	
 	.step,.stepLocked{margin: 3em 0 0 0;}
+
+	.ventureTypesInput textarea{width:92%;}
+	.top-nav-left li.showBlock{display: block; }
 }
 
 /* mobile to Tablets */
@@ -43,6 +46,7 @@
 	.memberRwdnav{display: block;}
 	
 	.step,.stepLocked{height: 34em;margin: 3em 0 0 0;}
+	.top-nav-left li.showBlock{display: block; }
 }
 
 /* Tablets */
@@ -51,12 +55,14 @@
 	.hideBlock{display: none;}	
 	.memberRwdnav{display: block;}
 	.step,.stepLocked{height: 37em;margin: 3em 0 0 0;}
+
+	.top-nav-left li.showBlock{display: block; }
 	
 }
 
 /* Desktop */
 @media only screen and (min-width: 960px) and (max-width: 1199px) {
-	
+	.top-nav-right.hideBlock{display: none;}	
 }
 /* under 1199px use this */
 @media only screen and (max-width: 1199px) {
@@ -69,17 +75,18 @@
 	}
 	.top-nav-left {
 		float: right;
-		margin: 0.6em 0 0 1em;
+		margin: 1em 0 0 1em;
 	}
 	.logo{margin-top: 1em;}
 	.logo img {
 		background-size: 100%;
-		width: 125px;
-		height: 29px;
+		max-width: 180px;
+/*		width: 125px;
+		height: 29px;*/
 	}
 	.top-nav-left ul {
 		display: none;
-		background: rgba(163, 207, 6, 0.6);
+		background: rgba(232, 169, 46, .6);
 		position: absolute;
 		width: 100%;
 		z-index: 999;
@@ -102,6 +109,7 @@
 	.top-nav-right {
 		margin: 1em 0px;
 	}
+	.loginDropdown  {top:35px;}
 	#loginButton span{
 		padding: 7px 20px;
 	}

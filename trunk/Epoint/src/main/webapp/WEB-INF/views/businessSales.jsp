@@ -118,10 +118,10 @@
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
 							<c:choose>
 								<c:when test="${!empty ventureCehckList.content}">
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" >${ventureCehckList.content }</textarea>
 								</c:when>
 								<c:otherwise>
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" ></textarea>
 								</c:otherwise>
 							</c:choose>	
 							</li>	
@@ -177,6 +177,9 @@
             		}
             	}
             });	 
+			
+			$("#content141").attr("placeholder","夜市擺攤、臉書粉絲團、代購/待售、店鋪銷售");
+			$("#content142").attr("placeholder","");	
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
@@ -194,7 +197,7 @@
 	<div id="help142" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 業務末端銷售消費者</header>
 		<div class="cont clearfix">
-			<p>業務末端銷售消費者</p>
+			<p></p>
 		</div>
 	</div>	
 </body>

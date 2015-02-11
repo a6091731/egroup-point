@@ -120,7 +120,7 @@
 				  	<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[0].ID" value="2111">
 				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record == 0? 1:fixedPayMoney[0].record }">
-				  		<legend>1.1 固定成本[設立費用]：</legend>
+				  		<legend>1.1 設立費用：</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[0].date_string" value="${fn:substring(fixedPayMoney[0].date,0,7)}">
@@ -135,7 +135,7 @@
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[1].ID" value="2112">
 					<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record == 0? 1:fixedPayMoney[1].record }">
-					  	<legend>1.2 固定成本[設計及申請商標]</legend>
+					  	<legend>1.2 設計及申請商標</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[1].date_string" value="${fn:substring(fixedPayMoney[1].date,0,7)}">

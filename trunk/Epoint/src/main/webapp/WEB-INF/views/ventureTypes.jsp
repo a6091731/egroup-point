@@ -118,10 +118,10 @@
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
 							<c:choose>
 								<c:when test="${!empty ventureCehckList.content}">
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" >${ventureCehckList.content }</textarea>
 								</c:when>
 								<c:otherwise>
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" ></textarea>
 								</c:otherwise>
 							</c:choose>	
 							</li>	
@@ -184,7 +184,10 @@
             			maxlength:"長度不能超過{0}"
             		}
             	}
-            });	 
+            });	
+			$("#content111").attr("placeholder","服飾、餐飲、美容、製造、餐飲、藥品、出版、傢俱、鐘錶眼鏡、運動用品、交通工具");
+			$("#content112").attr("placeholder","商業模式(生意賺錢的方法、經營方式) : 店面經營、小吃攤經營、網路經營");
+			$("#content113").attr("placeholder","美容美髮業:美容丙級證照、餐飲業:中、西餐證照類別");
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->

@@ -103,7 +103,7 @@
 			<div class="grid_9">
 				<section class="ventureTypesTitle hideBlock">
 					<h2>
-						<img alt="創業業種圖示" src="images/type.png">業務
+						<img alt="創業業種圖示" src="images/type.png">行銷
 					</h2>
 				</section>
 				<form id="sendForm" action="addBusinessMarket" method="post">
@@ -118,10 +118,10 @@
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
 							<c:choose>
 								<c:when test="${!empty ventureCehckList.content}">
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" >${ventureCehckList.content }</textarea>
 								</c:when>
 								<c:otherwise>
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" ></textarea>
 								</c:otherwise>
 							</c:choose>	
 							</li>	
@@ -184,13 +184,17 @@
             		}
             	}
             });	 
+			
+			$("#content151").attr("placeholder","");
+			$("#content152").attr("placeholder","1.臉書粉絲團買廣告，2.發廣告單，3.加入愛評網團購，4.請新聞媒體來報導，5.請部落客來撰寫推薦文章");
+			$("#content153").attr("placeholder","1.口耳相傳，2.找朋友介紹推廣，3.參加擺攤市集，4.在社群網路上分享自己的產品");
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
 	<div id="help151" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 行銷策略</header>
 		<div class="cont clearfix">
-			<p>行銷策略</p>			
+			<p></p>			
 		</div>
 	</div>	
 	<div id="help152" class="reveal-modal">

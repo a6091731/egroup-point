@@ -160,7 +160,7 @@
 								</c:forEach>			
 				            </ul>
                         </div>
-						<a href="javascript:;" class="nextStepButton"><span class="next">下一步，填寫人力資源規劃<i class="fa fa-arrow-right"></i></span></a>
+						<a href="ventureCapitalPlanMap" class="nextStepButton"><span class="next">回創業第一年營運排成地圖<i class="fa fa-arrow-right"></i></span></a>
 					</div>
 				</form>
 			</div>
@@ -181,12 +181,12 @@
 				<fieldset class="fieldset2">
 					<legend>2產品規格</legend>
 					<textarea rows="8" name="specification"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="產品內容物數量、產品長寬高、重量"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>3包裝說明</legend>
 					<textarea rows="8" name="pack"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝	"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>4終端消費者定價</legend>
@@ -241,12 +241,12 @@
 				<fieldset class="fieldset2">
 					<legend>2產品規格</legend>
 					<textarea rows="8" id="editSpecification" name="specification"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="產品內容物數量、產品長寬高、重量"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>3包裝說明</legend>
 					<textarea rows="8" id="editPack" name="pack"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝	"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>4終端消費者定價</legend>
@@ -418,7 +418,132 @@
 	            			$(".close-reveal-modal").trigger("click");
 	            		}        
 	            	}
-				});	   
+				});	
+	           
+	           $("#sendForm").validate({
+	            	rules:{
+	            		name:{
+	            			required:true,
+	            			maxlength:10
+	            		},			
+	            		specification:{
+			    			required:true,
+			    			maxlength:150
+			    		},			
+			    		pack:{
+			    			required:true,
+			    			maxlength:150
+			    		},			
+			    		endPrice:{
+			    			required:true,
+			    			number: true,
+			    			maxlength:9
+			    			
+			    		},			
+			    		salesPrice:{
+			    			required:true,
+			    			number: true,
+			    			maxlength:9
+			    		},			
+			    		cost:{
+			    			required:true,
+			    			number: true,
+			    			maxlength:9
+			    		}
+	            	},
+	            	messages:{
+	            		name:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		specification:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		pack:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		endPrice:{
+	            			required:"此欄位不能空白",
+	            			number: "請輸入數字",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		salesPrice:{
+	            			required:"此欄位不能空白",
+	            			number: "請輸入數字",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		cost:{
+	            			required:"此欄位不能空白",
+	            			number: "請輸入數字",
+	            			maxlength:"長度不能超過{0}"
+	            		}
+	            	}
+	            });	
+	           
+	           $("#sendForm1").validate({
+	            	rules:{
+	            		name:{
+	            			required:true,
+	            			maxlength:10
+	            		},			
+	            		specification:{
+			    			required:true,
+			    			maxlength:150
+			    		},			
+			    		pack:{
+			    			required:true,
+			    			maxlength:150
+			    		},			
+			    		endPrice:{
+			    			required:true,
+			    			number: true,
+			    			maxlength:9
+			    			
+			    		},			
+			    		salesPrice:{
+			    			required:true,
+			    			number: true,
+			    			maxlength:9
+			    		},			
+			    		cost:{
+			    			required:true,
+			    			number: true,
+			    			maxlength:9
+			    		}
+	            	},
+	            	messages:{
+	            		name:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		specification:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		pack:{
+	            			required:"此欄位不能空白",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		endPrice:{
+	            			required:"此欄位不能空白",
+	            			number: "請輸入數字",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		salesPrice:{
+	            			required:"此欄位不能空白",
+	            			number: "請輸入數字",
+	            			maxlength:"長度不能超過{0}"
+	            		},
+	            		cost:{
+	            			required:"此欄位不能空白",
+	            			number: "請輸入數字",
+	            			maxlength:"長度不能超過{0}"
+	            		}
+	            	}
+	            });	
+	           
 	     	});
 	        
 	        function deleteProduct(){
@@ -461,8 +586,8 @@
 				var list = $.parseJSON('${getProductList2}');
 				$('#editID').val(list[i].id);
 				$('#editName').val(list[i].name);
-				$('#editSpecification').val(list[i].specification);
-				$('#editPack').val(list[i].pack);
+				$('#editSpecification').val(list[i].specification.replace(/<br \/>/g,'\r\n'));
+				$('#editPack').val(list[i].pack.replace(/<br \/>/g,'\r\n'));
 				$('#editEndPrice').val(list[i].endPrice);
 				$('#editSalesPrice').val(list[i].salesPrice);
 				$('#editCost').val(list[i].cost);

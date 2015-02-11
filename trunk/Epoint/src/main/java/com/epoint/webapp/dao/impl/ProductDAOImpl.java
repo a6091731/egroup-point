@@ -99,8 +99,8 @@ public class ProductDAOImpl implements ProductDAO{
 				product.setId(rs.getString("productID"));
 				product.setTime(rs.getDate("productNewTime"));
 				product.setName(rs.getString("productName"));
-				product.setSpecification(rs.getString("productSpecifications"));
-				product.setPack(rs.getString("productPack"));
+				product.setSpecification(rs.getString("productSpecifications").replaceAll("(\r\n|\n)", "<br />"));
+				product.setPack(rs.getString("productPack").replaceAll("(\r\n|\n)", "<br />"));
 				product.setEndPrice(rs.getInt("productEndPrice"));
 				product.setSalesPrice(rs.getInt("productSalesPrice"));
 				product.setCost(rs.getInt("productCost"));

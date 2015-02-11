@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epoint.webapp.dao.ProductDAO;
 import com.epoint.webapp.dao.VentureChecklistDAO;
 import com.epoint.webapp.entity.Member;
 
@@ -36,13 +37,19 @@ public class IndexController {
 		else{
 			model.setViewName("venturePlanMap");			
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
 			DecimalFormat df = new DecimalFormat("0.00");
 			memberLogin.setSetPercent("11");			
 			memberLogin.setPercent11(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			memberLogin.setSetPercent("12");
 			memberLogin.setPercent12(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			/*
 			memberLogin.setSetPercent("13");
 			memberLogin.setPercent13(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			*/
+			memberLogin.setProductCount(productDAO.countProductByMember(memberLogin));
+			System.out.println("123*="+productDAO.countProductByMember(memberLogin));
+			int productPercent = productDAO.countProductByMember(memberLogin)>0?100:0;
 			memberLogin.setSetPercent("14");
 			memberLogin.setPercent14(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			memberLogin.setSetPercent("15");
@@ -51,7 +58,7 @@ public class IndexController {
 			memberLogin.setPercent16(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			memberLogin.setSetPercent("17");
 			memberLogin.setPercent17(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
-			double checkListPercent = (memberLogin.getPercent11()+ memberLogin.getPercent12()+ memberLogin.getPercent13()+ memberLogin.getPercent14()
+			double checkListPercent = (memberLogin.getPercent11()+ memberLogin.getPercent12()+ productPercent+ memberLogin.getPercent14()
 					+ memberLogin.getPercent15()+ memberLogin.getPercent16()+ memberLogin.getPercent17())/7.0;
 			System.out.println("checkListPercent"+checkListPercent);
 			model.addObject("checkListPercent",checkListPercent);
