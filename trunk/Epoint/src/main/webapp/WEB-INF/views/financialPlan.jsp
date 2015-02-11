@@ -252,6 +252,7 @@
 			calculateNeedMoney();
 			calculateMoney('useMoney');
 			calculateMoney('srcMoney');
+			
 			$("#addForm").validate({
 				rules:{
 					lackMoney : {
@@ -261,16 +262,22 @@
 	            		maxlength: 9
 					}
 				},
+				messages:{
+					lackMoney:{
+			    		maxlength:'請輸入小於10位數的金額'
+			    	}
+			    },
 				errorPlacement: function (error, element) {
 					element.next().append(error);
 	    	    }
 			});
+			$.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
 			jQuery.validator.addClassRules({
             	moneyValidate: {
             		required: true,
             		digits: true,
             		min: 1,
-            		maxlength: 9,
+            		cMaxlength: 9,
             		sum: result
             	}
             });

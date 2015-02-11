@@ -106,7 +106,8 @@ public class WordController {
 				HumanResource.setTotalQ3(0);
 				HumanResource.setTotalQ4(0);
 			}
-			
+
+			dataMap.put("name", memberLogin.getName());
 			dataMap.put("allVentureContents", allVentureContents);
 			dataMap.put("HumanResource", HumanResource);
 			dataMap.put("allProducts", allProducts);
