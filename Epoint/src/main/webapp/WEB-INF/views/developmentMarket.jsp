@@ -215,6 +215,7 @@
 	            index = parseInt(cardCount) + parseInt(lawyerCount);
 	            
 	            $("#sendForm").validate();
+	            $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
 	            jQuery.validator.addClassRules({
 	            	dateValidate: {
 	            		required: true,
@@ -225,7 +226,7 @@
 	            		required: true,
 	            		digits: true,
 	            		min: 1,
-	            		maxlength: 9
+	            		cMaxlength: 9
 	            	}
 	            });
 	            
