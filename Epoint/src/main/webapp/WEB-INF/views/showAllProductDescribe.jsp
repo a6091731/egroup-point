@@ -181,12 +181,12 @@
 				<fieldset class="fieldset2">
 					<legend>2產品規格</legend>
 					<textarea rows="8" name="specification"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="產品內容物數量、產品長寬高、重量"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>3包裝說明</legend>
 					<textarea rows="8" name="pack"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝	"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>4終端消費者定價</legend>
@@ -240,12 +240,13 @@
 				<fieldset class="fieldset2">
 					<legend>2產品規格</legend>
 					<textarea rows="8" id="editSpecification" name="specification"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="產品內容物數量、產品長寬高、重量"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>3包裝說明</legend>
 					<textarea rows="8" id="editPack" name="pack"
-						placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+						placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝
+						"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
 					<legend>4終端消費者定價</legend>
@@ -434,8 +435,8 @@
 			var list = $.parseJSON('${getProductList2}');
 			$('#editID').val(list[i].id);
 			$('#editName').val(list[i].name);
-			$('#editSpecification').val(list[i].specification);
-			$('#editPack').val(list[i].pack);
+			$('#editSpecification').val(list[i].specification.replace(/<br \/>/g,'\r\n'));
+			$('#editPack').val(list[i].pack.replace(/<br \/>/g,'\r\n'));
 			$('#editEndPrice').val(list[i].endPrice);
 			$('#editSalesPrice').val(list[i].salesPrice);
 			$('#editCost').val(list[i].cost);

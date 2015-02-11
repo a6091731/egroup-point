@@ -118,10 +118,10 @@
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
 							<c:choose>
 								<c:when test="${!empty ventureCehckList.content}">
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
 								</c:when>
 								<c:otherwise>
-									<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
 								</c:otherwise>
 							</c:choose>	
 							</li>	
@@ -185,6 +185,10 @@
             		}
             	}
             });	 
+			
+			$("#content121").attr("placeholder","性別、年齡、職業");
+			$("#content122").attr("placeholder","餐飲業 : 提供食物外，另提供 內用、外帶、外送等服務，內有冷氣冷氣");
+			$("#content123").attr("placeholder","餐飲業 : 本店都使用有機米，手工麵條早上現做，搭配無農藥自種韭菜，保證吃了健康");
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->

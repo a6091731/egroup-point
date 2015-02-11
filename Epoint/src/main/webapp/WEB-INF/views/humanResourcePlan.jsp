@@ -105,17 +105,15 @@
 								<ul>
 									<c:forEach items="${getVentureCheckListByMember}" var="ventureCehckList">
 										<li>
-											<input type="hidden" name="mapClassID" id="${ventureCehckList.classID}">
-											<input type="hidden" name="mapSubClassID" id="${ventureCehckList.subclassID}">
 											<h4>${ventureCehckList.name}</h4> 
 											<a href="javascript:;" data-reveal-id="help${ventureCehckList.subclassID}"><span>
 											<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
 										<c:choose>
 											<c:when test="${!empty ventureCehckList.content}">
-												<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...">${ventureCehckList.content }</textarea>
+												<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" >${ventureCehckList.content }</textarea>
 											</c:when>
 											<c:otherwise>
-												<textarea rows="8" name="content${ventureCehckList.subclassID}" placeholder="近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高..."></textarea>
+												<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}"></textarea>
 											</c:otherwise>
 										</c:choose>	
 										</li>	
@@ -191,16 +189,23 @@
 
 
 	<!-- BEGIN MODAL WINDOWS -->
-	<div id="helpLink" class="reveal-modal">
-		<header class="reveal-modal-header">
-			我需要範例協助
-		</header>
+	<div id="help171" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 創業後自我能力精進計畫</header>
 		<div class="cont clearfix">
-			<p>
-				近年來，由於經濟繁榮、國民所得提高、人們生活結構發生變化及單身比率年年升高...
-			</p>
+			<p></p>			
 		</div>
-		<a class="close-reveal-modal">&#215;</a>
+	</div>	
+	<div id="help172" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 期待補強的不同專長能力</header>
+		<div class="cont clearfix">
+			<p></p>	
+		</div>
+	</div>
+	<div id="help173" class="reveal-modal">
+		<header class="reveal-modal-header">範例協助  : 目標人選</header>
+		<div class="cont clearfix">
+			<p></p>			
+		</div>
 	</div>
 
 	<!-- import jquery -->
@@ -286,26 +291,16 @@
 		            	}
 		            });
 	            });
-	            /*
-	            $(".input-control").rules("add",{
-	        		required:true,
-	            	number: true,
-	            	min:1,
-	            	maxlength:9,
-	            	messages:{
-	            		required:"請輸入數量",
-	            		number:"請輸入數字",
-	            		min:"請輸入大於0的數量",
-	            		maxlength:"請輸入小於10位數的數量"
-	            	}
-	            });
-	            */
+	            
+	            $("#content171").attr("placeholder","");
+				$("#content172").attr("placeholder","");
+				$("#content173").attr("placeholder","");
 	        });
 	        
 	        function total1(){
 	        	var setTotal = Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val());
 	        	$('#setTotalQ0').text(!isNaN(setTotal)?setTotal:0); 
-	        	$('#totalQ1').val(parseInt($('#setTotalQ1').text()));
+	        	$('#totalQ0').val(parseInt($('#setTotalQ0').text()));
 	        }
 	        
 	        function total2(){

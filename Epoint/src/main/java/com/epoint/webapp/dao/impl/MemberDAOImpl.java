@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
+
 import com.epoint.webapp.dao.MemberDAO;
 import com.epoint.webapp.entity.Member;
 
@@ -36,6 +37,7 @@ public class MemberDAOImpl implements MemberDAO{
 				member.setPhone(rs.getString("memberPhone"));
 				member.setDate(rs.getDate("registerDate"));
 				member.setCapitalDate(rs.getDate("ventureCapitalDate"));
+				member.setEmail(rs.getString("memberEmail"));
 				member.setLogin(true);
 			}
 			rs.close();
@@ -66,7 +68,7 @@ public class MemberDAOImpl implements MemberDAO{
 			smt.setString(2,member.getPassword());
 			smt.setString(3,member.getName());
 			smt.setString(4,member.getEmail());
-			smt.setString(5,"0");
+			smt.setString(5,"1");
 			smt.executeUpdate();			
 			smt.close();
 		} catch (SQLException e) {
@@ -110,6 +112,8 @@ public class MemberDAOImpl implements MemberDAO{
 		return flag;
 	}
 
+	
+	
 	public Member checkMember(String account) {
 		// TODO Auto-generated method stub
 		Member member = new Member();
@@ -169,7 +173,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 	public void updatePassword(Member member) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE member SET memberPassword=?, resetNO='', resetDate=NULL "
+		String sql = "UPDATE member SET memberPassword=?, resetNO='', resetDate=NOW() "
 				+ "WHERE memberAccount=?";
 		try {
 			conn = dataSource.getConnection();
@@ -286,4 +290,58 @@ public class MemberDAOImpl implements MemberDAO{
 			}
 		}
 	}
+
+	public void modieMember(Member member) {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE member SET memberName = ? ,memberPhone = ? ,memberEmail = ? WHERE memberAccount = ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1,member.getName());
+			smt.setString(2,member.getPhone());
+			smt.setString(3,member.getEmail());
+			smt.setString(4,member.getAccount());
+			smt.executeUpdate();			
+			smt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+
+	public boolean checkMemberPassword(String account,String password) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		String sql = "SELECT * FROM member WHERE memberAccount = ? AND memberPassword=?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			smt.setString(2, password);
+			rs = smt.executeQuery();
+			if(rs.next()){
+				flag = true;
+			}
+			smt.executeQuery();	
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return flag;
+	}
+	
 }

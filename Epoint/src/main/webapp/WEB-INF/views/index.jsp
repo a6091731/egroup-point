@@ -37,7 +37,7 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
+					<a href="index"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
 				</div><!-- logo -->
 				<nav class="clearfix">
 					<div class="top-nav">
@@ -51,19 +51,39 @@
 								<li><a href="javascript:;" class="scroll">我想創業</a></li>
 								<li><a href="#projects" class="scroll" >創業Q&A</a></li>
 								<li><a href="#Community" class="scroll">聯絡我們</a></li>
+								<li class="showBlock"><a href="venturePlanMap">我的創業地圖</a></li>
+								<li class="showBlock"><a href="membercreation">帳號管理</a></li>	
+								<li class="showBlock"><a href="##">登出</a></li>
 							 </ul>
 						</div> 
-						
-						<div class="top-nav-right">
-						<c:choose>
-							<c:when test="${loginMember!=null}">
-								<p id="memberName">Hi~${loginMember.name }，歡迎您登入<p>
-								<a href="logout" id="loginButton"><span>登出</span></a>
-							</c:when>
-							<c:otherwise>
-								<a href="memberLogin" id="loginButton"><span>登入</span></a>
-							</c:otherwise>
-						</c:choose>
+						<!-- 
+							<div class="top-nav-right hideBlock">
+							<c:choose>
+								<c:when test="${loginMember!=null}">
+									<p id="memberName">Hi~${loginMember.name }，歡迎您登入<p>
+									<a href="logout" id="loginButton"><span>登出</span></a>
+								</c:when>
+								<c:otherwise>
+									<a href="memberLogin" id="loginButton"><span>登入</span></a>
+								</c:otherwise>
+							</c:choose>
+							</div>
+						 -->		
+						<div class="top-nav-right hideBlock">
+							<c:choose>
+								<c:when test="${loginMember!=null}">									
+									<a id="loginButton"><span><i class="fa fa-user"></i> ${loginMember.name }，歡迎您登入</span></a>
+									<ul class="loginDropdown hide">
+										<li><a href="venturePlanMap">我的創業地圖</a></li>
+										<li><a href="memberModi1">修改個人資料</a></li>	
+										<li><a href="logout">登出</a></li>
+									</ul>
+								</c:when>
+								<c:otherwise>
+									<a href="memberLogin" id="loginButton"><span><i class="fa fa-user"></i>登入</span></a>
+								</c:otherwise>
+							</c:choose>
+						</div> 
 					</div><!-- top-nav -->
 				</nav>
 			</div><!-- grid_12 -->

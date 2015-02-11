@@ -46,8 +46,8 @@ public class VentureChecklistController {
 			memberLogin.setPercent12(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			//************************
 			//Product 紀錄比數，但不記錄完成度
-			memberLogin.setSetPercent("13");
-			memberLogin.setPercent13(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
+			/*memberLogin.setSetPercent("13");
+			memberLogin.setPercent13(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);*/
 			memberLogin.setProductCount(productDAO.countProductByMember(memberLogin));
 			//************************
 			memberLogin.setSetPercent("14");
@@ -91,7 +91,6 @@ public class VentureChecklistController {
 			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
 			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
 			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
-			System.out.println("123="+getVentureCheckMenuList.get(0).getNow());
 			
 			/*absolutePath="test.properties";	
 			is =  VentureChecklistController.class.getResourceAsStream(absolutePath); 
@@ -291,6 +290,7 @@ public class VentureChecklistController {
 	@RequestMapping(value = "/addVentureTypeCont", method = RequestMethod.POST)
 	public ModelAndView addVentureTypeCont (String content111, String content112, String content113, HttpSession session){
 		ModelAndView model = new ModelAndView();
+		
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){			
 			addVentureCheckList(memberLogin.getAccount(),11,111,content111);
@@ -299,7 +299,7 @@ public class VentureChecklistController {
 			model.setViewName("redirect:/targetMarketDescribe");
 		}
 		else
-			model.setViewName("memberLogin");
+			model.setViewName("redirect:/memberLogin");
 		return model;
 	}	
 	
@@ -314,7 +314,7 @@ public class VentureChecklistController {
 			model.setViewName("redirect:/showAllProductDescribe");
 		}
 		else
-			model.setViewName("memberLogin");
+			model.setViewName("redirect:/memberLogin");
 		return model;
 	}	
 	
@@ -328,7 +328,7 @@ public class VentureChecklistController {
 			model.setViewName("redirect:/businessMarket");
 		}
 		else
-			model.setViewName("memberLogin");
+			model.setViewName("redirect:/memberLogin");
 		return model;
 	}	
 	
@@ -343,7 +343,7 @@ public class VentureChecklistController {
 			model.setViewName("redirect:/businessOrientation");
 		}
 		else
-			model.setViewName("memberLogin");
+			model.setViewName("redirect:/memberLogin");
 		return model;
 	}
 	
@@ -368,18 +368,17 @@ public class VentureChecklistController {
 			model.setViewName("redirect:/humanResourcePlan");
 		}
 		else
-			model.setViewName("memberLogin");
+			model.setViewName("redirect:/memberLogin");
 		return model;
 	}	
 	
 	@RequestMapping(value = "/addHumanResourcePlan", method = RequestMethod.POST)
 	public ModelAndView addHumanResourcePlan (String content171, String content172, String content173, 
 			HumanResourceContent humanResourceContent, HttpSession session){
-		System.out.println("123456***");
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");		
 		if(memberLogin!=null){	
-			model.setViewName("venturePlanMap");
+			model.setViewName("redirect:/venturePlanMap");
 			addVentureCheckList(memberLogin.getAccount(),17,171,content171);
 			addVentureCheckList(memberLogin.getAccount(),17,172,content172);
 			addVentureCheckList(memberLogin.getAccount(),17,173,content173);
@@ -392,9 +391,7 @@ public class VentureChecklistController {
 				ventureChecklistDAO.updateHumanResourceContentByMember(humanResourceContent);
 		}
 		else
-			model.setViewName("memberLogin");
-		
-		System.out.println("model="+model);
+			model.setViewName("redirect:/memberLogin");
 		return model;
 	}
 	
@@ -407,11 +404,9 @@ public class VentureChecklistController {
 		ventureChecklist.setContent(content);
 		boolean flag = ventureChecklistDAO.checkVentureCheckList(ventureChecklist);
 		if(flag == false){	
-			System.out.println("flag1");
 			ventureChecklistDAO.insertVentureCheckList(ventureChecklist);			
 		}
 		else{
-			System.out.println("flag2");
 			ventureChecklistDAO.updateVentureCheckList(ventureChecklist);			
 		}
 	}	

@@ -181,7 +181,7 @@
 		$(function() {
 			//alert('${checkListPercent}');
 			if('${checkListPercent}'>0){
-				if('${checkListPercent}'==85.71428571428571){
+				if('${checkListPercent}'==100){
 					$('#step1Progress').progress({
 						//percent: '${checkListPercent}'		
 						//測試用

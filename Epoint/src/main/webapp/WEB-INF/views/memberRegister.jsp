@@ -32,20 +32,21 @@
     <![endif]-->
 
 </head>
-<body>
+<body class="bg-login">
 	<header class="topheader clearfix">
 		<div class="container">
-			<div class="grid_12">
+			<div class="prefix_4  grid_4 suffix_4 center">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
+					<a href="index.html"><img src="./images/egroup-white.png" alt="創業e點通品牌標誌"></a>
+					<p><a href="index.html"><i class="fa fa-home"></i> 回首頁</a></p>
 				</div><!-- logo -->
-				<nav class="clearfix">
+<!-- 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>登入</span></a>
+							<a href="memberLogin.html" id="loginButton"><span>登入</span></a>
 						</div>
-					</div><!-- top-nav -->
-				</nav>
+					</div>
+				</nav> -->
 			</div><!-- grid_12 -->
 		</div><!-- container -->
 	</header>
@@ -133,7 +134,8 @@
         			},
         			email:{
         				required:true,
-        				maxlength:55,
+        				email: true,
+        				maxlength:55
         			},
         			//agree:"required"*/
 	    		},	        				
@@ -160,9 +162,10 @@
 	        			maxlength:"長度不得大於{0}",
 	        			equalTo:"密碼輸入不同"
 	        		},
-	    			email:{
-        				required:"mail 格式不符。EX: name@gmail.com",
-        				maxlength:"email長度不能大於{0}",
+	        		email:{
+        				required:"請輸入email",
+        				email: "mail 格式不符。EX: name@gmail.com",
+        				maxlength:"email長度不能大於{0}"
         			}
 	    			//agree:"請勾選同意"*/
 	    		},

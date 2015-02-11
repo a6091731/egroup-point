@@ -152,8 +152,8 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				mapClassList.add(mapClass2);
 			}			
 			rs1.close();
-			smt.close();
 			rs2.close();
+			smt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
  

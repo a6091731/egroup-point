@@ -32,20 +32,14 @@
     <![endif]-->
 
 </head>
-<body>
+<body class="bg-login">
 	<header class="topheader clearfix">
 		<div class="container">
-			<div class="grid_12">
+			<div class="prefix_4  grid_4 suffix_4 center">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
-				</div><!-- logo -->
-				<nav class="clearfix">
-					<div class="top-nav">
-						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>登入</span></a>
-						</div>
-					</div><!-- top-nav -->
-				</nav>
+					<a href="index"><img src="./images/egroup-white.png" alt="創業e點通品牌標誌"></a>
+					<p><a href="index.html"><i class="fa fa-home"></i> 回首頁</a></p>
+				</div><!-- logo -->				
 			</div><!-- grid_12 -->
 		</div><!-- container -->
 	</header>
