@@ -276,11 +276,13 @@
 	            
 	            $("#sendForm").validate();
 	            $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
+	            $.validator.addMethod("dateMin", $.validator.methods.min, "時間不得小於您的創業第一年時間 : {0} 開始");
+	            $.validator.addMethod("dateMax", $.validator.methods.max, "時間不得大於您的創業第一年時間 : {0} 結束");
 	            jQuery.validator.addClassRules({
 	            	dateValidate: {
 	            		required: true,
-	            		min: '${fn:substring(getMember.capitalDate,0,7)}',
-	            		max: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')
+	            		dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
+	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')
 	            	},
 	            	moneyValidate: {
 	            		required: true,

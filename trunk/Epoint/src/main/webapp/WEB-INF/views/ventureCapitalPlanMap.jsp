@@ -148,28 +148,46 @@
 			
 			$('#startDate').change(function(){
 				var startDate = $(this).val();
-				alertify.confirm("當您修改日期，將會刪除你設定日期範圍外的資料", function (e) {
-	   				if (e) {
-	   					if(startDate != ''){
-		   					$.ajax({
-		   						url:"modiVenturePlanStartDate",
-		   						data:{
-		   							startDate : startDate
-		   						},
-		   						success:function(){
-		   							var endDate = calculateEndDate(startDate);
-		   							$('#endDate').val(endDate);
-		   		   					alertify.success("更新成功!");
-		   						}
-		   					});
-	   					}else{
-	   						$('#endDate').val('');
-	   					}
-	   				} else {
-	   					$('#startDate').val('${fn:substring(getMember.capitalDate,0,7) }');
-	   					alertify.error("取消更新!");
-	   				}
-   				});
+				if('${fn:substring(getMember.capitalDate,0,7) }' != ''){
+					alertify.confirm("當您修改日期，將會刪除你設定日期範圍外的資料", function (e) {
+		   				if (e) {
+		   					if(startDate != ''){
+			   					$.ajax({
+			   						url:"modiVenturePlanStartDate",
+			   						data:{
+			   							startDate : startDate
+			   						},
+			   						success:function(){
+			   							var endDate = calculateEndDate(startDate);
+			   							$('#endDate').val(endDate);
+			   		   					alertify.success("更新成功!");
+			   						}
+			   					});
+		   					}else{
+		   						$('#endDate').val('');
+		   					}
+		   				} else {
+		   					$('#startDate').val('${fn:substring(getMember.capitalDate,0,7) }');
+		   					alertify.error("取消更新!");
+		   				}
+	   				});
+				}else{
+					if(startDate != ''){
+	   					$.ajax({
+	   						url:"modiVenturePlanStartDate",
+	   						data:{
+	   							startDate : startDate
+	   						},
+	   						success:function(){
+	   							var endDate = calculateEndDate(startDate);
+	   							$('#endDate').val(endDate);
+	   		   					alertify.success("更新成功!");
+	   						}
+	   					});
+   					}else{
+   						$('#endDate').val('');
+   					}
+				}
 			});
 		});
 		
