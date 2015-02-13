@@ -17,7 +17,7 @@ import org.apache.commons.mail.HtmlEmail;
 public class Mail {
 	private static final Logger log = Logger.getLogger(Mail.class.getName());
 	private String Senduser = "epoint.egroup@gmail.com";
-	private String Senduserpwd = "egroup23622508";
+	private String Senduserpwd = "23622508egroup";
 	private String HostName = "smtp.gmail.com";
 	//private String SSLSmtpPort = "465";
 	public void sendMail(String subject,String recipient,String message){
