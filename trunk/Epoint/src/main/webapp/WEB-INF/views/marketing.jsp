@@ -64,14 +64,14 @@
 				<aside>
 					<ul class="sideNav hideBlock">
 						<li><a href="founded"><i class="fa fa-child"></i>公司成立</a></li>
-						<li><a href="placeComplete"><i class="fa fa-child"></i>營業場所完工</a></li>
-						<li><a href="personPlace"><i class="fa fa-child"></i>人員到位</a></li>
-						<li><a href="equipmentBuild"><i class="fa fa-child"></i>生產設備建置</a></li>
-						<li><a href="trialProduction"><i class="fa fa-child"></i>試產</a></li>
-						<li><a href="procureMaterial"><i class="fa fa-child"></i>原料採購</a></li>
-						<li><a href="trialOperation"><i class="fa fa-child"></i>試營運</a></li>
-						<li><a href="developmentMarket"><i class="fa fa-child"></i>通路開發</a></li>
-						<li><a href="marketing"><i class="fa fa-child"></i>行銷推廣</a></li>
+						<li><a href="placeComplete"><i class="fa fa-certificate"></i>營業場所完工</a></li>
+						<li><a href="personPlace"><i class="fa fa-users"></i>人員到位</a></li>
+						<li><a href="equipmentBuild"><i class="fa fa-building-o"></i>生產設備建置</a></li>
+						<li><a href="trialProduction"><i class="fa fa-cubes"></i>試產</a></li>
+						<li><a href="procureMaterial"><i class="fa fa-shopping-cart"></i>原料採購</a></li>
+						<li><a href="trialOperation"><i class="fa fa-thumbs-up"></i>試營運</a></li>
+						<li><a href="developmentMarket"><i class="fa fa-bullseye"></i>通路開發</a></li>
+						<li class="current"><a href="marketing"><i class="fa fa-truck"></i>行銷推廣</a></li>
 					</ul>	
 	                <div class="memberRwdnav clearfix">
 	                    <nav class="primary">
