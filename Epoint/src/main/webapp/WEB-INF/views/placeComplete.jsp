@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="創業-支出結構-規畫你的創業第一年支出-創業e點通">  
 	<title>支出結構-規畫你的創業第一年支出-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->

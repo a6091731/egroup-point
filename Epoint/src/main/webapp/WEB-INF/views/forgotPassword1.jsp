@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="忘記密碼-重發驗證信-創業e點通">  
 	<title>忘記密碼-重發驗證信-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->
@@ -38,7 +39,7 @@
 			<div class="prefix_4  grid_4 suffix_4 center">
 				<div class="logo">
 					<a href="index"><img src="./images/egroup-white.png" alt="創業e點通品牌標誌"></a>
-					<p><a href="index.html"><i class="fa fa-home"></i> 回首頁</a></p>
+					<p><a href="index"><i class="fa fa-home"></i> 回首頁</a></p>
 				</div><!-- logo -->				
 			</div><!-- grid_12 -->
 		</div><!-- container -->
@@ -52,8 +53,8 @@
 						<h2>忘記密碼</h2>
 					</li>
 					<li>
-						<label for="account">Email</label>
-						<input type="text" name="account" id="account" placeholder="請輸入Email" class="textbox email" maxlength="55">
+						<label for="account">帳號</label>
+						<input type="text" name="account" id="account" placeholder="請輸入帳號" class="textbox email" maxlength="55">
 					</li>
 					<li>
 						<div class="register_chg">

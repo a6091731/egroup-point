@@ -10,7 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="創業-支出結構-規畫你的創業第一年支出-創業e點通">
 <title>產品描述-填寫每項產品的規格、說明、定價、銷售價格、直接成本-創業e點通</title>
-
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 <!-- reset.css -->
 <link rel="stylesheet" href="css/reset.css" media="screen">
 <!-- font-awesome.min.css -->
@@ -68,8 +69,8 @@
 				</div>
 				<div class="breadcrumbs">
 					<p>
-						<a href="index.html">首頁</a> &gt; <a href="#">創業地圖</a> &gt; <a
-							href="#">創業前檢核表地圖</a> &gt;<span>創業前檢核表【產品描述】</span>
+						<a href="index">首頁</a> &gt; <a href="venturePlanMap">創業地圖</a> &gt; <a
+							href="ventureChecklistMap">創業前檢核表地圖</a> &gt;<span>創業前檢核表【產品描述】</span>
 					</p>
 				</div>
 			</div>
@@ -323,18 +324,24 @@
 		    		endPrice:{
 		    			required:true,
 		    			number: true,
-		    			maxlength:9
+		    			maxlength:9,
+		    			min:1,
+		    			digits:true 
 		    			
 		    		},			
 		    		salesPrice:{
 		    			required:true,
 		    			number: true,
-		    			maxlength:9
+		    			maxlength:9,
+		    			min:1,
+		    			digits:true 
 		    		},			
 		    		cost:{
 		    			required:true,
 		    			number: true,
-		    			maxlength:9
+		    			maxlength:9,
+		    			min:1,
+		    			digits:true 
 		    		}
             	},
             	messages:{
@@ -353,17 +360,23 @@
             		endPrice:{
             			required:"此欄位不能空白",
             			number: "請輸入數字",
-            			maxlength:"長度不能超過{0}"
+            			maxlength:"長度不能超過{0}",
+            			min:"請輸入大於0的金額",
+            			digits:"請輸入整數" 
             		},
             		salesPrice:{
             			required:"此欄位不能空白",
             			number: "請輸入數字",
-            			maxlength:"長度不能超過{0}"
+            			maxlength:"長度不能超過{0}",
+            			min:"請輸入大於0的金額",
+            			digits:"請輸入整數" 
             		},
             		cost:{
             			required:"此欄位不能空白",
             			number: "請輸入數字",
-            			maxlength:"長度不能超過{0}"
+            			maxlength:"長度不能超過{0}",
+            			min:"請輸入大於0的金額",
+            			digits:"請輸入整數" 
             		}
             	}
             });	
@@ -385,18 +398,24 @@
 		    		endPrice:{
 		    			required:true,
 		    			number: true,
-		    			maxlength:9
+		    			maxlength:9,
+		    			min:1,
+		    			digits:true 
 		    			
 		    		},			
 		    		salesPrice:{
 		    			required:true,
 		    			number: true,
-		    			maxlength:9
+		    			maxlength:9,
+		    			min:1,
+		    			digits:true 
 		    		},			
 		    		cost:{
 		    			required:true,
 		    			number: true,
-		    			maxlength:9
+		    			maxlength:9,
+		    			min:1,
+		    			digits:true 
 		    		}
             	},
             	messages:{
@@ -415,17 +434,24 @@
             		endPrice:{
             			required:"此欄位不能空白",
             			number: "請輸入數字",
-            			maxlength:"長度不能超過{0}"
+            			maxlength:"長度不能超過{0}",
+            			min:"請輸入大於0的金額",
+            			digits:"請輸入整數" 
+            			
             		},
             		salesPrice:{
             			required:"此欄位不能空白",
             			number: "請輸入數字",
-            			maxlength:"長度不能超過{0}"
+            			maxlength:"長度不能超過{0}",
+            			min:"請輸入大於0的金額",
+            			digits:"請輸入整數" 
             		},
             		cost:{
             			required:"此欄位不能空白",
             			number: "請輸入數字",
-            			maxlength:"長度不能超過{0}"
+            			maxlength:"長度不能超過{0}",
+            			min:"請輸入大於0的金額",
+            			digits:"請輸入整數" 
             		}
             	}
             });	

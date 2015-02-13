@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="首頁-創業e點通">  
 	<title>首頁-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->

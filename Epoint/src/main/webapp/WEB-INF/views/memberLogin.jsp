@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="會員登入-進入創業e點通-創業e點通">  
 	<title>會員登入-進入創業e點通-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->
@@ -59,8 +60,8 @@
 						<h2>會員登入</h2>
 					</li>
 					<li>
-						<label for="account">帳號<span class="errorMsg">${errorMsg }</span></label>
-						<input type="text" name="account" id="account" placeholder="請輸入Email" class="textbox" maxlength="55">
+						<label for="account">帳號<span class="redText">${errorMsg }</span></label>
+						<input type="text" name="account" id="account" placeholder="請輸入帳號" class="textbox" maxlength="55">
 					</li>
 					<li>
 						<label for="password">密碼</label>

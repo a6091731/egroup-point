@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="重設密碼-設定新密碼-創業e點通">  
 	<title>重設密碼-設定新密碼-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->
@@ -38,7 +39,7 @@
 			<div class="grid_12">
 				<div class="logo">
 					<a href="index"><img src="./images/egroup-white.png" alt="創業e點通品牌標誌"></a>
-					<p><a href="index.html"><i class="fa fa-home"></i> 回首頁</a></p>
+					<p><a href="index"><i class="fa fa-home"></i> 回首頁</a></p>
 				</div>
 			</div><!-- grid_12 -->
 		</div><!-- container -->

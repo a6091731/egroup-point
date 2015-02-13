@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="創業前檢核表地圖-請依順序完成您的創業前檢核表-創業e點通">  
 	<title>創業第一年資金規劃地圖-請依順序完成您的創業第一年資金規劃-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->
