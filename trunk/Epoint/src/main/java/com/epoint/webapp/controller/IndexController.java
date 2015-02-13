@@ -20,7 +20,7 @@ import com.epoint.webapp.entity.Member;
 public class IndexController {
 	ApplicationContext context =  new ClassPathXmlApplicationContext("spring-module.xml");
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
 	public ModelAndView index (HttpServletRequest request, HttpSession session){
 		ModelAndView model = new ModelAndView();
 		model.setViewName("index");

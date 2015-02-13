@@ -174,7 +174,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 				e.printStackTrace();
 			}
 			Mail mail = new Mail();
-			message = message.replaceAll("link_url", "54.65.158.166/resetPassword?aid="+member.getResetNO());
+			message = message.replaceAll("link_url", "http://54.92.77.173/memberResetPassword1?aid="+member.getResetNO());
 			System.out.println("member.getResetNO()="+member.getResetNO());
 			message = message.replaceAll("user_name", member.getName());
 			mail.sendMail(subject, member.getAccount(), message);			
@@ -333,7 +333,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 			model.setViewName("memberResetPassword1");
 		}
 		else
-			model.setViewName("redirect:/memberResetPasswordFail");
+			model.setViewName("memberResetPasswordFail");
 		return model;
 	}
 	
