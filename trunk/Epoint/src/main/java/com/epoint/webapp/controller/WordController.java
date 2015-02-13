@@ -30,8 +30,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epoint.webapp.dao.FinancialPlanDAO;
+import com.epoint.webapp.dao.MemberDAO;
+import com.epoint.webapp.dao.PayMoneyDAO;
 import com.epoint.webapp.dao.ProductDAO;
 import com.epoint.webapp.dao.VentureChecklistDAO;
+import com.epoint.webapp.entity.FinancialPlan;
 import com.epoint.webapp.entity.HumanResourceContent;
 import com.epoint.webapp.entity.MapSubclass;
 import com.epoint.webapp.entity.Member;
@@ -111,6 +115,70 @@ public class WordController {
 			dataMap.put("allVentureContents", allVentureContents);
 			dataMap.put("HumanResource", HumanResource);
 			dataMap.put("allProducts", allProducts);
+			try {
+				configuration.setDirectoryForTemplateLoading(xmlFile);
+				template = configuration.getTemplate(xml);
+				File outFile = new File(docFileName);
+				Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile),"UTF-8"));
+				template.setEncoding("UTF-8");
+				template.process(dataMap, out);
+				
+				int length = 0;
+				ServletOutputStream op = response.getOutputStream();
+				ServletContext context = request.getServletContext();
+				String mimetype = context.getMimeType(docFileName);
+				response.setContentType((mimetype != null) ? mimetype : "application/octet-stream");
+				response.setContentLength((int) outFile.length());
+				response.setHeader("Content-Disposition", "attachment; filename=\"" + new String(docFileName.getBytes("UTF-8"), "ISO-8859-1"));
+				byte[] bbuf = new byte[200];
+				InputStream in = new BufferedInputStream(new FileInputStream(outFile));
+	
+				while ((in != null) && ((length = in.read(bbuf)) > 0)) {
+					op.write(bbuf, 0, length);
+				}
+				in.close();
+				op.flush();
+				op.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (TemplateException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "/exportFinancialPlan", method = RequestMethod.GET)
+	public ModelAndView exportFinancialPlan(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+		ModelAndView model = new ModelAndView();
+		PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
+		FinancialPlanDAO financialPlanDAO = (FinancialPlanDAO) context.getBean("financialPlanDAO");
+		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		if(loginMember==null){
+			model.setViewName("redirect:/memberLogin");
+			return model;
+		}else{
+			String xml = "financialPlan.xml";
+			String filePath = request.getServletContext().getRealPath("resources/word");
+			File xmlFile = new File(filePath);
+			String docFileName = "資金規劃.doc";
+			Template template = null;
+			configuration.setDefaultEncoding("UTF-8");
+			Map<String, Object> dataMap = new HashMap<String, Object>();
+			String account = loginMember.getAccount();
+			int avgCost = payMoneyDAO.getMonthlyCostByAccount(account);
+			int fundLack = memberDAO.getFundLackByAccount(account);
+			int demandMoneyForFirstYear = avgCost*3 + fundLack;
+			List<FinancialPlan> usesPlans = financialPlanDAO.getFinancialPlansByItemID(account, 1);
+			List<FinancialPlan> sourcePlans = financialPlanDAO.getFinancialPlansByItemID(account, 0);
+			
+			dataMap.put("name", loginMember.getName());
+			dataMap.put("demandMoneyForFirstYear", demandMoneyForFirstYear);
+			dataMap.put("avgCost", avgCost);
+			dataMap.put("fundLack", fundLack);
+			dataMap.put("usesPlans", usesPlans);
+			dataMap.put("sourcePlans", sourcePlans);
 			try {
 				configuration.setDirectoryForTemplateLoading(xmlFile);
 				template = configuration.getTemplate(xml);
