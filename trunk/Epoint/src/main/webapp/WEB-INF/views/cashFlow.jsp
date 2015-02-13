@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="月現金流-查看每月收入與支出明細-創業e點通">  
 	<title>月現金流-查看每月收入與支出明細-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->

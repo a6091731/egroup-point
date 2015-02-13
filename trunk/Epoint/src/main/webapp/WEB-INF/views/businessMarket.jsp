@@ -10,7 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="創業業種-填寫創業業種、商業模式和在此行業的一技之長-創業e點通">
 <title>創業業種-填寫創業業種、商業模式和在此行業的一技之長-創業e點通</title>
-
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 <!-- reset.css -->
 <link rel="stylesheet" href="css/reset.css" media="screen">
 <!-- font-awesome.min.css -->
@@ -36,7 +37,7 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png"
+					<a href="index"><img src="./images/egroup.png"
 						alt="創業e點通品牌標誌"></a>
 				</div>
 				<!-- logo -->
@@ -63,8 +64,8 @@
 				</div>
 				<div class="breadcrumbs">
 					<p>
-						<a href="index.html">首頁</a> &gt; <a href="#">創業地圖</a> &gt; <a
-							href="#">創業前檢核表地圖</a> &gt;<span>創業前檢核表【創業業種】</span>
+						<a href="index">首頁</a> &gt; <a href="venturePlanMap">創業地圖</a> &gt; <a
+							href="ventureChecklistMap">創業前檢核表地圖</a> &gt;<span>創業前檢核表【行銷】</span>
 					</p>
 				</div>
 			</div>

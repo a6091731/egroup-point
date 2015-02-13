@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="資金規劃地圖-算出你的創業資金需求並規劃-創業e點通">  
 	<title>資金規劃地圖-算出你的創業資金需求並規劃-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->
@@ -55,7 +56,8 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="breadcrumbs">
-            		<p><a href="index.html">首頁</a> &gt; <a href="#">創業地圖</a> &gt; <span>資金規劃地圖</span></p>
+            		<p><a href="index">首頁</a> &gt; 
+            		<a href="venturePlanMap">創業地圖</a> &gt; <span>資金規劃地圖</span></p>
 	            </div>
 			</div>
 	        <div class="grid_6 prefix_3 suffix_3">

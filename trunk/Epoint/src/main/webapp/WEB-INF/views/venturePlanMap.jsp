@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  	<meta name="description" content="創業前檢核表地圖-請依順序完成您的創業前檢核表-創業e點通">  
 	<title>創業規劃地圖-展開您的創業之旅，接下來我們將協助您規劃，幫助您實現夢想-創業e點通</title>
-
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<!-- reset.css -->
 	<link rel="stylesheet" href="css/reset.css" media="screen">
 	<!-- font-awesome.min.css -->
@@ -71,7 +72,7 @@
 					<div class="stepDescribe">
 						<img alt="創業前檢核表圖示" src="images/ventureCheck.png">
 						<h2>1.創業前檢核表</h2>
-						<!-- <p>首先，請依順序完成您的創業前檢核表</p> -->
+						<p>首先，請依順序完成您的創業前檢核表</p>
 					</div>					
 					<div id="step1Progress">
 					  <div class="bar">
@@ -182,12 +183,12 @@
 			//alert('${checkListPercent}');
 			if('${checkListPercent}'>0){
 				if('${checkListPercent}'==100){
-					$('#step1Progress').progress({
+					/*$('#step1Progress').progress({
 						//percent: '${checkListPercent}'		
 						//測試用
 						percent: 100	
 					});
-					$('#step1Progress').attr('class','ui progress success');	
+					$('#step1Progress').attr('class','ui progress success');	*/
 					$('#step1Url').attr('class','downloadButton');
 					$('#step1Url').attr('href','exportWord');
 					$('#step1Name').text("下載創業前檢核表");
@@ -213,20 +214,40 @@
 					
 					//若創業前檢核表填完，開啟資金規劃地圖圖示
 					$('#step31').remove();
-					var step3Content ='<div class="step" id="step31">'+
-					'<div class="stepDescribe">'+
-					'<img alt="資金規劃地圖圖示" src="images/financialPlan.png">'+
-					'<h2>3.資金規劃地圖</h2>'+
-					'<p>恭喜您完成了創業檢核表與創業第一年營運排程，接下來做資金規劃</p>'+
-					'</div>'+
-					'<div id="step3Progress">'+
-				  	'<div class="bar">'+
-				    '<div class="progress"></div>'+
-				  	'</div>'+
-					'</div>'+				
-					'<a href="financialPlan" class="startButton" id="step3Url"><span class="next" id="step3Name">開始填寫<i class="fa fa-play-circle fa-lg fa-left"></i></span></a>'+					
-					'</div>';
-					$('#step3').append(step3Content);
+					var step3Content;
+					if('${FinancialPlanFlag==ture}'){
+						step3Content ='<div class="step" id="step31">'+
+						'<div class="stepDescribe">'+
+						'<img alt="資金規劃地圖圖示" src="images/financialPlan.png">'+
+						'<h2>3.資金規劃地圖</h2>'+
+						'<p>恭喜您完成了創業檢核表與創業第一年營運排程，接下來做資金規劃</p>'+
+						'</div>'+
+						'<div id="step3Progress">'+
+					  	'<div class="bar">'+
+					    '<div class="progress"></div>'+
+					  	'</div>'+
+						'</div>'+
+						'<a href="exportFinancialPlan" class="downloadButton" id="step3Url"><span class="next">下載創業前檢核表<i class="fa fa-download fa-lg fa-left"></i></span></a>'+
+						'<a href="financialPlan" class="modifyButton" ><span class="next" id="step3Name">修改創資金規劃地圖<i class="fa fa-repeat fa-lg fa-left"></i></span></a>'+		
+						'</div>';						
+						$('#step3').append(step3Content);
+					}else{
+						step3Content ='<div class="step" id="step31">'+
+						'<div class="stepDescribe">'+
+						'<img alt="資金規劃地圖圖示" src="images/financialPlan.png">'+
+						'<h2>3.資金規劃地圖</h2>'+
+						'<p>恭喜您完成了創業檢核表與創業第一年營運排程，接下來做資金規劃</p>'+
+						'</div>'+
+						'<div id="step3Progress">'+
+					  	'<div class="bar">'+
+					    '<div class="progress"></div>'+
+					  	'</div>'+
+						'</div>'+				
+						'<a href="financialPlan" class="startButton" id="step3Url"><span class="next" id="step3Name">開始填寫<i class="fa fa-play-circle fa-lg fa-left"></i></span></a>'+					
+						'</div>';
+						$('#step3').append(step3Content);
+					}					
+					
 					
 				}else{
 					$('#step1Progress').progress({
