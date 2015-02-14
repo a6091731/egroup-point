@@ -311,7 +311,7 @@
 				labels : ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
 				datasets : [
 					{
-						label: "My First dataset",
+						label: "收入",
 						fillColor : "rgba(220,220,220,0.2)",
 						strokeColor : "rgba(220,220,220,1)",
 						highlightFill: "rgba(220,220,220,0.75)",
@@ -319,7 +319,7 @@
 						data : incomeData
 					},
 					{
-						label: "My Second dataset",
+						label: "支出",
 						fillColor : "rgba(151,187,205,0.2)",
 						strokeColor : "rgba(151,187,205,1)",
 						pointColor : "rgba(151,187,205,1)",
@@ -331,7 +331,7 @@
 			};
 			window.onload = function(){
 				var ctx = document.getElementById("canvas").getContext("2d");
-				var myLineChart = new Chart(ctx).Bar(chartData,{reponsive:true});
+				var myLineChart = new Chart(ctx).Bar(chartData,{reponsive:true,multiTooltipTemplate: "\<\%\=datasetLabel%> : \<\%\=value%>"});
 			}
 			
 			//支出結構-----------------------------
