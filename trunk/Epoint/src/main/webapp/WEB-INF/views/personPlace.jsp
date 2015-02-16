@@ -120,7 +120,7 @@
 				  	<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[0].ID" value="2131">
 				  	<input type="hidden" name="fixedPayMoney[0].record" value="${fixedPayMoney[0].record == 0? 1:fixedPayMoney[0].record}">
-				  		<legend>1.1 固定成本[薪資(含勞/健保費及退休金提撥)]：</legend>
+				  		<legend>1.1 薪資(含勞/健保費及退休金提撥)：</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[0].date_string" value="${fn:substring(fixedPayMoney[0].date,0,7)}">
@@ -135,7 +135,7 @@
 					<fieldset class="fieldset">
 				  	<input type="hidden" name="fixedPayMoney[1].ID" value="2132">
 				  	<input type="hidden" name="fixedPayMoney[1].record" value="${fixedPayMoney[1].record == 0? 1:fixedPayMoney[1].record}">
-				  		<legend>1.1.2 固定成本[薪資增減]：</legend>
+				  		<legend>1.2 薪資增減：</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[1].date_string" value="${fn:substring(fixedPayMoney[1].date,0,7)}">
@@ -309,19 +309,15 @@
 	            	index++;
 	            	$('.delCardBtn').click(function(){
 	            		var id = $(this).data('id');
-		            	if(cardCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	cardCount--;
-			            	$('#cardCount').val(cardCount);
-		            	}
+			            $('#paymoney_'+id).remove();
+			            cardCount--;
+			            $('#cardCount').val(cardCount);
 		            });
 	            	$('.delLawyerBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	if(lawyerCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	lawyerCount--;
-			            	$('#lawyerCount').val(lawyerCount);
-		            	}
+			            $('#paymoney_'+id).remove();
+			            lawyerCount--;
+			            $('#lawyerCount').val(lawyerCount);
 		            });
 	            });
 	            initialDelBtn();
@@ -330,29 +326,25 @@
 	    	function initialDelBtn(){
             	$('.delCardBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(cardCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	cardCount--;
-		            	$('#cardCount').val(cardCount);
-	            	}
+		            var record = $(this).data('record');
+		            var itemID = $(this).data('item');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            $('#paymoney_'+id).remove();
+		            deletedIndex++;
+		            cardCount--;
+		            $('#cardCount').val(cardCount);
 	            });
             	$('.delLawyerBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(lawyerCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	lawyerCount--;
-		            	$('#lawyerCount').val(lawyerCount);
-	            	}
+		            var record = $(this).data('record');
+		            var itemID = $(this).data('item');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            $('#paymoney_'+id).remove();
+		            deletedIndex++;
+		            lawyerCount--;
+		            $('#lawyerCount').val(lawyerCount);
 	            });
 	    	}
 	    	
