@@ -151,7 +151,7 @@
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[2].ID" value="2123">
 					<input type="hidden" name="fixedPayMoney[2].record" value="${fixedPayMoney[2].record == 0? 1:fixedPayMoney[2].record }">
-					  	<legend>1.3 固定成本[水/電/瓦斯/網路/電信申租費用]</legend>
+					  	<legend>1.3 水/電/瓦斯/網路/電信申租費用</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[2].date_string" value="${fn:substring(fixedPayMoney[2].date,0,7)}">
@@ -166,7 +166,7 @@
 					<fieldset  class="fieldset">
 					<input type="hidden" name="fixedPayMoney[3].ID" value="2124">
 					<input type="hidden" name="fixedPayMoney[3].record" value="${fixedPayMoney[3].record == 0? 1:fixedPayMoney[3].record}">
-					  	<legend>1.4 固定成本[水/電/瓦斯/網路/電信月租費]</legend>
+					  	<legend>1.4 水/電/瓦斯/網路/電信月租費</legend>
 					  	<div class="field">
 					  		<label>日期：
 					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[3].date_string" value="${fn:substring(fixedPayMoney[3].date,0,7)}">
@@ -388,27 +388,21 @@
 	            	index++;
 	            	$('.delCardBtn').click(function(){
 	            		var id = $(this).data('id');
-		            	if(cardCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	cardCount--;
-			            	$('#cardCount').val(cardCount);
-		            	}
+			            $('#paymoney_'+id).remove();
+			            cardCount--;
+			            $('#cardCount').val(cardCount);
 		            });
 	            	$('.delLawyerBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	if(lawyerCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	lawyerCount--;
-			            	$('#lawyerCount').val(lawyerCount);
-		            	}
+			            $('#paymoney_'+id).remove();
+			            lawyerCount--;
+			            $('#lawyerCount').val(lawyerCount);
 		            });
 	            	$('.delAccountBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	if(accountCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	accountCount--;
-			            	$('#accountCount').val(accountCount);
-		            	}
+		            	$('#paymoney_'+id).remove();
+		            	accountCount--;
+		            	$('#accountCount').val(accountCount);
 		            });
 	            });
 	            initialDelBtn();
@@ -417,44 +411,38 @@
 	    	function initialDelBtn(){
             	$('.delCardBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(cardCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	cardCount--;
-		            	$('#cardCount').val(cardCount);
-	            	}
+		            var record = $(this).data('record');
+		            var itemID = $(this).data('item');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            $('#paymoney_'+id).remove();
+		            deletedIndex++;
+		            cardCount--;
+		            $('#cardCount').val(cardCount);
 	            });
             	$('.delLawyerBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(lawyerCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	removeValidate(id);
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	lawyerCount--;
-		            	$('#lawyerCount').val(lawyerCount);
-	            	}
+	            	var record = $(this).data('record');
+	            	var itemID = $(this).data('item');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+	            	removeValidate(id);
+	            	$('#paymoney_'+id).remove();
+	            	deletedIndex++;
+	            	lawyerCount--;
+	            	$('#lawyerCount').val(lawyerCount);
 	            });
             	$('.delAccountBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(accountCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	removeValidate(id);
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	accountCount--;
-		            	$('#accountCount').val(accountCount);
-	            	}
+	            	var record = $(this).data('record');
+	            	var itemID = $(this).data('item');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+	            	removeValidate(id);
+	            	$('#paymoney_'+id).remove();
+	            	deletedIndex++;
+	            	accountCount--;
+	            	$('#accountCount').val(accountCount);
 	            });
 	    	}
 	    	

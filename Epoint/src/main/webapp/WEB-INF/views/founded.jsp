@@ -365,27 +365,21 @@
 	            	index++;
 	            	$('.delCardBtn').click(function(){
 	            		var id = $(this).data('id');
-		            	if(cardCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	cardCount--;
-			            	$('#cardCount').val(cardCount);
-		            	}
+			            $('#paymoney_'+id).remove();
+			            cardCount--;
+			            $('#cardCount').val(cardCount);
 		            });
 	            	$('.delLawyerBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	if(lawyerCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	lawyerCount--;
-			            	$('#lawyerCount').val(lawyerCount);
-		            	}
+			            $('#paymoney_'+id).remove();
+			            lawyerCount--;
+			            $('#lawyerCount').val(lawyerCount);
 		            });
 	            	$('.delAccountBtn').click(function(){
 		            	var id = $(this).data('id');
-		            	if(accountCount > 1){
-			            	$('#paymoney_'+id).remove();
-			            	accountCount--;
-			            	$('#accountCount').val(accountCount);
-		            	}
+			            $('#paymoney_'+id).remove();
+			            accountCount--;
+			            $('#accountCount').val(accountCount);
 		            });
 	            });
 	            initialDelBtn();
@@ -394,42 +388,36 @@
 	    	function initialDelBtn(){
             	$('.delCardBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(cardCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	cardCount--;
-		            	$('#cardCount').val(cardCount);
-	            	}
+		            var record = $(this).data('record');
+		            var itemID = $(this).data('item');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            $('#paymoney_'+id).remove();
+		            deletedIndex++;
+		            cardCount--;
+		            $('#cardCount').val(cardCount);
 	            });
             	$('.delLawyerBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(lawyerCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	lawyerCount--;
-		            	$('#lawyerCount').val(lawyerCount);
-	            	}
+		            var record = $(this).data('record');
+		            var itemID = $(this).data('item');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            $('#paymoney_'+id).remove();
+		            deletedIndex++;
+		            lawyerCount--;
+		            $('#lawyerCount').val(lawyerCount);
 	            });
             	$('.delAccountBtn').click(function(){
 	            	var id = $(this).data('id');
-	            	if(accountCount > 1){
-		            	var record = $(this).data('record');
-		            	var itemID = $(this).data('item');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
-	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
-		            	$('#paymoney_'+id).remove();
-		            	deletedIndex++;
-		            	accountCount--;
-		            	$('#accountCount').val(accountCount);
-	            	}
+		            var record = $(this).data('record');
+		            var itemID = $(this).data('item');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].record" value="'+record+'">');
+	            	$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+id+'].ID" value="'+itemID+'">');
+		            $('#paymoney_'+id).remove();
+		            deletedIndex++;
+		            accountCount--;
+		            $('#accountCount').val(accountCount);
 	            });
 	    	}
 	    	
