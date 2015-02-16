@@ -81,6 +81,10 @@ public class WordController {
 			allVentureContents.addAll(ventureChecklistDAO.getVentureCheckListByMember(memberLogin));
 			memberLogin.setClassID(17);
 			allVentureContents.addAll(ventureChecklistDAO.getVentureCheckListByMember(memberLogin));
+			//word換行
+			for(MapSubclass m : allVentureContents){
+				m.setContent(m.getContent().replaceAll("\\r\\n", "<w:br/>"));
+			}
 			HumanResourceContent HumanResource = ventureChecklistDAO.getHumanResourceContentByMember(memberLogin);
 			List<Product> allProducts = productDAO.getAllProductList(memberLogin);
 			if(HumanResource == null){
