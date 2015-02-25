@@ -38,12 +38,12 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
+					<a href="index"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
 				</div><!-- logo -->
 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="venturePlanMap.html" id="loginButton"><span>創業地圖</span></a>
+							<a href="venturePlanMap" id="loginButton"><span>創業地圖</span></a>
 						</div>
 					</div><!-- top-nav -->
 				</nav>
@@ -77,7 +77,7 @@
 				<ul>
 					<li>
 						<div class="ventureBox clearfix">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent11}%" data-fontsize="16" 
+							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent11>0?getPercent.percent11:0}%" data-fontsize="16" 
 							data-percent="${getPercent.percent11}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
@@ -90,7 +90,7 @@
  					</li>
 					<li>
 						<div class="${getPercent.percent11>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent12}%" data-fontsize="16" 
+							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent12>0?getPercent.percent12:0}%" data-fontsize="16" 
 							data-percent="${getPercent.percent12}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
@@ -116,7 +116,7 @@
  					</li>
  					<li>
 						<div class="${getPercent.productCount>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent14}%" data-fontsize="16" 
+							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent14>0?getPercent.percent14:0}%" data-fontsize="16" 
 							data-percent="${getPercent.percent14}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
@@ -129,7 +129,7 @@
  					</li>
  					<li>
 						<div class="${getPercent.percent14>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent15}%" data-fontsize="16" 
+							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent15>0?getPercent.percent15:0}%" data-fontsize="16" 
 							data-percent="${getPercent.percent15}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
@@ -142,7 +142,7 @@
  					</li>
  					<li>
 						<div class="${getPercent.percent15>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent16}%" data-fontsize="16" 
+							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent16>0?getPercent.percent16:0}%" data-fontsize="16" 
 							data-percent="${getPercent.percent16}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
@@ -155,7 +155,7 @@
  					</li>
  					<li>
 						<div class="${getPercent.percent16>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent17}%" data-fontsize="16"
+							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent17>0?getPercent.percent17:0}%" data-fontsize="16"
 							 data-percent="${getPercent.percent17}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							 data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">

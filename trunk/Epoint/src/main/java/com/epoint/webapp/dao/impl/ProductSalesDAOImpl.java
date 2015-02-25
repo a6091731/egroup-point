@@ -296,4 +296,32 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 			}
 		}
 	}
+
+	public boolean checkProductSalesByMember(Member member) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		sql = "SELECT * FROM product_sales WHERE memberAccount = ?";		
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);			
+			smt.setString(1, member.getAccount());
+			rs = smt.executeQuery();
+			if(rs.next()){
+				flag = true;
+			}			
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return flag;
+	}
 }

@@ -379,7 +379,7 @@ public class ExpenditureStructureController {
             }else if(subClassID == 218){
             	model.setViewName("redirect:/marketing");
             }else if(subClassID == 219){
-            	model.setViewName("redirect:/founded");
+            	model.setViewName("redirect:/ventureCapitalPlanMap");
             }
         }else{
         	model.setViewName("redirect:/");

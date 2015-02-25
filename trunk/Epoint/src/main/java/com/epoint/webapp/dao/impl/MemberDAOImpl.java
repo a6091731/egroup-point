@@ -133,6 +133,7 @@ public class MemberDAOImpl implements MemberDAO{
 				member.setResetNO(rs.getString("resetNO"));
 				member.setStatus(rs.getInt("memberStatus"));
 				member.setCapitalDate(rs.getDate("ventureCapitalDate"));
+				member.setEmail(rs.getString("memberEmail"));
 			}
 			rs.close();
 			smt.close();
@@ -206,7 +207,8 @@ public class MemberDAOImpl implements MemberDAO{
 			rs = smt.executeQuery();
 			if(rs.next()){
 				member.setAccount(rs.getString("memberAccount"));
-				member.setName(rs.getString("memberName"));			
+				member.setName(rs.getString("memberName"));	
+				member.setStatus(rs.getInt("memberStatus"));
 			}
 			rs.close();
 			smt.close();

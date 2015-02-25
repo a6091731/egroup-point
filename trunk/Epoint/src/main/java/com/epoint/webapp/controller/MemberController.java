@@ -174,13 +174,13 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 				e.printStackTrace();
 			}
 			Mail mail = new Mail();
-			message = message.replaceAll("link_url", "http://54.92.77.173/memberResetPassword1?aid="+member.getResetNO());
+			message = message.replaceAll("link_url", "http://54.178.158.146/Epoint/memberResetPassword1?aid="+member.getResetNO());
 			System.out.println("member.getResetNO()="+member.getResetNO());
 			message = message.replaceAll("user_name", member.getName());
-			mail.sendMail(subject, member.getAccount(), message);			
+			mail.sendMail(subject, member.getEmail(), message);			
 		}
 		else
-			model.setViewName("redirect:/forgetPasswordFail");
+			model.setViewName("redirect:/memberResetPasswordFail");
 		return model;
 	}
 	
@@ -223,7 +223,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		ModelAndView model = new ModelAndView();
 		Member memberLogin = (Member)session.getAttribute("loginMember");
 		if(memberLogin==null)
-			model.setViewName("redirect:/dmemberLogin");
+			model.setViewName("redirect:/memberLogin");
 		else{
 			SecurityMD5 securityMD5 = new SecurityMD5();
 			try {
@@ -333,7 +333,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 			model.setViewName("memberResetPassword1");
 		}
 		else
-			model.setViewName("memberResetPasswordFail");
+			model.setViewName("redirect:/memberResetPasswordFail");
 		return model;
 	}
 	
@@ -352,7 +352,7 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 	}
 	
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-	public ModelAndView resetPassword(String password, String aid) {
+	public ModelAndView resetPassword(String newPassword1, String aid) {
 		ModelAndView model = new ModelAndView();
 		MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
 		Member member = new Member();
@@ -361,14 +361,14 @@ ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("sp
 		member = memberDAO.getByResetNO(member);
 		if(member.getAccount()!=null && member.getStatus()==1){
 			try {
-				password = securityMD5.encryptWords(password);
+				newPassword1 = securityMD5.encryptWords(newPassword1);
 			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			member.setPassword(password);
+			member.setPassword(newPassword1);
 			memberDAO.updatePassword(member);
-			model.setViewName("redirect:/memberModiPassword2");
+			model.setViewName("redirect:/memberResetPassword2");
 		}
 		else
 			model.setViewName("redirect:/memberResetPasswordFail");

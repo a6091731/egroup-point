@@ -40,12 +40,12 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
+					<a href="index"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
 				</div><!-- logo -->
 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="venturePlanMap.html" id="loginButton"><span>創業地圖</span></a>
+							<a href="venturePlanMap" id="loginButton"><span>創業地圖</span></a>
 						</div>
 					</div><!-- top-nav -->
 				</nav>
@@ -56,7 +56,7 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="breadcrumbs">
-            		<p><a href="index.html">首頁</a> &gt; <a href="#">創業地圖</a></p>
+            		<p><a href="index">首頁</a> &gt; <a href="venturePlanMap">創業地圖</a></p>
 	            </div>
 			</div>
 	        <div class="grid_6 prefix_3 suffix_3">
@@ -197,21 +197,38 @@
 					
 					//若創業前檢核表填完，開啟第一年營運規劃填寫
 					$('#step21').remove();
-					var step2Content ='<div class="step" id="step21">'+
-					'<div class="stepDescribe">'+
-					'<img alt="創業第一年資金規劃圖示" src="images/ventureCapital.png">'+
-					'<h2>2.創業第一年資金規劃</h2>'+
-					'<p>完成創業前檢核表後，接下來請依順序完成您的創業第一年資金規劃</p>'+
-					'</div>'+
-					'<div id="step1Progress">'+
-				  	'<div class="bar">'+
-				    '<div class="progress"></div>'+
-				  	'</div>'+
-					'</div>'+				
-					'<a href="ventureCapitalPlanMap" class="startButton" id="step2Url"><span class="next" id="step2Name">開始填寫<i class="fa fa-play-circle fa-lg fa-left"></i></span></a>'+					
-					'</div>';
-					$('#step2').append(step2Content);
-					
+					var step2Content;
+					if('${capitalPlanFlag==ture}'){
+						var step2Content ='<div class="step" id="step21">'+
+						'<div class="stepDescribe">'+
+						'<img alt="創業第一年資金規劃圖示" src="images/ventureCapital.png">'+
+						'<h2>2.創業第一年資金規劃</h2>'+
+						'<p>完成創業前檢核表後，接下來請依順序完成您的創業第一年資金規劃</p>'+
+						'</div>'+
+						'<div id="step1Progress">'+
+					  	'<div class="bar">'+
+					    '<div class="progress"></div>'+
+					  	'</div>'+
+						'</div>'+				
+						'<a href="ventureCapitalPlanMap" class="continueButton" id="step2Url"><span class="next" id="step2Name">繼續規劃<i class="fa fa-play-circle fa-lg fa-left"></i></span></a>'+					
+						'</div>';
+						$('#step2').append(step2Content);
+					}else{
+						var step2Content ='<div class="step" id="step21">'+
+						'<div class="stepDescribe">'+
+						'<img alt="創業第一年資金規劃圖示" src="images/ventureCapital.png">'+
+						'<h2>2.創業第一年資金規劃</h2>'+
+						'<p>完成創業前檢核表後，接下來請依順序完成您的創業第一年資金規劃</p>'+
+						'</div>'+
+						'<div id="step1Progress">'+
+					  	'<div class="bar">'+
+					    '<div class="progress"></div>'+
+					  	'</div>'+
+						'</div>'+				
+						'<a href="ventureCapitalPlanMap" class="startButton" id="step2Url"><span class="next" id="step2Name">開始規劃<i class="fa fa-play-circle fa-lg fa-left"></i></span></a>'+					
+						'</div>';
+						$('#step2').append(step2Content);
+					}	
 					//若創業前檢核表填完，開啟資金規劃地圖圖示
 					$('#step31').remove();
 					var step3Content;
@@ -227,7 +244,7 @@
 					    '<div class="progress"></div>'+
 					  	'</div>'+
 						'</div>'+
-						'<a href="exportFinancialPlan" class="downloadButton" id="step3Url"><span class="next">下載創業前檢核表<i class="fa fa-download fa-lg fa-left"></i></span></a>'+
+						'<a href="exportFinancialPlan" class="downloadButton" id="step3Url"><span class="next">下載資金規劃<i class="fa fa-download fa-lg fa-left"></i></span></a>'+
 						'<a href="financialPlan" class="modifyButton" ><span class="next" id="step3Name">修改創資金規劃地圖<i class="fa fa-repeat fa-lg fa-left"></i></span></a>'+		
 						'</div>';						
 						$('#step3').append(step3Content);

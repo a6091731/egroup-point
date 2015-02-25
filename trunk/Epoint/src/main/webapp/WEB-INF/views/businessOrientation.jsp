@@ -42,7 +42,7 @@
 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>創業地圖</span></a>
+							<a href="ventureChecklistMap" id="loginButton"><span>創業地圖</span></a>
 						</div>
 					</div><!-- top-nav -->
 				</nav>

@@ -86,7 +86,7 @@
 	}
 	.top-nav-left ul {
 		display: none;
-		background: rgba(232, 169, 46, .6);
+		background: rgba(232, 169, 46, 1);
 		position: absolute;
 		width: 100%;
 		z-index: 999;
