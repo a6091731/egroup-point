@@ -1,6 +1,7 @@
 package com.epoint.webapp.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import javax.sql.DataSource;
 import com.epoint.webapp.dao.ProductDAO;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.Product;
+import com.mysql.jdbc.Statement;
 
 public class ProductDAOImpl implements ProductDAO{
 	private DataSource dataSource;
@@ -19,12 +21,14 @@ public class ProductDAOImpl implements ProductDAO{
 	private ResultSet rs = null ;
 	private PreparedStatement smt = null ;
 	private String sql;
+	private String sql1;
+	private String sql2;
 	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 
-	public boolean productCheck(Product product) {
+	/*public boolean productCheck(Product product) {
 		// TODO Auto-generated method stub
 		boolean falg=false;
 		sql="SELECT * FROM product WHERE memberAccount = ?, productID=?";
@@ -51,9 +55,9 @@ public class ProductDAOImpl implements ProductDAO{
 			}
 		}
 		return false;
-	}
+	}*/
 
-	public void insetProduct(Product product) {
+	public void insertProduct1(Product product) {
 		// TODO Auto-generated method stub		
 		sql = "INSERT INTO product (memberAccount,productID, productNewTime,productName, "
 				+ "productSpecifications, productPack,productEndPrice, productSalesPrice, productCost) "
@@ -80,6 +84,47 @@ public class ProductDAOImpl implements ProductDAO{
 				} catch (SQLException e) {}
 			}
 		}
+	}
+	
+	public String insertProduct2(Product product) {
+		// TODO Auto-generated method stub
+		sql1 = "INSERT INTO product (memberAccount,productID, productNewTime,productName, "
+				+ "productSpecifications, productPack,productEndPrice, productSalesPrice, productCost) "
+				+ "VALUES (?,CONCAT(?,NOW()),NOW(),?,?,?,?,?,?) ";
+		
+		sql2 = "SELECT productID FROM product WHERE productID = CONCAT(?,NOW())";		
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql1);
+			smt.setString(1,product.getAccount());
+			smt.setString(2,product.getAccount());
+			smt.setString(3,product.getName());
+			smt.setString(4,product.getSpecification());
+			smt.setString(5, product.getPack());
+			smt.setInt(6,product.getEndPrice());
+			smt.setInt(7,product.getSalesPrice());
+			smt.setInt(8,product.getCost());
+			smt.executeUpdate();
+			
+			smt = conn.prepareStatement(sql2);
+			smt.setString(1,product.getAccount());
+			rs = smt.executeQuery();
+			if(rs.next()){
+				String productID = rs.getString("productID");
+				return productID;
+			}			
+			rs.close();			
+			smt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e); 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return null;
 	}
 
 	public List<Product> getProductList(Member member, int start, int size) {
@@ -322,4 +367,6 @@ public class ProductDAOImpl implements ProductDAO{
 		}
 		return flag;
 	}
+
+	
 }

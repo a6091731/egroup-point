@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.objenesis.instantiator.basic.NewInstanceInstantiator;
 import org.springframework.stereotype.Controller;
@@ -33,37 +34,41 @@ public class ProductController {
 		if(memberLogin==null)
 			model.setViewName("memberLogin");
 		else{
-			model.setViewName("showAllProductDescribe");
+			
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
 			MapClass mapClass = new MapClass();
 			mapClass.setId(1);
 			mapClass.setAccount(memberLogin.getAccount());
 			List<MapClass> getVentureCheckMenuList = ventureChecklistDAO.getMapClassList(mapClass);
 			
-			memberLogin.setClassID(15);
-			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
-						
+			//memberLogin.setClassID(15);
+			//List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
 			//get data from request
-			int pageNow = request.getParameter("p")==null?1:Integer.parseInt(request.getParameter("p"));
-			
-			//set pager
-			int pageSize = 10;
-			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
-			int count = productDAO.countProductByMember(memberLogin);
-			String pageUrl = "showAllProductDescribe";
-			PageCount pageCount = new PageCount(pageNow, pageSize, count, pageUrl);
-			pageCount.calculate();
-			
-			//getProduct
-			List<Product> getProductList = new ArrayList<Product>();
-			getProductList = productDAO.getProductList(memberLogin,pageCount.getStart(), pageSize);	
-			
-			model.addObject("page", pageCount);
-			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
-			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
-			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
-			model.addObject("getProductList1",getProductList);
-			model.addObject("getProductList2", new Gson().toJson(getProductList));
+			boolean flag = ventureChecklistDAO.checkVentureCheckListByMemberSubID(memberLogin.getAccount(),123);
+			if(flag==true){
+				model.setViewName("showAllProductDescribe");
+				int pageNow = request.getParameter("p")==null?1:Integer.parseInt(request.getParameter("p"));
+				
+				//set pager
+				int pageSize = 10;
+				ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
+				int count = productDAO.countProductByMember(memberLogin);
+				String pageUrl = "showAllProductDescribe";
+				PageCount pageCount = new PageCount(pageNow, pageSize, count, pageUrl);
+				pageCount.calculate();
+				
+				//getProduct
+				List<Product> getProductList = new ArrayList<Product>();
+				getProductList = productDAO.getProductList(memberLogin,pageCount.getStart(), pageSize);	
+				
+				model.addObject("page", pageCount);
+				model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
+				//model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
+				model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+				model.addObject("getProductList1",getProductList);
+				model.addObject("getProductList2", new Gson().toJson(getProductList));
+			}else
+				model.setViewName("redirect:/targetMarketDescribe");			
 		}
 		
 		return model;
@@ -77,7 +82,7 @@ public class ProductController {
 			model.setViewName("redirect:/showAllProductDescribe");
 			product.setAccount(memberLogin.getAccount());
 			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
-			productDAO.insetProduct(product);		
+			productDAO.insertProduct1(product);		
 		}
 		else
 			model.setViewName("redirect:/");

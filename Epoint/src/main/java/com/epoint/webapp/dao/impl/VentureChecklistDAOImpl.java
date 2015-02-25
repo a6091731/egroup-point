@@ -441,4 +441,33 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 		}
 		return 0;
 	}
+
+	public boolean checkVentureCheckListByMemberSubID(String account, int id) {
+		// TODO Auto-generated method stub
+		sql = "SELECT * FROM venture_checklist WHERE memberAccount=? AND mapSubClassID=?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, account);
+			smt.setInt(2, id);
+			rs = smt.executeQuery();
+			if(rs.next()){				
+				return true;
+			}
+			smt.executeQuery();	
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return false;
+	}
 }

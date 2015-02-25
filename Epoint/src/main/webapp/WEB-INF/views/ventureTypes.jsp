@@ -44,7 +44,7 @@
 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>創業地圖</span></a>
+							<a href="ventureChecklistMap" id="loginButton"><span>創業地圖</span></a>
 						</div>
 					</div>
 					<!-- top-nav -->
@@ -89,7 +89,14 @@
 								<c:forEach items="${getVentureCheckMenuList}" var="menu">
 									<c:choose>
 										<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
-											<li><a href="${menu.url}">${menu.name}</a></li>
+											<!--
+											<c:when test="${menu.classID =='11'">
+												<li class="current"><a href="${menu.url}">${menu.name}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a href="${menu.url}">${menu.name}</a></li>
+											</c:otherwise>
+											-->
 										</c:when>
 										<c:otherwise>
 											<li><a href="${menu.url}">(鎖) ${menu.name}</a></li>

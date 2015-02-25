@@ -130,7 +130,7 @@ public class ProductSalesController {
 			
 			product.setAccount(memberLogin.getAccount());
 			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
-			productDAO.insetProduct(product);		
+			productDAO.insertProduct1(product);		
 			int countProduct = productDAO.countProductByMember(memberLogin);
 			int endPage =  countProduct%10==0 ? countProduct/10 : countProduct/10+1;
 			System.out.println("countProduct"+countProduct);
@@ -169,8 +169,8 @@ public class ProductSalesController {
 			productDAO.delProduct(product);		
 			int countProduct = productDAO.countProductByMember(memberLogin);
 			int endPage =  countProduct%10==0 ? countProduct/10 : countProduct/10+1;
-			System.out.println("countProduct"+countProduct);
-			System.out.println("endPage"+endPage);
+			/*System.out.println("countProduct"+countProduct);
+			System.out.println("endPage"+endPage);*/
 			model.setViewName("redirect:/revenueStructure?p="+endPage);
 		}
 	}

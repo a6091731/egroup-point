@@ -68,7 +68,7 @@
 							</button>
 						</div>
 						<div class="">
-							<button type="button" onclick="back();" class="linkR"><span class="next">取消</span></button>							
+							<button type="button" onclick="index" class="linkR"><span class="next">取消</span></button>							
 						</div>
 					</li>
 				</ul>
@@ -113,11 +113,8 @@
         			equalTo:"密碼輸入不同"
         		}
     		}
-    	});
-		
-		function back(){			
-			history.back();
-		}
+    	});	
+
 	</script>
 </body>
 </html>

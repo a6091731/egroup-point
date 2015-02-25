@@ -40,12 +40,12 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
+					<a href="index"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
 				</div><!-- logo -->
 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>創業地圖</span></a>
+							<a href="ventureCapitalPlanMap" id="loginButton"><span>創業第一年資金規劃</span></a>
 						</div>
 					</div><!-- top-nav -->
 				</nav>
@@ -59,7 +59,8 @@
 					<div class="imgHolder"><img src="images/banner-office.jpg" alt="banner圖片-辦公室"></div>
 				</div>
 				<div class="breadcrumbs">
-            		<p><a href="index.html">首頁</a> &gt; <a href="#">創業地圖</a> &gt; <a href="#">創業第一年營運排程地圖</a> &gt; <span>月現金流</span></p>
+            		<p><a href="index.html">首頁</a> &gt; <a href="venturePlanMap">創業地圖</a> &gt; 
+            		<a href="ventureCapitalPlanMap">創業第一年營運排程地圖</a> &gt; <span>月現金流</span></p>
 	            </div>
 			</div>
 			<div class="grid_3">
@@ -132,7 +133,8 @@
 					</div>
 				</div>
 				<section class="ventureTypesTitle pt20">
-					<h2><i class="fa fa-file-text-o fa-color"></i>${selectedMonth}月收入明細</h2>
+					<h2><i class="fa fa-file-text-o fa-color"></i>${selectedMonth}月收入明細
+					<a class="addProduct" data-reveal-id ="addProduct" data-closeonbackgroundclick="false"><i class="fa fa-plus"></i> 新增產品</a></h2>
 				</section>
 				<div class="ventureTypesInput clearfix">
 						<ul>
@@ -142,7 +144,7 @@
 										<tr>
 											<th>產品名稱</th>
 											<th>產品總利潤</th>
-											<th>收入明細</th>
+											<th>產品明細</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -181,7 +183,7 @@
 										<tr>
 											<th>支出品項</th>
 											<th>支出總費用</th>
-											<th>支出明細</th>
+											<th>銷售明細</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -201,11 +203,82 @@
 		</div>			
 	</div>
 
+	<!-- addProduct BEGIN MODAL WINDOWS -->
+	<div id="addProduct" class="reveal-modal">
+		<div class="cont clearfix">
+			<form id="sendForm1" action="addProductCashFlow" method="post" class="formset clearfix">
+			<input type="hidden" value="${param.mon}" name="mon" id="mon"> 
+				<fieldset class="fieldset2">
+					<legend>1 產品名稱</legend>
+					<div class="field">
+						<label><span>產品名稱：</span> 
+						<input type="text" class="form-control" name="name"> </label>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>2產品規格</legend>
+					<textarea rows="8" name="specification"
+						placeholder="產品內容物數量、產品長寬高、重量"></textarea>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>3包裝說明</legend>
+					<textarea rows="8" name="pack"
+						placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝	"></textarea>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>4終端消費者定價</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" name="endPrice" class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>5實質銷售價格</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" name="salesPrice"	class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="fieldset2">
+					<legend>6直接成本</legend>
+					<div>
+						<div class="field">
+							<label>金額： <input type="text" name="cost" class="form-control">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset id="addSalesQuantityA" class="fieldset2">  
+				 <input type="hidden" id="delCountA" value="0">                                	
+					<legend>產品銷售數量 : </legend>								  			  	
+					<button type="button" class="addbutton" onclick="addbuttonA();"><i class="fa fa-plus"></i> 新增數量</button>
+					<div id="newMoney0" >
+						<div class="deleteblock">
+											  		
+						</div>
+					</div>								  	
+				</fieldset>
+				<button type="submit" class="finishButton" id="addProductSubmit">
+					<span class="next">新增產品</span>
+				</button>
+				<button type="button" class="cancelButton">
+					<span class="next">取消</span>
+				</button>
+			</form>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
 	<!-- BEGIN MODAL WINDOWS -->
         <div id="addProductSales" class="reveal-modal">
                 <div class="cont clearfix">
                         <form class="formset clearfix" id="sendForm2" action="addProductSalseCashFlow" method="post">
-                        		<input type="hidden" id="productID" name="productID">                        		
+                        		<input type="hidden" id="productID" name="productID">   
+                        		<input type="hidden" value="${param.mon}" name="mon" id="mon">                     		
 	                            <fieldset class="fieldset2">
 	                                    <p id="productName"></p>
 	                            </fieldset>
@@ -292,11 +365,7 @@
 		<script src="js/messages_zh_TW.js"></script>
 		<script src="js/additional-methods.js"></script>
 
-		<script>
-			/*var randomScalingFactor = function(){
-				return Math.round(Math.random()*100);
-			};*/
-			
+		<script>			
 			//列出每月支出
 			var expendData = [0,0,0,0,0,0,0,0,0,0,0,0];
 			<c:forEach items='${monthTotalExpenditure}' var='total' varStatus='i'>
@@ -312,29 +381,45 @@
 				datasets : [
 					{
 						label: "收入",
-						fillColor : "rgba(220,220,220,0.2)",
-						strokeColor : "rgba(220,220,220,1)",
-						highlightFill: "rgba(220,220,220,0.75)",
-			            highlightStroke: "rgba(220,220,220,1)",
+						fillColor : "rgba(126, 195, 117,0.2)",
+						strokeColor : "rgba(126, 195, 117,1)",
+						highlightFill: "rgba(126, 195, 117,1)",
+			            highlightStroke: "rgba(126, 195, 117,1)",
+			            //scaleGridLineColor : "rgba(0,0,0,.05)",			            
 						data : incomeData
 					},
 					{
 						label: "支出",
-						fillColor : "rgba(151,187,205,0.2)",
-						strokeColor : "rgba(151,187,205,1)",
-						pointColor : "rgba(151,187,205,1)",
-						highlightFill: "rgba(151,187,205,0.75)",
-			            highlightStroke: "rgba(151,187,205,1)",
+						fillColor : "rgba(226, 84, 84,0.2)",
+						strokeColor : "rgba(226, 84, 84,1)",
+						highlightFill: "rgba(226, 84, 84,1)",
+			            highlightStroke: "rgba(226, 84, 84,1)",
 						data : expendData
 					}
 				]
 			};
 			window.onload = function(){
 				var ctx = document.getElementById("canvas").getContext("2d");
-				var myLineChart = new Chart(ctx).Bar(chartData,{reponsive:true,multiTooltipTemplate: "\<\%\=datasetLabel%> : \<\%\=value%>"});
+				//折線圖
+				//var myLineChart = new Chart(ctx).Line(chartData,{reponsive:true});
+				var myBarChart = new Chart(ctx).Bar(chartData,{reponsive:true,multiTooltipTemplate: "\<\%\=datasetLabel%> : \<\%\=value%>"});
+				canvas.onclick = function(evt){
+				    var activeBars = myBarChart.getBarsAtEvent(evt);
+				    //var mon = activeBars[0].label.toString();
+				    //lert(mon.subString(0,1));
+				    window.open('cashFlow?mon='+activeBars[0].label[0], '_self');
+				   /* alert(activeBars[0].label);
+				    alert(activeBars[0].x);
+				    alert(activeBars[0].y);
+				    alert(activeBars[0].value);*/
+				    // => activeBars is an array of bars on the canvas that are at the same position as the click event.
+				};
 			}
 
-			//支出結構-----------------------------
+			//支出結構----------------------------------------------------------
+			var fixedIndex = 0;
+			var dynamicIndex = 0;
+			var dynamicNum = 2;
 			var fixedIndex, dynamicIndex, dynamicNum;
 			function editPayMoney(subClassID){
 				fixedIndex = 0;
@@ -382,7 +467,7 @@
 									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
 											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
 											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
-									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+									  		'<legend>1.'+(fixedIndex+1)+' '+obj.name+'：</legend>'+
 									  		'<div class="field">'+
 										  		'<label>日期：'+
 										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
@@ -397,7 +482,7 @@
 								}else{
 									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
 											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
-									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+									  		'<legend>1.'+(fixedIndex+1)+' '+obj.name+'：</legend>'+
 									  		'<div class="field">'+
 										  		'<label>日期：'+
 										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string">'+
@@ -464,7 +549,7 @@
 									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
 											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
 											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].record" value="'+tempList[0].record+'">'+
-									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+									  		'<legend>1.'+(fixedIndex+1)+' '+obj.name+'：</legend>'+
 										  	'<div class="field">'+
 										  		'<label>日期：'+
 										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string" value="'+tempList[0].date.substring(0,7)+'">'+
@@ -479,7 +564,7 @@
 								}else{
 									$('#sendForm').append('<fieldset class="fieldset" id="field'+obj.itemID+'">'+
 											'<input type="hidden" name="fixedPayMoney['+fixedIndex+'].ID" value="'+obj.itemID+'">'+
-									  		'<legend>1.'+(fixedIndex+1)+' 固定成本['+obj.name+']：</legend>'+
+									  		'<legend>1.'+(fixedIndex+1)+' '+obj.name+'：</legend>'+
 										  	'<div class="field">'+
 										  		'<label>日期：'+
 										  			'<input type="month" class="form-control dateValidate" name="fixedPayMoney['+fixedIndex+'].date_string">'+
@@ -505,53 +590,160 @@
 				});
 			}
 			
-			function addPayMoney(itemID){
-				$('#field'+itemID).append(
-					'<div id="paymoney_'+dynamicIndex+'">'+
-					'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].ID" value="'+itemID+'">'+
-					  	'<div class="field">'+
-				  		'<label>日期：'+
-				  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
-				  		'</label>'+
-				  	'</div>'+
-				  	'<div class="field">'+
-				  		'<label>金額：'+
-				  			'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+dynamicIndex+'].money">'+
-				  		'</label>'+
-				  	'</div>'+
-				  	'<div class="field">'+
-				  		'<button type="button" class="deletebutton" onClick="delPayMoney('+itemID+','+dynamicIndex+')"><i class="fa fa-times"></i> 刪除</button>'+
-				  	'</div>'+
-			  	'</div>');
-				dynamicIndex++;
-			}
 			
-			function delPayMoney(itemID,index){
-				if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
-					$('#paymoney_'+index).remove();
-				}
-			}
 			
-			function delExistPayMoney(itemID,index,record){
-				if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
-					$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].record" value="'+record+'">');
-            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].ID" value="'+itemID+'">');
-					$('#paymoney_'+index).remove();
-				}
-			}
-			
-			//收入結構-----------------------------
+			//收入結構----------------------------------------------------------
 			var addSalesQuantityCount = 1;
 			var index = 1;
 			var count = 1;
 			var deletedIndex = 0;
 			
+			var addSalesQuantityCountA = 1;
+			var indexA = 0;
+			var countA = 1;
+			var deletedIndexA = 0;
+			
 			 $(function(){
 		            $(".cancelButton").click(function(){
-		            	alert("hehe");
 						$(".close-reveal-modal").trigger("click");
-						alert("321");
 					});
+		            //sendForm1----------------------------------------------------------		           	 
+		            $("#sendForm1").validate({
+		            	rules:{
+		            		name:{
+		            			required:true,
+		            			maxlength:10
+		            		},			
+		            		specification:{
+				    			required:true,
+				    			maxlength:150
+				    		},			
+				    		pack:{
+				    			required:true,
+				    			maxlength:150
+				    		},			
+				    		endPrice:{
+				    			required:true,
+				    			number: true,
+				    			maxlength:9,
+				    			min:1,
+				    			digits:true 
+				    			
+				    		},			
+				    		salesPrice:{
+				    			required:true,
+				    			number: true,
+				    			maxlength:9,
+				    			min:1,
+				    			digits:true 
+				    		},			
+				    		cost:{
+				    			required:true,
+				    			number: true,
+				    			maxlength:9,
+				    			min:1,
+				    			digits:true 
+				    			
+				    		}
+		            	},
+		            	messages:{
+		            		name:{
+		            			required:"此欄位不能空白",
+		            			maxlength:"長度不能超過{0}"
+		            		},
+		            		specification:{
+		            			required:"此欄位不能空白",
+		            			maxlength:"長度不能超過{0}"
+		            		},
+		            		pack:{
+		            			required:"此欄位不能空白",
+		            			maxlength:"長度不能超過{0}"
+		            		},
+		            		endPrice:{
+		            			required:"此欄位不能空白",
+		            			number: "請輸入數字",
+		            			maxlength:"長度不能超過{0}",
+		            			min:"請輸入大於0的金額",
+		            			digits:"請輸入整數" 
+		            		},
+		            		salesPrice:{
+		            			required:"此欄位不能空白",
+		            			number: "請輸入數字",
+		            			maxlength:"長度不能超過{0}",
+		            			min:"請輸入大於0的金額",
+		            			digits:"請輸入整數" 
+		            		},
+		            		cost:{
+		            			required:"此欄位不能空白",
+		            			number: "請輸入數字",
+		            			maxlength:"長度不能超過{0}",
+		            			min:"請輸入大於0的金額",
+		            			digits:"請輸入整數" 
+		            		}
+		            	},
+	    	        	submitHandler:function(form){
+	    					$(".salsDateA").attr("name","salsDateA");
+	    					form.submit();
+	    					$(".salsQuantityA").attr("name","salsQuantityA");
+	    					form.submit();
+	    				}
+		            });	
+		            /*$("#addProductSubmit").click(function(){
+		            	var salsClassCount = $('.salsDateA').length
+		            	if(salsClassCount>1){
+		            		$("#salsDateA0").rules("add",{
+		    	        		required:true,
+		    	            	messages:{
+		    	            		required:"請輸入日期",	            		
+		    	            	}
+		    	        	});	        	
+
+		    	        	$("#salsQuantityA0").rules("add",{
+		    	        		required:true,
+		    	            	number: true,
+		    	            	min:1,
+		    	            	maxlength:9,
+		            			digits: true,
+		    	            	messages:{
+		    	            		required:"請輸入數量",
+		    	            		num:"請輸入數字",
+		    	            		min:"請輸入大於0的數量",
+		    	            		maxlength:"請輸入小於10位數的數量",
+			            			digits:"請輸入整數" 
+		    	            	}
+		    	        	});        		    	        	
+		            	}else{	            		
+		            		if($('.salsDateA').val()!="" || $('.salsQuantityA').val()!=""){
+		            			$("#salsDateA0").rules("add",{
+			    	        		required:true,
+			    	            	messages:{
+			    	            		required:"請輸入日期",	            		
+			    	            	}
+			    	        	});	        	
+
+			    	        	$("#salsQuantityA0").rules("add",{
+			    	        		required:true,
+			    	            	number: true,
+			    	            	min:1,
+			    	            	maxlength:9,
+			            			digits: true,
+			    	            	messages:{
+			    	            		required:"請輸入數量",
+			    	            		num:"請輸入數字",
+			    	            		min:"請輸入大於0的數量",
+			    	            		maxlength:"請輸入小於10位數的數量",
+				            			digits:"請輸入整數" 
+			    	            	}
+			    	        	});        	
+			    	        	
+		            		}else{
+		            			//alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
+		            			$(".close-reveal-modal").trigger("click");
+		            		}        
+		            	}
+					});	*/   
+		            
+		         	//sendForm2----------------------------------------------------------
 		            $("#sendForm2").validate({
 		            	rules:{},
 		            	messages:{},
@@ -577,11 +769,13 @@
 		    	            	number: true,
 		    	            	min:1,
 		    	            	maxlength:9,
+		            			digits: true,
 		    	            	messages:{
 		    	            		required:"請輸入數量",
 		    	            		num:"請輸入數字",
 		    	            		min:"請輸入大於0的數量",
-		    	            		maxlength:"請輸入小於10位數的數量"
+		    	            		maxlength:"請輸入小於10位數的數量",
+			            			digits:"請輸入整數" 
 		    	            	}
 		    	        	});        		    	        	
 		            	}else{	            		
@@ -598,23 +792,25 @@
 			    	            	number: true,
 			    	            	min:1,
 			    	            	maxlength:9,
+			            			digits: true,
 			    	            	messages:{
 			    	            		required:"請輸入數量",
 			    	            		num:"請輸入數字",
 			    	            		min:"請輸入大於0的數量",
-			    	            		maxlength:"請輸入小於10位數的數量"
+			    	            		maxlength:"請輸入小於10位數的數量",
+				            			digits:"請輸入整數" 
 			    	            	}
 			    	        	});        	
 			    	        	
 		            		}else{
-		            			alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
+		            			//alert("請注意，因為您沒有輸入任何資料，此產品的銷售數量為0。");
 		            			$(".close-reveal-modal").trigger("click");
 		            		}        
 		            	}
 					});	   
 		     	});
 		        
-		        function deleteProduct(){
+		        /*function deleteProduct(){
 		        	$.ajax({
 						url:"getProductSalesListByMemberID",
 						data:{
@@ -622,8 +818,107 @@
 						},
 						dataType:"json",
 		        	})
+		        }*/
+		        
+		      	//支出sendForm function----------------------------------------------------------
+		        function addPayMoney(itemID){
+					alert('itemID='+itemID);
+					alert('dynamicIndex='+dynamicIndex);
+					var addpayMoneyText =
+						'<div id="paymoney_'+123+'">'+
+						'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].ID" value="'+itemID+'">'+
+						'<div class="field">'+
+					  	'<label>日期：'+
+					  	'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+dynamicIndex+'].date_string">'+
+					  	'</label>'+
+					  	'</div>'+
+					  	'<div class="field">'+
+					  	'<label>金額：'+
+					  	'<input type="text" class="form-control moneyValidate" name="dynamicPayMoney['+dynamicIndex+'].money">'+
+					  	'</label>'+
+					  	'</div>'+
+					  	'<div class="field">'+
+					  	'<button type="button" class="deletebutton" onClick="delPayMoney('+itemID+','+dynamicIndex+')"><i class="fa fa-times"></i> 刪除</button>'+
+					  	'</div>'+
+				  		'</div>';          		
+					$('#field'+itemID).append(addpayMoneyText);
+					dynamicIndex++;
+				}
+				
+				function delPayMoney(itemID,index){
+					if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
+						$('#paymoney_'+index).remove();
+					}
+				}
+				
+				function delExistPayMoney(itemID,index,record){
+					if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
+						$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].record" value="'+record+'">');
+	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].ID" value="'+itemID+'">');
+						$('#paymoney_'+index).remove();
+					}
+				}
+		        
+		        
+		      	//收入sendForm1 function----------------------------------------------------------
+		        function addValidateA(getIndex){
+		        	$("#salsDateA"+getIndex).rules("add",{
+		        		required:true,
+		            	messages:{
+		            		required:"請輸入日期",	            		
+		            	}
+		        	});	        	
+
+		        	$("#salsQuantityA"+getIndex).rules("add",{
+		        		required:true,
+		            	number: true,
+		            	min:1,
+		            	maxlength:9,
+            			digits: true,
+		            	messages:{
+		            		required:"請輸入數量",
+		            		num:"請輸入數字",
+		            		min:"請輸入大於0的數量",
+		            		maxlength:"請輸入小於10位數的數量",
+	            			digits:"請輸入整數" 
+		            	}
+		        	});
+		        }		
+		        
+		        function addbuttonA(){
+		        	var addSalesQuantityText =
+					  	'<div class="deleteblock" id="newMoneyA'+indexA+'">'+
+						'<div class="field">'+  	
+						'<label>日期：'+		
+						'<input type="month" class="form-control salsDateA" id="salsDateA'+indexA+'" name="salsDateA'+indexA+'">'+  			
+						'</label>'+  		
+						'</div>'+  	
+						'<div class="field">'+  	
+						'<label>數量：'+ 		
+						'<input type="text" class="form-control salsQuantityA"  id="salsQuantityA'+indexA+'" name="salsQuantityA'+indexA+'">'+ 			
+						'</label>'+  		
+						'</div>'+  	
+						'<div class="field">'+  	
+						'<button type="button" class="deletebutton" onclick="deletebuttonA('+indexA+');"><i class="fa fa-times"></i> 刪除</button>'+  		
+						'</div>'+  				  		
+					  	'</div>';	            		
+		            	$('#addSalesQuantityA').append(addSalesQuantityText);
+		            	var delCountA = $('#delCountA').val();
+		            	delCountA++;	            	
+		            	$('#delCountA').val(delCountA);
+		            	addValidateA(indexA);
+		            	indexA++;
 		        }
 		        
+		        function deletebuttonA(indexA){
+		        	var delCountA = $('#delCountA').val();
+		        	if(delCountA>0){
+	            		$("#newMoneyA"+indexA).remove();  
+	            		delCountA--;
+	            		$('#delCountA').val(delCountA);
+		        	}
+	           	}
+		      	//收入sendForm2 function----------------------------------------------------------
 		        function addValidate(getIndex){
 		        	$("#salsDate"+getIndex).rules("add",{
 		        		required:true,
@@ -637,11 +932,13 @@
 		            	number: true,
 		            	min:1,
 		            	maxlength:9,
+            			digits: true,
 		            	messages:{
 		            		required:"請輸入數量",
 		            		num:"請輸入數字",
 		            		min:"請輸入大於0的數量",
-		            		maxlength:"請輸入小於10位數的數量"
+		            		maxlength:"請輸入小於10位數的數量",
+	            			digits:"請輸入整數" 
 		            	}
 		        	});
 		        }		        		        
@@ -683,88 +980,88 @@
 		        	}
 	           	}
 		        
-			function newProductSales(i){
-				var list = $.parseJSON('${totalIncomeByMemberDate2}');
-				$('#productID').val(list[i].id);
-				$('#productName').text(list[i].name);
-				$('#delCount').val(1);
-				var delCount = $('#delCount').val();
-				$.ajax({
-					url:"getProductSalesListByMemberID",
-					data:{
-						productID : list[i].id
-					},
-					dataType:"json",
-					success:function(result){
-						$('#addSalesQuantity').html("");
-						var addSalesQuantityText = 
-							'<legend>產品銷售數量 : </legend>'+							  			  	
-						  	'<button type="button" class="addbutton" onclick="addbutton();"><i class="fa fa-plus"></i> 新增數量</button>'+
-							'<div id="newMoney0" >'+
-							'<div class="deleteblock">'+
-							'<div class="field">'+
-							'<label>日期：'+
-							'<input type="month" class="form-control salsDate" id="salsDate0" name="salsDate">'+
-							'</label>'+
-							'</div>'+
-							'<div class="field">'+
-							'<label>數量：'+
-							'<input type="text" class="form-control salsQuantity" id="salsQuantity0" name="salsQuantity">'+
-							'</label>'+
-							'</div>'+
-							'<div class="field">'+
-							'<button type="button" class="deletebutton" onclick="deletebutton(0);"><i class="fa fa-times"></i> 刪除</button>'+
-							'</div>'+		  		
-							'</div>'+
-							'</div>';
-						$('#addSalesQuantity').append(addSalesQuantityText);
-						$("#salsDate0").val("");
-						$("#salsQuantity0").val("");
-						if(result.length>0){
-							$("#salsDate0").val(result[0].date_string);
-							$("#salsQuantity0").val(result[0].quantity);							
-							for(var i=1; i<result.length; i++){
-				            	$('#delCount').val($('#delCount').val()+1)
-								addSalesQuantityText = 
-								  	'<div class="deleteblock" id="newMoney'+index+'">'+
-									'<div class="field">'+  	
-									'<label>日期：'+		
-									'<input type="month" class="form-control salsDate" id="salsDate'+index+'" name="salsDate'+index+'" value="'+result[i].date_string+'">'+  			
-									'</label>'+  		
-									'</div>'+  	
-									'<div class="field">'+  	
-									'<label>數量：'+ 		
-									'<input type="text" class="form-control salsQuantity" id="salsQuantity'+index+'" name="salsQuantity'+index+'" value="'+result[i].quantity+'">'+ 			
-									'</label>'+  		
-									'</div>'+  	
-									'<div class="field">'+  	
-									'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
-									'</div>'+  				  		
-								  	'</div>';
-				            	$('#addSalesQuantity').append(addSalesQuantityText);	
-				            	delCount++;
-				            	$('#delCount').val(delCount);
-				            	addValidate(index);
-				            	index++;
+				function newProductSales(i){
+					var list = $.parseJSON('${totalIncomeByMemberDate2}');
+					$('#productID').val(list[i].id);
+					$('#productName').text(list[i].name);
+					$('#delCount').val(1);
+					var delCount = $('#delCount').val();
+					$.ajax({
+						url:"getProductSalesListByMemberID",
+						data:{
+							productID : list[i].id
+						},
+						dataType:"json",
+						success:function(result){
+							$('#addSalesQuantity').html("");
+							var addSalesQuantityText = 
+								'<legend>產品銷售數量 : </legend>'+							  			  	
+							  	'<button type="button" class="addbutton" onclick="addbutton();"><i class="fa fa-plus"></i> 新增數量</button>'+
+								'<div id="newMoney0" >'+
+								'<div class="deleteblock">'+
+								'<div class="field">'+
+								'<label>日期：'+
+								'<input type="month" class="form-control salsDate" id="salsDate0" name="salsDate">'+
+								'</label>'+
+								'</div>'+
+								'<div class="field">'+
+								'<label>數量：'+
+								'<input type="text" class="form-control salsQuantity" id="salsQuantity0" name="salsQuantity">'+
+								'</label>'+
+								'</div>'+
+								'<div class="field">'+
+								'<button type="button" class="deletebutton" onclick="deletebutton(0);"><i class="fa fa-times"></i> 刪除</button>'+
+								'</div>'+		  		
+								'</div>'+
+								'</div>';
+							$('#addSalesQuantity').append(addSalesQuantityText);
+							$("#salsDate0").val("");
+							$("#salsQuantity0").val("");
+							if(result.length>0){
+								$("#salsDate0").val(result[0].date_string);
+								$("#salsQuantity0").val(result[0].quantity);							
+								for(var i=1; i<result.length; i++){
+					            	$('#delCount').val($('#delCount').val()+1)
+									addSalesQuantityText = 
+									  	'<div class="deleteblock" id="newMoney'+index+'">'+
+										'<div class="field">'+  	
+										'<label>日期：'+		
+										'<input type="month" class="form-control salsDate" id="salsDate'+index+'" name="salsDate'+index+'" value="'+result[i].date_string+'">'+  			
+										'</label>'+  		
+										'</div>'+  	
+										'<div class="field">'+  	
+										'<label>數量：'+ 		
+										'<input type="text" class="form-control salsQuantity" id="salsQuantity'+index+'" name="salsQuantity'+index+'" value="'+result[i].quantity+'">'+ 			
+										'</label>'+  		
+										'</div>'+  	
+										'<div class="field">'+  	
+										'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
+										'</div>'+  				  		
+									  	'</div>';
+					            	$('#addSalesQuantity').append(addSalesQuantityText);	
+					            	delCount++;
+					            	$('#delCount').val(delCount);
+					            	addValidate(index);
+					            	index++;
+								}
 							}
 						}
-					}
-				});
-			}
-		
-			function calculateEndDate(startDate){
-				var endDate;
-				var endYear = parseInt(startDate.substring(0,4));
-				var endMon = parseInt(startDate.substring(5,7))-1;
-				if(endMon == 0){
-					endDate = endYear+'-12';
-				}else{
-					endYear++;
-					endMon = '0'+endMon;
-					endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
+					});
 				}
-				return endDate;
-			}
+			
+				function calculateEndDate(startDate){
+					var endDate;
+					var endYear = parseInt(startDate.substring(0,4));
+					var endMon = parseInt(startDate.substring(5,7))-1;
+					if(endMon == 0){
+						endDate = endYear+'-12';
+					}else{
+						endYear++;
+						endMon = '0'+endMon;
+						endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
+					}
+					return endDate;
+				}
 		</script> 
 </body>
 </html>

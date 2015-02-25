@@ -290,12 +290,16 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 		return allPayMoney;
 	}
 	
-	public List<PayMoney> getMonthTotalMoneyBySubClassID(String account,String date){
-		String sql = "SELECT SUM(m.payMoney) AS Total,m.*,i.mapSubClassID,s.mapSubClassName FROM pay_money m "
+	public List<PayMoney> getMonthTotalMoneyBySubclassID(String account,String date){
+		/*String sql = "SELECT SUM(m.payMoney) AS Total,m.*,i.mapSubClassID,s.mapSubClassName FROM pay_money m "
 				+ "INNER JOIN pay_item i ON m.payItemID = i.payItemID LEFT JOIN map_subclass s ON "
 				+ "i.mapSubClassID = s.mapSubClassID WHERE m.memberAccount = ? AND m.payDate LIKE ? "
-				+ "GROUP BY i.mapSubClassID";
-		List<PayMoney> allPayMoney = new ArrayList<PayMoney>();
+				+ "GROUP BY i.mapSubClassID";*/
+		sql = "SELECT i.mapSubClassID, s.mapSubClassName ,m.payDate , m.payItemID,SUM(IFNULL(m.payMoney,0)) AS Total "
+				+ "FROM pay_item i LEFT JOIN map_subclass s ON i.mapSubClassID = s.mapSubClassID "
+				+ "LEFT JOIN pay_money m ON i.payItemID = m.payItemID AND m.memberAccount= ? AND m.payDate LIKE ? "
+				+ "GROUP BY s.mapSubClassID";
+		List<PayMoney> payMoneyList = new ArrayList<PayMoney>();
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
@@ -309,7 +313,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				payMoney.setMonthTotal(rs.getInt("Total"));
 				payMoney.setSubClassName(rs.getString("mapSubClassName"));
 				payMoney.setSubClassID(rs.getInt("mapSubClassID"));
-				allPayMoney.add(payMoney);
+				payMoneyList.add(payMoney);
 			}
 			rs.close();
 			smt.close();
@@ -322,7 +326,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				} catch (SQLException e) {}
 			}
 		}
-		return allPayMoney;
+		return payMoneyList;
 	}
 
 	public double getVentureCapitalPercent(Member member) {
@@ -394,5 +398,31 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 			}
 		}
 		return yearExpenditure;
+	}
+
+	public boolean checkPayMoneyByMember(Member member) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		sql = "SELECT * FROM pay_money WHERE memberAccount = ?";
+		try {
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, member.getAccount());
+			rs = smt.executeQuery();
+			if(rs.next()){
+				flag = true;
+			}
+			rs.close();
+			smt.close();	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return flag;
 	}
 }

@@ -72,25 +72,29 @@ select{
         -o-border-radius:3px;
         -moz-border-radius:3px;
         padding: 15px 30px;
-        font-size: 16px;
+        font-size: 16px;/*
         -webkit-box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
         -moz-box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
-        box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);
+        box-shadow: 0px 5px 0px #ee9800, 0px 5px 10px rgba(0,0,0,.7);*/
 }
 .nextStepButton span.next:hover{
         background: #ee9800;
+
+        -webkit-box-shadow: 0px 5px 5px rgba(0,0,0,.3);
+        -moz-box-shadow: 0px 5px 5px rgba(0,0,0,.3);
+        box-shadow: 0px 5px 5px rgba(0,0,0,.3);/*
         -webkit-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
         -moz-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
-        box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);
+        box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.7);*/
         text-decoration: none;
 }
-.nextStepButton span.next:active{
+/*.nextStepButton span.next:active{
         -webkit-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
         -moz-box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
         box-shadow: 0px 5px 0px #B87000, 0px 5px 10px rgba(0,0,0,.9);
         position: relative;
         top: 6px;
-}
+}*/
 .finishButton {
         display: inline-block;
         position: relative;
@@ -930,3 +934,13 @@ i.fa-left{margin-left: 10px;}
 .tab a.active { font-weight: bold; }
 .tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }
 
+/************
+* =jquery.validate
+*************/
+label.error {
+	/* remove the next line when you have trouble in IE6 with labels in list */
+	color: red;
+	font-style: italic;
+	
+}
+/************

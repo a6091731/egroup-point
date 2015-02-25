@@ -45,7 +45,7 @@
 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>創業地圖</span></a>
+							<a href="ventureChecklistMap" id="loginButton"><span>創業地圖</span></a>
 						</div>
 					</div><!-- top-nav -->
 				</nav>
@@ -285,49 +285,358 @@
 		            	number: true,
 		            	min:0,
 		            	maxlength:9,
+		    			digits:true,
 		            	messages:{
 		            		required:"請輸入數量",
 		            		number:"請輸入數字",
 		            		min:"請輸入大於0的數量",
-		            		maxlength:"請輸入小於10位數的數量"
+		            		maxlength:"請輸入小於10位數的數量",
+	            			digits:"請輸入整數" 
 		            	}
 		            });
 	            });
+	            //M	
+	            $("#MQ0").keyup(function(){
+	            	MQ1Rule();
+	            	MQ2Rule();
+	            	MQ3Rule();
+	            	MQ4Rule();
+	            	MQ5Rule();
+				});
+	            $("#MQ1").keyup(function(){
+	            	MQ1Rule();
+	            	MQ2Rule();
+	            	MQ3Rule();
+	            	MQ4Rule();
+	            	MQ5Rule();
+				});
 	            
+	            $("#MQ2").keyup(function(){
+	            	MQ2Rule();
+	            	MQ3Rule();
+	            	MQ4Rule();
+	            	MQ5Rule();
+				});
+	            
+	            $("#MQ3").keyup(function(){
+	            	MQ3Rule();
+	            	MQ4Rule();
+	            	MQ5Rule();
+				});
+	            
+	            $("#MQ4").keyup(function(){
+	            	MQ4Rule();
+	            	MQ5Rule();
+				});
+	            	           
+	            //R
+	            $("#RQ0").keyup(function(){
+	            	RQ1Rule();
+	            	RQ2Rule();
+	            	RQ3Rule();
+	            	RQ4Rule();
+	            	RQ5Rule();
+				});	
+	            $("#RQ1").keyup(function(){
+	            	RQ1Rule();
+	            	RQ2Rule();
+	            	RQ3Rule();
+	            	RQ4Rule();
+	            	RQ5Rule();
+				});	           
+	            $("#RQ2").keyup(function(){
+	            	RQ2Rule();
+	            	RQ3Rule();
+	            	RQ4Rule();
+	            	RQ5Rule();
+				});	           
+	            $("#RQ3").keyup(function(){
+	            	RQ3Rule();
+	            	RQ4Rule();
+	            	RQ5Rule();
+				});
+	            $("#RQ4").keyup(function(){
+	            	RQ4Rule();
+	            	RQ5Rule();
+				});
+	            $("#RQ5").keyup(function(){
+	            	RQ5Rule();
+				});
+	            
+	            //S 
+	            $("#SQ0").keyup(function(){
+	            	SQ1Rule();
+	            	SQ2Rule();
+	            	SQ3Rule();
+	            	SQ4Rule();
+	            	SQ5Rule(); 
+				});	
+	            $("#SQ1").keyup(function(){
+	            	SQ1Rule();
+	            	SQ2Rule();
+	            	SQ3Rule();
+	            	SQ4Rule();
+	            	SQ5Rule(); 
+				});	            	            
+	            $("#SQ2").keyup(function(){
+	            	SQ2Rule();
+	            	SQ3Rule();
+	            	SQ4Rule();
+	            	SQ5Rule(); 
+				});
+	            $("#SQ3").keyup(function(){
+	            	SQ3Rule();
+	            	SQ4Rule();
+	            	SQ5Rule(); 
+				});	            
+	            $("#SQ4").keyup(function(){
+	            	SQ4Rule();
+	            	SQ5Rule();
+				});	            
+	            $("#SQ5").keyup(function(){
+	            	SQ5Rule(); 
+				});
+	            
+	            //O 
+	            $("#OQ0").keyup(function(){
+	            	OQ1Rule();
+	            	OQ2Rule();
+	            	OQ3Rule();
+	            	OQ4Rule();
+	            	OQ5Rule();
+				});
+	            $("#OQ1").keyup(function(){
+	            	OQ1Rule();
+	            	OQ2Rule();
+	            	OQ3Rule();
+	            	OQ4Rule();
+	            	OQ5Rule();
+				});
+	            $("#OQ2").keyup(function(){
+	            	OQ2Rule();
+	            	OQ3Rule();
+	            	OQ4Rule();
+	            	OQ5Rule();
+				});
+	            $("#OQ3").keyup(function(){
+	            	OQ3Rule();
+	            	OQ4Rule();
+	            	OQ5Rule();
+				});
+	            $("#OQ4").keyup(function(){
+	            	OQ4Rule();
+	            	OQ5Rule();
+				});
+	            $("#OQ5").keyup(function(){
+	            	OQ5Rule();
+				});
+	            
+	            //textarea提示
 	            $("#content171").attr("placeholder","");
 				$("#content172").attr("placeholder","");
 				$("#content173").attr("placeholder","");
 	        });
 	        
 	        function total1(){
-	        	var setTotal = Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val());
-	        	$('#setTotalQ0').text(!isNaN(setTotal)?setTotal:0); 
+	        	var setTotal0 = Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val());
+	        	$('#setTotalQ0').text(!isNaN(setTotal0)?setTotal0:0); 
 	        	$('#totalQ0').val(parseInt($('#setTotalQ0').text()));
 	        }
 	        
 	        function total2(){
-	        	var setTotal = Number($('#MQ1').val())+Number($('#RQ1').val())+Number($('#SQ1').val())+Number($('#OQ1').val());
-	        	$('#setTotalQ1').text(!isNaN(setTotal)?setTotal:0);
+	        	var setTotal1 = Number($('#MQ1').val())+Number($('#RQ1').val())+Number($('#SQ1').val())+Number($('#OQ1').val());
+	        	$('#setTotalQ1').text(!isNaN(setTotal1)?setTotal1:0);
            	 	$('#totalQ1').val(parseInt($('#setTotalQ1').text()));
 	        }
 	        
 	        function total3(){
-	        	var setTotal = Number($('#MQ2').val())+Number($('#RQ2').val())+Number($('#SQ2').val())+Number($('#OQ2').val());
-	        	$('#setTotalQ2').text(!isNaN(setTotal)?setTotal:0);
+	        	var setTotal2 = Number($('#MQ2').val())+Number($('#RQ2').val())+Number($('#SQ2').val())+Number($('#OQ2').val());
+	        	$('#setTotalQ2').text(!isNaN(setTotal2)?setTotal2:0);
             	$('#totalQ2').val(parseInt($('#setTotalQ2').text()));
 	        }
 	        
 	        function total4(){
-	        	var setTotal = Number($('#MQ3').val())+Number($('#RQ3').val())+Number($('#SQ3').val())+Number($('#OQ3').val());
-	        	$('#setTotalQ3').text(!isNaN(setTotal)?setTotal:0);
+	        	var setTotal3 = Number($('#MQ3').val())+Number($('#RQ3').val())+Number($('#SQ3').val())+Number($('#OQ3').val());
+	        	$('#setTotalQ3').text(!isNaN(setTotal3)?setTotal3:0);
            	 	$('#totalQ3').val(parseInt($('#setTotalQ3').text()));
 	        }
 	        
 	        function total5(){
-	        	var setTotal = Number($('#MQ4').val())+Number($('#RQ4').val())+Number($('#SQ4').val())+Number($('#OQ4').val());
-	        	$('#setTotalQ4').text(!isNaN(setTotal)?setTotal:0);
+	        	var setTotal4 = Number($('#MQ4').val())+Number($('#RQ4').val())+Number($('#SQ4').val())+Number($('#OQ4').val());
+	        	$('#setTotalQ4').text(!isNaN(setTotal4)?setTotal4:0);
            		$('#totalQ4').val(parseInt($('#setTotalQ4').text()));
 	        }
+	        
+	        function MQ1Rule(){
+            	$("#MQ1").rules("add",{
+	            	min: parseInt($("#MQ0").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }	   
+	        
+            function MQ2Rule(){
+            	$("#MQ2").rules("add",{
+	            	min:parseInt($("#MQ1").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            
+            function MQ3Rule(){
+            	$("#MQ3").rules("add",{
+	            	min:parseInt($("#MQ2").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            
+            function MQ4Rule(){
+            	$("#MQ4").rules("add",{
+	            	min:parseInt($("#MQ3").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            
+            function MQ5Rule(){
+            	$("#MQ5").rules("add",{
+ 	            	min:parseInt($("#MQ4").val()),
+ 	            	messages:{
+ 	            		min:"人員數量不能少於前季{0}人"
+ 	            	}
+ 	        	});
+            }
+            
+            function RQ1Rule(){
+            	$("#RQ1").rules("add",{
+	 	            min:parseInt($("#RQ0").val()),
+	 	            messages:{
+	 	            	min:"人員數量不能少於前季{0}人"
+	 	            }
+	 	        });
+            }
+            
+            function RQ2Rule(){
+            	$("#RQ2").rules("add",{
+ 	            	min:parseInt($("#RQ1").val()),
+ 	            	messages:{
+ 	            		min:"人員數量不能少於前季{0}人"
+ 	            	}
+ 	        	});
+            }
+            
+            function RQ3Rule(){
+            	$("#RQ3").rules("add",{
+ 	            	min:parseInt($("#RQ2").val()),
+ 	            	messages:{
+ 	            		min:"人員數量不能少於前季{0}人"
+ 	            	}
+ 	        	});
+            }
+            
+            function RQ4Rule(){
+            	$("#RQ4").rules("add",{
+	            	min:parseInt($("#RQ3").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            
+            function RQ5Rule(){
+            	$("#RQ5").rules("add",{
+	            	min:parseInt($("#RQ4").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            
+            function SQ1Rule(){
+            	$("#SQ1").rules("add",{
+	            	min:parseInt($("#SQ0").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            function SQ2Rule(){
+            	$("#SQ2").rules("add",{
+	            	min:parseInt($("#SQ1").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            function SQ3Rule(){
+            	$("#SQ3").rules("add",{
+	            	min:parseInt($("#SQ2").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            function SQ4Rule(){
+            	$("#SQ4").rules("add",{
+	            	min:parseInt($("#SQ3").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            function SQ5Rule(){
+            	$("#SQ5").rules("add",{
+ 	            	min:parseInt($("#SQ4").val()),
+ 	            	messages:{
+ 	            		min:"人員數量不能少於前季{0}人"
+ 	            	}
+ 	        	});
+            }
+            function OQ1Rule(){
+            	$("#OQ1").rules("add",{
+ 	            	min:parseInt($("#OQ0").val()),
+ 	            	messages:{
+ 	            		min:"人員數量不能少於前季{0}人"
+ 	            	}
+ 	        	});
+            }
+            function OQ2Rule(){
+            	$("#OQ2").rules("add",{
+ 	            	min:parseInt($("#OQ1").val()),
+ 	            	messages:{
+ 	            		min:"人員數量不能少於前季{0}人"
+ 	            	}
+ 	        	});
+            }
+            function OQ3Rule(){
+            	$("#OQ3").rules("add",{
+ 	            	min:parseInt($("#OQ2").val()),
+ 	            	messages:{
+ 	            		min:"人員數量不能少於前季{0}人"
+ 	            	}
+ 	        	});
+            }
+            function OQ4Rule(){
+            	$("#OQ4").rules("add",{
+	            	min:parseInt($("#OQ3").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
+            function OQ5Rule(){
+            	$("#OQ5").rules("add",{
+	            	min:parseInt($("#OQ4").val()),
+	            	messages:{
+	            		min:"人員數量不能少於前季{0}人"
+	            	}
+	        	});
+            }
 	    </script>
 	 <!-- responsive-table -->  
 	    <script src="js/responsive-tables.js"></script>

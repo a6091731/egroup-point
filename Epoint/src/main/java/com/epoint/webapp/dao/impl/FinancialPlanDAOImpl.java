@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import com.epoint.webapp.dao.FinancialPlanDAO;
 import com.epoint.webapp.entity.FinancialPlan;
+import com.epoint.webapp.entity.Member;
 
 public class FinancialPlanDAOImpl implements FinancialPlanDAO {
 	private DataSource dataSource;
@@ -144,5 +145,31 @@ public class FinancialPlanDAOImpl implements FinancialPlanDAO {
 			}
 		}
 		return allFinancialPlans;
+	}
+
+	public boolean checkFinancialPlanByMember(Member member) {
+		// TODO Auto-generated method stub
+				boolean flag = false;
+				String sql = "SELECT * FROM financial_plan WHERE memberAccount = ?";
+				try {
+					conn = dataSource.getConnection();
+					smt = conn.prepareStatement(sql);
+					smt.setString(1, member.getAccount());
+					rs = smt.executeQuery();
+					if(rs.next()){
+						flag = false;
+					}
+					rs.close();
+					smt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					if (conn != null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {}
+					}
+				}		
+				return flag;
 	}
 }

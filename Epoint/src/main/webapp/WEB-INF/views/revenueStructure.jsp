@@ -43,12 +43,12 @@
 		<div class="container">
 			<div class="grid_12">
 				<div class="logo">
-					<a href="index.html"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
+					<a href="index"><img src="./images/egroup.png" alt="創業e點通品牌標誌"></a>
 				</div><!-- logo -->
 				<nav class="clearfix">
 					<div class="top-nav">
 						<div class="top-nav-right">
-							<a href="javascript:;" id="loginButton"><span>創業地圖</span></a>
+							<a href="ventureCapitalPlanMap" id="loginButton"><span>創業第一年資金規劃</span></a>
 						</div>
 					</div><!-- top-nav -->
 				</nav>
@@ -161,7 +161,7 @@
 								</c:forEach>			
 				            </ul>
                         </div>
-						<a href="ventureCapitalPlanMap" class="nextStepButton"><span class="next">回創業第一年營運排成地圖<i class="fa fa-arrow-right"></i></span></a>
+						<a href="ventureCapitalPlanMap" class="nextStepButton"><span class="next">回創業第一年營運排程地圖<i class="fa fa-arrow-right"></i></span></a>
 					</div>
 				</form>
 			</div>
@@ -357,7 +357,7 @@
 	            	messages:{},
     	        	submitHandler:function(form){
     					$(".salsDate").attr("name","salsDate");
-    					form.submit();
+    					//form.submit();
     					$(".salsQuantity").attr("name","salsQuantity");
     					form.submit();
     				}

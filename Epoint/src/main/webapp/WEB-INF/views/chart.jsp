@@ -19,7 +19,7 @@
 		var pieData = [
 			<c:forEach items='${dataList}' var='label' varStatus='status'>
 				{
-					value : ${label.value},
+					value : '${label.value}',
 					color: '${label.color}',
 					//highlight: '${label.highlight}',
 					label: '${label.label}'

@@ -110,7 +110,6 @@ public class VentureChecklistController {
 		if(memberLogin==null)
 			model.setViewName("memberLogin");
 		else{
-			model.setViewName("targetMarketDescribe");
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
 			MapClass mapClass = new MapClass();
 			mapClass.setId(1);
@@ -119,10 +118,17 @@ public class VentureChecklistController {
 			
 			memberLogin.setClassID(12);
 			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
-			
-			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
-			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
-			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			boolean flag = ventureChecklistDAO.checkVentureCheckListByMemberSubID(memberLogin.getAccount(),113);
+			if(getVentureCheckMenuList.get(0).getNow()>=12 || flag==true){
+				//System.out.println("1");
+				model.setViewName("targetMarketDescribe");
+				model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
+				model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
+				model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			}else{
+				//System.out.println("2");
+				model.setViewName("redirect:/ventureTypes");
+			}			
 		}
 		
 		return model;
@@ -135,8 +141,8 @@ public class VentureChecklistController {
 		if(memberLogin==null)
 			model.setViewName("memberLogin");
 		else{
-			model.setViewName("businessSales");
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
 			MapClass mapClass = new MapClass();
 			mapClass.setId(1);
 			mapClass.setAccount(memberLogin.getAccount());
@@ -144,13 +150,16 @@ public class VentureChecklistController {
 			
 			memberLogin.setClassID(14);
 			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
-			
-			
-			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
-			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
-			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			boolean flag = productDAO.checkProductByMember(memberLogin);
+			if(flag==true){
+				model.setViewName("businessSales");
+				model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
+				model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
+				model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			}else{
+				model.setViewName("redirect:/showAllProductDescribe");
+			}
 		}
-		
 		return model;
 	}
 	
@@ -161,7 +170,6 @@ public class VentureChecklistController {
 		if(memberLogin==null)
 			model.setViewName("memberLogin");
 		else{
-			model.setViewName("businessMarket");
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
 			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
 			MapClass mapClass = new MapClass();
@@ -172,92 +180,16 @@ public class VentureChecklistController {
 			memberLogin.setClassID(15);
 			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
 			boolean productFlag = productDAO.checkProductByMember(memberLogin);
-			
-			model.addObject("productFlag",productFlag);
-			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
-			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
-			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
-		}
-		
-		return model;
-	}
-	
-	@RequestMapping(value = "/humanResourcePlan", method = RequestMethod.GET)
-	public ModelAndView humanResoucePlan (HttpServletRequest request, HttpSession session){
-		ModelAndView model = new ModelAndView();
-		Member memberLogin = (Member)session.getAttribute("loginMember");
-		if(memberLogin==null)
-			model.setViewName("memberLogin");
-		else{
-			model.setViewName("humanResourcePlan");
-			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
-			MapClass mapClass = new MapClass();
-			mapClass.setId(1);
-			mapClass.setAccount(memberLogin.getAccount());
-			List<MapClass> getVentureCheckMenuList = ventureChecklistDAO.getMapClassList(mapClass);
-		
-			memberLogin.setClassID(17);
-			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
-			
-			HumanResourceContent getHumanResourceContentByMember = ventureChecklistDAO.getHumanResourceContentByMember(memberLogin);			
-			if(getHumanResourceContentByMember!=null){
-				getHumanResourceContentByMember.setMQ0(getHumanResourceContentByMember.getMQ0()==0?0:getHumanResourceContentByMember.getMQ0());
-				getHumanResourceContentByMember.setMQ1(getHumanResourceContentByMember.getMQ1()==0?0:getHumanResourceContentByMember.getMQ1());
-				getHumanResourceContentByMember.setMQ2(getHumanResourceContentByMember.getMQ2()==0?0:getHumanResourceContentByMember.getMQ2());
-				getHumanResourceContentByMember.setMQ3(getHumanResourceContentByMember.getMQ3()==0?0:getHumanResourceContentByMember.getMQ3());
-				getHumanResourceContentByMember.setMQ4(getHumanResourceContentByMember.getMQ4()==0?0:getHumanResourceContentByMember.getMQ4());
-				getHumanResourceContentByMember.setRQ0(getHumanResourceContentByMember.getRQ0()==0?0:getHumanResourceContentByMember.getRQ0());
-				getHumanResourceContentByMember.setRQ1(getHumanResourceContentByMember.getRQ1()==0?0:getHumanResourceContentByMember.getRQ1());
-				getHumanResourceContentByMember.setRQ2(getHumanResourceContentByMember.getRQ2()==0?0:getHumanResourceContentByMember.getRQ2());
-				getHumanResourceContentByMember.setRQ3(getHumanResourceContentByMember.getRQ3()==0?0:getHumanResourceContentByMember.getRQ3());
-				getHumanResourceContentByMember.setRQ4(getHumanResourceContentByMember.getRQ4()==0?0:getHumanResourceContentByMember.getRQ4());
-				getHumanResourceContentByMember.setSQ0(getHumanResourceContentByMember.getSQ0()==0?0:getHumanResourceContentByMember.getSQ0());
-				getHumanResourceContentByMember.setSQ1(getHumanResourceContentByMember.getSQ1()==0?0:getHumanResourceContentByMember.getSQ1());
-				getHumanResourceContentByMember.setSQ2(getHumanResourceContentByMember.getSQ2()==0?0:getHumanResourceContentByMember.getSQ2());
-				getHumanResourceContentByMember.setSQ3(getHumanResourceContentByMember.getSQ3()==0?0:getHumanResourceContentByMember.getSQ3());
-				getHumanResourceContentByMember.setSQ4(getHumanResourceContentByMember.getSQ4()==0?0:getHumanResourceContentByMember.getSQ4());
-				getHumanResourceContentByMember.setOQ0(getHumanResourceContentByMember.getOQ0()==0?0:getHumanResourceContentByMember.getOQ0());
-				getHumanResourceContentByMember.setOQ1(getHumanResourceContentByMember.getOQ1()==0?0:getHumanResourceContentByMember.getOQ1());
-				getHumanResourceContentByMember.setOQ2(getHumanResourceContentByMember.getOQ2()==0?0:getHumanResourceContentByMember.getOQ2());
-				getHumanResourceContentByMember.setOQ3(getHumanResourceContentByMember.getOQ3()==0?0:getHumanResourceContentByMember.getOQ3());
-				getHumanResourceContentByMember.setOQ4(getHumanResourceContentByMember.getOQ4()==0?0:getHumanResourceContentByMember.getOQ4());
-				getHumanResourceContentByMember.setTotalQ0(getHumanResourceContentByMember.getTotalQ0()==0?0:getHumanResourceContentByMember.getTotalQ0());
-				getHumanResourceContentByMember.setTotalQ1(getHumanResourceContentByMember.getTotalQ1()==0?0:getHumanResourceContentByMember.getTotalQ1());
-				getHumanResourceContentByMember.setTotalQ2(getHumanResourceContentByMember.getTotalQ2()==0?0:getHumanResourceContentByMember.getTotalQ2());
-				getHumanResourceContentByMember.setTotalQ3(getHumanResourceContentByMember.getTotalQ3()==0?0:getHumanResourceContentByMember.getTotalQ3());
-				getHumanResourceContentByMember.setTotalQ4(getHumanResourceContentByMember.getTotalQ4()==0?0:getHumanResourceContentByMember.getTotalQ4());
+			boolean flag = ventureChecklistDAO.checkVentureCheckListByMemberSubID(memberLogin.getAccount(),142);
+			if(getVentureCheckMenuList.get(0).getNow()>=15 || flag==true){
+				model.setViewName("businessMarket");
+				model.addObject("productFlag",productFlag);
+				model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
+				model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
+				model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			}else{
+				model.setViewName("redirect:/businessSales");
 			}
-			else {
-				getHumanResourceContentByMember.setMQ0(0);
-				getHumanResourceContentByMember.setMQ1(0);
-				getHumanResourceContentByMember.setMQ2(0);
-				getHumanResourceContentByMember.setMQ3(0);
-				getHumanResourceContentByMember.setMQ4(0);
-				getHumanResourceContentByMember.setRQ0(0);
-				getHumanResourceContentByMember.setRQ1(0);
-				getHumanResourceContentByMember.setRQ2(0);
-				getHumanResourceContentByMember.setRQ3(0);
-				getHumanResourceContentByMember.setRQ4(0);
-				getHumanResourceContentByMember.setSQ0(0);
-				getHumanResourceContentByMember.setSQ1(0);
-				getHumanResourceContentByMember.setSQ2(0);
-				getHumanResourceContentByMember.setSQ3(0);
-				getHumanResourceContentByMember.setSQ4(0);
-				getHumanResourceContentByMember.setOQ0(0);
-				getHumanResourceContentByMember.setOQ1(0);
-				getHumanResourceContentByMember.setOQ2(0);
-				getHumanResourceContentByMember.setOQ3(0);
-				getHumanResourceContentByMember.setOQ4(0);
-				getHumanResourceContentByMember.setTotalQ0(0);
-				getHumanResourceContentByMember.setTotalQ1(0);
-				getHumanResourceContentByMember.setTotalQ2(0);
-				getHumanResourceContentByMember.setTotalQ3(0);
-				getHumanResourceContentByMember.setTotalQ4(0);
-			}
-			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
-			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
-			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
-			model.addObject("getHumanResourceContentByMember",getHumanResourceContentByMember);
 		}
 		
 		return model;
@@ -270,7 +202,6 @@ public class VentureChecklistController {
 		if(memberLogin==null)
 			model.setViewName("memberLogin");
 		else{
-			model.setViewName("businessOrientation");
 			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
 			MapClass mapClass = new MapClass();
 			mapClass.setId(1);
@@ -278,12 +209,102 @@ public class VentureChecklistController {
 			List<MapClass> getVentureCheckMenuList = ventureChecklistDAO.getMapClassList(mapClass);
 			memberLogin.setClassID(16);
 			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
-			
-			model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
-			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
-			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
-			
+			boolean flag = ventureChecklistDAO.checkVentureCheckListByMemberSubID(memberLogin.getAccount(),153);
+			if(getVentureCheckMenuList.get(0).getNow()>=16 || flag==true){
+				model.setViewName("businessOrientation");
+				model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
+				model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
+				model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+			}else{
+				model.setViewName("redirect:/businessMarket");
+			}
 		}			
+		return model;
+	}
+	
+	@RequestMapping(value = "/humanResourcePlan", method = RequestMethod.GET)
+	public ModelAndView humanResoucePlan (HttpServletRequest request, HttpSession session){
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");
+		if(memberLogin==null)
+			model.setViewName("memberLogin");
+		else{
+			VentureChecklistDAO ventureChecklistDAO = (VentureChecklistDAO)context.getBean("ventureChecklistDAO");
+			MapClass mapClass = new MapClass();
+			mapClass.setId(1);
+			mapClass.setAccount(memberLogin.getAccount());
+			List<MapClass> getVentureCheckMenuList = ventureChecklistDAO.getMapClassList(mapClass);
+		
+			memberLogin.setClassID(17);
+			List<MapSubclass> getVentureCheckListByMember= ventureChecklistDAO.getVentureCheckListByMember(memberLogin);
+			boolean flag = ventureChecklistDAO.checkVentureCheckListByMemberSubID(memberLogin.getAccount(),1613);
+			if(getVentureCheckMenuList.size()!=0 && getVentureCheckMenuList.get(0).getNow()>=17 || flag==true){
+				model.setViewName("humanResourcePlan");
+				HumanResourceContent getHumanResourceContentByMember = ventureChecklistDAO.getHumanResourceContentByMember(memberLogin);			
+				if(getHumanResourceContentByMember!=null){
+					getHumanResourceContentByMember.setMQ0(getHumanResourceContentByMember.getMQ0()==0?0:getHumanResourceContentByMember.getMQ0());
+					getHumanResourceContentByMember.setMQ1(getHumanResourceContentByMember.getMQ1()==0?0:getHumanResourceContentByMember.getMQ1());
+					getHumanResourceContentByMember.setMQ2(getHumanResourceContentByMember.getMQ2()==0?0:getHumanResourceContentByMember.getMQ2());
+					getHumanResourceContentByMember.setMQ3(getHumanResourceContentByMember.getMQ3()==0?0:getHumanResourceContentByMember.getMQ3());
+					getHumanResourceContentByMember.setMQ4(getHumanResourceContentByMember.getMQ4()==0?0:getHumanResourceContentByMember.getMQ4());
+					getHumanResourceContentByMember.setRQ0(getHumanResourceContentByMember.getRQ0()==0?0:getHumanResourceContentByMember.getRQ0());
+					getHumanResourceContentByMember.setRQ1(getHumanResourceContentByMember.getRQ1()==0?0:getHumanResourceContentByMember.getRQ1());
+					getHumanResourceContentByMember.setRQ2(getHumanResourceContentByMember.getRQ2()==0?0:getHumanResourceContentByMember.getRQ2());
+					getHumanResourceContentByMember.setRQ3(getHumanResourceContentByMember.getRQ3()==0?0:getHumanResourceContentByMember.getRQ3());
+					getHumanResourceContentByMember.setRQ4(getHumanResourceContentByMember.getRQ4()==0?0:getHumanResourceContentByMember.getRQ4());
+					getHumanResourceContentByMember.setSQ0(getHumanResourceContentByMember.getSQ0()==0?0:getHumanResourceContentByMember.getSQ0());
+					getHumanResourceContentByMember.setSQ1(getHumanResourceContentByMember.getSQ1()==0?0:getHumanResourceContentByMember.getSQ1());
+					getHumanResourceContentByMember.setSQ2(getHumanResourceContentByMember.getSQ2()==0?0:getHumanResourceContentByMember.getSQ2());
+					getHumanResourceContentByMember.setSQ3(getHumanResourceContentByMember.getSQ3()==0?0:getHumanResourceContentByMember.getSQ3());
+					getHumanResourceContentByMember.setSQ4(getHumanResourceContentByMember.getSQ4()==0?0:getHumanResourceContentByMember.getSQ4());
+					getHumanResourceContentByMember.setOQ0(getHumanResourceContentByMember.getOQ0()==0?0:getHumanResourceContentByMember.getOQ0());
+					getHumanResourceContentByMember.setOQ1(getHumanResourceContentByMember.getOQ1()==0?0:getHumanResourceContentByMember.getOQ1());
+					getHumanResourceContentByMember.setOQ2(getHumanResourceContentByMember.getOQ2()==0?0:getHumanResourceContentByMember.getOQ2());
+					getHumanResourceContentByMember.setOQ3(getHumanResourceContentByMember.getOQ3()==0?0:getHumanResourceContentByMember.getOQ3());
+					getHumanResourceContentByMember.setOQ4(getHumanResourceContentByMember.getOQ4()==0?0:getHumanResourceContentByMember.getOQ4());
+					getHumanResourceContentByMember.setTotalQ0(getHumanResourceContentByMember.getTotalQ0()==0?0:getHumanResourceContentByMember.getTotalQ0());
+					getHumanResourceContentByMember.setTotalQ1(getHumanResourceContentByMember.getTotalQ1()==0?0:getHumanResourceContentByMember.getTotalQ1());
+					getHumanResourceContentByMember.setTotalQ2(getHumanResourceContentByMember.getTotalQ2()==0?0:getHumanResourceContentByMember.getTotalQ2());
+					getHumanResourceContentByMember.setTotalQ3(getHumanResourceContentByMember.getTotalQ3()==0?0:getHumanResourceContentByMember.getTotalQ3());
+					getHumanResourceContentByMember.setTotalQ4(getHumanResourceContentByMember.getTotalQ4()==0?0:getHumanResourceContentByMember.getTotalQ4());
+				}
+				else {
+					getHumanResourceContentByMember.setMQ0(0);
+					getHumanResourceContentByMember.setMQ1(0);
+					getHumanResourceContentByMember.setMQ2(0);
+					getHumanResourceContentByMember.setMQ3(0);
+					getHumanResourceContentByMember.setMQ4(0);
+					getHumanResourceContentByMember.setRQ0(0);
+					getHumanResourceContentByMember.setRQ1(0);
+					getHumanResourceContentByMember.setRQ2(0);
+					getHumanResourceContentByMember.setRQ3(0);
+					getHumanResourceContentByMember.setRQ4(0);
+					getHumanResourceContentByMember.setSQ0(0);
+					getHumanResourceContentByMember.setSQ1(0);
+					getHumanResourceContentByMember.setSQ2(0);
+					getHumanResourceContentByMember.setSQ3(0);
+					getHumanResourceContentByMember.setSQ4(0);
+					getHumanResourceContentByMember.setOQ0(0);
+					getHumanResourceContentByMember.setOQ1(0);
+					getHumanResourceContentByMember.setOQ2(0);
+					getHumanResourceContentByMember.setOQ3(0);
+					getHumanResourceContentByMember.setOQ4(0);
+					getHumanResourceContentByMember.setTotalQ0(0);
+					getHumanResourceContentByMember.setTotalQ1(0);
+					getHumanResourceContentByMember.setTotalQ2(0);
+					getHumanResourceContentByMember.setTotalQ3(0);
+					getHumanResourceContentByMember.setTotalQ4(0);
+				}
+				model.addObject("getVentureCheckMenuList",getVentureCheckMenuList);
+				model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
+				model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
+				model.addObject("getHumanResourceContentByMember",getHumanResourceContentByMember);
+			}else{
+				model.setViewName("redirect:/businessOrientation");
+			}
+			
+		}
+		
 		return model;
 	}
 	
