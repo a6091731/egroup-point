@@ -333,12 +333,13 @@
 				var ctx = document.getElementById("canvas").getContext("2d");
 				var myLineChart = new Chart(ctx).Bar(chartData,{reponsive:true,multiTooltipTemplate: "\<\%\=datasetLabel%> : \<\%\=value%>"});
 			}
-			
+
 			//支出結構-----------------------------
+			var fixedIndex, dynamicIndex, dynamicNum;
 			function editPayMoney(subClassID){
-				var fixedIndex = 0;
-				var dynamicIndex = 0;
-				var dynamicNum = 2;
+				fixedIndex = 0;
+				dynamicIndex = 0;
+				dynamicNum = 2;
 				$.ajax({
 					url:"getPayMoneyDetailBySubClassID",
 					data:{
