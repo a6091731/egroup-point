@@ -524,7 +524,7 @@
 										dynamicIndex++;
 									}
 									appendText += '</fieldset>';
-								}else{
+								}/*else{
 									appendText += '<div id="paymoney_'+dynamicIndex+'">'+
 											  	'<div class="field">'+
 											  		'<label>日期：'+
@@ -537,11 +537,11 @@
 											  		'</label>'+
 											  	'</div>'+
 											  	'<div class="field">'+
-											  		'<button class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>'+
+											  		'<button type="button" class="deletebutton" ><i class="fa fa-times"></i> 刪除</button>'+
 											  	'</div>'+
 										  	'</div></fieldset>';
 									dynamicIndex++;
-								}
+								}*/
 								$('#sendForm').append(appendText);
 								dynamicNum++;
 							}else if(obj.status == 3){
@@ -822,10 +822,8 @@
 		        
 		      	//支出sendForm function----------------------------------------------------------
 		        function addPayMoney(itemID){
-					alert('itemID='+itemID);
-					alert('dynamicIndex='+dynamicIndex);
 					var addpayMoneyText =
-						'<div id="paymoney_'+123+'">'+
+						'<div id="paymoney_'+dynamicIndex+'">'+
 						'<input type="hidden" name="dynamicPayMoney['+dynamicIndex+'].ID" value="'+itemID+'">'+
 						'<div class="field">'+
 					  	'<label>日期：'+
@@ -846,17 +844,17 @@
 				}
 				
 				function delPayMoney(itemID,index){
-					if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
+					//if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
 						$('#paymoney_'+index).remove();
-					}
+					//}
 				}
 				
 				function delExistPayMoney(itemID,index,record){
-					if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
+					//if($('#field'+itemID+' div[id^="paymoney"]').length > 1){
 						$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].record" value="'+record+'">');
 	            		$('#sendForm').append('<input type="hidden" name="deletedPayMoney['+index+'].ID" value="'+itemID+'">');
 						$('#paymoney_'+index).remove();
-					}
+					//}
 				}
 		        
 		        
