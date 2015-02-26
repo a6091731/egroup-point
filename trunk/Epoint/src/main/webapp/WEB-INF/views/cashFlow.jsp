@@ -57,6 +57,7 @@
 			<div class="grid_12">
 				<div class="banner">
 					<div class="imgHolder"><img src="images/banner-office.jpg" alt="banner圖片-辦公室"></div>
+					<p class="bannerTopic"> 第二步: <br />創業第一年營運排程</p>
 				</div>
 				<div class="breadcrumbs">
             		<p><a href="index.html">首頁</a> &gt; <a href="venturePlanMap">創業地圖</a> &gt; 
@@ -65,59 +66,31 @@
 			</div>
 			<div class="grid_3">
 				<aside>
-					<ul class="sideNav hideBlock">
-						<li ${selectedMonth eq 1 ? "class='current'": ""}><a href="cashFlow?mon=1">1月</a></li>
-						<li ${selectedMonth eq 2 ? "class='current'": ""}><a href="cashFlow?mon=2">2月</a></li>
-						<li ${selectedMonth eq 3 ? "class='current'": ""}><a href="cashFlow?mon=3">3月</a></li>
-						<li ${selectedMonth eq 4 ? "class='current'": ""}><a href="cashFlow?mon=4">4月</a></li>
-						<li ${selectedMonth eq 5 ? "class='current'": ""}><a href="cashFlow?mon=5">5月</a></li>
-						<li ${selectedMonth eq 6 ? "class='current'": ""}><a href="cashFlow?mon=6">6月</a></li>
-						<li ${selectedMonth eq 7 ? "class='current'": ""}><a href="cashFlow?mon=7">7月</a></li>
-						<li ${selectedMonth eq 8 ? "class='current'": ""}><a href="cashFlow?mon=8">8月</a></li>
-						<li ${selectedMonth eq 9 ? "class='current'": ""}><a href="cashFlow?mon=9">9月</a></li>
-						<li ${selectedMonth eq 10 ? "class='current'": ""}><a href="cashFlow?mon=10">10月</a></li>
-						<li ${selectedMonth eq 11 ? "class='current'": ""}><a href="cashFlow?mon=11">11月</a></li>
-						<li ${selectedMonth eq 12 ? "class='current'": ""}><a href="cashFlow?mon=12">12月</a></li>
-					</ul>	
+					<ul class="sideNav hideBlock">	
+						<c:forEach items="${monthCashFlow}" var="cash" varStatus="i">		
+							<li ${selectedMonth eq (i.index+1) ? "class='current'": ""}><a href="cashFlow?mon=${i.index+1 }">${i.index+1 }月<span class="${cash<0?'label-flow':'label-flow label-red'}" >累積金額   ${cash}</span></a></li>							
+						</c:forEach>
+						<!-- 
+						<li ${selectedMonth eq 1 ? "class='current'": ""}><a href="cashFlow?mon=1">1月<span class="label-flow" >累積金額  ${monthCashFlow[0]} </span></a></li>
+						<li ${selectedMonth eq 2 ? "class='current'": ""}><a href="cashFlow?mon=2">2月<span class="label-flow label-red">累積金額  ${monthCashFlow[1]}</span></a></li>
+						<li ${selectedMonth eq 3 ? "class='current'": ""}><a href="cashFlow?mon=3">3月<span class="label-flow" >累積金額  ${monthCashFlow[2]} </span></a></li>
+						<li ${selectedMonth eq 4 ? "class='current'": ""}><a href="cashFlow?mon=4">4月<span class="" >累積金額   ${monthCashFlow[3]} </span></a></li>
+						<li ${selectedMonth eq 5 ? "class='current'": ""}><a href="cashFlow?mon=5">5月<span class="label-flow" >累積金額   ${monthCashFlow[4]} </span></a></li>
+						<li ${selectedMonth eq 6 ? "class='current'": ""}><a href="cashFlow?mon=6">6月<span class="label-flow label-red" >累積金額   ${monthCashFlow[5]} </span></a></li>
+						<li ${selectedMonth eq 7 ? "class='current'": ""}><a href="cashFlow?mon=7">7月<span class="label-flow label-red" >累積金額  ${monthCashFlow[9]} </span></a></li>
+						<li ${selectedMonth eq 8 ? "class='current'": ""}><a href="cashFlow?mon=8">8月<span class="label-flow" >累積金額  ${monthCashFlow[7]} </span></a></li>
+						<li ${selectedMonth eq 9 ? "class='current'": ""}><a href="cashFlow?mon=9">9月<span class="label-flow label-red" >累積金額  ${monthCashFlow[8]} </span></a></li>
+						<li ${selectedMonth eq 10 ? "class='current'": ""}><a href="cashFlow?mon=10">10月<span class="label-flow" >累積金額  ${monthCashFlow[9]} </span></a></li>
+						<li ${selectedMonth eq 11 ? "class='current'": ""}><a href="cashFlow?mon=11">11月<span class="label-flow" >累積金額   ${monthCashFlow[10]} </span></a></li>
+						<li ${selectedMonth eq 12 ? "class='current'": ""}><a href="cashFlow?mon=12">12月<span class="label-flow" >累積金額  ${monthCashFlow[11]} </span></a></li>
+					
+						 --></ul>	
 	                <div class="memberRwdnav clearfix">
 	                    <nav class="primary">
 	                        <ul class="rightnav">
-	                            <li>
-	                                <a href="javascript:;">1月</a>
-	                            </li>	 
-	                            <li>
-	                                <a href="javascript:;">2月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">3月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">4月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">5月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">6月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">7月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">8月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">9月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">10月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">11月</a>
-	                            </li>	
-	                            <li>
-	                                <a href="javascript:;">12月</a>
-	                            </li>	                   
+	                            <c:forEach items="${monthCashFlow}" var="cash" varStatus="i">		
+								<li ${selectedMonth eq (i.index+1) ? "class='current'": ""}><a href="cashFlow?mon=${i.index+1 }">${i.index+1 }月<span class="${cash<0?'label-flow':'label-flow label-red'}" >累積金額   ${cash}</span></a></li>							
+								</c:forEach>                 
 	                        </ul>
 	                    </nav>
 	                </div>          	
@@ -133,8 +106,7 @@
 					</div>
 				</div>
 				<section class="ventureTypesTitle pt20">
-					<h2><i class="fa fa-file-text-o fa-color"></i>${selectedMonth}月收入明細
-					<a class="addProduct" data-reveal-id ="addProduct" data-closeonbackgroundclick="false"><i class="fa fa-plus"></i> 新增產品</a></h2>
+					<h2><i class="fa fa-file-text-o fa-color"></i>${selectedMonth}月收入明細</h2>
 				</section>
 				<div class="ventureTypesInput clearfix">
 						<ul>
@@ -148,6 +120,7 @@
 										</tr>
 									</thead>
 									<tbody>
+									<tr><td><a class="addProduct" data-reveal-id ="addProduct" data-closeonbackgroundclick="false"><i class="fa fa-plus"></i> 新增產品</a></td></tr>
 									<c:forEach items="${totalIncomeByMemberDate1}" var="product" varStatus="i">		
 									<tr>
 										<td>${product.name }</td>
@@ -376,6 +349,8 @@
 			<c:forEach items='${monthTotalIncome}' var='total' varStatus='i'>
 				incomeData['${i.index}'] = ${total};
 			</c:forEach>
+			//每月現金流
+						
 			var chartData = {
 				labels : ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
 				datasets : [
@@ -384,8 +359,7 @@
 						fillColor : "rgba(126, 195, 117,0.2)",
 						strokeColor : "rgba(126, 195, 117,1)",
 						highlightFill: "rgba(126, 195, 117,1)",
-			            highlightStroke: "rgba(126, 195, 117,1)",
-			            //scaleGridLineColor : "rgba(0,0,0,.05)",			            
+			            highlightStroke: "rgba(126, 195, 117,1)",		            
 						data : incomeData
 					},
 					{
@@ -405,10 +379,11 @@
 				var myBarChart = new Chart(ctx).Bar(chartData,{reponsive:true,multiTooltipTemplate: "\<\%\=datasetLabel%> : \<\%\=value%>"});
 				canvas.onclick = function(evt){
 				    var activeBars = myBarChart.getBarsAtEvent(evt);
-				    //var mon = activeBars[0].label.toString();
-				    //lert(mon.subString(0,1));
 				    window.open('cashFlow?mon='+activeBars[0].label[0], '_self');
-				   /* alert(activeBars[0].label);
+				   /* 				   	
+				    var mon = activeBars[0].label.toString();
+				    lert(mon.subString(0,1));
+				   	alert(activeBars[0].label);
 				    alert(activeBars[0].x);
 				    alert(activeBars[0].y);
 				    alert(activeBars[0].value);*/
@@ -417,9 +392,6 @@
 			}
 
 			//支出結構----------------------------------------------------------
-			var fixedIndex = 0;
-			var dynamicIndex = 0;
-			var dynamicNum = 2;
 			var fixedIndex, dynamicIndex, dynamicNum;
 			function editPayMoney(subClassID){
 				fixedIndex = 0;
@@ -589,8 +561,6 @@
 					}
 				});
 			}
-			
-			
 			
 			//收入結構----------------------------------------------------------
 			var addSalesQuantityCount = 1;

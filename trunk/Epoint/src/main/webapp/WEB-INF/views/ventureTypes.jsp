@@ -88,18 +88,11 @@
 							<ul class="rightnav">
 								<c:forEach items="${getVentureCheckMenuList}" var="menu">
 									<c:choose>
-										<c:when test="${menu.classID <= getVentureCheckMenuListNow+1}">
-											<!--
-											<c:when test="${menu.classID =='11'">
-												<li class="current"><a href="${menu.url}">${menu.name}</a></li>
-											</c:when>
-											<c:otherwise>
-												<li><a href="${menu.url}">${menu.name}</a></li>
-											</c:otherwise>
-											-->
+										<c:when test="${menu.classID <= getVentureCheckMenuListNow+1 || menu.classID eq 11}">
+										<li><a href="${menu.url}"><i class="${menu.css}"></i>${menu.name }</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="${menu.url}">(鎖) ${menu.name}</a></li>
+											<li><div class="mask"></div> <a href="${menu.url}"><i class="fa fa-lock"></i>${menu.name }</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -124,14 +117,14 @@
 								<h4>${ventureCehckList.name}</h4> 
 								<a href="javascript:;" data-reveal-id="help${ventureCehckList.subclassID}"><span>
 								<i class="fa fa-exclamation-circle"></i>我需要範例協助</span></a> 
-							<c:choose>
-								<c:when test="${!empty ventureCehckList.content}">
-									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" >${ventureCehckList.content }</textarea>
-								</c:when>
-								<c:otherwise>
-									<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" ></textarea>
-								</c:otherwise>
-							</c:choose>	
+								<c:choose>
+									<c:when test="${!empty ventureCehckList.content}">
+										<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" >${ventureCehckList.content }</textarea>
+									</c:when>
+									<c:otherwise>
+										<textarea rows="8" id="content${ventureCehckList.subclassID}" name="content${ventureCehckList.subclassID}" ></textarea>
+									</c:otherwise>
+								</c:choose>	
 							</li>	
 						</c:forEach>							
 						</ul>

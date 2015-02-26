@@ -50,12 +50,14 @@ public class CashFlowController {
             //宣告兩個陣列，至多12個月，儲存每月的花費
             int[] monthTotalExpenditure = new int[12];
             int[] monthTotalIncome = new int[12];
+            int[] monthCashFlow = new int[12];
             //每月支出金額--------------            
             if(totalExpenditureByAccount!=null)
 	            for(PayMoney p : totalExpenditureByAccount){
 	            	//折線圖
 	            	int temp = Integer.parseInt(p.getDate().toString().substring(5, 7));
 	            	monthTotalExpenditure[temp-1] = p.getMonthTotal();
+	            	monthCashFlow[temp-1] = -p.getMonthTotal();
 	            }            
             //每月收入金額--------------
             if(totalIncomeByAccount!=null)
@@ -63,6 +65,7 @@ public class CashFlowController {
 	            	//折線圖
 	            	int temp = Integer.parseInt(s.getDate().toString().substring(5, 7));
 	            	monthTotalIncome[temp-1] = s.getMonthIncome();
+	            	monthCashFlow[temp-1] += s.getMonthIncome();
 	           	}
             
             //抓取選擇月份
@@ -78,7 +81,8 @@ public class CashFlowController {
             model.addObject("getMember", loginMember);
             model.addObject("selectedMonth", selectedMonth);
             model.addObject("monthTotalExpenditure", monthTotalExpenditure);
-            model.addObject("monthTotalIncome", monthTotalIncome);            
+            model.addObject("monthTotalIncome", monthTotalIncome);        
+            model.addObject("monthCashFlow", monthCashFlow);     
             model.addObject("totalExpenditureBySubClass", totalExpenditureBySubClass);
             model.addObject("totalIncomeByMemberDate1", totalIncomeByMemberDate);
 			model.addObject("totalIncomeByMemberDate2", new Gson().toJson(totalIncomeByMemberDate));

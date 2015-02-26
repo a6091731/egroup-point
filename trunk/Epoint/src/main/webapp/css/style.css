@@ -165,6 +165,28 @@ ul.sideNav li a:hover{background-color: #eee;color: #000;}
 ul.sideNav li a i               {position: absolute;left: 10px;top: 14px;}
 /*//sideNav */  
 
+.label-flow {
+display: inline;
+padding: 6px 10px;
+font-size: 75%;
+font-weight: 700;
+line-height: 1;
+text-align: center;
+white-space: nowrap;
+vertical-align: baseline;
+border-radius: .25em;
+background-color: #FFFFFF;
+border: 1px solid #208709;
+color: #208709;
+margin: 0 10PX;
+float: right;
+min-width: 120px;
+}
+.label-red {
+background-color: #FFFFFF;
+border: 1px solid red;
+color: red;
+}
 /* navbar */
 .topheader{width: 100%;position: relative;background: #FFF;}
 .topheader-fixed {
