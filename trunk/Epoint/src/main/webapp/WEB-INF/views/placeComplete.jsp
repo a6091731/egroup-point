@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="css/skeleton.css">
 	<!-- style -->
 	<link rel="stylesheet" href="css/style.css">
+	<!-- month picker -->
+	<link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.css">
 	<!-- layout -->
 	<link rel="stylesheet" href="css/layout.css">
 
@@ -125,7 +127,7 @@
 				  		<legend>1.1 營業場所押金：</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[0].date_string" value="${fn:substring(fixedPayMoney[0].date,0,7)}">
+					  			<input  class="monthYearPicker form-control" name="fixedPayMoney[0].date_string" value="${fn:substring(fixedPayMoney[0].date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
@@ -140,7 +142,7 @@
 				  		<legend>1.2 營業場所每月租金：</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[1].date_string" value="${fn:substring(fixedPayMoney[1].date,0,7)}">
+					  			<input class="monthYearPicker form-control" name="fixedPayMoney[1].date_string" value="${fn:substring(fixedPayMoney[1].date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
@@ -155,7 +157,7 @@
 					  	<legend>1.3 水/電/瓦斯/網路/電信申租費用</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[2].date_string" value="${fn:substring(fixedPayMoney[2].date,0,7)}">
+					  			<input class="monthYearPicker form-control" name="fixedPayMoney[2].date_string" value="${fn:substring(fixedPayMoney[2].date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
@@ -170,7 +172,7 @@
 					  	<legend>1.4 水/電/瓦斯/網路/電信月租費</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input type="month" class="form-control dateValidate" name="fixedPayMoney[3].date_string" value="${fn:substring(fixedPayMoney[3].date,0,7)}">
+					  			<input class="monthYearPicker form-control" name="fixedPayMoney[3].date_string" value="${fn:substring(fixedPayMoney[3].date,0,7)}">
 					  		</label>
 					  	</div>
 					  	<div class="field">
@@ -190,7 +192,7 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${card.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control dateValidate" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(card.date,0,7) }">
+						  			<input class="monthYearPicker form-control" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(card.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -216,7 +218,7 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${lawyer.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control dateValidate" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(lawyer.date,0,7) }">
+						  			<input class="monthYearPicker form-control" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(lawyer.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -242,7 +244,7 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${account.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input type="month" class="form-control dateValidate" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
+						  			<input class="monthYearPicker form-control" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(account.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -288,6 +290,8 @@
 		<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
 		<script src="js/jquery.mobilemenu.js"></script>
+	<!-- month picker引入jqueryUI -->
+		<script src="js/jquery-ui-1.9.2.custom.js"></script>
 		
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/messages_zh_TW.js"></script>
@@ -333,7 +337,7 @@
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2125">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input class="monthYearPicker form-control" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -353,7 +357,7 @@
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2126">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input class="monthYearPicker form-control" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -373,7 +377,7 @@
 	            			'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2127">'+
 						  	'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input type="month" class="form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input class="monthYearPicker form-control" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -460,6 +464,41 @@
 				}
 				return endDate;
 			}
+	    	//<!-- month picker -->
+	      	/* $(function() {
+				/*$('.monthYearPicker').datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					dateFormat: 'MM yy'
+				}).focus(function() {
+					var thisCalendar = $(this);
+					$('.ui-datepicker-calendar').detach();
+					$('.ui-datepicker-close').click(function() {
+					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+					thisCalendar.datepicker('setDate', new Date(year, month, 1));
+					});
+				});
+			});*/
+			
+			$('body').on('focus',".monthYearPicker", function(){
+    			$(this).datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					dateFormat: 'MM yy'
+				}).focus(function() {
+					var thisCalendar = $(this);
+					$('.ui-datepicker-calendar').detach();
+					$('.ui-datepicker-close').click(function() {
+					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+					thisCalendar.datepicker('setDate', new Date(year, month, 1));
+					});
+				});
+			});
+			//<!--//_ month picker -->
 	    </script>
 </body>
 </html>
