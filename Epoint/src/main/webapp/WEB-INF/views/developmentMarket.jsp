@@ -54,6 +54,7 @@
 			<div class="grid_12">
 				<div class="banner">
 					<div class="imgHolder"><img src="images/banner-office.jpg" alt="banner圖片-辦公室"></div>
+					<p class="bannerTopic"> 第二步: <br />創業第一年營運排程</p>
 				</div>
 				<div class="breadcrumbs">
             		<p><a href="index">首頁</a> &gt; <a href="venturePlanMap">創業地圖</a> &gt; 

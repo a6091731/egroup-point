@@ -221,8 +221,7 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 				productSalesList.add(productSales);
 			}
 			rs.close();
-			smt.close();
-			return productSalesList;			
+			smt.close();					
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -232,7 +231,7 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 				} catch (SQLException e) {}
 			}
 		}
-		return null;
+		return productSalesList;	
 	}
 
 	public List<ProductSales> getMonthTotalIncomeByMemberDate(String account,
