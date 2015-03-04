@@ -380,18 +380,25 @@ function Datepicker() {
 	this._dayOverClass = 'ui-datepicker-days-cell-over'; // The name of the day hover marker class
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[''] = { // Default regional settings
-		closeText: 'Done', // Display text for close link
+		/*closeText: 'Done', // Display text for close link
 		prevText: 'Prev', // Display text for previous month link
 		nextText: 'Next', // Display text for next month link
-		currentText: 'Today', // Display text for current month link
-		monthNames: ['January','February','March','April','May','June',
+		currentText: 'Today', // Display text for current month link*/
+		closeText: '完成',
+		prevText: '上月', // Display text for previous month link
+		nextText: '下月', // Display text for next month link
+		currentText: '本月', // Display text for current month link
+		/*monthNames: ['January','February','March','April','May','June',
 			'July','August','September','October','November','December'], // Names of months for drop-down and formatting
-		monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // For formatting
+		monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],*/
+		monthNames: ['01','02','03','04','05','06','07','08','09','10','11','12'],
+		monthNamesShort: ['01','02','03','04','05','06','07','08','09','10','11','12'], // For formatting
 		dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], // For formatting
 		dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], // For formatting
 		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'], // Column headings for days starting at Sunday
 		weekHeader: 'Wk', // Column header for week of the year
-		dateFormat: 'mm/dd/yy', // See format options on parseDate
+		dateFormat: 'yy-mm-dd', // See format options on parseDate
+		//dateFormat: 'yy-mm', // See format options on parseDate
 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 		isRTL: false, // True if right-to-left language, false if left-to-right
 		showMonthAfterYear: false, // True if the year select precedes month, false for month then year

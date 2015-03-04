@@ -187,7 +187,7 @@
             	}
             });	 
 			
-			$("#content121").attr("placeholder","性別、年齡、職業");
+			$("#content121").attr("placeholder","性別、年齡、職業、其他特徵");
 			$("#content122").attr("placeholder","餐飲業 : 提供食物外，另提供 內用、外帶、外送等服務，內有冷氣冷氣");
 			$("#content123").attr("placeholder","餐飲業 : 本店都使用有機米，手工麵條早上現做，搭配無農藥自種韭菜，保證吃了健康");
 		});
@@ -195,11 +195,12 @@
 	<!-- BEGIN MODAL WINDOWS -->
 	<!-- targetCustomers -->
 	<div id="help121" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 目標客戶是誰?(誰會買我的東西)</header>
+		<header class="reveal-modal-header">範例協助  :  目標客戶是誰?(誰會買我的東西)</header>
 		<div class="cont clearfix">
 			<p>性別</p>
 			<p>年齡</p>
 			<p>職業</p>
+			<p>其他特徵</p>
 		</div>
 	</div>	
 	<!-- valueProvided -->

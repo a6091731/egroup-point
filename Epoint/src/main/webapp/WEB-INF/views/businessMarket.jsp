@@ -129,7 +129,7 @@
 						</c:forEach>							
 						</ul>
 						<button type="submit" class="nextStepButton">
-							<span class="next">下一步，填寫目標市場描述<i class="fa fa-arrow-right"></i></span>
+							<span class="next">下一步，填寫產業定位<i class="fa fa-arrow-right"></i></span>
 						</button>
 					</div>
 				</form>
@@ -186,16 +186,18 @@
             	}
             });	 
 			
-			$("#content151").attr("placeholder","");
+			$("#content151").attr("placeholder","1.廣告，2.DM，3.朋友推薦");
 			$("#content152").attr("placeholder","1.臉書粉絲團買廣告，2.發廣告單，3.加入愛評網團購，4.請新聞媒體來報導，5.請部落客來撰寫推薦文章");
 			$("#content153").attr("placeholder","1.口耳相傳，2.找朋友介紹推廣，3.參加擺攤市集，4.在社群網路上分享自己的產品");
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
 	<div id="help151" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 行銷策略</header>
+		<header class="reveal-modal-header">範例協助  : 行銷策略(如何讓顧客認識我的產品?)</header>
 		<div class="cont clearfix">
-			<p></p>			
+			<p>廣告</p>	
+			<p>DM</p>		
+			<p>朋友推薦</p>	
 		</div>
 	</div>	
 	<div id="help152" class="reveal-modal">

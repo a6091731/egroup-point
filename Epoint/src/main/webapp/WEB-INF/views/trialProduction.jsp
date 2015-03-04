@@ -131,7 +131,8 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${card.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input class="monthYearPicker form-control" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(card.date,0,7) }">
+						  			<input class="monthYearPicker form-control dateValidate" name="dynamicPayMoney[${index}].date_string" 
+						  			value="${fn:substring(card.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -157,7 +158,8 @@
 					  	<input type="hidden" name="dynamicPayMoney[${index}].record" value="${lawyer.record}">
 						  	<div class="field">
 						  		<label>日期：
-						  			<input class="monthYearPicker form-control" name="dynamicPayMoney[${index}].date_string" value="${fn:substring(lawyer.date,0,7) }">
+						  			<input class="monthYearPicker form-control dateValidate" name="dynamicPayMoney[${index}].date_string" 
+						  			value="${fn:substring(lawyer.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">
@@ -220,23 +222,42 @@
 	            lawyerCount = $('#lawyerCount').val();
 	            index = parseInt(cardCount) + parseInt(lawyerCount);
 	            
-	            $("#sendForm").validate();
-	            $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
+	            $("#sendForm").validate();	 	            
+	            //日期validate
+	            $.validator.addMethod("dRequired", $.validator.methods.required, "請填入日期");
 	            $.validator.addMethod("dateMin", $.validator.methods.min, "時間不得小於您的創業第一年時間 : {0} 開始");
 	            $.validator.addMethod("dateMax", $.validator.methods.max, "時間不得大於您的創業第一年時間 : {0} 結束");
+	            $.validator.addMethod("customDateValidator", function(value, element) {
+	            // yyyy-mm
+	            	var re = /^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/ ; 
+	            	if (! re.test(value) ) return false
+	            	// parseDate throws exception if the value is invalid
+	            	try{
+	            		jQuery.datepicker.parseDate( 'yy-mm', value);return true ;}
+	            		catch(e){return false;} 
+	            	},
+	            	   "您的日期格式錯誤，請輸入 西元年-月份，例如:2015-03"
+	            );
+	            //金額validate   
+	            $.validator.addMethod("cRequired", $.validator.methods.required, "請輸入金額");
+	            $.validator.addMethod("digits", $.validator.methods.digits, "請輸入整數");
+	            $.validator.addMethod("min", $.validator.methods.min, "請輸入大於0的");
+	            $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
+	           
 	            jQuery.validator.addClassRules({
 	            	dateValidate: {
-	            		required: true,
+	            		dRequired: true,
+	            		customDateValidator: true,
 	            		dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
-	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')
+	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')	            		
 	            	},
 	            	moneyValidate: {
-	            		required: true,
+	            		cRequired: true,
 	            		digits: true,
 	            		min: 1,
 	            		cMaxlength: 9
 	            	}
-	            });
+	            }) 
 	            
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
@@ -248,7 +269,7 @@
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2151">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input class="monthYearPicker form-control" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input class="monthYearPicker form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -268,7 +289,7 @@
 	            		'<input type="hidden" name="dynamicPayMoney['+index+'].ID" value="2152">'+
 	            			'<div class="field">'+
 						  		'<label>日期：'+
-						  			'<input class="monthYearPicker form-control" name="dynamicPayMoney['+index+'].date_string">'+
+						  			'<input class="monthYearPicker form-control dateValidate" name="dynamicPayMoney['+index+'].date_string">'+
 						  		'</label>'+
 						  	'</div>'+
 						  	'<div class="field">'+
@@ -323,7 +344,33 @@
 	            });
 	    	}
 	    	
-	    	function calculateEndDate(startDate){
+	    	//設定日期限制的年月
+			var yearMin = '${fn:substring(getMember.capitalDate,0,4)}';
+			var monthMin = '${fn:substring(getMember.capitalDate,5,7)}';
+			var yearMax = (calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')).substring(0,4);
+			var monthMax = (calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')).substring(5,7);
+			$('body').on('focus',".monthYearPicker", function(){
+    			$(this).datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					dateFormat: 'yy-MM',
+					//日期限制
+					minDate: new Date(yearMin, monthMin-1, 1),
+					maxDate: new Date(yearMax, monthMax-1, 1)
+				}).focus(function() {
+					var thisCalendar = $(this);
+					$('.ui-datepicker-calendar').detach();
+					$('.ui-datepicker-close').click(function() {
+						var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+						var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+						thisCalendar.datepicker('setDate', new Date(year, month, 1));
+					});
+				});
+			});
+			
+			//計算一年後日期
+			function calculateEndDate(startDate){
 				var endDate;
 				var endYear = parseInt(startDate.substring(0,4));
 				var endMon = parseInt(startDate.substring(5,7))-1;
@@ -336,40 +383,6 @@
 				}
 				return endDate;
 			}
-	    	//<!-- month picker -->
-	      	/* $(function() {
-				/*$('.monthYearPicker').datepicker({
-					changeMonth: true,
-					changeYear: true,
-					showButtonPanel: true,
-					dateFormat: 'MM yy'
-				}).focus(function() {
-					var thisCalendar = $(this);
-					$('.ui-datepicker-calendar').detach();
-					$('.ui-datepicker-close').click(function() {
-					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-					thisCalendar.datepicker('setDate', new Date(year, month, 1));
-					});
-				});
-			});*/
-			
-			$('body').on('focus',".monthYearPicker", function(){
-    			$(this).datepicker({
-					changeMonth: true,
-					changeYear: true,
-					showButtonPanel: true,
-					dateFormat: 'MM yy'
-				}).focus(function() {
-					var thisCalendar = $(this);
-					$('.ui-datepicker-calendar').detach();
-					$('.ui-datepicker-close').click(function() {
-					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-					thisCalendar.datepicker('setDate', new Date(year, month, 1));
-					});
-				});
-			});
 			//<!--//_ month picker -->
 	    </script>
 </body>

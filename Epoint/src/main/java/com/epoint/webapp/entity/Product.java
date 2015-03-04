@@ -18,6 +18,8 @@ public class Product {
 	private int profit;
 	private int sum;
 	private int totalProfit;
+	private String date_string;
+	private int quantity;
 	
 	
 	public String getAccount() {
@@ -93,4 +95,17 @@ public class Product {
 	public void setTotalProfit(int totalProfit) {
 		this.totalProfit = totalProfit;
 	}
+	public String getDate_string() {
+		return date_string;
+	}
+	public void setDate_string(String date_string) {
+		this.date_string = date_string;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
 }

@@ -329,4 +329,38 @@ public class CashFlowController {
 			model.setViewName("redirect:/");
 		return model;
 	}
+	
+	@RequestMapping(value = "/getProductAndSalesListByMemberID", method = RequestMethod.GET)
+	public @ResponseBody List<Product> getProductSalesListByMemberID (String  productID, HttpSession session) throws ParseException{
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){			
+			model.setViewName("redirect:/revenueStructure");
+			ProductDAO productDAO = (ProductDAO)context.getBean("productDAO");
+			Product product =  new Product();
+			product.setAccount(memberLogin.getAccount());
+			product.setId(productID);
+			List<Product> getProductSalesListByMemberID = productDAO.getProductAndSalesListByMemberID(product);
+			
+			return getProductSalesListByMemberID;				
+		}
+		return null;	
+	}
+	
+	/*@RequestMapping(value = "/getProductAndSalesListByMemberID", method = RequestMethod.GET)
+	public @ResponseBody List<ProductSales> getProductSalesListByMemberID (String  productID, HttpSession session) throws ParseException{
+		ModelAndView model = new ModelAndView();
+		Member memberLogin = (Member)session.getAttribute("loginMember");		
+		if(memberLogin!=null){			
+			model.setViewName("redirect:/revenueStructure");
+			ProductSalesDAO productSalesDAO = (ProductSalesDAO)context.getBean("productSalesDAO");
+			ProductSales productSales = new ProductSales();
+			productSales.setAccount(memberLogin.getAccount());
+			productSales.setId(productID);
+			List<ProductSales> getProductSalesListByMemberID = productSalesDAO.getProductAndSalesListByMemberID(productSales);
+			
+			return getProductSalesListByMemberID;				
+		}
+		return null;	
+	}*/
 }

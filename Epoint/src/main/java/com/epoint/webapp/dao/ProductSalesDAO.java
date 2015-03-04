@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.PayMoney;
+import com.epoint.webapp.entity.Product;
 import com.epoint.webapp.entity.ProductSales;
 
 public interface ProductSalesDAO {
@@ -13,7 +14,6 @@ public interface ProductSalesDAO {
 	public void delProductSalesByMember(ProductSales productSales);
 	public void delProductSalesByMemberDate(String account, String startDate, String endDate);
 	//get
-	public List<ProductSales> getProductSalesListByMemberID(ProductSales productSales);
 	public long getVentureCapitalYearIncome(Member member);
 	public List<ProductSales> getMonTotalIncomeByAccoun(String account);
 	public List<ProductSales> getMonthTotalIncomeByMemberDate(String account,String date);

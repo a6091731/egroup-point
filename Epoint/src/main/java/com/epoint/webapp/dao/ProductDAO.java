@@ -14,6 +14,7 @@ public interface ProductDAO {
 	public List<Product> getProductListSum (Member member,int start, int size);
 	public int countProductByMember(Member member);
 	public List<Product> getAllProductList(Member member);
+	public List<Product> getProductAndSalesListByMemberID(Product Product);
 	//update
 	public void updateProduct(Product product);
 	//del

@@ -4,17 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import com.epoint.webapp.dao.ProductSalesDAO;
 import com.epoint.webapp.entity.Member;
-import com.epoint.webapp.entity.PayMoney;
 import com.epoint.webapp.entity.ProductSales;
-import com.epoint.webapp.util.DateConversion;
 
 public class ProductSalesDAOImpl implements ProductSalesDAO{
 	private DataSource dataSource;
@@ -52,7 +47,7 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 		}
 	}
 
-	public List<ProductSales> getProductSalesListByMemberID(ProductSales productSales1) {
+	/*public List<ProductSales> getProductAndSalesListByMemberID(ProductSales productSales1) {
 		// TODO Auto-generated method stub
 		List<ProductSales> productSalesList = new ArrayList<ProductSales>();
 		sql = "SELECT * FROM product_sales WHERE memberAccount = ? AND productID = ?";		
@@ -90,8 +85,8 @@ public class ProductSalesDAOImpl implements ProductSalesDAO{
 			}
 		}
 		return productSalesList;
-	}
-
+	}*/
+	
 	public void updateProductSales(ProductSales productSales) {
 		// TODO Auto-generated method stub
 		sql = "UPDATE product_sales SET memberAccount = ?, productID = ?, productSalesDate = ?, productSalesQuantity = ? "

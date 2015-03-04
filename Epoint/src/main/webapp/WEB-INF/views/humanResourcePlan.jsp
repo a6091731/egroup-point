@@ -178,6 +178,8 @@
 										</tr>
 									</tbody>
 								</table>
+								
+								
 							</li>
 						</ul>						
 						<button type="submit" class="nextStepButton">
@@ -192,21 +194,21 @@
 
 	<!-- BEGIN MODAL WINDOWS -->
 	<div id="help171" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 創業後自我能力精進計畫</header>
+		<header class="reveal-modal-header">範例協助  : 創業所需的自我能力精進規畫</header>
 		<div class="cont clearfix">
-			<p></p>			
+			<p>增加法令素養，財務觀念， 業務能力...並在什麼時開始，利用什麼方式補強?</p>			
 		</div>
 	</div>	
 	<div id="help172" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 期待補強的不同專長能力</header>
+		<header class="reveal-modal-header">範例協助  : 期待從外面找來補強的專長能力</header>
 		<div class="cont clearfix">
-			<p></p>	
+			<p>需要從外面找財物/研發/業務人員，各幾名? 來補強公司目前的不足</p>	
 		</div>
 	</div>
 	<div id="help173" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 目標人選</header>
 		<div class="cont clearfix">
-			<p></p>			
+			<p>業務人員5名，104網站找; 財務人員1名，朋友介紹...</p>			
 		</div>
 	</div>
 
@@ -223,6 +225,12 @@
 		<script src="js/jquery.validate.js"></script>
 		<script type="text/javascript">
 	        $(function() {
+	        	
+	        	//textarea提示
+	            $("#content171").attr("placeholder","增加法令素養，財務觀念， 業務能力...並在什麼時開始，利用什麼方式補強?");
+				$("#content172").attr("placeholder","需要從外面找財物/研發/業務人員，各幾名? 來補強公司目前的不足");
+				$("#content173").attr("placeholder","業務人員5名，104網站找; 財務人員1名，朋友介紹...");
+				
 	            $('nav.primary .rightnav').mobileMenu();	            
 	            total1();
 	            total2();
@@ -431,10 +439,7 @@
 	            	OQ5Rule();
 				});
 	            
-	            //textarea提示
-	            $("#content171").attr("placeholder","");
-				$("#content172").attr("placeholder","");
-				$("#content173").attr("placeholder","");
+	            
 	        });
 	        
 	        function total1(){
