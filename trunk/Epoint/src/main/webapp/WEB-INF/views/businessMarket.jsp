@@ -131,6 +131,7 @@
 						<button type="submit" class="nextStepButton">
 							<span class="next">下一步，填寫產業定位<i class="fa fa-arrow-right"></i></span>
 						</button>
+						<button type="button" class="nextStepButton mR"><a href="businessSales"><span class="next">上一步，填寫業務<i class="fa fa-arrow-left"></i></span></a></button>&nbsp;&nbsp;
 					</div>
 				</form>
 			</div>

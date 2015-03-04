@@ -162,6 +162,7 @@
 				        </div><!-- page -->
 						<a href="businessSales" class="nextStepButton"><span
 							class="next">下一步，填寫業務<i class="fa fa-arrow-right"></i></span></a>
+						<button type="button" class="nextStepButton mR"><a href="targetMarketDescribe"><span class="next">上一步，填寫目標市場描述<i class="fa fa-arrow-left"></i></span></a></button>&nbsp;&nbsp;
 					</div>
 				</form>
 			</div>
@@ -173,24 +174,24 @@
 		<div class="cont clearfix">
 			<form id="sendForm1" action="addProduct" method="post" class="formset clearfix">
 				<fieldset class="fieldset2">
-					<legend>1 產品名稱</legend>
+					<legend>1. 產品名稱</legend>
 					<div class="field">
 						<label><span>產品名稱：</span> 
 						<input type="text" class="form-control" name="name"> </label>
 					</div>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>2產品規格</legend>
+					<legend>2. 產品規格</legend>
 					<textarea rows="8" name="specification"
 						placeholder="產品內容物數量、產品長寬高、重量"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>3包裝說明</legend>
+					<legend>3. 包裝說明</legend>
 					<textarea rows="8" name="pack"
 						placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝	"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>4終端消費者定價</legend>
+					<legend>4. 終端消費者定價</legend>
 					<div>
 						<div class="field">
 							<label>金額： <input type="text" name="endPrice" class="form-control">
@@ -199,7 +200,7 @@
 					</div>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>5實質銷售價格</legend>
+					<legend>5. 實質銷售價格</legend>
 					<div>
 						<div class="field">
 							<label>金額： <input type="text" name="salesPrice"	class="form-control">
@@ -208,7 +209,7 @@
 					</div>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>6直接成本</legend>
+					<legend>6. 直接成本</legend>
 					<div>
 						<div class="field">
 							<label>金額： <input type="text" name="cost" class="form-control">
@@ -232,25 +233,25 @@
 			<form id="sendForm2" action="editProduct" method="post" class="formset clearfix">
 			<input type="hidden" id="editID" name="id">
 				<fieldset class="fieldset2">
-					<legend>1 產品名稱</legend>
+					<legend>1. 產品名稱</legend>
 					<div class="field">
 						<label><span>產品名稱：</span> 
 						<input type="text" id= "editName" class="form-control" name="name"></label>
 					</div>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>2產品規格</legend>
+					<legend>2. 產品規格</legend>
 					<textarea rows="8" id="editSpecification" name="specification"
 						placeholder="產品內容物數量、產品長寬高、重量"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>3包裝說明</legend>
+					<legend>3. 包裝說明</legend>
 					<textarea rows="8" id="editPack" name="pack"
 						placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝
 						"></textarea>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>4終端消費者定價</legend>
+					<legend>4. 終端消費者定價</legend>
 					<div>
 						<div class="field">
 							<label>金額： <input type="text" id="editEndPrice" name="endPrice" class="form-control">
@@ -259,7 +260,7 @@
 					</div>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>5實質銷售價格</legend>
+					<legend>5. 實質銷售價格</legend>
 					<div>
 						<div class="field">
 							<label>金額： <input type="text" id="editSalesPrice" name="salesPrice"	class="form-control">
@@ -268,7 +269,7 @@
 					</div>
 				</fieldset>
 				<fieldset class="fieldset2">
-					<legend>6直接成本</legend>
+					<legend>6. 直接成本</legend>
 					<div>
 						<div class="field">
 							<label>金額： <input type="text" id="editCost" name="cost" class="form-control">

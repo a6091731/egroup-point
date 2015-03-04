@@ -185,6 +185,7 @@
 						<button type="submit" class="nextStepButton">
 							<span class="next">恭喜您完成創業檢核表 !<i class="fa fa-arrow-right"></i></span>
 						</button>
+						<button type="button" class="nextStepButton mR"><a href="businessOrientation"><span class="next">上一步，填寫產業定位<i class="fa fa-arrow-left"></i></span></a></button>&nbsp;&nbsp;
 					</div>
 				</form>
 			</div>
