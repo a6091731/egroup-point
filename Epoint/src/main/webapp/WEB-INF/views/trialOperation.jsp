@@ -237,7 +237,6 @@
 	            jQuery.validator.addClassRules({
 	            	dateValidate: {
 	            		dRequired: true,
-	            		customDateValidator: true,
 	            		dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
 	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')	            		
 	            	},

@@ -249,23 +249,35 @@
 	            accountCount = $('#accountCount').val();
 	            index = parseInt(cardCount) + parseInt(lawyerCount) + parseInt(accountCount);
 	            
-	            $("#sendForm").validate();
-	            $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
+	            $("#sendForm").validate();	 	            
+	            //日期validate
+	            $.validator.addMethod("dRequired", $.validator.methods.required, "請填入日期");
 	            $.validator.addMethod("dateMin", $.validator.methods.min, "時間不得小於您的創業第一年時間 : {0} 開始");
 	            $.validator.addMethod("dateMax", $.validator.methods.max, "時間不得大於您的創業第一年時間 : {0} 結束");
+	           	
+	            //金額validate   
+	            $.validator.addMethod("cRequired", $.validator.methods.required, "請輸入金額");
+	            $.validator.addMethod("digits", $.validator.methods.digits, "請輸入整數");
+	            $.validator.addMethod("min", $.validator.methods.min, "請輸入大於0的");
+	            $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
+	           
 	            jQuery.validator.addClassRules({
 	            	dateValidate: {
-	            		required: true,
+	            		dRequired: true,
 	            		dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
-	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')
+	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')	            		
 	            	},
 	            	moneyValidate: {
-	            		required: true,
+	            		cRequired: true,
 	            		digits: true,
 	            		min: 1,
 	            		cMaxlength: 9
 	            	}
-	            });
+	            }) 
+	            
+	            $('input').click(function(){
+	            	$(this).removeAttr("id");
+	            });   
 	            
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
@@ -392,7 +404,33 @@
 	            });
 	    	}
 	    	
-	    	function calculateEndDate(startDate){
+	    	//設定日期限制的年月
+			var yearMin = '${fn:substring(getMember.capitalDate,0,4)}';
+			var monthMin = '${fn:substring(getMember.capitalDate,5,7)}';
+			var yearMax = (calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')).substring(0,4);
+			var monthMax = (calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')).substring(5,7);
+			$('body').on('focus',".monthYearPicker", function(){
+    			$(this).datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					dateFormat: 'yy-MM',
+					//日期限制
+					minDate: new Date(yearMin, monthMin-1, 1),
+					maxDate: new Date(yearMax, monthMax-1, 1)
+				}).focus(function() {
+					var thisCalendar = $(this);
+					$('.ui-datepicker-calendar').detach();
+					$('.ui-datepicker-close').click(function() {
+						var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+						var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+						thisCalendar.datepicker('setDate', new Date(year, month, 1));
+					});
+				});
+			});
+			
+			//計算一年後日期
+			function calculateEndDate(startDate){
 				var endDate;
 				var endYear = parseInt(startDate.substring(0,4));
 				var endMon = parseInt(startDate.substring(5,7))-1;
@@ -405,40 +443,6 @@
 				}
 				return endDate;
 			}
-	    	//<!-- month picker -->
-	      	/* $(function() {
-				/*$('.monthYearPicker').datepicker({
-					changeMonth: true,
-					changeYear: true,
-					showButtonPanel: true,
-					dateFormat: 'MM yy'
-				}).focus(function() {
-					var thisCalendar = $(this);
-					$('.ui-datepicker-calendar').detach();
-					$('.ui-datepicker-close').click(function() {
-					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-					thisCalendar.datepicker('setDate', new Date(year, month, 1));
-					});
-				});
-			});*/
-			
-			$('body').on('focus',".monthYearPicker", function(){
-    			$(this).datepicker({
-					changeMonth: true,
-					changeYear: true,
-					showButtonPanel: true,
-					dateFormat: 'MM yy'
-				}).focus(function() {
-					var thisCalendar = $(this);
-					$('.ui-datepicker-calendar').detach();
-					$('.ui-datepicker-close').click(function() {
-					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-					thisCalendar.datepicker('setDate', new Date(year, month, 1));
-					});
-				});
-			});
 			//<!--//_ month picker -->
 	    </script>
 </body>
