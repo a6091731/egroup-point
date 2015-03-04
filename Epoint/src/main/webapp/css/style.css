@@ -62,6 +62,9 @@ select{
         cursor: pointer;
         float: right;
 }
+
+.mR{margin-right: 10px;}
+
 .nextStepButton span.next{
         display:block;
         color:#fff;
