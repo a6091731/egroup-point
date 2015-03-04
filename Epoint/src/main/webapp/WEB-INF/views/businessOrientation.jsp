@@ -130,7 +130,7 @@
 
 	<!-- BEGIN MODAL WINDOWS -->
 	<div id="help161" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 在產業供應鏈中的位置</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 在產業供應鏈中的位置</h3></header>
 		<div class="cont clearfix">
 			<p>從上游拿甚麼原料做產品，賣給誰?</p>	
 			<p>跟誰買什麼貨?</p>	
@@ -139,7 +139,7 @@
 		</div>
 	</div>	
 	<div id="help162" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 誰是競爭對手?(誰跟我賣一樣的東西)</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 誰是競爭對手?(誰跟我賣一樣的東西)</h3></header>
 		<div class="cont clearfix">
 			<p>7-11 V.S 全家</p>
 			<p>燒仙草   V.S 黑丸</p>	
@@ -147,25 +147,25 @@
 		</div>
 	</div>
 	<div id="help163" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 品質跟競爭者的對應關係為何?</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 品質跟競爭者的對應關係為何?</h3></header>
 		<div class="cont clearfix">
 			<p>我的產品品質比起競爭對手，哪裡比較好? 哪裡比較差? 要如何改善?</p>	
 		</div>
 	</div>
 	<div id="help164" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 價格跟競爭者的對應關係為何?</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 價格跟競爭者的對應關係為何?</h3></header>
 		<div class="cont clearfix">
 			<p>我的產品價格比起競爭對手，是比較貴? 還是比較便宜? 為什麼?</p>	
 		</div>
 	</div>
 	<div id="help165" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 服務跟競爭者的對應關係為何?</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 服務跟競爭者的對應關係為何?</h3></header>
 		<div class="cont clearfix">
 			<p>我的服務比起競爭對手，哪裡比較好? 哪裡比較差? 要如何改善?</p>			
 		</div>
 	</div>
 	<div id="help166" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 如何發展策略聯盟?</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 如何發展策略聯盟?</h3></header>
 		<div class="cont clearfix">
 			<p>有沒有跟其他人合作一起開發產品或是推廣市場的機會?</p>			
 		</div>

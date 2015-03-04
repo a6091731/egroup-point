@@ -194,19 +194,19 @@
 
 	<!-- BEGIN MODAL WINDOWS -->
 	<div id="help171" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 創業所需的自我能力精進規畫</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 創業所需的自我能力精進規畫</h3></header>
 		<div class="cont clearfix">
 			<p>增加法令素養，財務觀念， 業務能力...並在什麼時開始，利用什麼方式補強?</p>			
 		</div>
 	</div>	
 	<div id="help172" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 期待從外面找來補強的專長能力</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 期待從外面找來補強的專長能力</h3></header>
 		<div class="cont clearfix">
 			<p>需要從外面找財物/研發/業務人員，各幾名? 來補強公司目前的不足</p>	
 		</div>
 	</div>
 	<div id="help173" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 目標人選</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 目標人選</h3></header>
 		<div class="cont clearfix">
 			<p>業務人員5名，104網站找; 財務人員1名，朋友介紹...</p>			
 		</div>

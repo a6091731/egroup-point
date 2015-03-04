@@ -195,7 +195,7 @@
 	<!-- BEGIN MODAL WINDOWS -->
 	<!-- targetCustomers -->
 	<div id="help121" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  :  目標客戶是誰?(誰會買我的東西)</header>
+		<header class="reveal-modal-header"><h3>範例協助  :  目標客戶是誰?(誰會買我的東西)</h3></header>
 		<div class="cont clearfix">
 			<p>性別</p>
 			<p>年齡</p>
@@ -205,14 +205,14 @@
 	</div>	
 	<!-- valueProvided -->
 	<div id="help122" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 能提供給顧客什麼價值?(能提供給顧客什麼服務)</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 能提供給顧客什麼價值?(能提供給顧客什麼服務)</h3></header>
 		<div class="cont clearfix">
 			<p>餐飲業 : 提供食物外，另提供 內用、外帶、外送等服務，內有冷氣冷氣</p>
 		</div>
 	</div>	
 	<!-- customersBenefits -->
 	<div id="help123" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 顧客能從中得到什麼好處?(買我東西有什麼附加價值)</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 顧客能從中得到什麼好處?(買我東西有什麼附加價值)</h3></header>
 		<div class="cont clearfix">
 			<p>餐飲業 : 本店都使用有機米，手工麵條早上現做，搭配無農藥自種韭菜，保證吃了健康</p>
 		</div>

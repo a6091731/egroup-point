@@ -186,7 +186,7 @@
 	<!-- BEGIN MODAL WINDOWS -->
 	<!-- helpVentureType -->
 	<div id="help141" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 業務銷售通路</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 業務銷售通路</h3></header>
 		<div class="cont clearfix">
 			<p>夜市擺攤</p>
 			<p>臉書粉絲團</p>
@@ -196,7 +196,7 @@
 	</div>	
 	<!-- helpBusinessModel -->
 	<div id="help142" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 會透過誰協助我銷售</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 會透過誰協助我銷售</h3></header>
 		<div class="cont clearfix">
 			<p>通路上架</p>
 			<p>朋友代銷</p>
