@@ -290,7 +290,7 @@
 	            $.validator.addMethod("dRequired", $.validator.methods.required, "請填入日期");
 	            $.validator.addMethod("dateMin", $.validator.methods.min, "時間不得小於您的創業第一年時間 : {0} 開始");
 	            $.validator.addMethod("dateMax", $.validator.methods.max, "時間不得大於您的創業第一年時間 : {0} 結束");
-	            $.validator.addMethod("customDateValidator", function(value, element) {
+	            /*$.validator.addMethod("customDateValidator", function(value, element) {
 	            // yyyy-mm
 	            	var re = /^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/ ; 
 	            	if (! re.test(value) ) return false
@@ -300,7 +300,7 @@
 	            		catch(e){return false;} 
 	            	},
 	            	   "您的日期格式錯誤，請輸入 西元年-月份，例如:2015-03"
-	            );
+	            );*/
 	            //金額validate   
 	            $.validator.addMethod("cRequired", $.validator.methods.required, "請輸入金額");
 	            $.validator.addMethod("digits", $.validator.methods.digits, "請輸入整數");
@@ -310,7 +310,7 @@
 	            jQuery.validator.addClassRules({
 	            	dateValidate: {
 	            		dRequired: true,
-	            		customDateValidator: true,
+	            		//customDateValidator: true,
 	            		dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
 	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')	            		
 	            	},
