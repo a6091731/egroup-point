@@ -126,7 +126,7 @@
 				  		<legend>1.1 設立費用：</legend>
 					  	<div class="field">
 					  		<label>日期：
-					  			<input class="monthYearPicker form-control dateValidate" name="fixedPayMoney[0].date_string" 
+					  			<input class="monthYearPicker form-control dateValidate"  name="fixedPayMoney[0].date_string" 
 					  			value="${fn:substring(fixedPayMoney[0].date,0,7)}">
 					  		</label>
 					  	</div>
@@ -320,8 +320,32 @@
 	            		min: 1,
 	            		cMaxlength: 9
 	            	}
-	            })        
+	            })   
+	            /*
+	            $('.dateValidate').click(function(){
+	            	alert(1231);
+	            	$(this).removeClass("hasDatepicker").removeAttr("id");	  
+	            	var id = $(this).attr('id');
+	            	$('label[for='+id+']').remove();
+	            });	
 	            
+	            $('.dateValidate').blur(function(){
+	            	alert(1232);
+	            	$(this).removeClass("hasDatepicker").removeAttr("id");	  
+	            	var id = $(this).attr('id');
+	            	$('label[for='+id+']').remove();
+	            });	
+	            */
+	            
+	            
+	            /*
+	            $('.dateValidate').change(function(){
+	            	//alert(123);
+	            	//$(this).removeClass("hasDatepicker").removeAttr("id");	  
+	            	var id = $(this).attr('id');
+	            	$('label[for='+id+']').remove();
+	            });	*/
+	           
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
 	            	if(type == 'card'){
@@ -345,7 +369,8 @@
 						  	'<div class="field">'+
 						  		'<button type="button" class="deletebutton delCardBtn" data-id="'+index+'"><i class="fa fa-times"></i> 刪除</button>'+
 						  	'</div></div>';
-	            		$('#BusinessCard').append(cardText);
+	            		$('#BusinessCard').append(cardText);	            		
+		            	
 	            	}else if(type == 'lawyer'){
 	            		lawyerCount++;
 	            		$('#lawyerCount').val(lawyerCount);
@@ -463,10 +488,11 @@
 					//日期限制
 					minDate: new Date(yearMin, monthMin-1, 1),
 					maxDate: new Date(yearMax, monthMax-1, 1)
-				}).focus(function() {
+				}).focus(function() {					
 					var thisCalendar = $(this);
 					$('.ui-datepicker-calendar').detach();
 					$('.ui-datepicker-close').click(function() {
+						//$(this).find("input").removeClass("hasDatepicker").removeAttr("id");	
 						var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
 						var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
 						thisCalendar.datepicker('setDate', new Date(year, month, 1));
