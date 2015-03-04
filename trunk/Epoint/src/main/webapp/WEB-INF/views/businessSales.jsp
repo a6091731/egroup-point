@@ -129,7 +129,7 @@
 						</c:forEach>							
 						</ul>
 						<button type="submit" class="nextStepButton">
-							<span class="next">下一步，填寫目標市場描述<i class="fa fa-arrow-right"></i></span>
+							<span class="next">下一步，填寫行銷<i class="fa fa-arrow-right"></i></span>
 						</button>
 					</div>
 				</form>
@@ -180,7 +180,7 @@
             });	 
 			
 			$("#content141").attr("placeholder","夜市擺攤、臉書粉絲團、代購/待售、店鋪銷售");
-			$("#content142").attr("placeholder","");	
+			$("#content142").attr("placeholder","通路上架/朋友代銷/電視購物台");	
 		});
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
@@ -196,9 +196,11 @@
 	</div>	
 	<!-- helpBusinessModel -->
 	<div id="help142" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 業務末端銷售消費者</header>
+		<header class="reveal-modal-header">範例協助  : 會透過誰協助我銷售</header>
 		<div class="cont clearfix">
-			<p></p>
+			<p>通路上架</p>
+			<p>朋友代銷</p>
+			<p>電視購物台</p>
 		</div>
 	</div>	
 </body>

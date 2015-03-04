@@ -105,23 +105,6 @@ public class ProductSalesController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/getProductSalesListByMemberID", method = RequestMethod.GET)
-	public @ResponseBody List<ProductSales> getProductSalesListByMemberID (String  productID, HttpSession session) throws ParseException{
-		ModelAndView model = new ModelAndView();
-		Member memberLogin = (Member)session.getAttribute("loginMember");		
-		if(memberLogin!=null){			
-			model.setViewName("redirect:/revenueStructure");
-			ProductSalesDAO productSalesDAO = (ProductSalesDAO)context.getBean("productSalesDAO");
-			ProductSales productSales = new ProductSales();
-			productSales.setAccount(memberLogin.getAccount());
-			productSales.setId(productID);
-			List<ProductSales> getProductSalesListByMemberID = productSalesDAO.getProductSalesListByMemberID(productSales);
-			
-			return getProductSalesListByMemberID;				
-		}
-		return null;	
-	}
-	
 	@RequestMapping(value = "/addProductRevenueStructure", method = RequestMethod.POST)
 	public ModelAndView addProductRevenueStructure (Product product, HttpServletRequest request, HttpSession session){
 		ModelAndView model = new ModelAndView();

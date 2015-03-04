@@ -68,7 +68,7 @@
 				<aside>
 					<ul class="sideNav hideBlock">	
 						<c:forEach items="${monthCashFlow}" var="cash" varStatus="i">		
-							<li ${selectedMonth eq (i.index+1) ? "class='current'": ""}><a href="cashFlow?mon=${i.index+1 }">${i.index+1 }月<span class="${cash<0?'label-flow':'label-flow label-red'}" >累積金額   ${cash}</span></a></li>							
+							<li ${selectedMonth eq (i.index+1) ? "class='current'": ""}><a href="cashFlow?mon=${i.index+1 }">${i.index+1 }月<span class="${cash<0?'label-flow label-red':'label-flow'}" >累積金額   ${cash}</span></a></li>							
 						</c:forEach>
 						<!-- 
 						<li ${selectedMonth eq 1 ? "class='current'": ""}><a href="cashFlow?mon=1">1月<span class="label-flow" >累積金額  ${monthCashFlow[0]} </span></a></li>
@@ -116,7 +116,7 @@
 										<tr>
 											<th>產品名稱</th>
 											<th>產品總利潤</th>
-											<th>產品明細</th>
+											<th>編輯收入明細</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -125,8 +125,9 @@
 									<tr>
 										<td>${product.name }</td>
 										<td>${product.monthIncome }</td>
-										<td><a onclick="newProductSales(${i.index});" class="fa-color" 
-										    data-reveal-id ="addProductSales" data-closeonbackgroundclick="false">
+										<!--<a onclick="newProductSales(${i.index});" class="fa-color"-->
+										<td><a onclick="editProduct(${i.index});" class="fa-color"
+										    data-reveal-id ="editProduct" data-closeonbackgroundclick="false">
 												<i class="fa fa-file-text-o fa-lg"></i></a>
 										</td>
 									</tr>			
@@ -156,7 +157,7 @@
 										<tr>
 											<th>支出品項</th>
 											<th>支出總費用</th>
-											<th>銷售明細</th>
+											<th>編輯支出明細</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -247,7 +248,76 @@
 	</div>
 	
 	<!-- BEGIN MODAL WINDOWS -->
-        <div id="addProductSales" class="reveal-modal">
+		<div id="editProduct" class="reveal-modal">
+			<div class="cont clearfix">
+				<form id="sendForm1" action="addProductCashFlow" method="post" class="formset clearfix">
+				<input type="hidden" value="${param.mon}" name="mon" id="mon"> 
+					<fieldset class="fieldset2">
+						<legend>1 產品名稱</legend>
+						<div class="field">
+							<label><span>產品名稱：</span> 
+							<input type="text" class="form-control" name="name" id="editName"> </label>
+						</div>
+					</fieldset>
+					<fieldset class="fieldset2">
+						<legend>2產品規格</legend>
+						<textarea rows="8" name="specification"
+							placeholder="產品內容物數量、產品長寬高、重量" id="editSpecification"></textarea>
+					</fieldset>
+					<fieldset class="fieldset2">
+						<legend>3包裝說明</legend>
+						<textarea rows="8" name="pack"
+							placeholder="紙袋裝、紙盒裝、塑膠袋裝、真空包裝	" id="editPack"></textarea>
+					</fieldset>
+					<fieldset class="fieldset2">
+						<legend>4終端消費者定價</legend>
+						<div>
+							<div class="field">
+								<label>金額： <input type="text" name="endPrice" class="form-control" id="editEndPrice">
+								</label>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="fieldset2">
+						<legend>5實質銷售價格</legend>
+						<div>
+							<div class="field">
+								<label>金額： <input type="text" name="salesPrice"	class="form-control" id="editSalesPrice">
+								</label>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="fieldset2">
+						<legend>6直接成本</legend>
+						<div>
+							<div class="field">
+								<label>金額： <input type="text" name="cost" class="form-control" id="editCost">
+								</label>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset id="addSalesQuantityB" class="fieldset2">  
+					 <input type="hidden" id="delCountB" value="0">                                	
+						<legend>產品銷售數量 : </legend>								  			  	
+						<button type="button" class="addbutton" onclick="addbuttonB();"><i class="fa fa-plus"></i> 新增數量</button>
+						<div id="newMoney0" >
+							<div class="deleteblock">
+												  		
+							</div>
+						</div>								  	
+					</fieldset>
+					<button type="submit" class="finishButton" id="addProductSubmit">
+						<span class="next">新增產品</span>
+					</button>
+					<button type="button" class="cancelButton">
+						<span class="next">取消</span>
+					</button>
+				</form>
+			</div>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+        <!-- 
+        	<div id="addProductSales" class="reveal-modal">
                 <div class="cont clearfix">
                         <form class="formset clearfix" id="sendForm2" action="addProductSalseCashFlow" method="post">
                         		<input type="hidden" id="productID" name="productID">   
@@ -287,6 +357,7 @@
                 </div>
                 <a class="close-reveal-modal">&#215;</a>
         </div>
+         -->
 
 	<!-- BEGIN MODAL WINDOWS -->
         <div id="editExpenditure" class="reveal-modal">
@@ -297,9 +368,6 @@
                 </div>
                 <a class="close-reveal-modal">&#215;</a>
         </div>
-
-
-
 	<!-- import jquery -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<!-- import nav slideToggle RWD js -->	
@@ -307,15 +375,91 @@
 	<!-- Reveal Modal -->
 		<script src="js/jquery.reveal.js"></script>
 	<!-- jquery.mobilemenu.js -->
-		<script src="js/jquery.mobilemenu.js"></script>
+		<script src="js/jquery.mobilemenu.js"></script>	
+	<!-- responsive-table -->  
+	    <script src="js/responsive-tables.js"></script>
+	<!-- Chart -->  
+	    <script src="js/Chart.js"></script>	    
+		<script src="js/jquery.validate.js"></script>
+		<script src="js/messages_zh_TW.js"></script>
+		<script src="js/additional-methods.js"></script>
 		<script type="text/javascript">
-	        $(function() {
+	       	function editProduct(i){
+	       		var list = $.parseJSON('${totalIncomeByMemberDate2}');
+				$('#productID').val(list[i].id);
+				$('#productName').text(list[i].name);
+				$('#delCount').val(1);
+				var delCount = $('#delCount').val();
+				$.ajax({
+					url:"getProductAndSalesListByMemberID",
+					data:{
+						productID : list[i].id
+					},
+					dataType:"json",
+					success:function(result){
+						if(result.length>0){
+							$("#editName").val(result[0].name);
+							$("#editSpecification").val(result[0].specification);
+							$("#editPack").val(result[0].pack);
+							$("#endPrice").val(result[0].endPrice);
+							$("#salesPrice").val(result[0].salesPrice);
+							$("#editCost").val(result[0].cost);
+							if(result[0].date_string!=null && result[0].quantity!=0){
+								var editProductText = 
+								'<fieldset id="addSalesQuantityB" class="fieldset2"> '+
+								'<input type="hidden" id="delCountB" value="0">'+                             	
+								'<legend>產品銷售數量 : </legend>'+								  			  	
+								'<button type="button" class="addbutton" onclick="addbuttonB();">'+
+								'<i class="fa fa-plus"></i> 新增數量</button>'+
+								'<div id="newMoney0" >'+
+								'<div class="deleteblock">'+  		
+								'</div>'+
+								'</div>'+								  	
+								'</fieldset>';	
+								$('#addSalesQuantity').append(addSalesQuantityText);
+							}
+						}
+						
+						$("#salsDate0").val("");
+						$("#salsQuantity0").val("");
+						if(result.length>0){
+							$("#salsDate0").val(result[0].date_string);
+							$("#salsQuantity0").val(result[0].quantity);							
+							for(var i=1; i<result.length; i++){
+				            	$('#delCount').val($('#delCount').val()+1)
+								addSalesQuantityText = 
+								  	'<div class="deleteblock" id="newMoney'+index+'">'+
+									'<div class="field">'+  	
+									'<label>日期：'+		
+									'<input type="month" class="form-control salsDate" id="salsDate'+index+'" name="salsDate'+index+'" value="'+result[i].date_string+'">'+  			
+									'</label>'+  		
+									'</div>'+  	
+									'<div class="field">'+  	
+									'<label>數量：'+ 		
+									'<input type="text" class="form-control salsQuantity" id="salsQuantity'+index+'" name="salsQuantity'+index+'" value="'+result[i].quantity+'">'+ 			
+									'</label>'+  		
+									'</div>'+  	
+									'<div class="field">'+  	
+									'<button type="button" class="deletebutton" onclick="deletebutton('+index+');"><i class="fa fa-times"></i> 刪除</button>'+  		
+									'</div>'+  				  		
+								  	'</div>';
+				            	$('#addSalesQuantity').append(addSalesQuantityText);	
+				            	delCount++;
+				            	$('#delCount').val(delCount);
+				            	addValidate(index);
+				            	index++;
+							}
+						}
+					}
+				});
+	       	};
+			$(function(){
 	            $('nav.primary .rightnav').mobileMenu();
 	            
 	            $('#sendForm').validate();
 	            $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
 				jQuery.validator.addClassRules({
-	            	dateValidate: {
+	            	dateValidate:{
 	            		required: true,
 	            		min: '${fn:substring(getMember.capitalDate,0,7)}',
 	            		max: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')
@@ -328,17 +472,7 @@
 	            	}
 	            });
 	        });
-	    </script>
-	<!-- responsive-table -->  
-	    <script src="js/responsive-tables.js"></script>
-	<!-- Chart -->  
-	    <script src="js/Chart.js"></script>
-	    
-		<script src="js/jquery.validate.js"></script>
-		<script src="js/messages_zh_TW.js"></script>
-		<script src="js/additional-methods.js"></script>
-
-		<script>			
+		
 			//列出每月支出
 			var expendData = [0,0,0,0,0,0,0,0,0,0,0,0];
 			<c:forEach items='${monthTotalExpenditure}' var='total' varStatus='i'>
@@ -380,14 +514,6 @@
 				canvas.onclick = function(evt){
 				    var activeBars = myBarChart.getBarsAtEvent(evt);
 				    window.open('cashFlow?mon='+activeBars[0].label[0], '_self');
-				   /* 				   	
-				    var mon = activeBars[0].label.toString();
-				    lert(mon.subString(0,1));
-				   	alert(activeBars[0].label);
-				    alert(activeBars[0].x);
-				    alert(activeBars[0].y);
-				    alert(activeBars[0].value);*/
-				    // => activeBars is an array of bars on the canvas that are at the same position as the click event.
 				};
 			}
 
@@ -724,7 +850,8 @@
 	    					form.submit();
 	    				}
 		            });	 
-		           $("#addProductSalesSubmit").click(function(){
+					
+		           	$("#addProductSalesSubmit").click(function(){
 		            	var salsClassCount = $('.salsDate').length
 		            	if(salsClassCount>1){
 		            		$("#salsDate0").rules("add",{

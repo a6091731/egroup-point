@@ -132,7 +132,10 @@
 	<div id="help161" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 在產業供應鏈中的位置</header>
 		<div class="cont clearfix">
-			<p></p>			
+			<p>從上游拿甚麼原料做產品，賣給誰?</p>	
+			<p>跟誰買什麼貨?</p>	
+			<p>用什麼方法?</p>	
+			<p>賣給誰?</p>			
 		</div>
 	</div>	
 	<div id="help162" class="reveal-modal">
@@ -146,71 +149,28 @@
 	<div id="help163" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 品質跟競爭者的對應關係為何?</header>
 		<div class="cont clearfix">
-			<p></p>			
+			<p>我的產品品質比起競爭對手，哪裡比較好? 哪裡比較差? 要如何改善?</p>	
 		</div>
 	</div>
 	<div id="help164" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 價格跟競爭者的對應關係為何?</header>
 		<div class="cont clearfix">
-			<p></p>			
+			<p>我的產品價格比起競爭對手，是比較貴? 還是比較便宜? 為什麼?</p>	
 		</div>
 	</div>
 	<div id="help165" class="reveal-modal">
 		<header class="reveal-modal-header">範例協助  : 服務跟競爭者的對應關係為何?</header>
 		<div class="cont clearfix">
-			<p></p>			
+			<p>我的服務比起競爭對手，哪裡比較好? 哪裡比較差? 要如何改善?</p>			
 		</div>
 	</div>
 	<div id="help166" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 同業如何發展策略聯盟?</header>
+		<header class="reveal-modal-header">範例協助  : 如何發展策略聯盟?</header>
 		<div class="cont clearfix">
-			<p></p>			
-		</div>
-	</div>
-	<div id="help167" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 生產與同業如何發展策略聯盟?</header>
-		<div class="cont clearfix">
-			<p></p>			
-		</div>
-	</div>
-	<div id="help168" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 販售如何與同業發產策略聯盟?</header>
-		<div class="cont clearfix">
-			<p></p>			
-		</div>
-	</div>
-	<div id="help169" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 行銷與同業如何發展策略聯盟?</header>
-		<div class="cont clearfix">
-			<p></p>			
-		</div>
-	</div>
-	<div id="help1610" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 異業如何發產策略聯盟?</header>
-		<div class="cont clearfix">
-			<p></p>			
-		</div>
-	</div>
-	<div id="help1611" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 生產與異業如何發產策略聯盟?</header>
-		<div class="cont clearfix">
-			<p></p>			
-		</div>
-	</div>
-	<div id="help1612" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 販售與異業如何發產策略聯盟?</header>
-		<div class="cont clearfix">
-			<p></p>			
-		</div>
-	</div>
-	<div id="help1613" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 行銷與異業如何發產策略聯盟?</header>
-		<div class="cont clearfix">
-			<p></p>			
+			<p>有沒有跟其他人合作一起開發產品或是推廣市場的機會?</p>			
 		</div>
 	</div>
 	
-
 	<!-- import jquery -->
 	<!-- <script src="js/jquery-1.9.1.min.js"></script>此版本jquery 無法顯示彈窗，看要不要改成1.7.1 -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -226,19 +186,12 @@
 	        $(function() {
 	            $('nav.primary .rightnav').mobileMenu();
 
-	        	$("#content161").attr("placeholder","");
+	        	$("#content161").attr("placeholder","從上游拿甚麼原料做產品，賣給誰? 跟誰買什麼貨? 用什麼方法? 賣給誰?");
 				$("#content162").attr("placeholder","7-11 V.S 全家 ； 燒仙草   V.S 黑丸 ； 麥當勞   V.S 肯德基");
-				$("#content163").attr("placeholder","");
-				$("#content164").attr("placeholder","");
-				$("#content165").attr("placeholder","");
-				$("#content166").attr("placeholder","");
-				$("#content167").attr("placeholder","");
-				$("#content168").attr("placeholder","");
-				$("#content169").attr("placeholder","");
-				$("#content1610").attr("placeholder","");
-				$("#content1611").attr("placeholder","");
-				$("#content1612").attr("placeholder","");
-				$("#content1612").attr("placeholder","");
+				$("#content163").attr("placeholder","我的產品品質比起競爭對手，哪裡比較好? 哪裡比較差? 要如何改善?");
+				$("#content164").attr("placeholder","我的產品價格比起競爭對手，是比較貴? 還是比較便宜? 為什麼?");
+				$("#content165").attr("placeholder","我的服務比起競爭對手，哪裡比較好? 哪裡比較差? 要如何改善?");
+				$("#content166").attr("placeholder","有沒有跟其他人合作一起開發產品或是推廣市場的機會?");
 	            
 	            $("#sendForm").validate({
 	            	rules:{
@@ -265,34 +218,6 @@
 	            		content166:{
 			    			required:true,
 			    			maxlength:150
-			    		},
-	            		content167:{
-			    			required:true,
-			    			maxlength:150
-			    		},
-	            		content168:{
-			    			required:true,
-			    			maxlength:150
-			    		},
-	            		content169:{
-			    			required:true,
-			    			maxlength:150
-			    		},
-	            		content1610:{
-			    			required:true,
-			    			maxlength:150
-			    		},
-	            		content1611:{
-			    			required:true,
-			    			maxlength:150
-			    		},
-	            		content1612:{
-			    			required:true,
-			    			maxlength:150
-			    		},
-	            		content1613:{
-			    			required:true,
-			    			maxlength:150
 			    		}
 	            	},
 	            	messages:{
@@ -317,34 +242,6 @@
 	            			maxlength:"長度不能超過{0}"
 	            		},
 	            		content166:{
-	            			required:"此欄位不能空白",
-	            			maxlength:"長度不能超過{0}"
-	            		},
-	            		content167:{
-	            			required:"此欄位不能空白",
-	            			maxlength:"長度不能超過{0}"
-	            		},
-	            		content168:{
-	            			required:"此欄位不能空白",
-	            			maxlength:"長度不能超過{0}"
-	            		},
-	            		content169:{
-	            			required:"此欄位不能空白",
-	            			maxlength:"長度不能超過{0}"
-	            		},
-	            		content1610:{
-	            			required:"此欄位不能空白",
-	            			maxlength:"長度不能超過{0}"
-	            		},
-	            		content1611:{
-	            			required:"此欄位不能空白",
-	            			maxlength:"長度不能超過{0}"
-	            		},
-	            		content1612:{
-	            			required:"此欄位不能空白",
-	            			maxlength:"長度不能超過{0}"
-	            		},
-	            		content1613:{
 	            			required:"此欄位不能空白",
 	            			maxlength:"長度不能超過{0}"
 	            		}

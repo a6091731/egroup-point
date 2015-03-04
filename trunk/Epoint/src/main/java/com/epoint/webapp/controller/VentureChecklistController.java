@@ -379,13 +379,13 @@ public class VentureChecklistController {
 			addVentureCheckList(memberLogin.getAccount(),16,164,content164);
 			addVentureCheckList(memberLogin.getAccount(),16,165,content165);
 			addVentureCheckList(memberLogin.getAccount(),16,166,content166);
-			addVentureCheckList(memberLogin.getAccount(),16,167,content167);
+			/*addVentureCheckList(memberLogin.getAccount(),16,167,content167);
 			addVentureCheckList(memberLogin.getAccount(),16,168,content168);
 			addVentureCheckList(memberLogin.getAccount(),16,169,content169);
 			addVentureCheckList(memberLogin.getAccount(),16,1610,content1610);
 			addVentureCheckList(memberLogin.getAccount(),16,1611,content1611);
 			addVentureCheckList(memberLogin.getAccount(),16,1612,content1612);
-			addVentureCheckList(memberLogin.getAccount(),16,1613,content1613);
+			addVentureCheckList(memberLogin.getAccount(),16,1613,content1613);*/
 			model.setViewName("redirect:/humanResourcePlan");
 		}
 		else

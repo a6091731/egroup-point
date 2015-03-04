@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import com.epoint.webapp.dao.PayMoneyDAO;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.PayMoney;
+import com.epoint.webapp.util.DateConversion;
 
 public class PayMoneyDAOImpl implements PayMoneyDAO {
 	private DataSource dataSource;
@@ -62,6 +63,12 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 			smt.setString(3, paymoney.getAccount());
 			smt.setInt(4, paymoney.getID());
 			smt.setInt(5, paymoney.getRecord());
+			System.out.println("------------------------------------");
+			System.out.println("Date="+paymoney.getDate_string());
+			System.out.println("Money="+paymoney.getMoney());
+			System.out.println("Account="+paymoney.getAccount());
+			System.out.println("ID="+paymoney.getID());
+			System.out.println("Record()="+paymoney.getRecord());
 			smt.executeUpdate();			
 			smt.close();
 		} catch (SQLException e) {
@@ -144,8 +151,11 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 	}
 	
 	public List<PayMoney> getPayMoneyByItemID(String account, int itemID){
-		sql = "SELECT * FROM pay_money WHERE memberAccount = ? AND payItemID = ? ORDER BY payRecord ASC";
+		sql = "SELECT * FROM pay_money WHERE memberAccount = ? AND payItemID = ? ORDER BY payDate ASC";
 		List<PayMoney> allPayMoney = new ArrayList<PayMoney>();
+		/*DateConversion dateConversion = new DateConversion();
+		String year;
+		String mon;*/
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
@@ -154,6 +164,10 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 			rs = smt.executeQuery();
 			while(rs.next()){
 				PayMoney payMoney = new PayMoney();
+				/*String dateString = dateConversion.ConversionYMD(rs.getDate("payDate"));
+            	year = dateString.substring(0,4);
+            	mon = dateString.substring(5,7);
+            	payMoney.setDate_string(year+"-"+mon);  */          	
 				payMoney.setDate(rs.getDate("payDate"));
 				payMoney.setMoney(rs.getInt("payMoney"));
 				payMoney.setRecord(rs.getInt("payRecord"));
@@ -175,7 +189,7 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 	}
 	
 	public PayMoney getSinglePayMoneyByItemID(String account, int itemID){
-		String sql = "SELECT * FROM pay_money WHERE memberAccount = ? AND payItemID = ? ORDER BY payRecord ASC";
+		String sql = "SELECT * FROM pay_money WHERE memberAccount = ? AND payItemID = ? ORDER BY payDate ASC";
 		PayMoney payMoney = new PayMoney();
 		try {
 			conn = dataSource.getConnection();
@@ -183,11 +197,19 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 			smt.setString(1, account);
 			smt.setInt(2, itemID);
 			rs = smt.executeQuery();
-			if(rs.next()){
+			/*DateConversion dateConversion = new DateConversion();
+			String year;
+			String mon;*/
+			if(rs.next()){	
+				/*String dateString = dateConversion.ConversionYMD(rs.getDate("payDate"));
+            	year = dateString.substring(0,4);
+            	mon = dateString.substring(5,7);
+            	payMoney.setDate_string(year+"-"+mon)*/
 				payMoney.setDate(rs.getDate("payDate"));
 				payMoney.setMoney(rs.getInt("payMoney"));
 				payMoney.setRecord(rs.getInt("payRecord"));
 				payMoney.setID(rs.getInt("payItemID"));
+				System.out.println("payMone="+payMoney.getDate_string());
 			}
 			rs.close();
 			smt.close();

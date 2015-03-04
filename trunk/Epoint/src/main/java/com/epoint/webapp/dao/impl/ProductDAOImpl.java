@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
 import com.epoint.webapp.dao.ProductDAO;
 import com.epoint.webapp.entity.Member;
 import com.epoint.webapp.entity.Product;
+import com.epoint.webapp.util.DateConversion;
 import com.mysql.jdbc.Statement;
 
 public class ProductDAOImpl implements ProductDAO{
@@ -57,6 +59,54 @@ public class ProductDAOImpl implements ProductDAO{
 		return false;
 	}*/
 
+	public List<Product> getProductAndSalesListByMemberID(Product prodcut1) {
+		// TODO Auto-generated method stub
+		List<Product> productList = new ArrayList<Product>();
+		sql = "SELECT p.*, s.productSalesDate, s.productSalesQuantity FROM product_sales s LEFT JOIN product p "
+				+ "ON p.productID = s.productID WHERE s.memberAccount = ? AND s.productID = ?";		
+		try {
+			DateConversion dateConversion = new DateConversion();
+			conn = dataSource.getConnection();
+			smt = conn.prepareStatement(sql);			
+			smt.setString(1, prodcut1.getAccount());
+			smt.setString(2, prodcut1.getId());
+			rs = smt.executeQuery();
+			while(rs.next()){
+				Product product2 = new Product();
+				product2.setId(rs.getString("productID"));
+				product2.setTime(rs.getDate("productNewTime"));
+				product2.setName(rs.getString("productName"));
+				product2.setSpecification(rs.getString("productSpecifications"));
+				product2.setPack(rs.getString("productPack"));
+				product2.setEndPrice(rs.getInt("productEndPrice"));
+				product2.setSalesPrice(rs.getInt("productSalesPrice"));
+				product2.setCost(rs.getInt("productCost"));
+				product2.setQuantity(rs.getInt("productSalesQuantity"));
+				try {					
+					product2.setDate_string(dateConversion.ConversionYM(rs.getDate("productSalesDate")));	
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				product2.setQuantity(rs.getInt("productSalesQuantity"));				
+				productList.add(product2);
+			}			
+			rs.close();
+			smt.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return productList;
+	}
+	
 	public void insertProduct1(Product product) {
 		// TODO Auto-generated method stub		
 		sql = "INSERT INTO product (memberAccount,productID, productNewTime,productName, "
