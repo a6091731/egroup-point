@@ -194,7 +194,7 @@
 	<!-- BEGIN MODAL WINDOWS -->
 	<!-- helpVentureType -->
 	<div id="help111" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 創業業種(想/已經創業的行業)</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 創業業種(想/已經創業的行業)</h3></header>
 		<div class="cont clearfix">
 			<p>服飾</p>
 			<p>餐飲</p>
@@ -211,7 +211,7 @@
 	</div>	
 	<!-- helpBusinessModel -->
 	<div id="help112" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 經營模式(生意賺錢的方法)</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 經營模式(生意賺錢的方法)</h3></header>
 		<div class="cont clearfix">
 			<p>商業模式(生意賺錢的方法、經營方式)</p>
 			<p>店面經營</p>
@@ -221,7 +221,7 @@
 	</div>
 	<!-- helpBusinessModel -->
 	<div id="help113" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 自己在此行業的一技之長或證照</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 自己在此行業的一技之長或證照</h3></header>
 		<div class="cont clearfix">
 			<p>美容美髮業:美容丙級證照</p>
 			<p>餐飲業:中、西餐證照類別</p>

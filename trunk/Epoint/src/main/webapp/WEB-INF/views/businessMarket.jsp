@@ -193,7 +193,7 @@
 	</script>
 	<!-- BEGIN MODAL WINDOWS -->
 	<div id="help151" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 行銷策略(如何讓顧客認識我的產品?)</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 行銷策略(如何讓顧客認識我的產品?)</h3></header>
 		<div class="cont clearfix">
 			<p>廣告</p>	
 			<p>DM</p>		
@@ -201,7 +201,7 @@
 		</div>
 	</div>	
 	<div id="help152" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 付費行銷</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 付費行銷</h3></header>
 		<div class="cont clearfix">
 			<p>1.臉書粉絲團買廣告</p>
 			<p>2.發廣告單</p>
@@ -211,7 +211,7 @@
 		</div>
 	</div>		
 	<div id="help153" class="reveal-modal">
-		<header class="reveal-modal-header">範例協助  : 免費行銷</header>
+		<header class="reveal-modal-header"><h3>範例協助  : 免費行銷</h3></header>
 		<div class="cont clearfix">
 			<p>1.口耳相傳</p>
 			<p>2.找朋友介紹推廣</p>
