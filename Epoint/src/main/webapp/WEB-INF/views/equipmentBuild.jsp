@@ -247,6 +247,13 @@
 	            	}
 	            }) 
 	            
+	            //刪除Jquery UI datepicker apprence ID lable for error
+	            $("#sendForm").on("blur", ".dateValidate", function(){
+	            	var id = $(this).attr('id');
+	            	$(this).removeClass("hasDatepicker").removeAttr("id");  
+	            	$('label[for='+id+']').remove();	            	
+	            });
+	            
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
 	            	if(type == 'card'){

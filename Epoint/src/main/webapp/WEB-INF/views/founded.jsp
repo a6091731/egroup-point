@@ -320,31 +320,15 @@
 	            		min: 1,
 	            		cMaxlength: 9
 	            	}
-	            })   
-	            /*
-	            $('.dateValidate').click(function(){
-	            	alert(1231);
-	            	$(this).removeClass("hasDatepicker").removeAttr("id");	  
-	            	var id = $(this).attr('id');
-	            	$('label[for='+id+']').remove();
-	            });	
+	            }) 
 	            
-	            $('.dateValidate').blur(function(){
-	            	alert(1232);
-	            	$(this).removeClass("hasDatepicker").removeAttr("id");	  
+	            //刪除Jquery UI datepicker apprence ID lable for error
+	            $("#sendForm").on("blur", ".dateValidate", function(){
 	            	var id = $(this).attr('id');
-	            	$('label[for='+id+']').remove();
-	            });	
-	            */
+	            	$(this).removeClass("hasDatepicker").removeAttr("id");  
+	            	$('label[for='+id+']').remove();	            	
+	            });
 	            
-	            
-	            /*
-	            $('.dateValidate').change(function(){
-	            	//alert(123);
-	            	//$(this).removeClass("hasDatepicker").removeAttr("id");	  
-	            	var id = $(this).attr('id');
-	            	$('label[for='+id+']').remove();
-	            });	*/
 	           
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
