@@ -285,7 +285,7 @@
 	            accountCount = $('#accountCount').val();
 	            index = parseInt(cardCount) + parseInt(lawyerCount) + parseInt(accountCount);
 	            
-	            $("#sendForm").validate();	 	            
+	            var validator = $("#sendForm").validate();	 	            
 	            //日期validate
 	            $.validator.addMethod("dRequired", $.validator.methods.required, "請填入日期");
 	            $.validator.addMethod("dateMin", $.validator.methods.min, "時間不得小於您的創業第一年時間 : {0} 開始");
@@ -328,7 +328,7 @@
 	            	$(this).removeClass("hasDatepicker").removeAttr("id");  
 	            	$('label[for='+id+']').remove();	            	
 	            });
-	            
+
 	           
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
