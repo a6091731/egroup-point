@@ -213,6 +213,7 @@
 					</fieldset>	
 					<div class="mt50px">
 						<button type="submit" class="nextStepButton"><span class="next">下一步，填寫生產設備建置<i class="fa fa-arrow-right"></i></span></button>
+						<button type="button" class="nextStepButton mR"><a href="placeComplete"><span class="next">上一步，填寫營業場所完工<i class="fa fa-arrow-left"></i></span></a></button>&nbsp;&nbsp;
 					</div>
 				  </form>
 			</div>

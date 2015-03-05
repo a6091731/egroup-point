@@ -276,6 +276,7 @@
 					</fieldset>		
 					<div class="mt50px">
 						<button type="submit" class="nextStepButton"><span class="next">下一步，填寫人員到位<i class="fa fa-arrow-right"></i></span></button>
+						<button type="button" class="nextStepButton mR"><a href="founded"><span class="next">上一步，填寫公司成立<i class="fa fa-arrow-left"></i></span></a></button>&nbsp;&nbsp;
 					</div>
 				  </form>
 			</div>

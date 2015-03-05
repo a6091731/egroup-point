@@ -202,6 +202,7 @@
 					</fieldset>
 					<div class="mt50px">
 						<button type="submit" class="nextStepButton"><span class="next">完成<i class="fa fa-arrow-right"></i></span></button>
+						<button type="button" class="nextStepButton mR"><a href="developmentMarket"><span class="next">上一步，填寫通路開發<i class="fa fa-arrow-left"></i></span></a></button>&nbsp;&nbsp;
 					</div>
 				  </form>
 			</div>
