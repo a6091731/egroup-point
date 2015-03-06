@@ -127,54 +127,138 @@
 									<table class="productTable responsive">
 									<thead>
 										<tr>
-											<th></th>
+											<th>上半年</th>
 											<th>建置期</th>
-											<th>Q1</th>
-											<th>Q2</th>
-											<th>Q3</th>
-											<th>Q4</th>
+											<th>1月</th>
+											<th>2月</th>
+											<th>3月</th>
+											<th>4月</th>
+											<th>5月</th>
+											<th>6月</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>管理人員</td>
-											<td><input type="text" class="input-control0 input-control" name="MQ0" id="MQ0" value="${getHumanResourceContentByMember.MQ0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="MQ1" id="MQ1" value="${getHumanResourceContentByMember.MQ1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="MQ2" id="MQ2" value="${getHumanResourceContentByMember.MQ2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="MQ3" id="MQ3" value="${getHumanResourceContentByMember.MQ3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="MQ4" id="MQ4" value="${getHumanResourceContentByMember.MQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="M0" id="M0" value="${getHumanResourceContentByMember.M0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="M1" id="M1" value="${getHumanResourceContentByMember.M1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="M2" id="M2" value="${getHumanResourceContentByMember.M2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="M3" id="M3" value="${getHumanResourceContentByMember.M3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="M4" id="M4" value="${getHumanResourceContentByMember.M4}" ></td>
+											<td><input type="text" class="input-control5 input-control" name="M5" id="M5" value="${getHumanResourceContentByMember.M5}" ></td>
+											<td><input type="text" class="input-control6 input-control" name="M6" id="M6" value="${getHumanResourceContentByMember.M6}" ></td>
 										</tr>
 										<tr>
 											<td>研發生產</td>
-											<td><input type="text" class="input-control0 input-control" name="RQ0" id="RQ0" value="${getHumanResourceContentByMember.RQ0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="RQ1" id="RQ1" value="${getHumanResourceContentByMember.RQ1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="RQ2" id="RQ2" value="${getHumanResourceContentByMember.RQ2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="RQ3" id="RQ3" value="${getHumanResourceContentByMember.RQ3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="RQ4" id="RQ4" value="${getHumanResourceContentByMember.RQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="R0" id="R0" value="${getHumanResourceContentByMember.R0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="R1" id="R1" value="${getHumanResourceContentByMember.R1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="R2" id="R2" value="${getHumanResourceContentByMember.R2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="R3" id="R3" value="${getHumanResourceContentByMember.R3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="R4" id="R4" value="${getHumanResourceContentByMember.R4}" ></td>
+											<td><input type="text" class="input-control5 input-control" name="R5" id="R5" value="${getHumanResourceContentByMember.R5}" ></td>
+											<td><input type="text" class="input-control6 input-control" name="R6" id="R6" value="${getHumanResourceContentByMember.R6}" ></td>
+											
 										</tr>
 										<tr>
 											<td>行銷業務</td>
-											<td><input type="text" class="input-control0 input-control" name="SQ0" id="SQ0" value="${getHumanResourceContentByMember.SQ0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="SQ1" id="SQ1" value="${getHumanResourceContentByMember.SQ1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="SQ2" id="SQ2" value="${getHumanResourceContentByMember.SQ2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="SQ3" id="SQ3" value="${getHumanResourceContentByMember.SQ3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="SQ4" id="SQ4" value="${getHumanResourceContentByMember.SQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="S0" id="S0" value="${getHumanResourceContentByMember.S0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="S1" id="S1" value="${getHumanResourceContentByMember.S1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="S2" id="S2" value="${getHumanResourceContentByMember.S2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="S3" id="S3" value="${getHumanResourceContentByMember.S3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="S4" id="S4" value="${getHumanResourceContentByMember.S4}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="S5" id="S5" value="${getHumanResourceContentByMember.S5}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="S6" id="S6" value="${getHumanResourceContentByMember.S6}" ></td>
 										</tr>
 										<tr>
 											<td>其他</td>
-											<td><input type="text" class="input-control0 input-control" name="OQ0" id="OQ0" value="${getHumanResourceContentByMember.OQ0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="OQ1" id="OQ1" value="${getHumanResourceContentByMember.OQ1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="OQ2" id="OQ2" value="${getHumanResourceContentByMember.OQ2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="OQ3" id="OQ3" value="${getHumanResourceContentByMember.OQ3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="OQ4" id="OQ4" value="${getHumanResourceContentByMember.OQ4}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="O0" id="O0" value="${getHumanResourceContentByMember.O0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="O1" id="O1" value="${getHumanResourceContentByMember.O1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="O2" id="O2" value="${getHumanResourceContentByMember.O2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="O3" id="O3" value="${getHumanResourceContentByMember.O3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="O4" id="O4" value="${getHumanResourceContentByMember.O4}" ></td>
+											<td><input type="text" class="input-control5 input-control" name="O5" id="O5" value="${getHumanResourceContentByMember.O5}" ></td>
+											<td><input type="text" class="input-control6 input-control" name="O6" id="O6" value="${getHumanResourceContentByMember.O6}" ></td>
 										</tr>
 										<tr>
 											<td>合計</td>
-											<td><p id="setTotalQ0">${getHumanResourceContentByMember.totalQ0}</p><input type="hidden" name="totalQ0" id="totalQ0" ></td>
-											<td><p id="setTotalQ1">${getHumanResourceContentByMember.totalQ1}</p><input type="hidden" name="totalQ1" id="totalQ1" ></td>
-											<td><p id="setTotalQ2">${getHumanResourceContentByMember.totalQ2}</p><input type="hidden" name="totalQ2" id="totalQ2" ></td>
-											<td><p id="setTotalQ3">${getHumanResourceContentByMember.totalQ3}</p><input type="hidden" name="totalQ3" id="totalQ3" ></td>
-											<td><p id="setTotalQ4">${getHumanResourceContentByMember.totalQ4}</p><input type="hidden" name="totalQ4" id="totalQ4" ></td>
+											<td><p id="setTotal0">${getHumanResourceContentByMember.total0}</p><input type="hidden" name="total0" id="total0" ></td>
+											<td><p id="setTotal1">${getHumanResourceContentByMember.total1}</p><input type="hidden" name="total1" id="total1" ></td>
+											<td><p id="setTotal2">${getHumanResourceContentByMember.total2}</p><input type="hidden" name="total2" id="total2" ></td>
+											<td><p id="setTotal3">${getHumanResourceContentByMember.total3}</p><input type="hidden" name="total3" id="total3" ></td>
+											<td><p id="setTotal4">${getHumanResourceContentByMember.total4}</p><input type="hidden" name="total4" id="total4" ></td>
+											<td><p id="setTotal5">${getHumanResourceContentByMember.total5}</p><input type="hidden" name="total5" id="total5" ></td>
+											<td><p id="setTotal6">${getHumanResourceContentByMember.total6}</p><input type="hidden" name="total6" id="total6" ></td>
+										</tr>
+									</tbody>
+								</table>
+								
+								
+							</li>
+							<li>
+									<table class="productTable responsive">
+									<thead>
+										<tr>
+											<th>下半年</th>
+											<th>建置期</th>
+											<th>7月</th>
+											<th>8月</th>
+											<th>9月</th>
+											<th>10月</th>
+											<th>11月</th>
+											<th>12月</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>管理人員</td>
+											<!-- td><input type="text" class="input-control0 input-control" name="M0" id="M0" value="${getHumanResourceContentByMember.M0}" ></td -->
+											<td><input type="text" class="input-control7 input-control" name="M7" id="M7" value="${getHumanResourceContentByMember.M7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="M8" id="M8" value="${getHumanResourceContentByMember.M8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="M9" id="M9" value="${getHumanResourceContentByMember.M9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="M10" id="M10" value="${getHumanResourceContentByMember.M10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="M11" id="M11" value="${getHumanResourceContentByMember.M11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="M12" id="M12" value="${getHumanResourceContentByMember.M12}" ></td>
+										</tr>
+										<tr>
+											<td>研發生產</td>
+											<!-- td><input type="text" class="input-control0 input-control" name="R0" id="R0" value="${getHumanResourceContentByMember.R0}" ></td -->
+											<td><input type="text" class="input-control7 input-control" name="R7" id="R7" value="${getHumanResourceContentByMember.R7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="R8" id="R8" value="${getHumanResourceContentByMember.R8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="R9" id="R9" value="${getHumanResourceContentByMember.R9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="R10" id="R10" value="${getHumanResourceContentByMember.R10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="R11" id="R11" value="${getHumanResourceContentByMember.R11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="R12" id="R12" value="${getHumanResourceContentByMember.R12}" ></td>
+											
+										</tr>
+										<tr>
+											<td>行銷業務</td>
+											<!-- td><input type="text" class="input-control0 input-control" name="S0" id="S0" value="${getHumanResourceContentByMember.S0}" ></td -->
+											<td><input type="text" class="input-control7 input-control" name="S7" id="S7" value="${getHumanResourceContentByMember.S7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="S8" id="S8" value="${getHumanResourceContentByMember.S8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="S9" id="S9" value="${getHumanResourceContentByMember.S9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="S10" id="S10" value="${getHumanResourceContentByMember.S10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="S11" id="S11" value="${getHumanResourceContentByMember.S11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="S12" id="S12" value="${getHumanResourceContentByMember.S12}" ></td>
+										</tr>
+										<tr>
+											<td>其他</td>
+											<!-- td><input type="text" class="input-control0 input-control" name="O0" id="O0" value="${getHumanResourceContentByMember.O0}" ></td -->
+											<td><input type="text" class="input-control7 input-control" name="O7" id="O7" value="${getHumanResourceContentByMember.O7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="O8" id="O8" value="${getHumanResourceContentByMember.O8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="O9" id="O9" value="${getHumanResourceContentByMember.O9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="O10" id="O10" value="${getHumanResourceContentByMember.O10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="O11" id="O11" value="${getHumanResourceContentByMember.O11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="O12" id="O12" value="${getHumanResourceContentByMember.O12}" ></td>
+										</tr>
+										<tr>
+											<td>合計</td>
+											<!-- td><p id="setTotal0">${getHumanResourceContentByMember.total0}</p><input type="hidden" name="total0" id="total0" ></td -->
+											<td><p id="setTotal7">${getHumanResourceContentByMember.total7}</p><input type="hidden" name="total7" id="total7" ></td>
+											<td><p id="setTotal8">${getHumanResourceContentByMember.total8}</p><input type="hidden" name="total8" id="total8" ></td>
+											<td><p id="setTotal9">${getHumanResourceContentByMember.total9}</p><input type="hidden" name="total9" id="total9" ></td>
+											<td><p id="setTotal10">${getHumanResourceContentByMember.total10}</p><input type="hidden" name="total10" id="total10" ></td>
+											<td><p id="setTotal11">${getHumanResourceContentByMember.total11}</p><input type="hidden" name="total11" id="total11" ></td>
+											<td><p id="setTotal12">${getHumanResourceContentByMember.total12}</p><input type="hidden" name="total12" id="total12" ></td>
 										</tr>
 									</tbody>
 								</table>
