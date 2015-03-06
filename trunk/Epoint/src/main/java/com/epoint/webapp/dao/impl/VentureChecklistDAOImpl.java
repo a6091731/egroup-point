@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
-import javax.swing.event.HyperlinkEvent;
 
 import com.epoint.webapp.dao.VentureChecklistDAO;
 import com.epoint.webapp.entity.HumanResourceContent;

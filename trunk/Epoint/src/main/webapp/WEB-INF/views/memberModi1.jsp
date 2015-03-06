@@ -148,9 +148,10 @@
 			
 		function back(){
 			var slice1 = document.referrer.slice(-11);
-			var slice2 = document.referrer.slice(-20);
-			if(slice1=="memberModi2" || slice1=="" || slice1==null || slice2=="memberModiPassword2")
+			var slice2 = document.referrer.slice(-19);
+			if(slice1=="memberModi2" || slice1=="" || slice1==null || slice2=="memberModiPassword2"){
 				window.open('index', '_self');
+			}
 			else
 				history.back();
 		}

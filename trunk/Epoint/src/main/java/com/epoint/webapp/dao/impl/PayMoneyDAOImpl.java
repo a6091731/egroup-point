@@ -204,12 +204,13 @@ public class PayMoneyDAOImpl implements PayMoneyDAO {
 				/*String dateString = dateConversion.ConversionYMD(rs.getDate("payDate"));
             	year = dateString.substring(0,4);
             	mon = dateString.substring(5,7);
-            	payMoney.setDate_string(year+"-"+mon)*/
+            	payMoney.setDate_string(year+"-"+mon)
+            	System.out.println("payMone="+payMoney.getDate_string());*/
 				payMoney.setDate(rs.getDate("payDate"));
 				payMoney.setMoney(rs.getInt("payMoney"));
 				payMoney.setRecord(rs.getInt("payRecord"));
 				payMoney.setID(rs.getInt("payItemID"));
-				System.out.println("payMone="+payMoney.getDate_string());
+				
 			}
 			rs.close();
 			smt.close();
