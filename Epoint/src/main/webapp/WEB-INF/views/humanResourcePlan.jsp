@@ -140,44 +140,44 @@
 									<tbody>
 										<tr>
 											<td>管理人員</td>
-											<td><input type="text" class="input-control0 input-control" name="M0" id="M0" value="${getHumanResourceContentByMember.M0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="M1" id="M1" value="${getHumanResourceContentByMember.M1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="M2" id="M2" value="${getHumanResourceContentByMember.M2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="M3" id="M3" value="${getHumanResourceContentByMember.M3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="M4" id="M4" value="${getHumanResourceContentByMember.M4}" ></td>
-											<td><input type="text" class="input-control5 input-control" name="M5" id="M5" value="${getHumanResourceContentByMember.M5}" ></td>
-											<td><input type="text" class="input-control6 input-control" name="M6" id="M6" value="${getHumanResourceContentByMember.M6}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="M0" id="M0" value="${getHumanResourceContentByMember.m0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="M1" id="M1" value="${getHumanResourceContentByMember.m1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="M2" id="M2" value="${getHumanResourceContentByMember.m2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="M3" id="M3" value="${getHumanResourceContentByMember.m3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="M4" id="M4" value="${getHumanResourceContentByMember.m4}" ></td>
+											<td><input type="text" class="input-control5 input-control" name="M5" id="M5" value="${getHumanResourceContentByMember.m5}" ></td>
+											<td><input type="text" class="input-control6 input-control" name="M6" id="M6" value="${getHumanResourceContentByMember.m6}" ></td>
 										</tr>
 										<tr>
 											<td>研發生產</td>
-											<td><input type="text" class="input-control0 input-control" name="R0" id="R0" value="${getHumanResourceContentByMember.R0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="R1" id="R1" value="${getHumanResourceContentByMember.R1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="R2" id="R2" value="${getHumanResourceContentByMember.R2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="R3" id="R3" value="${getHumanResourceContentByMember.R3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="R4" id="R4" value="${getHumanResourceContentByMember.R4}" ></td>
-											<td><input type="text" class="input-control5 input-control" name="R5" id="R5" value="${getHumanResourceContentByMember.R5}" ></td>
-											<td><input type="text" class="input-control6 input-control" name="R6" id="R6" value="${getHumanResourceContentByMember.R6}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="R0" id="R0" value="${getHumanResourceContentByMember.r0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="R1" id="R1" value="${getHumanResourceContentByMember.r1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="R2" id="R2" value="${getHumanResourceContentByMember.r2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="R3" id="R3" value="${getHumanResourceContentByMember.r3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="R4" id="R4" value="${getHumanResourceContentByMember.r4}" ></td>
+											<td><input type="text" class="input-control5 input-control" name="R5" id="R5" value="${getHumanResourceContentByMember.r5}" ></td>
+											<td><input type="text" class="input-control6 input-control" name="R6" id="R6" value="${getHumanResourceContentByMember.r6}" ></td>
 											
 										</tr>
 										<tr>
 											<td>行銷業務</td>
-											<td><input type="text" class="input-control0 input-control" name="S0" id="S0" value="${getHumanResourceContentByMember.S0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="S1" id="S1" value="${getHumanResourceContentByMember.S1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="S2" id="S2" value="${getHumanResourceContentByMember.S2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="S3" id="S3" value="${getHumanResourceContentByMember.S3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="S4" id="S4" value="${getHumanResourceContentByMember.S4}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="S5" id="S5" value="${getHumanResourceContentByMember.S5}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="S6" id="S6" value="${getHumanResourceContentByMember.S6}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="S0" id="S0" value="${getHumanResourceContentByMember.s0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="S1" id="S1" value="${getHumanResourceContentByMember.s1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="S2" id="S2" value="${getHumanResourceContentByMember.s2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="S3" id="S3" value="${getHumanResourceContentByMember.s3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="S4" id="S4" value="${getHumanResourceContentByMember.s4}" ></td>
+											<td><input type="text" class="input-control5 input-control" name="S5" id="S5" value="${getHumanResourceContentByMember.s5}" ></td>
+											<td><input type="text" class="input-control6 input-control" name="S6" id="S6" value="${getHumanResourceContentByMember.s6}" ></td>
 										</tr>
 										<tr>
 											<td>其他</td>
-											<td><input type="text" class="input-control0 input-control" name="O0" id="O0" value="${getHumanResourceContentByMember.O0}" ></td>
-											<td><input type="text" class="input-control1 input-control" name="O1" id="O1" value="${getHumanResourceContentByMember.O1}" ></td>
-											<td><input type="text" class="input-control2 input-control" name="O2" id="O2" value="${getHumanResourceContentByMember.O2}" ></td>
-											<td><input type="text" class="input-control3 input-control" name="O3" id="O3" value="${getHumanResourceContentByMember.O3}" ></td>
-											<td><input type="text" class="input-control4 input-control" name="O4" id="O4" value="${getHumanResourceContentByMember.O4}" ></td>
-											<td><input type="text" class="input-control5 input-control" name="O5" id="O5" value="${getHumanResourceContentByMember.O5}" ></td>
-											<td><input type="text" class="input-control6 input-control" name="O6" id="O6" value="${getHumanResourceContentByMember.O6}" ></td>
+											<td><input type="text" class="input-control0 input-control" name="O0" id="O0" value="${getHumanResourceContentByMember.o0}" ></td>
+											<td><input type="text" class="input-control1 input-control" name="O1" id="O1" value="${getHumanResourceContentByMember.o1}" ></td>
+											<td><input type="text" class="input-control2 input-control" name="O2" id="O2" value="${getHumanResourceContentByMember.o2}" ></td>
+											<td><input type="text" class="input-control3 input-control" name="O3" id="O3" value="${getHumanResourceContentByMember.o3}" ></td>
+											<td><input type="text" class="input-control4 input-control" name="O4" id="O4" value="${getHumanResourceContentByMember.o4}" ></td>
+											<td><input type="text" class="input-control5 input-control" name="O5" id="O5" value="${getHumanResourceContentByMember.o5}" ></td>
+											<td><input type="text" class="input-control6 input-control" name="O6" id="O6" value="${getHumanResourceContentByMember.o6}" ></td>
 										</tr>
 										<tr>
 											<td>合計</td>
@@ -199,7 +199,6 @@
 									<thead>
 										<tr>
 											<th>下半年</th>
-											<th>建置期</th>
 											<th>7月</th>
 											<th>8月</th>
 											<th>9月</th>
@@ -211,48 +210,48 @@
 									<tbody>
 										<tr>
 											<td>管理人員</td>
-											<!-- td><input type="text" class="input-control0 input-control" name="M0" id="M0" value="${getHumanResourceContentByMember.M0}" ></td -->
-											<td><input type="text" class="input-control7 input-control" name="M7" id="M7" value="${getHumanResourceContentByMember.M7}" ></td>
-											<td><input type="text" class="input-control8 input-control" name="M8" id="M8" value="${getHumanResourceContentByMember.M8}" ></td>
-											<td><input type="text" class="input-control9 input-control" name="M9" id="M9" value="${getHumanResourceContentByMember.M9}" ></td>
-											<td><input type="text" class="input-control10 input-control" name="M10" id="M10" value="${getHumanResourceContentByMember.M10}" ></td>
-											<td><input type="text" class="input-control11 input-control" name="M11" id="M11" value="${getHumanResourceContentByMember.M11}" ></td>
-											<td><input type="text" class="input-control12 input-control" name="M12" id="M12" value="${getHumanResourceContentByMember.M12}" ></td>
+											
+											<td><input type="text" class="input-control7 input-control" name="M7" id="M7" value="${getHumanResourceContentByMember.m7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="M8" id="M8" value="${getHumanResourceContentByMember.m8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="M9" id="M9" value="${getHumanResourceContentByMember.m9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="M10" id="M10" value="${getHumanResourceContentByMember.m10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="M11" id="M11" value="${getHumanResourceContentByMember.m11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="M12" id="M12" value="${getHumanResourceContentByMember.m12}" ></td>
 										</tr>
 										<tr>
 											<td>研發生產</td>
-											<!-- td><input type="text" class="input-control0 input-control" name="R0" id="R0" value="${getHumanResourceContentByMember.R0}" ></td -->
-											<td><input type="text" class="input-control7 input-control" name="R7" id="R7" value="${getHumanResourceContentByMember.R7}" ></td>
-											<td><input type="text" class="input-control8 input-control" name="R8" id="R8" value="${getHumanResourceContentByMember.R8}" ></td>
-											<td><input type="text" class="input-control9 input-control" name="R9" id="R9" value="${getHumanResourceContentByMember.R9}" ></td>
-											<td><input type="text" class="input-control10 input-control" name="R10" id="R10" value="${getHumanResourceContentByMember.R10}" ></td>
-											<td><input type="text" class="input-control11 input-control" name="R11" id="R11" value="${getHumanResourceContentByMember.R11}" ></td>
-											<td><input type="text" class="input-control12 input-control" name="R12" id="R12" value="${getHumanResourceContentByMember.R12}" ></td>
+											
+											<td><input type="text" class="input-control7 input-control" name="R7" id="R7" value="${getHumanResourceContentByMember.r7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="R8" id="R8" value="${getHumanResourceContentByMember.r8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="R9" id="R9" value="${getHumanResourceContentByMember.r9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="R10" id="R10" value="${getHumanResourceContentByMember.r10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="R11" id="R11" value="${getHumanResourceContentByMember.r11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="R12" id="R12" value="${getHumanResourceContentByMember.r12}" ></td>
 											
 										</tr>
 										<tr>
 											<td>行銷業務</td>
-											<!-- td><input type="text" class="input-control0 input-control" name="S0" id="S0" value="${getHumanResourceContentByMember.S0}" ></td -->
-											<td><input type="text" class="input-control7 input-control" name="S7" id="S7" value="${getHumanResourceContentByMember.S7}" ></td>
-											<td><input type="text" class="input-control8 input-control" name="S8" id="S8" value="${getHumanResourceContentByMember.S8}" ></td>
-											<td><input type="text" class="input-control9 input-control" name="S9" id="S9" value="${getHumanResourceContentByMember.S9}" ></td>
-											<td><input type="text" class="input-control10 input-control" name="S10" id="S10" value="${getHumanResourceContentByMember.S10}" ></td>
-											<td><input type="text" class="input-control11 input-control" name="S11" id="S11" value="${getHumanResourceContentByMember.S11}" ></td>
-											<td><input type="text" class="input-control12 input-control" name="S12" id="S12" value="${getHumanResourceContentByMember.S12}" ></td>
+											
+											<td><input type="text" class="input-control7 input-control" name="S7" id="S7" value="${getHumanResourceContentByMember.s7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="S8" id="S8" value="${getHumanResourceContentByMember.s8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="S9" id="S9" value="${getHumanResourceContentByMember.s9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="S10" id="S10" value="${getHumanResourceContentByMember.s10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="S11" id="S11" value="${getHumanResourceContentByMember.s11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="S12" id="S12" value="${getHumanResourceContentByMember.s12}" ></td>
 										</tr>
 										<tr>
 											<td>其他</td>
-											<!-- td><input type="text" class="input-control0 input-control" name="O0" id="O0" value="${getHumanResourceContentByMember.O0}" ></td -->
-											<td><input type="text" class="input-control7 input-control" name="O7" id="O7" value="${getHumanResourceContentByMember.O7}" ></td>
-											<td><input type="text" class="input-control8 input-control" name="O8" id="O8" value="${getHumanResourceContentByMember.O8}" ></td>
-											<td><input type="text" class="input-control9 input-control" name="O9" id="O9" value="${getHumanResourceContentByMember.O9}" ></td>
-											<td><input type="text" class="input-control10 input-control" name="O10" id="O10" value="${getHumanResourceContentByMember.O10}" ></td>
-											<td><input type="text" class="input-control11 input-control" name="O11" id="O11" value="${getHumanResourceContentByMember.O11}" ></td>
-											<td><input type="text" class="input-control12 input-control" name="O12" id="O12" value="${getHumanResourceContentByMember.O12}" ></td>
+											
+											<td><input type="text" class="input-control7 input-control" name="O7" id="O7" value="${getHumanResourceContentByMember.o7}" ></td>
+											<td><input type="text" class="input-control8 input-control" name="O8" id="O8" value="${getHumanResourceContentByMember.o8}" ></td>
+											<td><input type="text" class="input-control9 input-control" name="O9" id="O9" value="${getHumanResourceContentByMember.o9}" ></td>
+											<td><input type="text" class="input-control10 input-control" name="O10" id="O10" value="${getHumanResourceContentByMember.o10}" ></td>
+											<td><input type="text" class="input-control11 input-control" name="O11" id="O11" value="${getHumanResourceContentByMember.o11}" ></td>
+											<td><input type="text" class="input-control12 input-control" name="O12" id="O12" value="${getHumanResourceContentByMember.o12}" ></td>
 										</tr>
 										<tr>
 											<td>合計</td>
-											<!-- td><p id="setTotal0">${getHumanResourceContentByMember.total0}</p><input type="hidden" name="total0" id="total0" ></td -->
+											
 											<td><p id="setTotal7">${getHumanResourceContentByMember.total7}</p><input type="hidden" name="total7" id="total7" ></td>
 											<td><p id="setTotal8">${getHumanResourceContentByMember.total8}</p><input type="hidden" name="total8" id="total8" ></td>
 											<td><p id="setTotal9">${getHumanResourceContentByMember.total9}</p><input type="hidden" name="total9" id="total9" ></td>
@@ -322,6 +321,15 @@
 	            total3();
 	            total4();
 	            total5();
+	            total6();
+	            total7();
+	            total8();
+	            total9();
+	            total10();
+	            total11();
+	            total12();
+	            total13();
+	           
 	            
 	            $('.input-control0').keyup(function(){
 	            	total1();
@@ -342,6 +350,39 @@
 	            $('.input-control4').keyup(function(){
 	            	total5()
 		        });
+	            
+	            $('.input-control5').keyup(function(){
+	            	total6()
+		        });
+	            
+	            $('.input-control6').keyup(function(){
+	            	total7()
+	            })
+	            
+	            $('.input-control7').keyup(function(){
+	            	total8()
+	            })
+	            
+	            $('.input-control8').keyup(function(){
+	            	total9()
+	            })
+	            
+	            $('.input-control9').keyup(function(){
+	            	total10()
+	            })
+	            
+	            $('.input-control10').keyup(function(){
+	            	total11()
+	            })
+	            
+	            $('.input-control11').keyup(function(){
+	            	total12()
+	            })
+	            
+	            $('.input-control12').keyup(function(){
+	            	total13()
+	            })
+	            
 	            $("#sendForm").validate({
 	            	rules:{
 	            		content171:{
@@ -388,345 +429,503 @@
 		            	}
 		            });
 	            });
+	            
 	            //M	
-	            $("#MQ0").keyup(function(){
-	            	MQ1Rule();
-	            	MQ2Rule();
-	            	MQ3Rule();
-	            	MQ4Rule();
-	            	MQ5Rule();
+	            /*$("#M0").keyup(function(){
+	            	M1Rule();
+	            	M2Rule();
+	            	M3Rule();
+	            	M4Rule();
+	            	M5Rule();
 				});
-	            $("#MQ1").keyup(function(){
-	            	MQ1Rule();
-	            	MQ2Rule();
-	            	MQ3Rule();
-	            	MQ4Rule();
-	            	MQ5Rule();
-				});
-	            
-	            $("#MQ2").keyup(function(){
-	            	MQ2Rule();
-	            	MQ3Rule();
-	            	MQ4Rule();
-	            	MQ5Rule();
+	            $("#M1").keyup(function(){
+	            	M1Rule();
+	            	M2Rule();
+	            	M3Rule();
+	            	M4Rule();
+	            	M5Rule();
 				});
 	            
-	            $("#MQ3").keyup(function(){
-	            	MQ3Rule();
-	            	MQ4Rule();
-	            	MQ5Rule();
+	            $("#M2").keyup(function(){
+	            	M2Rule();
+	            	M3Rule();
+	            	M4Rule();
+	            	M5Rule();
 				});
 	            
-	            $("#MQ4").keyup(function(){
-	            	MQ4Rule();
-	            	MQ5Rule();
+	            $("#M3").keyup(function(){
+	            	M3Rule();
+	            	M4Rule();
+	            	M5Rule();
 				});
-	            	           
+	            
+	            $("#M4").keyup(function(){
+	            	M4Rule();
+	            	M5Rule();
+				});
+	            
+	            $("#M5").keyup(function(){
+	            	
+	            });
+	            
+	            $("#M6").keyup(function(){
+	            	
+	            });
+	            
+	            $("#M7").keyup(function(){
+	            	
+	            });
+	            
+	            $("#M8").keyup(function(){
+	            	
+	            });
+	            
+	            $("#M9").keyup(function(){
+	            	
+	            });
+	            
+	            $("#M10").keyup(function(){
+	            	
+	            });
+	            
+	            $("#M11").keyup(function(){
+	            	
+	            });
+	            
+	            $("#M12").keyup(function(){
+	            	
+	            });
+	            */	           
 	            //R
-	            $("#RQ0").keyup(function(){
-	            	RQ1Rule();
-	            	RQ2Rule();
-	            	RQ3Rule();
-	            	RQ4Rule();
-	            	RQ5Rule();
+	            /*$("#R0").keyup(function(){
+	            	R1Rule();
+	            	R2Rule();
+	            	R3Rule();
+	            	R4Rule();
+	            	R5Rule();
 				});	
-	            $("#RQ1").keyup(function(){
-	            	RQ1Rule();
-	            	RQ2Rule();
-	            	RQ3Rule();
-	            	RQ4Rule();
-	            	RQ5Rule();
+	            $("#R1").keyup(function(){
+	            	R1Rule();
+	            	R2Rule();
+	            	R3Rule();
+	            	R4Rule();
+	            	R5Rule();
 				});	           
-	            $("#RQ2").keyup(function(){
-	            	RQ2Rule();
-	            	RQ3Rule();
-	            	RQ4Rule();
-	            	RQ5Rule();
-				});	           
-	            $("#RQ3").keyup(function(){
-	            	RQ3Rule();
-	            	RQ4Rule();
-	            	RQ5Rule();
+	            $("#R2").keyup(function(){
+	            	R2Rule();
+	            	R3Rule();
+	            	R4Rule();
+	            	R5Rule();
+				});	          
+	            $("#R3").keyup(function(){
+	            	R3Rule();
+	            	R4Rule();
+	            	R5Rule();
 				});
-	            $("#RQ4").keyup(function(){
-	            	RQ4Rule();
-	            	RQ5Rule();
+	            $("#R4").keyup(function(){
+	            	R4Rule();
+	            	R5Rule();
 				});
-	            $("#RQ5").keyup(function(){
-	            	RQ5Rule();
+	            $("#R5").keyup(function(){
+	            	R5Rule();
 				});
 	            
+	            $("#R6").keyup(function(){
+	            	
+	            });
+	            
+	            $("#R7").keyup(function(){
+	            	
+	            });
+	            
+	            $("#R8").keyup(function(){
+	            	
+	            });
+	            
+	            $("#R9").keyup(function(){
+	            	
+	            });
+	            
+	            $("#R10").keyup(function(){
+	            	
+	            });
+	            
+	            $("#R11").keyup(function(){
+	            	
+	            });
+	            
+	            $("#R12").keyup(function(){
+	            	
+	            });
+	            */
 	            //S 
-	            $("#SQ0").keyup(function(){
-	            	SQ1Rule();
-	            	SQ2Rule();
-	            	SQ3Rule();
-	            	SQ4Rule();
-	            	SQ5Rule(); 
+	            /*$("#S0").keyup(function(){
+	            	S1Rule();
+	            	S2Rule();
+	            	S3Rule();
+	            	S4Rule();
+	            	S5Rule(); 
 				});	
-	            $("#SQ1").keyup(function(){
-	            	SQ1Rule();
-	            	SQ2Rule();
-	            	SQ3Rule();
-	            	SQ4Rule();
-	            	SQ5Rule(); 
+	            $("#S1").keyup(function(){
+	            	S1Rule();
+	            	S2Rule();
+	            	S3Rule();
+	            	S4Rule();
+	            	S5Rule(); 
 				});	            	            
-	            $("#SQ2").keyup(function(){
-	            	SQ2Rule();
-	            	SQ3Rule();
-	            	SQ4Rule();
-	            	SQ5Rule(); 
+	            $("#S2").keyup(function(){
+	            	S2Rule();
+	            	S3Rule();
+	            	S4Rule();
+	            	S5Rule(); 
 				});
-	            $("#SQ3").keyup(function(){
-	            	SQ3Rule();
-	            	SQ4Rule();
-	            	SQ5Rule(); 
+	            $("#S3").keyup(function(){
+	            	S3Rule();
+	            	S4Rule();
+	            	S5Rule(); 
 				});	            
-	            $("#SQ4").keyup(function(){
-	            	SQ4Rule();
-	            	SQ5Rule();
+	            $("#S4").keyup(function(){
+	            	S4Rule();
+	            	S5Rule();
 				});	            
-	            $("#SQ5").keyup(function(){
-	            	SQ5Rule(); 
+	            $("#S5").keyup(function(){
+	            	S5Rule(); 
 				});
 	            
+	            $("#S6").keyup(function(){
+	            	
+	            });
+	            
+	            $("#S7").keyup(function(){
+	            	
+	            });
+	            
+	            $("#S8").keyup(function(){
+	            	
+	            });
+	            
+	            $("#S9").keyup(function(){
+	            	
+	            });
+	            
+	            $("#S10").keyup(function(){
+	            	
+	            });
+	            
+	            $("#S11").keyup(function(){
+	            	
+	            });
+	            
+	            $("#S12").keyup(function(){
+	            	
+	            });
+	            */
 	            //O 
-	            $("#OQ0").keyup(function(){
-	            	OQ1Rule();
-	            	OQ2Rule();
-	            	OQ3Rule();
-	            	OQ4Rule();
-	            	OQ5Rule();
+	            /*$("#O0").keyup(function(){
+	            	O1Rule();
+	            	O2Rule();
+	            	O3Rule();
+	            	O4Rule();
+	            	O5Rule();
 				});
-	            $("#OQ1").keyup(function(){
-	            	OQ1Rule();
-	            	OQ2Rule();
-	            	OQ3Rule();
-	            	OQ4Rule();
-	            	OQ5Rule();
+	            $("#O1").keyup(function(){
+	            	O1Rule();
+	            	O2Rule();
+	            	O3Rule();
+	            	O4Rule();
+	            	O5Rule();
 				});
-	            $("#OQ2").keyup(function(){
-	            	OQ2Rule();
-	            	OQ3Rule();
-	            	OQ4Rule();
-	            	OQ5Rule();
+	            $("#O2").keyup(function(){
+	            	O2Rule();
+	            	O3Rule();
+	            	O4Rule();
+	            	O5Rule();
 				});
-	            $("#OQ3").keyup(function(){
-	            	OQ3Rule();
-	            	OQ4Rule();
-	            	OQ5Rule();
+	            $("#O3").keyup(function(){
+	            	O3Rule();
+	            	O4Rule();
+	            	O5Rule();
 				});
-	            $("#OQ4").keyup(function(){
-	            	OQ4Rule();
-	            	OQ5Rule();
+	            $("#O4").keyup(function(){
+	            	O4Rule();
+	            	O5Rule();
 				});
-	            $("#OQ5").keyup(function(){
-	            	OQ5Rule();
+	            $("#O5").keyup(function(){
+	            	O5Rule();
 				});
 	            
+	            $("#O6").keyup(function(){
+	            	
+	            });
 	            
+	            $("#O7").keyup(function(){
+	            	
+	            });
+	            
+	            $("#O8").keyup(function(){
+	            	
+	            });
+	            
+	            $("#O9").keyup(function(){
+	            	
+	            });
+	            
+	            $("#O10").keyup(function(){
+	            	
+	            });
+	            
+	            $("#O11").keyup(function(){
+	            	
+	            });
+	            
+	            $("#O12").keyup(function(){
+	            	
+	            });
+	            */
 	        });
 	        
 	        function total1(){
-	        	var setTotal0 = Number($('#MQ0').val())+Number($('#RQ0').val())+Number($('#SQ0').val())+Number($('#OQ0').val());
-	        	$('#setTotalQ0').text(!isNaN(setTotal0)?setTotal0:0); 
-	        	$('#totalQ0').val(parseInt($('#setTotalQ0').text()));
+	        	var setTotal0 = Number($('#M0').val())+Number($('#R0').val())+Number($('#S0').val())+Number($('#O0').val());
+	        	$('#setTotal0').text(!isNaN(setTotal0)?setTotal0:0); 
+	        	$('#total0').val(parseInt($('#setTotal0').text()));
 	        }
 	        
 	        function total2(){
-	        	var setTotal1 = Number($('#MQ1').val())+Number($('#RQ1').val())+Number($('#SQ1').val())+Number($('#OQ1').val());
-	        	$('#setTotalQ1').text(!isNaN(setTotal1)?setTotal1:0);
-           	 	$('#totalQ1').val(parseInt($('#setTotalQ1').text()));
+	        	var setTotal1 = Number($('#M1').val())+Number($('#R1').val())+Number($('#S1').val())+Number($('#O1').val());
+	        	$('#setTotal1').text(!isNaN(setTotal1)?setTotal1:0);
+           	 	$('#total1').val(parseInt($('#setTotal1').text()));
 	        }
 	        
 	        function total3(){
-	        	var setTotal2 = Number($('#MQ2').val())+Number($('#RQ2').val())+Number($('#SQ2').val())+Number($('#OQ2').val());
-	        	$('#setTotalQ2').text(!isNaN(setTotal2)?setTotal2:0);
-            	$('#totalQ2').val(parseInt($('#setTotalQ2').text()));
+	        	var setTotal2 = Number($('#M2').val())+Number($('#R2').val())+Number($('#S2').val())+Number($('#O2').val());
+	        	$('#setTotal2').text(!isNaN(setTotal2)?setTotal2:0);
+            	$('#total2').val(parseInt($('#setTotal2').text()));
 	        }
 	        
 	        function total4(){
-	        	var setTotal3 = Number($('#MQ3').val())+Number($('#RQ3').val())+Number($('#SQ3').val())+Number($('#OQ3').val());
-	        	$('#setTotalQ3').text(!isNaN(setTotal3)?setTotal3:0);
-           	 	$('#totalQ3').val(parseInt($('#setTotalQ3').text()));
+	        	var setTotal3 = Number($('#M3').val())+Number($('#R3').val())+Number($('#S3').val())+Number($('#O3').val());
+	        	$('#setTotal3').text(!isNaN(setTotal3)?setTotal3:0);
+           	 	$('#total3').val(parseInt($('#setTotal3').text()));
 	        }
 	        
 	        function total5(){
-	        	var setTotal4 = Number($('#MQ4').val())+Number($('#RQ4').val())+Number($('#SQ4').val())+Number($('#OQ4').val());
-	        	$('#setTotalQ4').text(!isNaN(setTotal4)?setTotal4:0);
-           		$('#totalQ4').val(parseInt($('#setTotalQ4').text()));
+	        	var setTotal4 = Number($('#M4').val())+Number($('#R4').val())+Number($('#S4').val())+Number($('#O4').val());
+	        	$('#setTotal4').text(!isNaN(setTotal4)?setTotal4:0);
+           		$('#total4').val(parseInt($('#setTotal4').text()));
 	        }
 	        
-	        function MQ1Rule(){
-            	$("#MQ1").rules("add",{
-	            	min: parseInt($("#MQ0").val()),
+	        function total6(){
+	        	var setTotal5 = Number($('#M5').val())+Number($('#R5').val())+Number($('#S5').val())+Number($('#O5').val());
+	        	$('#setTotal5').text(!isNaN(setTotal5)?setTotal5:0);
+	        	$('#total5').val(parseInt($('#setTotal5').text()));
+	        }
+	        function total7(){
+	        	var setTotal6 = Number($('#M6').val())+Number($('#R6').val())+Number($('#S6').val())+Number($('#O6').val());
+	        	$('#setTotal6').text(!isNaN(setTotal6)?setTotal6:0);
+	        	$('#total6').val(parseInt($('#setTotal6').text()));
+	        }
+	        function total8(){
+	        	var setTotal7 = Number($('#M7').val())+Number($('#R7').val())+Number($('#S7').val())+Number($('#O7').val());
+	        	$('#setTotal7').text(!isNaN(setTotal7)?setTotal7:0);
+	        	$('#total7').val(parseInt($('#setTotal7').text()));
+	        }
+	        function total9(){
+	        	var setTotal8 = Number($('#M8').val())+Number($('#R8').val())+Number($('#S8').val())+Number($('#O8').val());
+	        	$('#setTotal8').text(!isNaN(setTotal8)?setTotal8:0);
+	        	$('#total8').val(parseInt($('#setTotal8').text()));
+	        }
+	        function total10(){
+	        	var setTotal9 = Number($('#M9').val())+Number($('#R9').val())+Number($('#S9').val())+Number($('#O9').val());
+	        	$('#setTotal9').text(!isNaN(setTotal9)?setTotal9:0);
+	        	$('#total9').val(parseInt($('#setTotal9').text()));
+	        }
+	        function total11(){
+	        	var setTotal10 = Number($('#M10').val())+Number($('#R10').val())+Number($('#S10').val())+Number($('#O10').val());
+	        	$('#setTotal10').text(!isNaN(setTotal10)?setTotal10:0);
+	        	$('#total10').val(parseInt($('#setTotal10').text()));
+	        }
+	        function total12(){
+	        	var setTotal11 = Number($('#M11').val())+Number($('#R11').val())+Number($('#S11').val())+Number($('#O11').val());
+	        	$('#setTotal11').text(!isNaN(setTotal11)?setTotal11:0);
+	        	$('#total11').val(parseInt($('#setTotal11').text()));
+	        }
+	        function total13(){
+	        	var setTotal12 = Number($('#M12').val())+Number($('#R12').val())+Number($('#S12').val())+Number($('#O12').val());
+	        	$('#setTotal12').text(!isNaN(setTotal12)?setTotal12:0);
+	        	$('#total12').val(parseInt($('#setTotal12').text()));
+	        }
+	        
+	       /* function M1Rule(){
+            	$("#M1").rules("add",{
+	            	min: parseInt($("#M0").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }	   
 	        
-            function MQ2Rule(){
-            	$("#MQ2").rules("add",{
-	            	min:parseInt($("#MQ1").val()),
+            function M2Rule(){
+            	$("#M2").rules("add",{
+	            	min:parseInt($("#M1").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
             
-            function MQ3Rule(){
-            	$("#MQ3").rules("add",{
-	            	min:parseInt($("#MQ2").val()),
+            function M3Rule(){
+            	$("#M3").rules("add",{
+	            	min:parseInt($("#M2").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
             
-            function MQ4Rule(){
-            	$("#MQ4").rules("add",{
-	            	min:parseInt($("#MQ3").val()),
+            function M4Rule(){
+            	$("#M4").rules("add",{
+	            	min:parseInt($("#M3").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
             
-            function MQ5Rule(){
-            	$("#MQ5").rules("add",{
- 	            	min:parseInt($("#MQ4").val()),
+            function M5Rule(){
+            	$("#M5").rules("add",{
+ 	            	min:parseInt($("#M4").val()),
  	            	messages:{
  	            		min:"人員數量不能少於前季{0}人"
  	            	}
  	        	});
             }
             
-            function RQ1Rule(){
-            	$("#RQ1").rules("add",{
-	 	            min:parseInt($("#RQ0").val()),
+            function R1Rule(){
+            	$("#R1").rules("add",{
+	 	            min:parseInt($("#R0").val()),
 	 	            messages:{
 	 	            	min:"人員數量不能少於前季{0}人"
 	 	            }
 	 	        });
             }
             
-            function RQ2Rule(){
-            	$("#RQ2").rules("add",{
- 	            	min:parseInt($("#RQ1").val()),
+            function R2Rule(){
+            	$("#R2").rules("add",{
+ 	            	min:parseInt($("#R1").val()),
  	            	messages:{
  	            		min:"人員數量不能少於前季{0}人"
  	            	}
  	        	});
             }
             
-            function RQ3Rule(){
-            	$("#RQ3").rules("add",{
- 	            	min:parseInt($("#RQ2").val()),
+            function R3Rule(){
+            	$("#R3").rules("add",{
+ 	            	min:parseInt($("#R2").val()),
  	            	messages:{
  	            		min:"人員數量不能少於前季{0}人"
  	            	}
  	        	});
             }
             
-            function RQ4Rule(){
-            	$("#RQ4").rules("add",{
-	            	min:parseInt($("#RQ3").val()),
+            function R4Rule(){
+            	$("#R4").rules("add",{
+	            	min:parseInt($("#R3").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
             
-            function RQ5Rule(){
-            	$("#RQ5").rules("add",{
-	            	min:parseInt($("#RQ4").val()),
+            function R5Rule(){
+            	$("#R5").rules("add",{
+	            	min:parseInt($("#R4").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
             
-            function SQ1Rule(){
-            	$("#SQ1").rules("add",{
-	            	min:parseInt($("#SQ0").val()),
+            function S1Rule(){
+            	$("#S1").rules("add",{
+	            	min:parseInt($("#S0").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
-            function SQ2Rule(){
-            	$("#SQ2").rules("add",{
-	            	min:parseInt($("#SQ1").val()),
+            function S2Rule(){
+            	$("#S2").rules("add",{
+	            	min:parseInt($("#S1").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
-            function SQ3Rule(){
-            	$("#SQ3").rules("add",{
-	            	min:parseInt($("#SQ2").val()),
+            function S3Rule(){
+            	$("#S3").rules("add",{
+	            	min:parseInt($("#S2").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
-            function SQ4Rule(){
-            	$("#SQ4").rules("add",{
-	            	min:parseInt($("#SQ3").val()),
+            function S4Rule(){
+            	$("#S4").rules("add",{
+	            	min:parseInt($("#S3").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
-            function SQ5Rule(){
-            	$("#SQ5").rules("add",{
- 	            	min:parseInt($("#SQ4").val()),
+            function S5Rule(){
+            	$("#S5").rules("add",{
+ 	            	min:parseInt($("#S4").val()),
  	            	messages:{
  	            		min:"人員數量不能少於前季{0}人"
  	            	}
  	        	});
             }
-            function OQ1Rule(){
-            	$("#OQ1").rules("add",{
- 	            	min:parseInt($("#OQ0").val()),
+            function O1Rule(){
+            	$("#O1").rules("add",{
+ 	            	min:parseInt($("#O0").val()),
  	            	messages:{
  	            		min:"人員數量不能少於前季{0}人"
  	            	}
  	        	});
             }
-            function OQ2Rule(){
-            	$("#OQ2").rules("add",{
- 	            	min:parseInt($("#OQ1").val()),
+            function O2Rule(){
+            	$("#O2").rules("add",{
+ 	            	min:parseInt($("#O1").val()),
  	            	messages:{
  	            		min:"人員數量不能少於前季{0}人"
  	            	}
  	        	});
             }
-            function OQ3Rule(){
-            	$("#OQ3").rules("add",{
- 	            	min:parseInt($("#OQ2").val()),
+            function O3Rule(){
+            	$("#O3").rules("add",{
+ 	            	min:parseInt($("#O2").val()),
  	            	messages:{
  	            		min:"人員數量不能少於前季{0}人"
  	            	}
  	        	});
             }
             function OQ4Rule(){
-            	$("#OQ4").rules("add",{
-	            	min:parseInt($("#OQ3").val()),
+            	$("#O4").rules("add",{
+	            	min:parseInt($("#O3").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
-            function OQ5Rule(){
-            	$("#OQ5").rules("add",{
-	            	min:parseInt($("#OQ4").val()),
+            function O5Rule(){
+            	$("#O5").rules("add",{
+	            	min:parseInt($("#O4").val()),
 	            	messages:{
 	            		min:"人員數量不能少於前季{0}人"
 	            	}
 	        	});
             }
+            */
 	    </script>
 	 <!-- responsive-table -->  
 	    <script src="js/responsive-tables.js"></script>

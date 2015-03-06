@@ -24,10 +24,10 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	private ResultSet rs1 = null ;
 	private ResultSet rs2 = null ;
 	private PreparedStatement smt = null ;
-	//如果method裡面有一句以上的sql，請使用sql1,sql2分開
-	private String sql;
-	private String sql1;
-	private String sql2;
+	//如果method裡面有一句以上的Sl，請使用Sl1,Sl2分開
+	private String Sl;
+	private String Sl1;
+	private String Sl2;
 	//flag用來判斷回傳的true or false
 	private boolean flag;
 	
@@ -36,11 +36,11 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	}
 	
 	public void insertVentureCheckList(VentureChecklist ventureChecklist){
-		sql = "INSERT INTO venture_checklist (memberAccount, mapClassID, mapSubClassID, ventureChecklistContent) "
+		Sl = "INSERT INTO venture_checklist (memberAccount, mapClassID, mapSubClassID, ventureChecklistContent) "
 				+ "VALUES (?, ?, ?, ?)";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1, ventureChecklist.getAccount());
 			smt.setInt(2, ventureChecklist.getId());
 			smt.setInt(3, ventureChecklist.getClassID());
@@ -60,10 +60,10 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	
 	public boolean checkVentureCheckList(VentureChecklist ventureChecklist){
 		flag = false;
-		sql = "SELECT * FROM venture_checklist WHERE memberAccount = ? AND mapSubClassID = ?";
+		Sl = "SELECT * FROM venture_checklist WHERE memberAccount = ? AND mapSubClassID = ?";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1, ventureChecklist.getAccount());
 			smt.setInt(2, ventureChecklist.getClassID());
 			rs = smt.executeQuery();
@@ -89,10 +89,10 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 
 	public void updateVentureCheckList(VentureChecklist ventureChecklist) {
 		// TODO Auto-generated method stub
-		sql = "UPDATE venture_checklist SET ventureChecklistContent = ? WHERE memberAccount= ? AND mapSubClassID = ?";
+		Sl = "UPDATE venture_checklist SET ventureChecklistContent = ? WHERE memberAccount= ? AND mapSubClassID = ?";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1, ventureChecklist.getContent());
 			smt.setString(2, ventureChecklist.getAccount());
 			smt.setInt(3, ventureChecklist.getClassID());
@@ -114,14 +114,14 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	public List<MapClass> getMapClassList(MapClass mapClass) {
 		// TODO Auto-generated method stub
 		List<MapClass> mapClassList = new ArrayList<MapClass>();
-		//String sql = "SELECT * FROM map_class LEFT JOIN venture_checklist ON map_class.mapClassID = venture_checklist.mapClassID WHERE mapID = ?";
-		sql1 = "SELECT * FROM map_class WHERE mapID = ?";
-		sql2 = "SELECT MAX(mapClassID) AS now FROM venture_checklist WHERE memberAccount = ? "
+		//String Sl = "SELECT * FROM map_class LEFT JOIN venture_checklist ON map_class.mapClassID = venture_checklist.mapClassID WHERE mapID = ?";
+		Sl1 = "SELECT * FROM map_class WHERE mapID = ?";
+		Sl2 = "SELECT MAX(mapClassID) AS now FROM venture_checklist WHERE memberAccount = ? "
 				+ "GROUP BY memberAccount";
 		boolean now = false;
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql1);
+			smt = conn.prepareStatement(Sl1);
 			smt.setInt(1, mapClass.getId());
 			rs1 = smt.executeQuery();
 			while(rs1.next()){
@@ -133,14 +133,14 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				mapClass2.setCss(rs1.getString("mapClassCss"));
 				if(now == false){
 					now = true;
-					smt = conn.prepareStatement(sql2);
+					smt = conn.prepareStatement(Sl2);
 					smt.setString(1, mapClass.getAccount());
 					rs2 = smt.executeQuery();
 					while(rs2.next()){
 						mapClass2.setNow(rs2.getInt("now"));	
 						if(mapClass2.getNow()<13){
-							String sql3 = "SELECT * FROM product WHERE memberAccount = ?";
-							smt = conn.prepareStatement(sql3);
+							String Sl3 = "SELECT * FROM product WHERE memberAccount = ?";
+							smt = conn.prepareStatement(Sl3);
 							smt.setString(1, mapClass.getAccount());
 							ResultSet rs3 = smt.executeQuery();
 							if(rs3.next()){
@@ -169,12 +169,12 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	
 	public List<MapSubclass> getVentureCheckListByMember(Member member){
 		List<MapSubclass> mapSubclassesList = new ArrayList<MapSubclass>();
-		sql1 = "SELECT * FROM map_subclass WHERE mapClassID = ?";
-		sql2 = "SELECT MAX(mapClassID) AS now ,ventureChecklistContent FROM venture_checklist "
+		Sl1 = "SELECT * FROM map_subclass WHERE mapClassID = ?";
+		Sl2 = "SELECT MAX(mapClassID) AS now ,ventureChecklistContent FROM venture_checklist "
 				+ "WHERE memberAccount = ? AND mapSubClassID = ? GROUP BY mapClassID";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql1);
+			smt = conn.prepareStatement(Sl1);
 			smt.setInt(1, member.getClassID());
 			rs1 = smt.executeQuery();
 			while(rs1.next()){				
@@ -182,7 +182,7 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				mapSubclass.setClassID(rs1.getInt("mapClassID"));
 				mapSubclass.setSubclassID(rs1.getInt("mapSubClassID"));
 				mapSubclass.setName(rs1.getString("mapSubClassName"));				
-				smt = conn.prepareStatement(sql2);
+				smt = conn.prepareStatement(Sl2);
 				smt.setString(1, member.getAccount());
 				smt.setInt(2, mapSubclass.getSubclassID());
 				rs2 = smt.executeQuery();
@@ -212,16 +212,17 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 
 	public void insertHumanResourceContent(HumanResourceContent humanResourceContent) {
 		// TODO Auto-generated method stub
-		sql = "INSERT INTO human_resource_content (memberAccount, M0, M1, M2, M3, M4, M5, M6, M7, M8, M9"
-				+ "M10, M11, M12, R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12"
-				+ "S0, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, O0, O1, O2, O3, O4, O6, O7, O8, O9"
+		Sl = "INSERT INTO human_resource_content (memberAccount, M0, M1, M2, M3, M4, M5, M6, M7, M8, M9,"
+				+ "M10, M11, M12, R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12,"
+				+ "S0, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, O0, O1, O2, O3, O4, O5, O6, O7, O8, O9,"
 				+ "O10, O11, O12, total0, total1, total2, total3, total4, total5, total6, total7, " 
 				+ "total8, total9, total10, total11, total12) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
+				+ " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			System.out.println("123456");
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1, humanResourceContent.getAccount());
 			smt.setInt(2, humanResourceContent.getM0());
 			smt.setInt(3, humanResourceContent.getM1());
@@ -308,11 +309,11 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 
 	public HumanResourceContent getHumanResourceContentByMember(Member member) {
 		// TODO Auto-generated method stub
-		sql = "SELECT * FROM human_resource_content WHERE memberAccount = ?";
+		Sl = "SELECT * FROM human_resource_content WHERE memberAccount = ?";
 		HumanResourceContent humanResourceContent = new HumanResourceContent();
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1, member.getAccount());
 			rs = smt.executeQuery();
 			if(rs.next()){				
@@ -340,9 +341,9 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 				humanResourceContent.setR7(rs.getInt("R7"));
 				humanResourceContent.setR8(rs.getInt("R8"));
 				humanResourceContent.setR9(rs.getInt("R9"));
-				humanResourceContent.setR7(rs.getInt("R10"));
-				humanResourceContent.setR8(rs.getInt("R11"));
-				humanResourceContent.setR9(rs.getInt("R12"));
+				humanResourceContent.setR10(rs.getInt("R10"));
+				humanResourceContent.setR11(rs.getInt("R11"));
+				humanResourceContent.setR12(rs.getInt("R12"));
 				
 				humanResourceContent.setS0(rs.getInt("S0"));
 				humanResourceContent.setS1(rs.getInt("S1"));
@@ -405,10 +406,10 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 
 	public boolean checkHumanResourceContentByMember(Member member) {
 		// TODO Auto-generated method stub
-		sql = "SELECT * FROM human_resource_content WHERE memberAccount=?";
+		Sl = "SELECT * FROM human_resource_content WHERE memberAccount=?";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1, member.getAccount());
 			rs = smt.executeQuery();
 			if(rs.next()){				
@@ -435,16 +436,16 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 	public void updateHumanResourceContentByMember(
 			HumanResourceContent humanResourceContent) {		
 		// TODO Auto-generated method stub
-		String sql = "UPDATE human_resource_content SET memberAccount=?, M0=?, M1=?, M2=?, M3=?, M4=?, "
+		String Sl = "UPDATE human_resource_content SET memberAccount=?, M0=?, M1=?, M2=?, M3=?, M4=?, "
 				+ "M5=?, M6=?, M7=?, M8=?, M9=?, M10=?, M11=?, M12=?, R0=?, R1=?, R2=?, R3=?, R4=?, "
 				+ "R5=?, R6=?, R7=?, R8=?, R9=?, R10=?, R11=?, R12=?, S0=?, S1=?, S2=?, S3=?, S4=?, "
 				+ "S5=?, S6=?, S7=?, S8=?, S9=?, S10=?, S11=?, S12=?, O0=?, O1=?, O2=?, O3=?, O4=?, "
-				+ "O5=?, O6=?, O7=?, O8=?, O9=?, 010=?, O11=?, O12=?, total0=?, total1=?, total2=?, total3=?, total4=? "
+				+ "O5=?, O6=?, O7=?, O8=?, O9=?, O10=?, O11=?, O12=?, total0=?, total1=?, total2=?, total3=?, total4=?, "
 				+ "total5=?, total6=?, total7=?, total8=?, total9=?, total10=?, total11=?, total12=? "
 				+ "WHERE memberAccount = ?";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1,humanResourceContent.getAccount());
 			smt.setInt(2,humanResourceContent.getM0());
 			smt.setInt(3, humanResourceContent.getM1());
@@ -536,18 +537,18 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 		double mapSubclassCount;
 		double mySubclassCount;
 		double percentCount;
-		sql1 = "SELECT COUNT(*) AS count FROM map_subclass WHERE mapClassID=?";
+		Sl1 = "SELECT COUNT(*) AS count FROM map_subclass WHERE mapClassID=?";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql1);
+			smt = conn.prepareStatement(Sl1);
 			smt.setString(1, member1.getSetPercent());
 			System.out.println("getSetPercent()="+member1.getSetPercent());
 			rs1 = smt.executeQuery();
 			if(rs1.next()){	
 				mapSubclassCount=rs1.getInt("count");
 				System.out.println("mapSubclassCount="+mapSubclassCount);				
-				sql2 = "SELECT COUNT(*) AS count FROM venture_checklist WHERE mapClassID=? AND memberAccount =? ";
-				smt = conn.prepareStatement(sql2);
+				Sl2 = "SELECT COUNT(*) AS count FROM venture_checklist WHERE mapClassID=? AND memberAccount =? ";
+				smt = conn.prepareStatement(Sl2);
 				smt.setString(1, member1.getSetPercent());
 				smt.setString(2, member1.getAccount());
 				rs2 = smt.executeQuery();
@@ -579,10 +580,10 @@ public class VentureChecklistDAOImpl implements VentureChecklistDAO{
 
 	public boolean checkVentureCheckListByMemberSubID(String account, int id) {
 		// TODO Auto-generated method stub
-		sql = "SELECT * FROM venture_checklist WHERE memberAccount=? AND mapSubClassID=?";
+		Sl = "SELECT * FROM venture_checklist WHERE memberAccount=? AND mapSubClassID=?";
 		try {
 			conn = dataSource.getConnection();
-			smt = conn.prepareStatement(sql);
+			smt = conn.prepareStatement(Sl);
 			smt.setString(1, account);
 			smt.setInt(2, id);
 			rs = smt.executeQuery();
