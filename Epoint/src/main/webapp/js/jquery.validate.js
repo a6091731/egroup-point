@@ -226,7 +226,7 @@ $.extend($.validator, {
 		ignoreTitle: false,
 		onfocusin: function( element, event ) {
 			this.lastActive = element;
-
+			//alert("onfocusin");
 			// hide error label and remove error class on focus if enabled
 			if ( this.settings.focusCleanup && !this.blockFocusCleanup ) {
 				if ( this.settings.unhighlight ) {
@@ -236,11 +236,18 @@ $.extend($.validator, {
 			}
 		},
 		onfocusout: function( element, event ) {
+			//alert("onfocusout");
 			if ( !this.checkable(element) && (element.name in this.submitted || !this.optional(element)) ) {
 				this.element(element);
 			}
+			/*if ( event.which === 9 && this.elementValue(element) === "" ) {
+				return;
+			} else if ( element.name in this.submitted || element === this.lastElement ) {
+				this.element(element);
+			}*/
 		},
 		onkeyup: function( element, event ) {
+			//alert("onkeyup");
 			if ( event.which === 9 && this.elementValue(element) === "" ) {
 				return;
 			} else if ( element.name in this.submitted || element === this.lastElement ) {
@@ -248,6 +255,7 @@ $.extend($.validator, {
 			}
 		},
 		onclick: function( element, event ) {
+			//alert("onclick");
 			// click on selects, radiobuttons and checkboxes
 			if ( element.name in this.submitted ) {
 				this.element(element);
