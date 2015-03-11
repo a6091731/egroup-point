@@ -132,7 +132,7 @@
 						  	<div class="field">
 						  		<label>日期：
 						  			<input class="monthYearPicker form-control dateValidate" name="dynamicPayMoney[${index}].date_string" 
-						  			value="${fn:substring(fn:substring(card.date,0,7) }">
+						  			value="${fn:substring(card.date,0,7) }">
 						  		</label>
 						  	</div>
 						  	<div class="field">

@@ -223,12 +223,13 @@
 	            lawyerCount = $('#lawyerCount').val();
 	            index = parseInt(cardCount) + parseInt(lawyerCount);
 	            
-	            $("#sendForm").validate();	 	            
+	            $("#sendForm").validate({
+	            	//focus導致datepicker失效，暫時關閉
+	            	focusInvalid:false
+	            });	
+	            
 	            //日期validate
 	            $.validator.addMethod("dRequired", $.validator.methods.required, "請填入日期");
-	            $.validator.addMethod("dateMin", $.validator.methods.min, "時間不得小於您的創業第一年時間 : {0} 開始");
-	            $.validator.addMethod("dateMax", $.validator.methods.max, "時間不得大於您的創業第一年時間 : {0} 結束");
-	           	
 	            //金額validate   
 	            $.validator.addMethod("cRequired", $.validator.methods.required, "請輸入金額");
 	            $.validator.addMethod("digits", $.validator.methods.digits, "請輸入整數");
@@ -238,8 +239,9 @@
 	            jQuery.validator.addClassRules({
 	            	dateValidate: {
 	            		dRequired: true,
-	            		dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
-	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')	            		
+	            		//customDateValidator: true,
+	            		/*dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
+	            		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')	 */          		
 	            	},
 	            	moneyValidate: {
 	            		cRequired: true,
@@ -247,14 +249,8 @@
 	            		min: 1,
 	            		cMaxlength: 9
 	            	}
-	            }); 
+	            }) 
 	            
-	            //刪除Jquery UI datepicker apprence ID lable for error
-	            $("#sendForm").on("blur", ".dateValidate", function(){
-	            	var id = $(this).attr('id');
-	            	$(this).removeClass("hasDatepicker").removeAttr("id");  
-	            	$('label[for='+id+']').remove();	            	
-	            });
 	            
 	            $('.addbutton').click(function(){
 	            	var type = $(this).data('id');
@@ -348,25 +344,36 @@
 			var monthMin = '${fn:substring(getMember.capitalDate,5,7)}';
 			var yearMax = (calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')).substring(0,4);
 			var monthMax = (calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')).substring(5,7);
+			
 			$('body').on('focus',".monthYearPicker", function(){
-    			$(this).datepicker({
+    			$(this).datepicker({    				
 					changeMonth: true,
 					changeYear: true,
 					showButtonPanel: true,
 					dateFormat: 'yy-MM',
+					showMonthAfterYear: true,
+					
 					//日期限制
 					minDate: new Date(yearMin, monthMin-1, 1),
-					maxDate: new Date(yearMax, monthMax-1, 1)
-				}).focus(function() {
+					maxDate: new Date(yearMax, monthMax-1, 1),
+				    /*onChangeMonthYear: function(year, month, inst){
+				        var currentDate = jQuery(this).datepicker( "getDate" );
+				        jQuery(this).datepicker( "setDate", new Date(year, month-1, currentDate.getDate()) );
+				    }*/
+				}).focus(function() {					
 					var thisCalendar = $(this);
 					$('.ui-datepicker-calendar').detach();
-					$('.ui-datepicker-close').click(function() {
+					$('.ui-datepicker-close').click(function() {						
+						//$(this).find("input").removeClass("hasDatepicker").removeAttr("id");	
 						var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
 						var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
 						thisCalendar.datepicker('setDate', new Date(year, month, 1));
+						$('#sendForm').valid();
+						//alert('');						
 					});
 				});
-			});
+			});	
+						
 			
 			//計算一年後日期
 			function calculateEndDate(startDate){
