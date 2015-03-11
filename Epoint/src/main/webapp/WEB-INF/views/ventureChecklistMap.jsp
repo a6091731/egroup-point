@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -22,16 +23,8 @@
 	<link rel="stylesheet" href="css/style.css">
 	<!-- layout -->
 	<link rel="stylesheet" href="css/layout.css">
-	
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn’t work if you view the page via file:// -->
-    
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+	<!-- jQUERY UI dateTimePicker -->
+	<link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.css">
 </head>
 <body>
 	<header class="topheader clearfix">
@@ -63,6 +56,12 @@
 					<img alt="創業前檢核表圖示" src="images/ventureCheck.png">
 					<h2>創業前檢核表</h2>
 					<ul>
+						<li>請填寫您的創業時間，我們將以您設定的時間為基準往後一年作為您的營運排程。</li>
+						<li>您創業第一年的時間：</li>
+						<li>
+							<input class="form-control2 monthYearPicker dateValidate" id="startDate" value="${fn:substring(getMember.capitalDate,0,7) }">至
+							<input class="form-control2 monthYearPicker dateValidate" id="endDate" disabled>							
+						</li>
 						<li>1.請依照順序完成您的創業前檢核表</li>
 						<li>2.最後您可以按下"儲存創業檢核表" 儲存您的創業檢核表至您的電腦</li>
 						<li>3.若在填表過程中您不清楚方向，可按下"我需要協助"來幫助自己完成填表</li>
@@ -77,8 +76,8 @@
 				<ul>
 					<li>
 						<div class="ventureBox clearfix">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent11>0?getPercent.percent11:0}%" data-fontsize="16" 
-							data-percent="${getPercent.percent11}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.percent11>0?getMember.percent11:0}%" data-fontsize="16" 
+							data-percent="${getMember.percent11}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>創業業種</h3>
@@ -89,81 +88,81 @@
 						</div>
  					</li>
 					<li>
-						<div class="${getPercent.percent11>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent12>0?getPercent.percent12:0}%" data-fontsize="16" 
-							data-percent="${getPercent.percent12}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+						<div class="${getMember.percent11>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.percent12>0?getMember.percent12:0}%" data-fontsize="16" 
+							data-percent="${getMember.percent12}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>目標市場描述</h3>
 								<p>填寫目標客戶、提供給顧客什麼價值、顧客從中能得到什麼好處</p>
 							</div>
-							<i class="${getPercent.percent11>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
-							<a href="${getPercent.percent11>0? 'targetMarketDescribe':'javascript:;'}" target="_self"></a>
+							<i class="${getMember.percent11>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getMember.percent11>0? 'targetMarketDescribe':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent12>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.productCount>0? 100:0}%" data-fontsize="16" 
-							data-percent="${getPercent.productCount>0? 100:0}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+						<div class="${getMember.percent12>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.productCount>0? 100:0}%" data-fontsize="16" 
+							data-percent="${getMember.productCount>0? 100:0}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>產品描述</h3>
-								<p>填寫產品相關資訊，目前有${getPercent.productCount }項產品資訊</p>
+								<p>填寫產品相關資訊，目前有${getMember.productCount }項產品資訊</p>
 							</div>
-							<i class="${getPercent.percent12>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
-							<a href="${getPercent.percent12>0? 'showAllProductDescribe':'javascript:;'}" target="_self"></a>
+							<i class="${getMember.percent12>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getMember.percent12>0? 'showAllProductDescribe':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.productCount>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent14>0?getPercent.percent14:0}%" data-fontsize="16" 
-							data-percent="${getPercent.percent14}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+						<div class="${getMember.productCount>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.percent14>0?getMember.percent14:0}%" data-fontsize="16" 
+							data-percent="${getMember.percent14}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>業務</h3>
 								<p>填寫業務銷售通路、業務銷售末端消費者</p>
 							</div>
-							<i class="${getPercent.productCount>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
-							<a href="${getPercent.productCount>0? 'businessSales':'javascript:;'}" target="_self"></a>
+							<i class="${getMember.productCount>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getMember.productCount>0? 'businessSales':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent14>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent15>0?getPercent.percent15:0}%" data-fontsize="16" 
-							data-percent="${getPercent.percent15}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+						<div class="${getMember.percent14>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.percent15>0?getMember.percent15:0}%" data-fontsize="16" 
+							data-percent="${getMember.percent15}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>行銷</h3>
 								<p>填寫行銷策略、付費行銷、免費行銷</p>
 							</div>
-							<i class="${getPercent.percent14>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
-							<a href="${getPercent.percent14>0? 'businessMarket':'javascript:;'}" target="_self"></a>
+							<i class="${getMember.percent14>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getMember.percent14>0? 'businessMarket':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent15>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent16>0?getPercent.percent16:0}%" data-fontsize="16" 
-							data-percent="${getPercent.percent16}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+						<div class="${getMember.percent15>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.percent16>0?getMember.percent16:0}%" data-fontsize="16" 
+							data-percent="${getMember.percent16}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>產業定位</h3>
 								<p>填寫在產業供應練中的位置</p>
 							</div>
-							<i class="${getPercent.percent15>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
-							<a href="${getPercent.percent15>0? 'businessOrientation':'javascript:;'}" target="_self"></a>
+							<i class="${getMember.percent15>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getMember.percent15>0? 'businessOrientation':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					<li>
-						<div class="${getPercent.percent16>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
-							<div class="progressCircle" data-dimension="80" data-text="${getPercent.percent17>0?getPercent.percent17:0}%" data-fontsize="16"
-							 data-percent="${getPercent.percent17}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
+						<div class="${getMember.percent16>0? 'ventureBox clearfix':'ventureBoxLocked clearfix'}">
+							<div class="progressCircle" data-dimension="80" data-text="${getMember.percent17>0?getMember.percent17:0}%" data-fontsize="16"
+							 data-percent="${getMember.percent17}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="10" 
 							 data-bordersize="10" data-animationstep="2"></div>
 							<div class="progressDescribe">
 								<h3>人力資源規劃</h3>
 								<p>填寫人力規劃、組織規模及人力養成圖表</p>
 							</div>
-							<i class="${getPercent.percent16>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
-							<a href="${getPercent.percent16>0? 'humanResourcePlan':'javascript:;'}" target="_self"></a>
+							<i class="${getMember.percent16>0? 'fa fa-angle-right fa-5x':'fa fa-lock fa-4x fa-top'}"></i>
+							<a href="${getMember.percent16>0? 'humanResourcePlan':'javascript:;'}" target="_self"></a>
 						</div>
  					</li>
  					
@@ -190,7 +189,119 @@
 		<script>
 		$(function() {
 			$('.progressCircle').circliful();
-		});
+			var endDate = calculateEndDate($('#startDate').val());
+			$('#endDate').val(endDate);
+			
+			$('#startDate').change(function(){
+				var startDate = $(this).val();
+				if('${fn:substring(getMember.capitalDate,0,7) }' != ''){
+					alertify.confirm("當您修改日期，將會刪除你設定日期範圍外的資料", function (e) {
+		   				if (e) {
+		   					if(startDate != ''){
+			   					$.ajax({
+			   						url:"modiVenturePlanStartDate",
+			   						data:{
+			   							startDate : startDate
+			   						},
+			   						success:function(){
+			   							var endDate = calculateEndDate(startDate);
+			   							$('#endDate').val(endDate);
+			   		   					alertify.success("更新成功!");
+			   						}
+			   					});
+		   					}else{
+		   						$('#endDate').val('');
+		   					}
+		   				} else {
+		   					$('#startDate').val('${fn:substring(getMember.capitalDate,0,7) }');
+		   					alertify.error("取消更新!");
+		   				}
+	   				});
+				}else{
+					if(startDate != ''){
+	   					$.ajax({
+	   						url:"modiVenturePlanStartDate",
+	   						data:{
+	   							startDate : startDate
+	   						},
+	   						success:function(){
+	   							var endDate = calculateEndDate(startDate);
+	   							$('#endDate').val(endDate);
+	   		   					alertify.success("更新成功!");
+	   						}
+	   					});
+   					}else{
+   						$('#endDate').val('');
+   					}
+				}
+			});
+		});		
+		
+		$("#sendForm").validate({
+        	//focus導致datepicker失效，暫時關閉
+        	focusInvalid:false
+        });	
+        
+        //日期validate
+        $.validator.addMethod("dRequired", $.validator.methods.required, "請填入日期");
+        //金額validate   
+        $.validator.addMethod("cRequired", $.validator.methods.required, "請輸入金額");
+        $.validator.addMethod("digits", $.validator.methods.digits, "請輸入整數");
+        $.validator.addMethod("min", $.validator.methods.min, "請輸入大於0的");
+        $.validator.addMethod("cMaxlength", $.validator.methods.maxlength, "請輸入小於10位數的金額");
+       
+        jQuery.validator.addClassRules({
+        	dateValidate: {
+        		dRequired: true,
+        		//customDateValidator: true,
+        		/*dateMin: '${fn:substring(getMember.capitalDate,0,7)}',
+        		dateMax: calculateEndDate('${fn:substring(getMember.capitalDate,0,7)}')	 */          		
+        	},
+        	moneyValidate: {
+        		cRequired: true,
+        		digits: true,
+        		min: 1,
+        		cMaxlength: 9
+        	}
+        }) 
+		
+		//設定日期限制的年月		
+		$('body').on('focus',".monthYearPicker", function(){
+			$(this).datepicker({    				
+				changeMonth: true,
+				changeYear: true,
+				showButtonPanel: true,
+				dateFormat: 'yy-MM',
+				showMonthAfterYear: true,
+				
+				//日期限制
+				minDate: new Date(yearMin, monthMin-1, 1),
+				maxDate: new Date(yearMax, monthMax-1, 1)
+			}).focus(function() {					
+				var thisCalendar = $(this);
+				$('.ui-datepicker-calendar').detach();
+				$('.ui-datepicker-close').click(function() {						
+					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+					thisCalendar.datepicker('setDate', new Date(year, month, 1));
+					$('#sendForm').valid();	
+				});
+			});
+		});	
+		
+		function calculateEndDate(startDate){
+			var endDate;
+			var endYear = parseInt(startDate.substring(0,4));
+			var endMon = parseInt(startDate.substring(5,7))-1;
+			if(endMon == 0){
+				endDate = endYear+'-12';
+			}else{
+				endYear++;
+				endMon = '0'+endMon;
+				endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
+			}
+			return endDate;
+		}
 		</script>
 </body>
 </html>

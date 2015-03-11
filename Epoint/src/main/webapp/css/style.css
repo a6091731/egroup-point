@@ -518,7 +518,7 @@ ul.loginDropdown:hover + a.loginImg {background:rgba(63, 63, 63, 1); }
 /*formset*/
 .formset {padding-bottom: 2em;}
 .formset2 {padding: 2em 0;}
-.formset legend{display: block;color: #666666;padding: 10px 0;font-weight: bold;font-size: 18px;}
+.formset legend,.formsetTitle{display: block;color: #666666;padding: 10px 0;font-weight: bold;font-size: 18px;}
 .formset .field{display:inline-block;margin:5px 0;margin-right: 20px;}
 .formset .fieldset{border-bottom: 1px dotted #aeaeae;margin-top: 50px; padding-bottom: 50px;}
 .formset .fieldset2{border-bottom: 1px dotted #aeaeae; padding-bottom: 50px;}
@@ -752,6 +752,16 @@ h4.productTitle{margin-bottom: 2em;}
 
 /* //humanResourcePlan*/
 
+/*personPlace.html*/
+.personPlaceTable{width: 100%;}
+.personPlaceTable thead{background-color: #ddd;}
+.personPlaceTable th{padding: 5px;   border: 1px solid #ccc;}
+.personPlaceTable td{padding: 10px;line-height: 1.5;vertical-align: top; border: 1px solid #ddd;}
+.personPlaceTable td a.fa-color{color:#b3b3b3;}
+.personPlaceTable td a.fa-color:hover{color:#ff849b;}
+.personPlaceH4{padding:30px 0 5px;}
+/* //personPlace.html*/
+
 /*memberEdit.html*/
 .register_btn_del{
         width: 100%;
@@ -950,14 +960,14 @@ i.fa-left{margin-left: 10px;}
 
 .deleteblock{border-bottom:1px dashed #ccc;}
 .pt20{padding-top:50px;}
-
+.tab-container{padding-top:10px;}
 .etabs { margin: 0; padding: 0; }
-.tab { display: inline-block; zoom:1; *display:inline; background: #eee; border: solid 1px #999; border-bottom: none; -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; }
-.tab a { font-size: 14px; line-height: 2em; display: block; padding: 0 10px; outline: none; }
+.tab { display: inline-block; zoom:1; *display:inline; background: #eee; border: solid 1px #ccc; border-bottom: none; -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; }
+.tab a { font-size: 14px; line-height: 2em; display: block; padding: 0 10px; outline: none; color: #D89718;}
 .tab a:hover { text-decoration: underline; }
-.tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #666; }
+.tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #ccc; }
 .tab a.active { font-weight: bold; }
-.tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }
+.tab-container .panel-container { background: #fff; border: solid #ccc 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }
 
 /************
 * =jquery.validate
