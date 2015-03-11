@@ -93,26 +93,70 @@ public class WordController {
 				HumanResource.setM2(0);
 				HumanResource.setM3(0);
 				HumanResource.setM4(0);
+				HumanResource.setM5(0);
+				HumanResource.setM6(0);
+				HumanResource.setM7(0);
+				HumanResource.setM8(0);
+				HumanResource.setM9(0);
+				HumanResource.setM10(0);
+				HumanResource.setM11(0);
+				HumanResource.setM12(0);
+				
 				HumanResource.setR0(0);
 				HumanResource.setR1(0);
 				HumanResource.setR2(0);
 				HumanResource.setR3(0);
 				HumanResource.setR4(0);
+				HumanResource.setR5(0);
+				HumanResource.setR6(0);
+				HumanResource.setR7(0);
+				HumanResource.setR8(0);
+				HumanResource.setR9(0);
+				HumanResource.setR10(0);
+				HumanResource.setR11(0);
+				HumanResource.setR12(0);
+				
 				HumanResource.setS0(0);
 				HumanResource.setS1(0);
 				HumanResource.setS2(0);
 				HumanResource.setS3(0);
 				HumanResource.setS4(0);
+				HumanResource.setS5(0);
+				HumanResource.setS6(0);
+				HumanResource.setS7(0);
+				HumanResource.setS8(0);
+				HumanResource.setS9(0);
+				HumanResource.setS10(0);
+				HumanResource.setS11(0);
+				HumanResource.setS12(0);
+				
 				HumanResource.setO0(0);
 				HumanResource.setO1(0);
 				HumanResource.setO2(0);
 				HumanResource.setO3(0);
 				HumanResource.setO4(0);
+				HumanResource.setO5(0);
+				HumanResource.setO6(0);
+				HumanResource.setO7(0);
+				HumanResource.setO8(0);
+				HumanResource.setO9(0);
+				HumanResource.setO10(0);
+				HumanResource.setO11(0);
+				HumanResource.setO12(0);
+				
 				HumanResource.setTotal0(0);
 				HumanResource.setTotal1(0);
 				HumanResource.setTotal2(0);
 				HumanResource.setTotal3(0);
 				HumanResource.setTotal4(0);
+				HumanResource.setTotal5(0);
+				HumanResource.setTotal6(0);
+				HumanResource.setTotal7(0);
+				HumanResource.setTotal8(0);
+				HumanResource.setTotal9(0);
+				HumanResource.setTotal10(0);
+				HumanResource.setTotal11(0);
+				HumanResource.setTotal12(0);
 			}
 
 			dataMap.put("name", memberLogin.getName());

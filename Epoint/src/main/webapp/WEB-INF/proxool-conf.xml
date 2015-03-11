@@ -9,7 +9,7 @@
 		<driver-class>com.mysql.jdbc.Driver</driver-class>
 		<driver-properties>
 		<property name="user" value="root" />			
-		<property name="password" value="1234" />
+		<property name="password" value="" />
 		<!--
 		<property name="password" value="egroup23622508" />				
 		 -->
