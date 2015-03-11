@@ -46,8 +46,6 @@ public class VentureChecklistController {
 			memberLogin.setPercent12(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			//************************
 			//Product 紀錄比數，但不記錄完成度
-			/*memberLogin.setSetPercent("13");
-			memberLogin.setPercent13(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);*/
 			memberLogin.setProductCount(productDAO.countProductByMember(memberLogin));
 			//************************
 			memberLogin.setSetPercent("14");
@@ -60,14 +58,7 @@ public class VentureChecklistController {
 			memberLogin.setPercent17(Double.parseDouble(df.format(ventureChecklistDAO.getVentureChecklistPercent(memberLogin)))*100);
 			
 			model.addObject("getPercent",memberLogin);
-			
-			/*System.out.println("11="+memberLogin.getPercent11());
-			System.out.println("12="+memberLogin.getPercent12());
-			System.out.println("13="+memberLogin.getPercent13());
-			System.out.println("14="+memberLogin.getPercent14());
-			System.out.println("15="+memberLogin.getPercent15());
-			System.out.println("16="+memberLogin.getPercent16());
-			System.out.println("17="+memberLogin.getPercent17());*/
+			model.addObject("getMember",memberLogin);
 		}			
 		return model;
 	}
@@ -92,7 +83,9 @@ public class VentureChecklistController {
 			model.addObject("getVentureCheckListByMember", getVentureCheckListByMember);
 			model.addObject("getVentureCheckMenuListNow",getVentureCheckMenuList.get(0).getNow());
 			
-			/*absolutePath="test.properties";	
+			
+			/* 載入設定檔案
+			absolutePath="test.properties";	
 			is =  VentureChecklistController.class.getResourceAsStream(absolutePath); 
 			PC.loadProperties(is);
 			String dbName=PC.getConfig("dbName");

@@ -144,6 +144,7 @@
 		<script>
 		$(function() {
 	        $('.progressCircle').circliful();
+	        
 			var endDate = calculateEndDate($('#startDate').val());
 			$('#endDate').val(endDate);
 			
