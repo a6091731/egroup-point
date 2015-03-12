@@ -258,15 +258,19 @@
 
 
 	<!-- import jquery -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
 	<!-- import nav slideToggle RWD js -->	
-		<script src="js/nav.js"></script>
+	<script src="js/nav.js"></script>
+	
 	<!-- Reveal Modal -->
-		<script src="js/jquery.reveal.js"></script>
+	<script src="js/jquery.reveal.js"></script>
+	
 	<!-- jquery.mobilemenu.js -->
-		<script src="js/jquery.mobilemenu.js"></script>
+	<script src="js/jquery.mobilemenu.js"></script>
+	
 	<!-- month picker引入jqueryUI -->
-		<script src="js/jquery-ui-1.9.2.custom.js"></script>
+	<script src="js/jquery-ui-1.9.2.custom.js"></script>
 		
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/messages_zh_TW.js"></script>
