@@ -414,4 +414,18 @@ public class ExpenditureStructureController {
         }
         return model;
 	}
+	
+	@RequestMapping(value = "/addPersonPlace", method = RequestMethod.POST)
+    public ModelAndView addPersonPlace(HttpSession session) throws IOException {
+    	ModelAndView model = new ModelAndView();
+        PayMoneyDAO payMoneyDAO = (PayMoneyDAO) context.getBean("payMoneyDAO");
+        Member loginMember = (Member) session.getAttribute("loginMember");
+        if(loginMember != null){
+        	
+            model.setViewName("redirect:/marketing");
+        }else{
+        	model.setViewName("redirect:/");
+        }
+        return model;
+	}
 }
