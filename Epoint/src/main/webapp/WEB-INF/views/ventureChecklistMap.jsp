@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib  uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!DOCTYPE html>
 <html lang="zh-tw">
 <head>
 	<meta charset="UTF-8">
@@ -21,10 +20,10 @@
 	<link rel="stylesheet" href="css/skeleton.css">
 	<!-- style -->
 	<link rel="stylesheet" href="css/style.css">
-	<!-- layout -->
-	<link rel="stylesheet" href="css/layout.css">
 	<!-- jQUERY UI dateTimePicker -->
 	<link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.css">
+	<!-- layout -->
+	<link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 	<header class="topheader clearfix">
@@ -59,8 +58,9 @@
 						<li>請填寫您的創業時間，我們將以您設定的時間為基準往後一年作為您的營運排程。</li>
 						<li>您創業第一年的時間：</li>
 						<li>
-							<input class="form-control2 monthYearPicker dateValidate" id="startDate" value="${fn:substring(getMember.capitalDate,0,7) }">至
-							<input class="form-control2 monthYearPicker dateValidate" id="endDate" disabled>							
+							<input class="form-control2 monthYearPicker" id="startDate" 
+							value="${fn:substring(getMember.capitalDate,0,7) }" readonly>至
+							<input class="form-control2 monthYearPicker" id="endDate" disabled>							
 						</li>
 						<li>1.請依照順序完成您的創業前檢核表</li>
 						<li>2.最後您可以按下"儲存創業檢核表" 儲存您的創業檢核表至您的電腦</li>
@@ -178,62 +178,53 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	
 	<!-- import nav slideToggle RWD js -->	
-		<script src="js/nav.js"></script>
+	<script src="js/nav.js"></script>
+	
+	<!-- import Reveal Modal -->
+	<script src="js/jquery.reveal.js"></script>
+	
+	<!-- import jquery.mobilemenu.js -->
+	<script src="js/jquery.mobilemenu.js"></script>
+	
 	<!-- import progressbar -->
-		<script type="text/javascript" src="js/progressbar.js"></script>
-		<script>
-			progressBar(20, $('#progressBar'));
-		</script>
+	<script src="js/progressbar.js"></script>
+	
 	<!-- import progresscircle -->	
-		<script src="js/jquery.circliful.js"></script>
-		<script>
+	<script src="js/jquery.circliful.js"></script>
+	
+	<!-- import month picker引入jqueryUI -->
+	<script src="js/jquery-ui-1.9.2.custom.js"></script>
+	
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/messages_zh_TW.js"></script>
+	<script src="js/additional-methods.js"></script>	
+
+	<script type="text/javascript">
 		$(function() {
+			//percent圖示
+			progressBar(20, $('#progressBar'));
 			$('.progressCircle').circliful();
-			var endDate = calculateEndDate($('#startDate').val());
-			$('#endDate').val(endDate);
 			
-			$('#startDate').change(function(){
-				var startDate = $(this).val();
-				if('${fn:substring(getMember.capitalDate,0,7) }' != ''){
-					alertify.confirm("當您修改日期，將會刪除你設定日期範圍外的資料", function (e) {
-		   				if (e) {
-		   					if(startDate != ''){
-			   					$.ajax({
-			   						url:"modiVenturePlanStartDate",
-			   						data:{
-			   							startDate : startDate
-			   						},
-			   						success:function(){
-			   							var endDate = calculateEndDate(startDate);
-			   							$('#endDate').val(endDate);
-			   		   					alertify.success("更新成功!");
-			   						}
-			   					});
-		   					}else{
-		   						$('#endDate').val('');
-		   					}
-		   				} else {
-		   					$('#startDate').val('${fn:substring(getMember.capitalDate,0,7) }');
-		   					alertify.error("取消更新!");
-		   				}
-	   				});
-				}else{
-					if(startDate != ''){
-	   					$.ajax({
-	   						url:"modiVenturePlanStartDate",
-	   						data:{
-	   							startDate : startDate
-	   						},
-	   						success:function(){
-	   							var endDate = calculateEndDate(startDate);
-	   							$('#endDate').val(endDate);
-	   		   					alertify.success("更新成功!");
-	   						}
-	   					});
-   					}else{
-   						$('#endDate').val('');
-   					}
-				}
+			//起始時間限制
+			var endDate = calculateEndDate($('#startDate').val());
+			$('#endDate').val(endDate);		
+			
+			// month picker
+			$('.monthYearPicker').datepicker({ 				
+				changeMonth: true,
+				changeYear: true,
+				showButtonPanel: true,
+				dateFormat: 'yy-MM',
+				showMonthAfterYear: true,
+			}).focus(function() {					
+				var thisCalendar = $(this);
+				$('.ui-datepicker-calendar').detach();
+				$('.ui-datepicker-close').click(function() {						
+					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+					thisCalendar.datepicker('setDate', new Date(year, month, 1));
+					setEndDate(year, month);
+				});
 			});
 		});		
 		
@@ -264,31 +255,7 @@
         		cMaxlength: 9
         	}
         }) 
-		
-		//設定日期限制的年月		
-		$('body').on('focus',".monthYearPicker", function(){
-			$(this).datepicker({    				
-				changeMonth: true,
-				changeYear: true,
-				showButtonPanel: true,
-				dateFormat: 'yy-MM',
-				showMonthAfterYear: true,
 				
-				//日期限制
-				minDate: new Date(yearMin, monthMin-1, 1),
-				maxDate: new Date(yearMax, monthMax-1, 1)
-			}).focus(function() {					
-				var thisCalendar = $(this);
-				$('.ui-datepicker-calendar').detach();
-				$('.ui-datepicker-close').click(function() {						
-					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-					thisCalendar.datepicker('setDate', new Date(year, month, 1));
-					$('#sendForm').valid();	
-				});
-			});
-		});	
-		
 		function calculateEndDate(startDate){
 			var endDate;
 			var endYear = parseInt(startDate.substring(0,4));
@@ -300,7 +267,55 @@
 				endMon = '0'+endMon;
 				endDate = endYear+'-'+endMon.substring(endMon.length-2,endMon.length);
 			}
+			alert('endDate='+endDate);
 			return endDate;
+		}
+		
+		function setEndDate(startYear , startDate){
+			alert("startYear="+startYear);
+			alert("startDate="+startDate);
+			var startDate = $(this).val();
+			if(startYear != '' && startDate!= ''){
+				alertify.confirm("當您修改日期，將會刪除你設定日期範圍外的資料", function (e) {
+		   			if (e) {
+		   				if(startMonth != ''){
+			   				$.ajax({
+			   					url:"modiVenturePlanStartDate",
+			   					data:{
+			   						startDate : startDate
+			   					},
+			   					success:function(){
+			   						var endDateCombin = startYear+'-'+startDate;
+			   						var endDate = calculateEndDate(endDateCombin);
+			   						$('#endDate').val(endDate);
+			   		   				alertify.success("更新成功!");
+			   					}
+			   				});
+		   				}else{
+		   					$('#endDate').val('');
+		   				}
+		   			} else {
+		   				$('#startDate').val('${fn:substring(getMember.capitalDate,0,7) }');
+		   				alertify.error("取消更新!");
+		   			}
+	   			});
+			}else{
+				if(startDate != ''){
+	   				$.ajax({
+	   					url:"modiVenturePlanStartDate",
+	   					data:{
+	   						startDate : startDate
+	   					},
+	   					success:function(){
+	   						var endDate = calculateEndDate(startDate);
+	   						$('#endDate').val(endDate);
+	   		   				alertify.success("更新成功!");
+	   					}
+	   				});
+   				}else{
+   					$('#endDate').val('');
+   				}
+			}
 		}
 		</script>
 </body>
